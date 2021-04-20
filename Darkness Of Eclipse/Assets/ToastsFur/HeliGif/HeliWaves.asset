@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bf2940b61249bb4ba8824261d8b5534, type: 3}
+  m_Name: HeliWaves
+  m_EditorClassIdentifier: 
+  endurance: 0.39999998
+  delay: 0.01
+  frames:
+  - {fileID: 2800000, guid: f8f09276a8292774faacad6b9c14738b, type: 3}
+  - {fileID: 2800000, guid: 125da1cbe5dbde446802d8aaac7d99d5, type: 3}
+  - {fileID: 2800000, guid: 894ade297487e1644b8c760d1eb4dee9, type: 3}
+  - {fileID: 2800000, guid: 7c48e7b5fcfb5234481e984d8a7570b7, type: 3}
+  - {fileID: 2800000, guid: 15ba122aa26c148479a9f180ae1e834b, type: 3}
+  - {fileID: 2800000, guid: fb45bd4765dec1a418e3607944e592a2, type: 3}
+  - {fileID: 2800000, guid: daac1e013aa23534bbc6141f7102d56d, type: 3}
+  - {fileID: 2800000, guid: 41ea7782767f72046bdbea36afe6e9cd, type: 3}
+  - {fileID: 2800000, guid: 2382cabc552a095429e31db615af7d8b, type: 3}
+  - {fileID: 2800000, guid: 50108b0ea0c47ce47bb546cc86ac9075, type: 3}

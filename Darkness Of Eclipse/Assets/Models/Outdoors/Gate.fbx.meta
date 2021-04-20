@@ -1,0 +1,411 @@
+fileFormatVersion: 2
+guid: 528f6f1ad0283fd488253e138e8f4cfa
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Chain 1
+  - first:
+      1: 100002
+    second: Chain 10
+  - first:
+      1: 100004
+    second: Chain 11
+  - first:
+      1: 100006
+    second: Chain 12
+  - first:
+      1: 100008
+    second: Chain 2
+  - first:
+      1: 100010
+    second: Chain 3
+  - first:
+      1: 100012
+    second: Chain 4
+  - first:
+      1: 100014
+    second: Chain 5
+  - first:
+      1: 100016
+    second: Chain 6
+  - first:
+      1: 100018
+    second: Chain 7
+  - first:
+      1: 100020
+    second: Chain 8
+  - first:
+      1: 100022
+    second: Chain 9
+  - first:
+      1: 100024
+    second: //RootNode
+  - first:
+      1: 100026
+    second: Gate 1L
+  - first:
+      1: 100028
+    second: Gate 1R
+  - first:
+      1: 100030
+    second: Gate 2L
+  - first:
+      1: 100032
+    second: Gate 2R
+  - first:
+      1: 100034
+    second: Gate 3L
+  - first:
+      1: 100036
+    second: Gate 3R
+  - first:
+      1: 100038
+    second: Lock
+  - first:
+      1: 100040
+    second: Lock Bar
+  - first:
+      4: 400000
+    second: Chain 1
+  - first:
+      4: 400002
+    second: Chain 10
+  - first:
+      4: 400004
+    second: Chain 11
+  - first:
+      4: 400006
+    second: Chain 12
+  - first:
+      4: 400008
+    second: Chain 2
+  - first:
+      4: 400010
+    second: Chain 3
+  - first:
+      4: 400012
+    second: Chain 4
+  - first:
+      4: 400014
+    second: Chain 5
+  - first:
+      4: 400016
+    second: Chain 6
+  - first:
+      4: 400018
+    second: Chain 7
+  - first:
+      4: 400020
+    second: Chain 8
+  - first:
+      4: 400022
+    second: Chain 9
+  - first:
+      4: 400024
+    second: //RootNode
+  - first:
+      4: 400026
+    second: Gate 1L
+  - first:
+      4: 400028
+    second: Gate 1R
+  - first:
+      4: 400030
+    second: Gate 2L
+  - first:
+      4: 400032
+    second: Gate 2R
+  - first:
+      4: 400034
+    second: Gate 3L
+  - first:
+      4: 400036
+    second: Gate 3R
+  - first:
+      4: 400038
+    second: Lock
+  - first:
+      4: 400040
+    second: Lock Bar
+  - first:
+      21: 2100000
+    second: No Name
+  - first:
+      23: 2300000
+    second: Chain 1
+  - first:
+      23: 2300002
+    second: Chain 10
+  - first:
+      23: 2300004
+    second: Chain 11
+  - first:
+      23: 2300006
+    second: Chain 12
+  - first:
+      23: 2300008
+    second: Chain 2
+  - first:
+      23: 2300010
+    second: Chain 3
+  - first:
+      23: 2300012
+    second: Chain 4
+  - first:
+      23: 2300014
+    second: Chain 5
+  - first:
+      23: 2300016
+    second: Chain 6
+  - first:
+      23: 2300018
+    second: Chain 7
+  - first:
+      23: 2300020
+    second: Chain 8
+  - first:
+      23: 2300022
+    second: Chain 9
+  - first:
+      23: 2300024
+    second: Gate 1L
+  - first:
+      23: 2300026
+    second: Gate 1R
+  - first:
+      23: 2300028
+    second: Gate 2L
+  - first:
+      23: 2300030
+    second: Gate 2R
+  - first:
+      23: 2300032
+    second: Gate 3L
+  - first:
+      23: 2300034
+    second: Gate 3R
+  - first:
+      23: 2300036
+    second: Lock
+  - first:
+      23: 2300038
+    second: Lock Bar
+  - first:
+      33: 3300000
+    second: Chain 1
+  - first:
+      33: 3300002
+    second: Chain 10
+  - first:
+      33: 3300004
+    second: Chain 11
+  - first:
+      33: 3300006
+    second: Chain 12
+  - first:
+      33: 3300008
+    second: Chain 2
+  - first:
+      33: 3300010
+    second: Chain 3
+  - first:
+      33: 3300012
+    second: Chain 4
+  - first:
+      33: 3300014
+    second: Chain 5
+  - first:
+      33: 3300016
+    second: Chain 6
+  - first:
+      33: 3300018
+    second: Chain 7
+  - first:
+      33: 3300020
+    second: Chain 8
+  - first:
+      33: 3300022
+    second: Chain 9
+  - first:
+      33: 3300024
+    second: Gate 1L
+  - first:
+      33: 3300026
+    second: Gate 1R
+  - first:
+      33: 3300028
+    second: Gate 2L
+  - first:
+      33: 3300030
+    second: Gate 2R
+  - first:
+      33: 3300032
+    second: Gate 3L
+  - first:
+      33: 3300034
+    second: Gate 3R
+  - first:
+      33: 3300036
+    second: Lock
+  - first:
+      33: 3300038
+    second: Lock Bar
+  - first:
+      43: 4300000
+    second: Gate 3L
+  - first:
+      43: 4300002
+    second: Gate 1L
+  - first:
+      43: 4300004
+    second: Gate 2L
+  - first:
+      43: 4300006
+    second: Lock Bar
+  - first:
+      43: 4300008
+    second: Chain 1
+  - first:
+      43: 4300010
+    second: Chain 2
+  - first:
+      43: 4300012
+    second: Chain 3
+  - first:
+      43: 4300014
+    second: Chain 4
+  - first:
+      43: 4300016
+    second: Chain 5
+  - first:
+      43: 4300018
+    second: Chain 6
+  - first:
+      43: 4300020
+    second: Chain 7
+  - first:
+      43: 4300022
+    second: Chain 8
+  - first:
+      43: 4300024
+    second: Chain 9
+  - first:
+      43: 4300026
+    second: Chain 10
+  - first:
+      43: 4300028
+    second: Chain 11
+  - first:
+      43: 4300030
+    second: Chain 12
+  - first:
+      43: 4300032
+    second: Lock
+  - first:
+      43: 4300034
+    second: Gate 1R
+  - first:
+      43: 4300036
+    second: Gate 2R
+  - first:
+      43: 4300038
+    second: Gate 3R
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: ad396285e190b6e4facc3d7cb89329bc, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 0
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

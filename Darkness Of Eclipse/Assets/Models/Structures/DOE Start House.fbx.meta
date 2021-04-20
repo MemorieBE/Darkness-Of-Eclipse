@@ -1,0 +1,318 @@
+fileFormatVersion: 2
+guid: c97fe7c1a0163334eaa75984c6cde7e8
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Chimney
+  - first:
+      1: 100002
+    second: //RootNode
+  - first:
+      1: 100004
+    second: Floor_1
+  - first:
+      1: 100006
+    second: Floor_2
+  - first:
+      1: 100008
+    second: Main_Exterior
+  - first:
+      1: 100010
+    second: Roof
+  - first:
+      1: 100012
+    second: Stairs
+  - first:
+      1: 100014
+    second: Top_Ceiling
+  - first:
+      1: 100016
+    second: Walls_1
+  - first:
+      1: 100018
+    second: Walls_2
+  - first:
+      4: 400000
+    second: Chimney
+  - first:
+      4: 400002
+    second: //RootNode
+  - first:
+      4: 400004
+    second: Floor_1
+  - first:
+      4: 400006
+    second: Floor_2
+  - first:
+      4: 400008
+    second: Main_Exterior
+  - first:
+      4: 400010
+    second: Roof
+  - first:
+      4: 400012
+    second: Stairs
+  - first:
+      4: 400014
+    second: Top_Ceiling
+  - first:
+      4: 400016
+    second: Walls_1
+  - first:
+      4: 400018
+    second: Walls_2
+  - first:
+      21: 2100000
+    second: Bathroom_Floor_Tiles
+  - first:
+      21: 2100002
+    second: Kitchen_or_Laundry_Floor
+  - first:
+      21: 2100004
+    second: Carpet
+  - first:
+      21: 2100006
+    second: Interior_Wood
+  - first:
+      21: 2100008
+    second: Ceiling
+  - first:
+      21: 2100010
+    second: Wall_Paper
+  - first:
+      21: 2100012
+    second: Bathroom_Wall_Tiles
+  - first:
+      21: 2100014
+    second: Exterior_Wood
+  - first:
+      21: 2100016
+    second: Roof1
+  - first:
+      21: 2100018
+    second: Chimney1
+  - first:
+      23: 2300000
+    second: Chimney
+  - first:
+      23: 2300002
+    second: Floor_1
+  - first:
+      23: 2300004
+    second: Floor_2
+  - first:
+      23: 2300006
+    second: Main_Exterior
+  - first:
+      23: 2300008
+    second: Roof
+  - first:
+      23: 2300010
+    second: Stairs
+  - first:
+      23: 2300012
+    second: Top_Ceiling
+  - first:
+      23: 2300014
+    second: Walls_1
+  - first:
+      23: 2300016
+    second: Walls_2
+  - first:
+      33: 3300000
+    second: Chimney
+  - first:
+      33: 3300002
+    second: Floor_1
+  - first:
+      33: 3300004
+    second: Floor_2
+  - first:
+      33: 3300006
+    second: Main_Exterior
+  - first:
+      33: 3300008
+    second: Roof
+  - first:
+      33: 3300010
+    second: Stairs
+  - first:
+      33: 3300012
+    second: Top_Ceiling
+  - first:
+      33: 3300014
+    second: Walls_1
+  - first:
+      33: 3300016
+    second: Walls_2
+  - first:
+      43: 4300000
+    second: Floor_1
+  - first:
+      43: 4300002
+    second: Floor_2
+  - first:
+      43: 4300004
+    second: Top_Ceiling
+  - first:
+      43: 4300006
+    second: Stairs
+  - first:
+      43: 4300008
+    second: Walls_2
+  - first:
+      43: 4300010
+    second: Walls_1
+  - first:
+      43: 4300012
+    second: Main_Exterior
+  - first:
+      43: 4300014
+    second: Roof
+  - first:
+      43: 4300016
+    second: Chimney
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bathroom_Floor_Tiles
+    second: {fileID: 2100000, guid: 232599d051530054f96a9ba32f9a9b02, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bathroom_Wall_Tiles
+    second: {fileID: 2100000, guid: 7dbadbd53609a3944b5b65e17b858fc3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Carpet
+    second: {fileID: 2100000, guid: 23baf6e0991d955489cc75d6107449d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ceiling
+    second: {fileID: 2100000, guid: 4b3543a0eeb6cb44daae71f373f9e082, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chimney1
+    second: {fileID: 2100000, guid: 7323021746d7ddb48bda818b1067ee2b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Exterior_Wood
+    second: {fileID: 2100000, guid: 9d0afbd5714e06941adf54434c4c7358, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Interior_Wood
+    second: {fileID: 2100000, guid: 938fafc08e8ac68479363129e77c36f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kitchen_or_Laundry_Floor
+    second: {fileID: 2100000, guid: 5e0ab004d281e664193c20d885f063f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Roof1
+    second: {fileID: 2100000, guid: 40f1600a949a8814791a157de33504e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall_Paper
+    second: {fileID: 2100000, guid: 281b8dd245de6d24aa6f3eea15d6dfe7, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 0
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
