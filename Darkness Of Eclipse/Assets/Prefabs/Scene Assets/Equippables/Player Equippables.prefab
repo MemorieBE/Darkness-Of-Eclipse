@@ -53,11 +53,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 581641725221923807, guid: d25b6c6114c839c4a8fe79a027d6ef56,
-        type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 710600248811772711, guid: d25b6c6114c839c4a8fe79a027d6ef56,
         type: 3}
       propertyPath: playerHead

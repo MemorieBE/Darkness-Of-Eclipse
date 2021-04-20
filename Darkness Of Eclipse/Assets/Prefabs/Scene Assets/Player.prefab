@@ -127,7 +127,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -249,23 +249,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590c0be880060024391257703127a017, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHead: {fileID: 0}
   moveSpeed: 2
   sprintMultiplier: 1.5
-  crouchSpeedMultiplier: 0.5
-  crouchHeightMultiplier: 0.5
-  crouchTransitionSpeed: 5
+  sneakSpeedMultiplier: 0.5
   jumpForce: 3
   gravity: 5
   maxDropVelocity: 10
   rigidbodyPushForce: 5
-  moveForwardKey: w
-  moveBackKey: s
-  moveLeftKey: a
-  moveRightKey: d
-  sprintKey: left shift
-  crouchKey: left ctrl
-  jumpKey: space
 --- !u!114 &2903752846192180769
 MonoBehaviour:
   m_ObjectHideFlags: 0
