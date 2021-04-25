@@ -25,7 +25,9 @@ public class LocalUnverKeyScript : MonoBehaviour
         if (gameObject.GetComponent<Interactable>().interacted) Interact();
     }
 
-    //! A method that is activated when the player interacts with the gate using the Interactable script.
+    /*!
+     *  A method that is activated when the player interacts with the gate using the Interactable script.
+     */
     void Interact()
     {
         globalUnverKey.keyCount ++;

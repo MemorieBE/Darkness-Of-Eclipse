@@ -13,7 +13,9 @@ public class BasicDeathByEnemy : MonoBehaviour
     public GameObject canvas; //!< The canvas game object that holds the jumpscare script.
     public int jumpscareID = 0; //!< The jumpscare ID.
 
-    //! A method that is activated to kill the player with an enemy.
+    /*!
+     *  A method that is activated to kill the player with an enemy.
+     */
     public void DeathByEnemy()
     {
         if (enableJumpscare)

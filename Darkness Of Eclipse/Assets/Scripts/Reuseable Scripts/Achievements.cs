@@ -29,9 +29,10 @@ public class Achievements : MonoBehaviour
         FullCompletionCheck();
     }
 
-    //! A method that is activated to unlock an achievement.
     /*!
-     *  \param The achievement ID that has been unlocked.
+     *  A method that is activated to unlock an achievement.
+     *  
+     *  \param unlockedAchievement The achievement ID that has been unlocked.
      */
     public void AchievementUnlocked(int unlockedAchievement)
     {
@@ -41,7 +42,9 @@ public class Achievements : MonoBehaviour
         FullCompletionCheck();
     }
 
-    //! A method that is activated to sync the achievement states with the PlayerPrefs stored data.
+    /*!
+     *  A method that is activated to sync the achievement states with the PlayerPrefs stored data.
+     */
     private void AchievementSync()
     {
         for (int i = 0; i < achievementName.Length; i++)
@@ -51,7 +54,9 @@ public class Achievements : MonoBehaviour
         }
     }
 
-    //! A method that is activated to check if all achievements have been achieved.
+    /*!
+     *  A method that is activated to check if all achievements have been achieved.
+     */
     private void FullCompletionCheck()
     {
         for (int i = 0; i < achievementName.Length; i++)

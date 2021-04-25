@@ -451,6 +451,9 @@ public class GhostStage : MonoBehaviour
         }
     }
 
+    /*!
+     *  A method that spawns the Unver.
+     */
     public void GhostSpawn()
     {
         ghostDistanceMax = ghostDistanceStageMax - ((ghostDistanceStageMax - ghostDistanceStageMin) / 10) * (ghostStage - 1); //< To generate the maximum Unver distance value.

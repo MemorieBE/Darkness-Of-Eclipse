@@ -10,8 +10,9 @@ public class Jumpscare : MonoBehaviour
 {
     public GameObject[] jumpScare; //!< The jumpscare game objects.
 
-    //!< A method that is activated to jumpscare the player.
-    /*
+    /*!
+     *  A method that is activated to jumpscare the player.
+     * 
      *  \param The jumpscare ID.
      */
     public void JumpScare(int jumpscareID)

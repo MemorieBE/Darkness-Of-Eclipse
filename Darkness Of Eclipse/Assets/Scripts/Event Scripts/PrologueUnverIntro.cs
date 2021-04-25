@@ -64,7 +64,9 @@ public class PrologueUnverIntro : MonoBehaviour
         if (stared) timer += Time.deltaTime;
     }
 
-    //! A method that is activated at the start of the event to spawn the Unver behind the player.
+    /*!
+     *  A method that is activated at the start of the event to spawn the Unver behind the player.
+     */
     private void GhostSpawnBehindPlayer()
     {
         Vector3 spawnPosition = player.transform.TransformPoint(Vector3.back * ghostDistance); //< Generates the position behind the player head.

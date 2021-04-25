@@ -23,6 +23,9 @@ public class TeleportAreaButtonCC : MonoBehaviour
     public GameObject[] enableObject; //!< The game objects to enable when teleprting.
     public GameObject[] disableObject; //!< The game objects to disable when teleprting.
 
+    /*!
+     *  A method that teleports a character controller player to a new area using a button.
+     */
     public void ButtonTP()
     {
         for (int i = 0; i < enableObject.Length; i++)
