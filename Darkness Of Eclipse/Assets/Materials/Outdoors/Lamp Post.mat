@@ -8,7 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Lamp Post
-  m_Shader: {fileID: 4800000, guid: 0e9d5a909a1f7e84882a534d0d11e49f, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 7175e0216fd17f845b991c650177e567,
+    type: 3}
   m_ShaderKeywords: LOD_FADE_CROSSFADE _NORMALMAP _SPECGLOSSMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -299,6 +300,8 @@ Material:
     - DSGI: 0
     - Instancing: 0
     - LightmapFlags: 0
+    - Vector1_3FD911FB: 4
+    - Vector1_BB6E28B1: 1
     - _AOStrength: 0
     - _AdditiveOffset: 0
     - _AdditiveSoftness: 0.005
@@ -735,7 +738,7 @@ Material:
     - _BackFacePanning: {r: 0, g: 0, b: 0, a: 0}
     - _BlueColor: {r: 1, g: 1, b: 1, a: 1}
     - _ClearCoatTint: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
     - _DetailTexturePan: {r: 0, g: 0, b: 0, a: 0}
     - _DetailTint: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveDetailPan: {r: 0, g: 0, b: 0, a: 0}

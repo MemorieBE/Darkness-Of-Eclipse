@@ -130,7 +130,7 @@ public class LineSixDetectionEvent : MonoBehaviour
     //! A method that is activated at the start of the event to spawn the Unver behind the player.
     private void GhostSpawnForLineSixEvent()
     {
-        Vector3 spawnPosition = ghostStageScript.playerHead.transform.TransformPoint(Vector3.back * ghostDistance); //Generates the position behind the player head.
+        Vector3 spawnPosition = ghostStageScript.playerHead.transform.TransformPoint(Vector3.back * ghostDistance); //< Generates the position behind the player head.
 
         Ray raycastDown = new Ray(spawnPosition + new Vector3(0, ghostStageScript.raycastRange, 0), Vector3.down);
         RaycastHit floorSpawnHit;
@@ -140,6 +140,6 @@ public class LineSixDetectionEvent : MonoBehaviour
             spawnPosition = new Vector3(spawnPosition.x, spawnPosition.y + (ghostStageScript.raycastRange - floorSpawnHit.distance), spawnPosition.z);
         }
 
-        ghostObject.transform.position = spawnPosition; //Teleports the ghost to the spawn position.
+        ghostObject.transform.position = spawnPosition; //< Teleports the ghost to the spawn position.
     }
 }

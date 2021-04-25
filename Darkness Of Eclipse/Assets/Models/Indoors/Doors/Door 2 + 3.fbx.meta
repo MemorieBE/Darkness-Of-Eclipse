@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a457d06dd273ced4ea6346e26b037178
+guid: dd585d7ff3a19fe4194c518b26291e20
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Door2
-    second: {fileID: 2100000, guid: d139249d70327b447a3b796e37d0d9ec, type: 2}
+    second: {fileID: 2100000, guid: fd2649ea6bc2a6846910cd85770bbcd6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
