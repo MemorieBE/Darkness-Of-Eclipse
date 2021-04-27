@@ -15,9 +15,13 @@ public class PrologueUnverIntro : MonoBehaviour
     [Header("Assets")]
     public GameObject ghostObject; //!< The Unver game object to reference scripts.
     public Image blackCanvas; //!< The black canvas UI.
+
+    [Header("Scripts And References")]
+    public SceneCheckpoints checkpointScript; //!< The script that controls the checkpoints and scenes.
     public TriggerDetectionEnter detectorScript; //!< The script that controls the line detecting children.
     public FOVRaycast raycastScript; //!< The script that controls the player Unver raycast.
     public AmbienceSoundLooper ambienceScript; //!< The script that controls the ambience sound looper.
+    private PlayerToGhostDetector unverDetection; //!< The script that controls the Unver player detection.
 
     [Header("Teleport")]
     public Transform teleportExit; //!< The transform to teleport the player to.
@@ -35,6 +39,11 @@ public class PrologueUnverIntro : MonoBehaviour
     private bool stared = false; //!< A boolean that determines whether or not the player looked at the Unver.
     private float timer = 0f; //!< A float timer that starts counting up at the start of the event and stops when the timer reaches the event duration value.
 
+    void Start()
+    {
+        unverDetection = ghostObject.GetComponent<PlayerToGhostDetector>();
+    }
+
     void Update()
     {
         if (detectorScript.activated)
@@ -50,7 +59,7 @@ public class PrologueUnverIntro : MonoBehaviour
         {
             stared = true;
 
-            if (timer > starePause)
+            if (timer > starePause || unverDetection.playerDetected)
             {
                 blackCanvas.gameObject.SetActive(true);
 
@@ -80,5 +89,15 @@ public class PrologueUnverIntro : MonoBehaviour
         }
 
         ghostObject.transform.position = spawnPosition; //< Teleports the ghost to the spawn position.
+    }
+
+    /*!
+     *  A method that is activated when the event is over.
+     */
+    private void EventOver()
+    {
+        gameObject.GetComponent<TeleportBasicMethodCC>();
+
+        checkpointScript.LoadCheckpoint(1, 0);
     }
 }

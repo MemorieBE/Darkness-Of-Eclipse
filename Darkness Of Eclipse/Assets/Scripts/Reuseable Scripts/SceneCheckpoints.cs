@@ -56,7 +56,7 @@ public class SceneCheckpoints : MonoBehaviour
     {
         sceneCheckpoint = checkpoint;
 
-        if (SceneManager.GetActiveScene().buildIndex == scene)
+        if (scene == SceneManager.GetActiveScene().buildIndex || scene == 0)
         {
             for (int i = 0; i < checkpointObjectGroups.Length; i++)
             {

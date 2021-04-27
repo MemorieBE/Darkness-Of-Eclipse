@@ -2,18 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*! \brief A script that controls how a character controller player teleports to a new area when a button is pressed.
+/*! \brief A script that controls how a character controller player teleports to a new area when a method is activated.
  * Can also enables and disables objects.
  *
  *  [Reusable Script]
  */
-public class TeleportAreaButtonCC : MonoBehaviour
+public class TeleportAreaMethodCC : MonoBehaviour
 {
     [Header("Player")]
     public GameObject player; //!< The player game object.
-
-    [Header("Detector")]
-    public TriggerDetectionEnter detectorScript; //!< The detection script.
 
     [Header("Teleport")]
     public GameObject spawnPoint; //!< The spawn point game object.
@@ -24,9 +21,9 @@ public class TeleportAreaButtonCC : MonoBehaviour
     public GameObject[] disableObject; //!< The game objects to disable when teleprting.
 
     /*!
-     *  A method that teleports a character controller player to a new area using a button.
+     *  A method that teleports a character controller player to a new area.
      */
-    public void ButtonTP()
+    public void Teleport()
     {
         for (int i = 0; i < enableObject.Length; i++)
         {

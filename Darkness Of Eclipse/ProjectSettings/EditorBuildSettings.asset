@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/DOE Prologue.unity
+    path: Assets/Scenes/Prologue/DOE Prologue.unity
     guid: 6cda4910bb6ad6347b8638e4910caa6e
   m_configObjects: {}
