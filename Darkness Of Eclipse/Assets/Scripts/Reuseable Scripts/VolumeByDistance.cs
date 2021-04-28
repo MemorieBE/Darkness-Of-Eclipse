@@ -16,8 +16,8 @@ public class VolumeByDistance : MonoBehaviour
     public AudioSource audioSource; //!< The audio source.
 
     [Header("Inputs")]
-    public float maxVolume = 1f; //!< The maximum volume.
-    public float minVolume = 0f; //!< The minimum volume.
+    [Range(0f, 1f)] public float maxVolume = 1f; //!< The maximum volume.
+    [Range(0f, 1f)] public float minVolume = 0f; //!< The minimum volume.
     public float maxDistance = 50f; //!< The maximum distance.
     public float minDistance = 0f; //!< The minimum distance.
 
@@ -45,5 +45,12 @@ public class VolumeByDistance : MonoBehaviour
             if (inverted) audioSource.volume = minVolume + (((distance - minDistance) / (maxDistance - minDistance)) * (maxVolume - minVolume));
             else audioSource.volume = maxVolume - (((distance - minDistance) / (maxDistance - minDistance)) * (maxVolume - minVolume));
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.grey;
+        Gizmos.DrawWireSphere(transform1.position, minDistance);
+        Gizmos.DrawWireSphere(transform1.position, maxDistance);
     }
 }

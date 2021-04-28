@@ -20,11 +20,6 @@ public class TriggerDetectionEnter : MonoBehaviour
     public bool disableOnActivation = true; //!< A boolean that controls whether or not the detector will be disabled when it is activated.
     public bool activated = false; //!< A boolean that determines whether or not the trigger events have been activated.
 
-    void OnEnable()
-    {
-        activated = false;
-    }
-
     void OnTriggerEnter(Collider collisionData)
     {
         if (collisionData == playerCollider)
