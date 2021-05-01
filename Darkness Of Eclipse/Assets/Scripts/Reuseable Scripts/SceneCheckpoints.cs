@@ -12,6 +12,9 @@ public class SceneCheckpoints : MonoBehaviour
     public static bool autoSave = true; //!< A boolean that controls whether or not the game autosaves scenes and checkpoints.
     public static int sceneCheckpoint = 0; //!< The current/target checkpoint that isn't biased towards the PlayerPrefs saved data.
 
+    [Header("Saving")]
+    public bool savableScene = true; //!< A boolean that controls whether or not the current scene is savable.
+
     [Header("Spawn Point")]
     public Transform spawnPoint; //!< The spawn point transform.
 
@@ -21,20 +24,37 @@ public class SceneCheckpoints : MonoBehaviour
 
     void Start()
     {
-        {
-            if (!PlayerPrefs.HasKey("SavedScene"))
-            {
-                PlayerPrefs.SetInt("SavedScene", 1);
-            }
-
-            if (!PlayerPrefs.HasKey("SceneCheckpoint"))
-            {
-                PlayerPrefs.SetInt("SceneCheckpoint", 0);
-            }
-        }
+        CheckSavedData();
 
         if (sceneCheckpoint > 0) LoadCheckpoint(sceneCheckpoint, SceneManager.GetActiveScene().buildIndex);
-        else if (autoSave) SaveCheckpoint();
+        else if (autoSave && savableScene) SaveCheckpoint();
+    }
+
+    /*!
+     *  A method that creates PlayerPref variables if they are missing.
+     */
+    private void CheckSavedData()
+    {
+        if (!PlayerPrefs.HasKey("SavedScene"))
+        {
+            PlayerPrefs.SetInt("SavedScene", 1);
+        }
+
+        if (!PlayerPrefs.HasKey("SceneCheckpoint"))
+        {
+            PlayerPrefs.SetInt("SceneCheckpoint", 0);
+        }
+    }
+
+    /*!
+     *  A method that resets PlayerPrefs variables and loads the new scene and checkpoint.
+     */
+    public void NewSavedCheckpoint()
+    {
+        PlayerPrefs.SetInt("SavedScene", 1);
+        PlayerPrefs.SetInt("SceneCheckpoint", 0);
+
+        LoadSavedCheckpoint();
     }
 
     /*!
@@ -42,6 +62,8 @@ public class SceneCheckpoints : MonoBehaviour
      */
     public void LoadSavedCheckpoint()
     {
+        CheckSavedData();
+
         sceneCheckpoint = PlayerPrefs.GetInt("SceneCheckpoint");
         SceneManager.LoadScene(PlayerPrefs.GetInt("SavedScene"));
     }
