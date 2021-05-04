@@ -7,7 +7,7 @@ using UnityEngine.UI;
  *
  *  [Reusable Script]
  */
-public class IsOnEnableAndDisable : MonoBehaviour
+public class EnableAndDisableToggle : MonoBehaviour
 {
     public Toggle toggle; //!< The toggle.
 

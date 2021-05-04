@@ -47,14 +47,12 @@ public class SceneCheckpoints : MonoBehaviour
     }
 
     /*!
-     *  A method that resets PlayerPrefs variables and loads the new scene and checkpoint.
+     *  A method that resets PlayerPrefs variables.
      */
-    public void NewSavedCheckpoint()
+    public void ResetSavedCheckpoint()
     {
         PlayerPrefs.SetInt("SavedScene", 1);
         PlayerPrefs.SetInt("SceneCheckpoint", 0);
-
-        LoadSavedCheckpoint();
     }
 
     /*!
