@@ -23,7 +23,9 @@ public class PrologueUnverIntro : MonoBehaviour
     public FOVRaycast raycastScript; //!< The script that controls the player Unver raycast.
     public AmbienceSoundLooper ghostAmbienceScript; //!< The script that controls the Unver ambience sound looper.
     public AmbienceSoundLooper worldAmbienceScript; //!< The script that controls the world ambience sound looper.
+    public AudioSource distanceBasedAmbienceAudio; //!< The audio source that controls the audio by distance script.
     private PlayerToGhostDetector unverDetection; //!< The script that controls the Unver player detection.
+    public OpenTransition transitionScript; //!< The script that controls the open transition of the next checkpoint.
 
     [Header("Teleport")]
     public Transform teleportExit; //!< The transform to teleport the player to.
@@ -137,6 +139,8 @@ public class PrologueUnverIntro : MonoBehaviour
         worldAmbienceScript.activeSounds = false;
         worldAmbienceScript.gameObject.SetActive(false);
         worldAmbienceScript.gameObject.SetActive(true);
+
+        distanceBasedAmbienceAudio.mute = true;
     }
 
     /*!
@@ -145,6 +149,8 @@ public class PrologueUnverIntro : MonoBehaviour
     private void EventOver()
     {
         gameObject.GetComponent<TeleportBasicMethodCC>().Teleport();
+
+        transitionScript.Transition();
 
         checkpointScript.LoadCheckpoint(1, 0);
     }

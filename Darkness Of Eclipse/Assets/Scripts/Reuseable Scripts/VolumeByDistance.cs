@@ -8,7 +8,7 @@ using UnityEngine;
  */
 public class VolumeByDistance : MonoBehaviour
 {
-    [Header("Distance Between Objects")]
+    [Header("Distance Between Transforms")]
     public Transform transform1; //!< The first transform.
     public Transform transform2; //!< The second transform.
 
