@@ -22,6 +22,14 @@ public class SceneCheckpoints : MonoBehaviour
     public GameObject[] checkpointObjectGroups; //!< The object group game objects for certain checkpoints.
     public Transform[] checkpointSpawnPoints; //!< The spawn point transforms for certain checkpoints.
 
+    [Header("Loading Asset")]
+    public GameObject loadingObject; //!< The loading sprite game object.
+
+    void Awake()
+    {
+        Time.timeScale = 1f;
+    }
+
     void Start()
     {
         CheckSavedData();
@@ -91,7 +99,10 @@ public class SceneCheckpoints : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(scene);
+            Time.timeScale = 0f;
+            loadingObject.SetActive(true);
+
+            SceneManager.LoadSceneAsync(scene);
         }
     }
 
