@@ -20,6 +20,7 @@ public class PlayerControllerCC : MonoBehaviour
     public float gravity = 5f; //!< How strong the player's gravity is.
     public float maxDropVelocity = 10f; //!< The gravity terminal velocity.
     public float rigidbodyPushForce = 5f; //!< How hard the player will push away rigidbodies when colliding with them.
+    private bool normalizedMovement = false; //!< A boolean that controls whether or not the player's movement direction is normalized.
 
     public static string moveForwardKey = "w"; //!< The key bind used to move forward.
     public static string moveBackKey = "s"; //!< The key bind used to move backward.
@@ -62,6 +63,8 @@ public class PlayerControllerCC : MonoBehaviour
             if (Input.GetKey(moveBackKey)) localDirection += Vector3.back;
             if (Input.GetKey(moveLeftKey)) localDirection += Vector3.left;
             if (Input.GetKey(moveRightKey)) localDirection += Vector3.right;
+
+            if (normalizedMovement) localDirection = localDirection.normalized;
 
             direction = gameObject.transform.TransformPoint(localDirection) - gameObject.transform.position;
         }
