@@ -8,10 +8,10 @@ using UnityEngine;
  */
 public class FirstPersonCameraController : MonoBehaviour
 {
+    public static float mouseSensitivity = 100f; //!< The mouse sensitivity variable.
+
     [Header("Player Head")]
     public Transform playerHead; //!< The player head game object.
-
-    public static float mouseSensitivity = 100f; //!< The mouse sensitivity variable.
 
     private float xRotation; //!< A float used to clamp the player head x rotation.
 
@@ -22,8 +22,14 @@ public class FirstPersonCameraController : MonoBehaviour
 
     void FixedUpdate()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.fixedDeltaTime * 3f;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.fixedDeltaTime * 3f;
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.fixedDeltaTime * 3f / StaticVars.timeScaleMultiplier;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.fixedDeltaTime * 3f / StaticVars.timeScaleMultiplier;
+
+        if (!StaticVars.allowPlayerInputs)
+        {
+            mouseX = 0f;
+            mouseY = 0f;
+        }
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);

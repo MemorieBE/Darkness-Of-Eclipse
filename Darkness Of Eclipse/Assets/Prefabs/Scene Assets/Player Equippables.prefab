@@ -356,46 +356,10 @@ MonoBehaviour:
   - {fileID: 4509898951251854529}
   - {fileID: 4509898952786481468}
   mainColour: {r: 0.75686276, g: 0.6313726, b: 0.78431374, a: 1}
-  transformOfLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  colourOfLocations:
-  - {r: 0.16470589, g: 0.6666667, b: 0.77254903, a: 1}
-  - {r: 0.16470589, g: 0.6666667, b: 0.77254903, a: 1}
-  - {r: 0.16470589, g: 0.6666667, b: 0.77254903, a: 1}
-  - {r: 0.16470589, g: 0.6666667, b: 0.77254903, a: 1}
-  - {r: 0.16470589, g: 0.6666667, b: 0.77254903, a: 1}
-  - {r: 0.16470589, g: 0.6666667, b: 0.77254903, a: 1}
-  - {r: 0.16470589, g: 0.6666667, b: 0.77254903, a: 1}
-  - {r: 0.16470589, g: 0.6666667, b: 0.77254903, a: 1}
-  - {r: 0.16470589, g: 0.6666667, b: 0.77254903, a: 1}
-  maxRadiusOfLocations:
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  minRadiusOfLocations:
-  - 2.5
-  - 2.5
-  - 2.5
-  - 2.5
-  - 2.5
-  - 2.5
-  - 2.5
-  - 2.5
-  - 2.5
+  transformOfLocations: []
+  colourOfLocations: []
+  maxRadiusOfLocations: []
+  minRadiusOfLocations: []
 --- !u!1 &4509898951251854531
 GameObject:
   m_ObjectHideFlags: 0

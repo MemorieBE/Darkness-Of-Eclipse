@@ -95,7 +95,7 @@ public class PauseScript : MonoBehaviour
     public void UnPause()
     {
         isPaused = false;
-        Time.timeScale = 1f;
+        Time.timeScale = StaticVars.timeScaleMultiplier;
 
         for (int i = 0; i < masterAudio.Length; i++)
         {

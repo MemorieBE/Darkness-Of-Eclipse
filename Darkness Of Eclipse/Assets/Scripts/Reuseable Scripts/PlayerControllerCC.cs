@@ -65,6 +65,7 @@ public class PlayerControllerCC : MonoBehaviour
             if (Input.GetKey(moveRightKey)) localDirection += Vector3.right;
 
             if (normalizedMovement) localDirection = localDirection.normalized;
+            if (!StaticVars.allowPlayerInputs) localDirection = Vector3.zero;
 
             direction = gameObject.transform.TransformPoint(localDirection) - gameObject.transform.position;
         }
@@ -72,7 +73,7 @@ public class PlayerControllerCC : MonoBehaviour
         // Gets player jump.
         if (characterController.isGrounded)
         {
-            if (Input.GetKey(jumpKey)) currentyDropVelocity = jumpForce * -1f;
+            if (Input.GetKey(jumpKey) && StaticVars.allowPlayerInputs) currentyDropVelocity = jumpForce * -1f;
             else currentyDropVelocity = 0f;
         }
 

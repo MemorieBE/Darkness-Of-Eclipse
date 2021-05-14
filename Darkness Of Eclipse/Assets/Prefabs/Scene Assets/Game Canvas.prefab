@@ -1039,8 +1039,6 @@ GameObject:
   - component: {fileID: 6007938256308805608}
   - component: {fileID: 6007938256308805591}
   - component: {fileID: 7101306497413908481}
-  - component: {fileID: 8422755059241230930}
-  - component: {fileID: 232201146740332673}
   - component: {fileID: 6007938256308805611}
   m_Layer: 2
   m_Name: Game Canvas
@@ -1149,35 +1147,6 @@ MonoBehaviour:
   ambience: {fileID: 0}
   blackUI: {fileID: 2589837725228120288}
   fadeTime: 3
---- !u!114 &8422755059241230930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6007938256308805590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35cdacf76c934744e90eb88622b018f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseUI: {fileID: 6057305921176578032}
-  audioPitchTime: 0.5
-  targetPitch: 0
---- !u!114 &232201146740332673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6007938256308805590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06f75bf57d2a99448978e083c7c3fd9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cheatInputField: {fileID: 3450055286863689297}
-  cheatPanelOpen: 0
 --- !u!114 &6007938256308805611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1631,7 +1600,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8422755059241230930}
+      - m_Target: {fileID: 0}
         m_MethodName: UnPause
         m_Mode: 1
         m_Arguments:
@@ -1761,7 +1730,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8422755059241230930}
+      - m_Target: {fileID: 0}
         m_MethodName: ExitToMenu
         m_Mode: 1
         m_Arguments:
