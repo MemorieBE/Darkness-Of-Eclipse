@@ -26,6 +26,8 @@ public class CloseTransition : MonoBehaviour
      */
     public void Transition()
     {
+        PauseScript.isPausable = false;
+
         ambience.activeSounds = false;
 
         timer = 0f;
@@ -39,6 +41,8 @@ public class CloseTransition : MonoBehaviour
             if (gameObject.GetComponent<Interactable>().interacted)
             {
                 Transition();
+                gameObject.GetComponent<Interactable>().interacted = false;
+                gameObject.GetComponent<Interactable>().enabled = false;
             }
         }
 

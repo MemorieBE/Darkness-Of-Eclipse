@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /*! \brief A script that controls the introduction to the Unvermeidlich in the prologue. 
@@ -73,6 +74,8 @@ public class PrologueUnverIntro : MonoBehaviour
             stared = true;
 
             timer = starePauseTime * -1f;
+
+            PauseScript.isPausable = false;
         }
 
         if (!audioStarted && ((!hasCut && timer >= audioStartTime) || (hasCut && timer >= staredAudioDelay)))
@@ -141,6 +144,8 @@ public class PrologueUnverIntro : MonoBehaviour
         worldAmbienceScript.gameObject.SetActive(true);
 
         distanceBasedAmbienceAudio.mute = true;
+
+        PauseScript.isPausable = false;
     }
 
     /*!
@@ -153,5 +158,6 @@ public class PrologueUnverIntro : MonoBehaviour
         transitionScript.Transition();
 
         checkpointScript.LoadCheckpoint(1, 0);
+        checkpointScript.ReloadScene();
     }
 }

@@ -99,11 +99,26 @@ public class SceneCheckpoints : MonoBehaviour
         }
         else
         {
+            PauseScript.isPausable = false;
+
             Time.timeScale = 0f;
             loadingObject.SetActive(true);
 
             SceneManager.LoadSceneAsync(scene);
         }
+    }
+
+    /*!
+     *  A method that reloads the current scene.
+     */
+    public void ReloadScene()
+    {
+        PauseScript.isPausable = false;
+
+        Time.timeScale = 0f;
+        loadingObject.SetActive(true);
+
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
     /*!

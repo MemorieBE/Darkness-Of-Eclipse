@@ -24,7 +24,7 @@ public class InteractController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(interactKeyBind)) inputToBool = true;
+        if (Input.GetKeyDown(interactKeyBind) && !PauseScript.isPaused) inputToBool = true;
     }
 
     void FixedUpdate()
