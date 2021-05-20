@@ -53,8 +53,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseUI: {fileID: 8564700732531469878}
-  audioFadeTime: 0.5
-  targetPitch: 0
+  settingsUI: {fileID: 6272595187577068664}
+  audioFadeTime: 0.25
+  targetPitch: 0.75
 --- !u!114 &5098795544475576368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,11 +302,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 2262842366861327408}
+    - target: {fileID: 4486410982370629442, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UnPause
       objectReference: {fileID: 0}
     - target: {fileID: 4977759768093230226, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 2262842366861327408}
+    - target: {fileID: 4977759768093230226, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitToMenu
       objectReference: {fileID: 0}
     - target: {fileID: 6007938256308805590, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
         type: 3}
@@ -466,6 +477,12 @@ GameObject:
 --- !u!1 &8564700732531469878 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6057305921176578032, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
+    type: 3}
+  m_PrefabInstance: {fileID: 2509686229474822598}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6272595187577068664 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8491693514928838078, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
     type: 3}
   m_PrefabInstance: {fileID: 2509686229474822598}
   m_PrefabAsset: {fileID: 0}

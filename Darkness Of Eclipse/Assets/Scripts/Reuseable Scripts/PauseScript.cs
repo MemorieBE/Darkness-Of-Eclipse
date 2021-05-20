@@ -14,6 +14,7 @@ public class PauseScript : MonoBehaviour
 
     [Header("UI")]
     public GameObject pauseUI; //!< The pause UI game object.
+    public GameObject settingsUI; //!< The settings UI game object.
 
     [Header("Audio")]
     public float audioFadeTime = 0.5f; //!< The amount of time in seconds the audio will fade out to.
@@ -24,6 +25,7 @@ public class PauseScript : MonoBehaviour
     private float[] originalAudioVolume; //!< The original volume for the paused audio sources.
 
     private CursorLockMode mouseLock; //!< The cursor lock mode that the cursor will set itself to when unpaused.
+    private bool mouseVisable; //!< A boolean that determines whether or not the cursor is visable that the cursor will set itself to when unpaused.
 
     void Awake()
     {
@@ -32,8 +34,7 @@ public class PauseScript : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !settingsUI.activeSelf)
         {
             if (isPaused) UnPause();
             else if (isPausable) Pause();
@@ -75,7 +76,7 @@ public class PauseScript : MonoBehaviour
 
         masterAudio = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
         originalAudioVolume = new float[masterAudio.Length];
-        for (int i = 0; i < originalAudioVolume.Length; i++)
+        for (int i = 0; i < masterAudio.Length; i++)
         {
             originalAudioVolume[i] = masterAudio[i].volume;
         }
@@ -85,8 +86,10 @@ public class PauseScript : MonoBehaviour
         if (Cursor.lockState == CursorLockMode.None) mouseLock = CursorLockMode.None;
         else if (Cursor.lockState == CursorLockMode.Locked) mouseLock = CursorLockMode.Locked;
         else if (Cursor.lockState == CursorLockMode.Confined) mouseLock = CursorLockMode.Confined;
+        mouseVisable = Cursor.visible;
 
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     /*!
@@ -109,6 +112,7 @@ public class PauseScript : MonoBehaviour
         pauseUI.SetActive(false);
 
         Cursor.lockState = mouseLock;
+        Cursor.visible = mouseVisable;
     }
 
     /*!

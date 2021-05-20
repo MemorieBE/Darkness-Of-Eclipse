@@ -12,6 +12,7 @@ public class PrologueIntroToAbyss : MonoBehaviour
     public TriggerDetectionEnter triggerScript; //!< The script that controls the trigger.
     public DoorScript doorScript1; //!< The script that controls the first door.
     public DoorScript doorScript2; //!< The script that controls the second door.
+    public GameObject linesObject; //!< The lines game object.
     public GameObject smallAbyss; //!< The small abyss game object.
 
     [Header("Inputs")]
@@ -29,6 +30,8 @@ public class PrologueIntroToAbyss : MonoBehaviour
             doorScript1.locked = true;
             doorScript2.open = false;
             doorScript2.locked = true;
+
+            linesObject.SetActive(true);
 
             timer = 0f;
         }

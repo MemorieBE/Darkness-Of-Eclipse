@@ -1,0 +1,33 @@
+[S1.C0.L1] Amelia?: Hello?
+*Reversed / Distorted*
+
+[S1.C0.L2] Amelia?: I can here something, someone is here, who are you?
+*Reversed / Distorted*
+
+[S1.C0.L3] Amelia?: You're not from here, aren't you? You're from somewhere else. Somewhere far, far away.
+*Reversed / Distorted*
+
+[S1.C0.L4] Amelia?: Don't be afraid, I know what it's like, waking up in a darkness you've never seen before. It can be terrifying.
+*Reversed / Distorted*
+
+[S1.C0.L5] Amelia?: You shouldn't be out here, it's not safe.
+*Reversed / Distorted*
+
+[S1.C0.L6] Unvermeidlich: 3, 2, 1.
+
+
+[S1.C1.L1] Amelia: Did you already forget what happened? I don't blame you, I mean it technically hasn't happened yet.
+
+[S1.C1.L2] Amelia: Nothing's changed you know, whatever you saw out there hasn't departured and it won't for another few hours.
+
+[S1.C1.L3] Amelia: You're not safe here neither, I can protect you for the time being, but it's only a matter of time. What awaits in the future is the darkness and what lurks in the darkness is the inevitable.
+
+[S1.C1.L4] Amelia: Here, I've opened a doorway leading to the emptiness that lurks between dimensions so that I can easily distort space time and take you to the near future. Don't worry, I'll protect you from all the complications.
+
+[S1.C1.L5] Amelia: Welcome back. Sorry I couldn't pinpoint the exact location we left off, but considering that the earth is moving hundrens of kilometers per second, I'd say that I did a pretty good job.
+
+[S1.C1.L6] Amelia: Look, I know you're confused, but I can explain. That was the ghost of this world, she's been here a lot longer than even I have. She's nothing but an old stencil of anger and hate, made up of the memories from the distant past and the inevitable future. Whoever she once was or whatever form it once possessed had been disbanded for a very, very long time.
+
+[S1.C1.L7] Amelia: I call her the Unvermeidlich, meaning the inevitable, or just the Unver. She's her own biggest threat, her own biggest regret. The dark to remember, the light to forget.
+
+[S1.C1.L8] Amelia: Oh thank god, home sweet home am I right? You must be exausted, why don't you take a nap? Don't worry, I'll still be here for when you wake up, and who knows, maybe this is all just a bad dream.

@@ -41,7 +41,7 @@ public class PrologueUnverIntro : MonoBehaviour
 
     [Header("Times")]
     public float starePauseTime = 0.5f; //!< The amount of time in seconds the event will cut to black if the player looks at the Unver early.
-    public float autoCutTime = 3f; //!< The amount of time in seconds the event will cut to black if the player doesn't look at the Unver early.
+    public float autoCutTime = 3.5f; //!< The amount of time in seconds the event will cut to black if the player doesn't look at the Unver early.
     public float staredAudioDelay = 1f; //!< The amount of time in seconds the event audio will start if the player looks at the Unver early.
     public float audioStartTime = 5f; //!< The amount of time in seconds the event audio will start if the player doesn't look at the Unver early.
 
@@ -157,7 +157,7 @@ public class PrologueUnverIntro : MonoBehaviour
 
         transitionScript.Transition();
 
-        checkpointScript.LoadCheckpoint(1, 0);
+        checkpointScript.LoadCheckpoint(0, 1);
         checkpointScript.ReloadScene();
     }
 }

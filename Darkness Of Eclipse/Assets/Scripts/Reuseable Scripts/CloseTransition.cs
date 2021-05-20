@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /*! \brief A script that controls the close transition at the end of a scene or checkpoint.
@@ -20,6 +21,7 @@ public class CloseTransition : MonoBehaviour
     private bool activeTimer = false; //!< A boolean that determines whether or not the timer is active.
     public int checkpointTransition = 0; //!< The checkpoint to transition to.
     public int sceneTransition = 0; //!< The scene to transition to.
+    [SerializeField] private bool unfinishedNextScene = false; //!< A boolean that controls whether or not the transition will alternatively go to the main menu.
 
     /*!
      *  A method that is activated to fade in the scene.
@@ -66,7 +68,13 @@ public class CloseTransition : MonoBehaviour
 
                 activeTimer = false;
 
-                checkpointScripts.LoadCheckpoint(checkpointTransition, sceneTransition);
+                if (unfinishedNextScene)
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                    SceneManager.LoadScene(0);
+                }
+                else checkpointScripts.LoadCheckpoint(sceneTransition, checkpointTransition);
             }
         }
     }

@@ -34,7 +34,7 @@ public class SceneCheckpoints : MonoBehaviour
     {
         CheckSavedData();
 
-        if (sceneCheckpoint > 0) LoadCheckpoint(sceneCheckpoint, SceneManager.GetActiveScene().buildIndex);
+        if (sceneCheckpoint > 0) ActivateCheckpoint();
         else if (autoSave && savableScene) SaveCheckpoint();
     }
 
@@ -80,22 +80,20 @@ public class SceneCheckpoints : MonoBehaviour
      *  \param checkpoint the set checkpoint.
      *  \param scene the set scene.
      */
-    public void LoadCheckpoint(int checkpoint, int scene)
+    public void LoadCheckpoint(int scene, int checkpoint)
     {
         sceneCheckpoint = checkpoint;
 
+        if (scene >= SceneManager.sceneCountInBuildSettings)
+        {
+            scene = SceneManager.sceneCountInBuildSettings - 1;
+        }
+
         if (scene == SceneManager.GetActiveScene().buildIndex || scene == 0)
         {
-            for (int i = 0; i < checkpointObjectGroups.Length; i++)
-            {
-                if (i == checkpoint) checkpointObjectGroups[i].SetActive(true);
-                else checkpointObjectGroups[i].SetActive(false);
-            }
+            ActivateCheckpoint();
 
-            spawnPoint.position = checkpointSpawnPoints[checkpoint].position;
-            spawnPoint.rotation = checkpointSpawnPoints[checkpoint].rotation;
-
-            if (autoSave) SaveCheckpoint();
+            Debug.Log("Load Point: Scene " + SceneManager.GetActiveScene().buildIndex + ", Checkpoint " + sceneCheckpoint);
         }
         else
         {
@@ -106,6 +104,28 @@ public class SceneCheckpoints : MonoBehaviour
 
             SceneManager.LoadSceneAsync(scene);
         }
+    }
+
+    /*!
+     *  A method that activates the current scene checkpoint.
+     */
+    private void ActivateCheckpoint()
+    {
+        if (sceneCheckpoint >= checkpointObjectGroups.Length)
+        {
+            sceneCheckpoint = checkpointObjectGroups.Length - 1;
+        }
+
+        for (int i = 0; i < checkpointObjectGroups.Length; i++)
+        {
+            if (i == sceneCheckpoint) checkpointObjectGroups[i].SetActive(true);
+            else checkpointObjectGroups[i].SetActive(false);
+        }
+
+        spawnPoint.position = checkpointSpawnPoints[sceneCheckpoint].position;
+        spawnPoint.rotation = checkpointSpawnPoints[sceneCheckpoint].rotation;
+
+        if (autoSave && savableScene) SaveCheckpoint();
     }
 
     /*!

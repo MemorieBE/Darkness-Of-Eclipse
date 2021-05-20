@@ -8,8 +8,6 @@ using UnityEngine;
  */
 public class FirstPersonCameraController : MonoBehaviour
 {
-    public static float mouseSensitivity = 100f; //!< The mouse sensitivity variable.
-
     [Header("Player Head")]
     public Transform playerHead; //!< The player head game object.
 
@@ -18,12 +16,13 @@ public class FirstPersonCameraController : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void FixedUpdate()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.fixedDeltaTime * 3f / StaticVars.timeScaleMultiplier;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.fixedDeltaTime * 3f / StaticVars.timeScaleMultiplier;
+        float mouseX = Input.GetAxis("Mouse X") * SensitivitySlider.mouseSensitivity * Time.fixedDeltaTime * 3f / StaticVars.timeScaleMultiplier;
+        float mouseY = Input.GetAxis("Mouse Y") * SensitivitySlider.mouseSensitivity * Time.fixedDeltaTime * 3f / StaticVars.timeScaleMultiplier;
 
         if (!StaticVars.allowPlayerInputs)
         {

@@ -11,6 +11,9 @@ using UnityEngine;
  */
 public class PlayerControllerCC : MonoBehaviour
 {
+    public static bool sprintDisabled = false; //!< A boolean that controls whether or not sprinting is disabled.
+    public static bool sneakDisabled = false; //!< A boolean that controls whether or not sprinting is disabled.
+
     [Header("Inputs")]
     public float moveSpeed = 2f; //!< How fast the player can move.
     public float sprintMultiplier = 1.5f; //!< The number that is multiplied with the move speed to calculate the sprint speed.
@@ -39,6 +42,9 @@ public class PlayerControllerCC : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+
+        sprintDisabled = false;
+        sneakDisabled = false;
     }
 
     void FixedUpdate()
@@ -78,8 +84,8 @@ public class PlayerControllerCC : MonoBehaviour
         }
 
         // Calculates the current speed.
-        if (Input.GetKey(sprintKey) && !Input.GetKey(sneakKey)) currentSpeed = moveSpeed * sprintMultiplier;
-        else if (Input.GetKey(sneakKey)) currentSpeed = moveSpeed * sneakSpeedMultiplier;
+        if (Input.GetKey(sprintKey) && !Input.GetKey(sneakKey) && !sprintDisabled) currentSpeed = moveSpeed * sprintMultiplier;
+        else if (Input.GetKey(sneakKey) && !sneakDisabled) currentSpeed = moveSpeed * sneakSpeedMultiplier;
         else currentSpeed = moveSpeed;
     }
 

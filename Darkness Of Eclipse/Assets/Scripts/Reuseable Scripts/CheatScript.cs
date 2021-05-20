@@ -79,12 +79,10 @@ public class CheatScript : MonoBehaviour
         int loadScene;
         if (splitString.Length == 3 && 
             splitString[0] == "loadpoint" && 
-            int.TryParse(splitString[1], out loadCheckpoint) && 
-            int.TryParse(splitString[2], out loadScene))
+            int.TryParse(splitString[1], out loadScene) && 
+            int.TryParse(splitString[2], out loadCheckpoint))
         {
-            Debug.Log("Load Point: Checkpoint " + loadCheckpoint + ", Scene " + loadScene);
-
-            checkpointScript.LoadCheckpoint(loadCheckpoint, loadScene);
+            checkpointScript.LoadCheckpoint(loadScene, loadCheckpoint);
             if (loadScene == 0 || loadScene == SceneManager.GetActiveScene().buildIndex) checkpointScript.ReloadScene();
         }
 
