@@ -13,3 +13,6 @@ Alpha v0.2.1 (27/02/2021): Created character controller for the player and added
 Alpha v0.2.2 (2/04/2021): Implemented post processing, updated models such as flashlight and doors, and created some new scripts to improve visual effects.
 Alpha v0.2.3 (20/04/2021): Optimised all scripts and documented every script using doxygen.
 Alpha v0.2.4 (26/04/2021): Added slight lighting, optimized house models, optimized window prefab transforms, implemented bloom effects, implemented new models, and finalized Alpha v0.2.
+
+[Alpha v0.3]
+Alpha v0.3.0 (20/05/2021): Finished and built the prologue and implemented core mechanics such as the pause menu, the main menu, the sensitivity settings, and the cheat mechanic. Recorded new voice lines and implemented new events.
