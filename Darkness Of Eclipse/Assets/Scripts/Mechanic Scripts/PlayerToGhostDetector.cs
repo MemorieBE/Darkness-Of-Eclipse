@@ -11,25 +11,11 @@ public class PlayerToGhostDetector : MonoBehaviour
 {
     [Header("Assets")]
     public Collider playerCollider; //!< The player collider.
-    public GhostColliderDetector[] unverColliderScripts = new GhostColliderDetector[7]; //!< The Unver collider scripts
 
     [Header("Detected")]
     public bool playerDetected = false; //!< A boolean that determines whether or not the player has collided with the unver colliders.
 
-    void Update()
-    {
-        playerDetected = false;
-
-        for (int i = 0; i < unverColliderScripts.Length; i++)
-        {
-            if (unverColliderScripts[i].isColliding)
-            {
-                playerDetected = true;
-            }
-        }
-    }
-
-    void LateUpdate()
+    void FixedUpdate()
     {
         if (playerDetected) playerDetected = false;
     }

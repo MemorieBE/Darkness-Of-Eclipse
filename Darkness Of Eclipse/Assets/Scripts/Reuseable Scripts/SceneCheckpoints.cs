@@ -125,6 +125,8 @@ public class SceneCheckpoints : MonoBehaviour
         spawnPoint.position = checkpointSpawnPoints[sceneCheckpoint].position;
         spawnPoint.rotation = checkpointSpawnPoints[sceneCheckpoint].rotation;
 
+        gameObject.GetComponent<TeleportBasicMethodCC>().Teleport();
+
         if (autoSave && savableScene) SaveCheckpoint();
     }
 

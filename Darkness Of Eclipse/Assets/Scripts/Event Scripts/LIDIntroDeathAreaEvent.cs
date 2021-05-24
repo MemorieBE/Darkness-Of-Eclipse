@@ -15,21 +15,18 @@ public class LIDIntroDeathAreaEvent : MonoBehaviour
     public GameObject unverAudio; //!< The Unver audio game object.
     public GameObject unver1; //!< The first Unver game object.
     public GameObject unver2; //!< The second Unver game object.
+    public SceneCheckpoints checkpointScript; //!< The checkpoint script.
 
     [Header("Scripts and References")]
     public TriggerDetectionEnter detectorScript; //!< The script that controls the trigger detection.
     private PlayerToGhostDetector unverDetectionScript; //!< The script that controls the ghost player detection.
 
-    [Header("Teleport")]
-    public GameObject teleportToArea; //!< The game object of the area to teleport the player to.
-    public GameObject teleportFromArea; //!< The game object of the area to teleport the player from.
-    public Transform teleportExit; //!< The transform to teleport the player to.
-    public Transform spawnPoint; //!< The spawn point transform.
-
     [Header("Inputs")]
     public float duration; //!< The duration of the evnt in seconds.
 
-    private float timer = 0f;
+    private float timer = 0f; //!< The event timer.
+    private bool eventStarted = false; //!< A boolean that determines whether or not the event has started.
+
     void Start()
     {
         unverDetectionScript = unver2.GetComponent<PlayerToGhostDetector>();
@@ -39,6 +36,11 @@ public class LIDIntroDeathAreaEvent : MonoBehaviour
     {
         if (detectorScript.activated)
         {
+            eventStarted = true;
+        }
+
+        if (eventStarted)
+        {
             if (timer >= duration)
             {
                 unverAudio.SetActive(true);
@@ -47,15 +49,10 @@ public class LIDIntroDeathAreaEvent : MonoBehaviour
 
                 if (unverDetectionScript.playerDetected) //Go back to prologue area.
                 {
-                    detectorScript.activated = false;
+                    eventStarted = false;
 
-                    player.GetComponent<CharacterController>().enabled = false;
-                    player.transform.position = teleportExit.transform.position;
-                    player.transform.rotation = teleportExit.transform.rotation;
-                    player.GetComponent<CharacterController>().enabled = true;
-
-                    teleportToArea.SetActive(true);
-                    teleportFromArea.SetActive(false);
+                    checkpointScript.LoadCheckpoint(0, 1);
+                    Debug.Log("Test");
                 }
             }
             else

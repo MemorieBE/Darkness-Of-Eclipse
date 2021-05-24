@@ -11,23 +11,13 @@ public class GhostColliderDetector : MonoBehaviour
     [Header("Player")]
     public PlayerToGhostDetector ghostScript; //!< The script that controls the Unver player detection.
 
-    [HideInInspector] public bool isColliding = false; //!< A boolean that controls whether or not the player is colliding with the Unver.
-
-    void FixedUpdate()
-    {
-        isColliding = false;
-    }
-
     void OnTriggerStay(Collider collisionData)
     {
         if (collisionData == ghostScript.playerCollider)
         {
-            isColliding = true;
-        }
-    }
+            ghostScript.playerDetected = true;
 
-    void Update()
-    {
-        if (isColliding) Debug.Log("Unver Collision Is True");
+            Debug.Log("Unver Collision Is True");
+        }
     }
 }

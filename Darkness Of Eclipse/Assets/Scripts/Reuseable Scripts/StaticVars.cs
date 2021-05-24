@@ -8,16 +8,13 @@ using UnityEngine;
  */
 public class StaticVars : MonoBehaviour
 {
-    // [Player]
-    public static bool allowPlayerInputs = true; //!< A boolean that controls whether or not the player inputs are read.
-
     // [World]
     public static float timeScaleMultiplier = 1f; //!< The number multiplied by the time scale.
+    public static bool automaticEvent = false; //!< A boolean that controls whether or not an event that uses no player input is active.
 
     void Awake()
     {
-        allowPlayerInputs = true;
-
         timeScaleMultiplier = 1f;
+        automaticEvent = false;
     }
 }

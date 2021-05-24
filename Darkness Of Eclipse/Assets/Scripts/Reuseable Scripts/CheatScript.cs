@@ -33,13 +33,13 @@ public class CheatScript : MonoBehaviour
             {
                 cheatInputField.ActivateInputField();
 
-                StaticVars.allowPlayerInputs = false;
+                PlayerControllerCC.allowPlayerInputs = false;
             }
             else
             {
                 cheatInputField.text = "";
 
-                StaticVars.allowPlayerInputs = true;
+                PlayerControllerCC.allowPlayerInputs = !StaticVars.automaticEvent;
             }
         }
 
@@ -51,12 +51,14 @@ public class CheatScript : MonoBehaviour
             cheatPanelOpen = false;
             cheatInputField.gameObject.SetActive(false);
 
-            StaticVars.allowPlayerInputs = true;
+            PlayerControllerCC.allowPlayerInputs = true;
         }
     }
 
     /*!
      *  A method that executes a command.
+     *  
+     *  \param The cheat command.
      */
     public void ExecuteCommand(string command)
     {
@@ -151,6 +153,17 @@ public class CheatScript : MonoBehaviour
                     playerObject.GetComponent<PlayerControllerCC>().gravity = playerCommandValue;
                 }
             }
+        }
+
+        // Equippable Command.
+        int equippableValue;
+        if (splitString.Length == 2 &&
+            splitString[0] == "equip" &&
+            int.TryParse(splitString[1], out equippableValue))
+        {
+            Debug.Log("Equipt item " + equippableValue);
+
+            CurrentEquippable.currentEquippable = equippableValue;
         }
     }
 }

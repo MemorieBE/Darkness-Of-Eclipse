@@ -11,6 +11,8 @@ using UnityEngine;
  */
 public class PlayerControllerCC : MonoBehaviour
 {
+    public static bool allowPlayerInputs = true; //!< A boolean that controls whether or not the player inputs are read.
+
     public static bool sprintDisabled = false; //!< A boolean that controls whether or not sprinting is disabled.
     public static bool sneakDisabled = false; //!< A boolean that controls whether or not sprinting is disabled.
 
@@ -38,6 +40,11 @@ public class PlayerControllerCC : MonoBehaviour
     private Vector3 direction = Vector3.zero; //!< The current flat direction that the character controller will move towards.
 
     private float currentyDropVelocity = 0f; //!< The current drop velocity.
+
+    void Awake()
+    {
+        allowPlayerInputs = true;
+    }
 
     void Start()
     {
@@ -71,7 +78,7 @@ public class PlayerControllerCC : MonoBehaviour
             if (Input.GetKey(moveRightKey)) localDirection += Vector3.right;
 
             if (normalizedMovement) localDirection = localDirection.normalized;
-            if (!StaticVars.allowPlayerInputs) localDirection = Vector3.zero;
+            if (!allowPlayerInputs) localDirection = Vector3.zero;
 
             direction = gameObject.transform.TransformPoint(localDirection) - gameObject.transform.position;
         }
@@ -79,7 +86,7 @@ public class PlayerControllerCC : MonoBehaviour
         // Gets player jump.
         if (characterController.isGrounded)
         {
-            if (Input.GetKey(jumpKey) && StaticVars.allowPlayerInputs) currentyDropVelocity = jumpForce * -1f;
+            if (Input.GetKey(jumpKey) && allowPlayerInputs) currentyDropVelocity = jumpForce * -1f;
             else currentyDropVelocity = 0f;
         }
 

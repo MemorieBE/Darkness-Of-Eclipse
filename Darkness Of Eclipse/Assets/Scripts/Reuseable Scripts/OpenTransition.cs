@@ -10,7 +10,6 @@ using UnityEngine.UI;
 public class OpenTransition : MonoBehaviour
 {
     [Header("Assets")]
-    public AmbienceSoundLooper ambience; //!< The background ambience to activate.
     public Image blackUI; //!< The black UI panel to fade out.
 
     [Header("Inputs")]
@@ -28,8 +27,6 @@ public class OpenTransition : MonoBehaviour
      */
     public void Transition()
     {
-        ambience.activeSounds = true;
-
         timer = fadeTime;
         activeTimer = true;
     }

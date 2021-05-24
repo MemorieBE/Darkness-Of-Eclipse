@@ -196,6 +196,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4279068879759607117}
     m_Modifications:
+    - target: {fileID: 1735928342273916169, guid: 4e42fca576775ff49ad02e90364a7a97,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2509686229799077973}
     - target: {fileID: 3455597420392951554, guid: 4e42fca576775ff49ad02e90364a7a97,
         type: 3}
       propertyPath: m_RootOrder
@@ -474,18 +479,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2509686229474822598}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8564700732531469878 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6057305921176578032, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
-    type: 3}
-  m_PrefabInstance: {fileID: 2509686229474822598}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6272595187577068664 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8491693514928838078, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
-    type: 3}
-  m_PrefabInstance: {fileID: 2509686229474822598}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &951734332504850327 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3450055286863689297, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
@@ -498,6 +491,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8564700732531469878 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6057305921176578032, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
+    type: 3}
+  m_PrefabInstance: {fileID: 2509686229474822598}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6272595187577068664 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8491693514928838078, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
+    type: 3}
+  m_PrefabInstance: {fileID: 2509686229474822598}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2581114899176097830
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -736,6 +741,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4279068879759607117}
     m_Modifications:
+    - target: {fileID: 399074005005525568, guid: 69c363dee9d54974e8d4cb2397a59ab7,
+        type: 3}
+      propertyPath: playerHead
+      value: 
+      objectReference: {fileID: 2509686229061333337}
     - target: {fileID: 4154435909072965083, guid: 69c363dee9d54974e8d4cb2397a59ab7,
         type: 3}
       propertyPath: playerHead

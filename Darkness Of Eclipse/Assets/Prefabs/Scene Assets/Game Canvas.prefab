@@ -647,7 +647,7 @@ RectTransform:
   - {fileID: 7737299448889328151}
   - {fileID: 215102192830447251}
   m_Father: {fileID: 6007938256308805610}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1168,7 +1168,7 @@ GameObject:
   - component: {fileID: 6007938256308805609}
   - component: {fileID: 6007938256308805608}
   - component: {fileID: 6007938256308805591}
-  - component: {fileID: 7101306497413908481}
+  - component: {fileID: 544447215522019273}
   - component: {fileID: 6007938256308805611}
   m_Layer: 2
   m_Name: Game Canvas
@@ -1192,8 +1192,8 @@ RectTransform:
   - {fileID: 6007938255671608035}
   - {fileID: 6007938256409682548}
   - {fileID: 8176918200036633240}
-  - {fileID: 2522489271533404786}
   - {fileID: 3710368879220136849}
+  - {fileID: 2522489271533404786}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1262,7 +1262,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7101306497413908481
+--- !u!114 &544447215522019273
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1274,7 +1274,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53ca4e6e8c7c5394b8f2489fc86ba5bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ambience: {fileID: 0}
   blackUI: {fileID: 2589837725228120288}
   fadeTime: 3
 --- !u!114 &6007938256308805611
@@ -1568,7 +1567,7 @@ RectTransform:
   - {fileID: 6220804093230386536}
   - {fileID: 8491693514928838073}
   m_Father: {fileID: 6007938256308805610}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

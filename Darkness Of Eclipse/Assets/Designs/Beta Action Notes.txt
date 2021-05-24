@@ -1,0 +1,4 @@
+Prologue:
+- Make it more likely for the player to actually see the Unvermeidlich.
+- Change the return line. Change "hundreds" to "thousands".
+- Optimise line that say "time" twice in a row.

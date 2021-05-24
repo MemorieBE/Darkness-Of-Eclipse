@@ -22,7 +22,7 @@ public class FlashlightController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(keyBind) && gameObject.activeSelf && !PauseScript.isPaused && StaticVars.allowPlayerInputs)
+        if (Input.GetKeyDown(keyBind) && gameObject.activeSelf && !PauseScript.isPaused && PlayerControllerCC.allowPlayerInputs)
         {
             isActive = !isActive;
         }

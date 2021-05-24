@@ -14,14 +14,8 @@ public class SwayForEquippable : MonoBehaviour
     [Header("Sway")]
     public float swaySpeed = 25f; //!< The sway speed of the equippable.
 
-    private Vector3 equippablePositionOffset; //!< The position offset from the player head.
-    private Vector3 equippableRotationOffset; //!< The rotation offset from the player head.
-
-    void Start()
-    {
-        equippablePositionOffset = gameObject.transform.position - playerHead.position;
-        equippableRotationOffset = gameObject.transform.rotation.eulerAngles - playerHead.rotation.eulerAngles;
-    }
+    public Vector3 equippablePositionOffset; //!< The position offset from the player head.
+    public Vector3 equippableRotationOffset; //!< The rotation offset from the player head.
 
     void Update()
     {
