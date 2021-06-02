@@ -22,7 +22,7 @@ public class EquippableController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && gameObject.activeSelf && !PauseScript.isPaused && PlayerControllerCC.allowPlayerInputs)
+        if (Input.GetMouseButtonDown(1) && gameObject.activeSelf && !PauseScript.isPaused && PlayerControllerCC.allowPlayerInputs)
         {
             isActive = !isActive;
 

@@ -107,7 +107,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghostScript: {fileID: 3645569840089702173}
-  isColliding: 0
 --- !u!1 &3645569838754019946
 GameObject:
   m_ObjectHideFlags: 0
@@ -1487,7 +1486,7 @@ Transform:
   m_GameObject: {fileID: 3645569840089702179}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7, y: 1.7, z: 1.7}
+  m_LocalScale: {x: 1.75, y: 1.75, z: 1.75}
   m_Children:
   - {fileID: 3645569840089596703}
   - {fileID: 3645569840089596701}
@@ -1548,14 +1547,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCollider: {fileID: 0}
-  unverColliderScripts:
-  - {fileID: 3645569838965779662}
-  - {fileID: 3645569840240333525}
-  - {fileID: 3645569838816713259}
-  - {fileID: 3645569839673988111}
-  - {fileID: 3645569840631002727}
-  - {fileID: 3645569839565688392}
-  - {fileID: 272939511693304591}
   playerDetected: 0
 --- !u!114 &3645569840089702172
 MonoBehaviour:
@@ -3598,7 +3589,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghostScript: {fileID: 3645569840089702173}
-  isColliding: 0
 --- !u!1 &5053392383270534594
 GameObject:
   m_ObjectHideFlags: 0
@@ -3706,7 +3696,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghostScript: {fileID: 3645569840089702173}
-  isColliding: 0
 --- !u!1 &5845404500483745657
 GameObject:
   m_ObjectHideFlags: 0
@@ -3815,7 +3804,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghostScript: {fileID: 3645569840089702173}
-  isColliding: 0
 --- !u!1 &7489607928537558782
 GameObject:
   m_ObjectHideFlags: 0
@@ -3923,7 +3911,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghostScript: {fileID: 3645569840089702173}
-  isColliding: 0
 --- !u!1 &7648241337765402463
 GameObject:
   m_ObjectHideFlags: 0
@@ -4031,7 +4018,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghostScript: {fileID: 3645569840089702173}
-  isColliding: 0
 --- !u!1 &9181275757333118687
 GameObject:
   m_ObjectHideFlags: 0
@@ -4139,4 +4125,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghostScript: {fileID: 3645569840089702173}
-  isColliding: 0

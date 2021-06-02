@@ -12,7 +12,6 @@ public class LIDCorpseAnimation : MonoBehaviour
     public Animator corpseAnimator; //!< The corpse animator.
     public AudioSource corpseFlopAudio; //!< The audio source for the corpse flopping sound.
     public DoorScript doorScript; //!< The script that controls the door.
-    public Collider[] doorCollider; //!< The colliders for the door.
 
     private bool audioPlayed = false; //!< A boolean that determines whether or not the audio has been played.
 
@@ -27,8 +26,6 @@ public class LIDCorpseAnimation : MonoBehaviour
                 corpseFlopAudio.Play();
                 audioPlayed = true;
             }
-
-            for (int i = 0; i < doorCollider.Length; i++) doorCollider[i].enabled = false;
 
             corpseAnimator.SetBool("Fallen", true);
         }

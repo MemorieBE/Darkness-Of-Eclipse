@@ -25,6 +25,9 @@ public class SceneCheckpoints : MonoBehaviour
     [Header("Loading Asset")]
     public GameObject loadingObject; //!< The loading sprite game object.
 
+    [Header("Inventory")]
+    public InventoryScript inventoryScript; //!< The inventory script.
+
     void Awake()
     {
         Time.timeScale = 1f;
@@ -77,11 +80,13 @@ public class SceneCheckpoints : MonoBehaviour
     /*!
      *  A method that loads the set checkpoint and scene.
      * 
-     *  \param checkpoint the set checkpoint.
-     *  \param scene the set scene.
+     *  \param checkpoint The set checkpoint.
+     *  \param scene The set scene.
      */
     public void LoadCheckpoint(int scene, int checkpoint)
     {
+        inventoryScript.InventoryRemember();
+
         sceneCheckpoint = checkpoint;
 
         if (scene >= SceneManager.sceneCountInBuildSettings)

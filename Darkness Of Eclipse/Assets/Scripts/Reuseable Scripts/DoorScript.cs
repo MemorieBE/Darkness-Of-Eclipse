@@ -69,7 +69,22 @@ public class DoorScript : MonoBehaviour
             }
         }
 
-        if (gameObject.GetComponent<Interactable>().interacted) Interact();
+        if (gameObject.GetComponent<Interactable>() != null && gameObject.GetComponent<Interactable>().interacted) Interact();
+        if (gameObject.GetComponent<ItemBasedInteractable>() != null && gameObject.GetComponent<ItemBasedInteractable>().interacted)
+        {
+            ItemBasedInteractable itemBasedInteractable = gameObject.GetComponent<ItemBasedInteractable>();
+
+            if (!itemBasedInteractable.convertableWithItem ||
+                !itemBasedInteractable.inventoryScript.inventoryItemState[itemBasedInteractable.itemNeeded])
+            {
+                Interact();
+            }
+
+            if (itemBasedInteractable.inventoryScript.inventoryItemState[itemBasedInteractable.itemNeeded])
+            {
+                locked = false;
+            }
+        }
     }
 
     /*!

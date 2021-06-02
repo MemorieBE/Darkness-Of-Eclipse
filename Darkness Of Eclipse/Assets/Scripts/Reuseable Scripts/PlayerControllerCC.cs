@@ -18,6 +18,7 @@ public class PlayerControllerCC : MonoBehaviour
 
     [Header("Inputs")]
     public float moveSpeed = 2f; //!< How fast the player can move.
+    public float strafeMultiplier = 0.75f; //!< How much the move speed will be multiplied when moving sideways.
     public float sprintMultiplier = 1.5f; //!< The number that is multiplied with the move speed to calculate the sprint speed.
     public float sneakSpeedMultiplier = 0.5f; //!< The number that is multiplied with the move speed to calculate the sneak speed.
     private float currentSpeed; //!< The current speed with the calculated multipliers.
@@ -74,8 +75,8 @@ public class PlayerControllerCC : MonoBehaviour
             Vector3 localDirection = Vector3.zero;
             if (Input.GetKey(moveForwardKey)) localDirection += Vector3.forward;
             if (Input.GetKey(moveBackKey)) localDirection += Vector3.back;
-            if (Input.GetKey(moveLeftKey)) localDirection += Vector3.left;
-            if (Input.GetKey(moveRightKey)) localDirection += Vector3.right;
+            if (Input.GetKey(moveLeftKey)) localDirection += Vector3.left * strafeMultiplier;
+            if (Input.GetKey(moveRightKey)) localDirection += Vector3.right * strafeMultiplier;
 
             if (normalizedMovement) localDirection = localDirection.normalized;
             if (!allowPlayerInputs) localDirection = Vector3.zero;

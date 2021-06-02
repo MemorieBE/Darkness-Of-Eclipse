@@ -8,6 +8,7 @@ using UnityEngine;
  */
 public class Interactable : MonoBehaviour
 {
+    [Header("Interact UI")]
     public string prompt = "Interact"; //!< The text prompt that will show up when hovering over game object.
     public Sprite sprite; //!< The sprite that will show up when hovering over game object.
 

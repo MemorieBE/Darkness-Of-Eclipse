@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Prologue/DOE Prologue.unity
     guid: 6cda4910bb6ad6347b8638e4910caa6e
   - enabled: 1
-    path: Assets/Scenes/DOE Locked In Despair (Denial).unity
+    path: Assets/Scenes/Locked In Despair.unity
     guid: c26dd479800635e48a4575a9bf7a7768
   m_configObjects: {}

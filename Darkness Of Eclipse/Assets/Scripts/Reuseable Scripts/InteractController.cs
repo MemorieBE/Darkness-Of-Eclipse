@@ -39,16 +39,38 @@ public class InteractController : MonoBehaviour
         }
         layerMask = ~layerMask;
 
-        if (Physics.Raycast(raycast, out hit, interactDistance, layerMask) && hit.collider.gameObject.GetComponent<Interactable>() != null && hit.collider.gameObject.GetComponent<Interactable>().enabled)
+        if (Physics.Raycast(raycast, out hit, interactDistance, layerMask))
         {
-            Interactable interactableScript = hit.collider.gameObject.GetComponent<Interactable>();
+            if (hit.collider.gameObject.GetComponent<Interactable>() != null && hit.collider.gameObject.GetComponent<Interactable>().enabled)
+            {
+                Interactable interactableScript = hit.collider.gameObject.GetComponent<Interactable>();
 
-            interactUI.SetActive(true);
+                interactUI.SetActive(true);
 
-            interactText.text = interactableScript.prompt;
-            interactImage.sprite = interactableScript.sprite;
+                interactText.text = interactableScript.prompt;
+                interactImage.sprite = interactableScript.sprite;
 
-            if (inputToBool) interactableScript.interacted = true;
+                if (inputToBool) interactableScript.interacted = true;
+            }
+            else if (hit.collider.gameObject.GetComponent<ItemBasedInteractable>() != null && hit.collider.gameObject.GetComponent<ItemBasedInteractable>().enabled)
+            {
+                ItemBasedInteractable interactableScript = hit.collider.gameObject.GetComponent<ItemBasedInteractable>();
+
+                interactUI.SetActive(true);
+
+                if (interactableScript.inventoryScript.inventoryItemState[interactableScript.itemNeeded])
+                {
+                    interactText.text = interactableScript.promptWithItem;
+                    interactImage.sprite = interactableScript.spriteWithItem;
+                }
+                else
+                {
+                    interactText.text = interactableScript.promptWithoutItem;
+                    interactImage.sprite = interactableScript.spriteWithoutItem;
+                }
+
+                if (inputToBool) interactableScript.interacted = true;
+            }
         }
         else
         {

@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4279068879759607117}
-  - component: {fileID: 2262842366861327408}
+  - component: {fileID: 8357084203189685349}
   - component: {fileID: 5098795544475576368}
+  - component: {fileID: 2262842366861327408}
   m_Layer: 0
   m_Name: Game Scene Assets
   m_TagString: Untagged
@@ -40,7 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2262842366861327408
+--- !u!114 &8357084203189685349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,13 +50,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 2889337470918004287}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35cdacf76c934744e90eb88622b018f8, type: 3}
+  m_Script: {fileID: 11500000, guid: c9d1b8abec84112439b25af7d77c8ee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseUI: {fileID: 8564700732531469878}
-  settingsUI: {fileID: 6272595187577068664}
-  audioFadeTime: 0.25
-  targetPitch: 0.75
+  inventoryItemName:
+  - Cupboard Key
+  - First Key Of Acceptance
+  - Second Key Of Acceptance
+  - Third Key Of Acceptance
+  - Fourth Key Of Acceptance
+  - Fifth Key Of Acceptance
+  - Sixth Key Of Acceptance
+  - Seventh Key Of Acceptance
+  inventoryItemState: 00
+  inventoryUI: {fileID: 7934381081472446990}
 --- !u!114 &5098795544475576368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,6 +80,22 @@ MonoBehaviour:
   checkpointScript: {fileID: 4657716191855557833}
   playerObject: {fileID: 2509686229799077973}
   editorLight: {fileID: 5705926637250311857}
+--- !u!114 &2262842366861327408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2889337470918004287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cdacf76c934744e90eb88622b018f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseUI: {fileID: 8564700732531469878}
+  settingsUI: {fileID: 6272595187577068664}
+  audioFadeTime: 0.25
+  targetPitch: 0.75
 --- !u!1001 &1615646657023910221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -177,15 +201,15 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1615646657023910221}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2509686229799077974 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3800998809411528987, guid: b001b661b94355848960f0a48c1e9f99,
-    type: 3}
-  m_PrefabInstance: {fileID: 1615646657023910221}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2509686229061333337 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3800998808135323668, guid: b001b661b94355848960f0a48c1e9f99,
+    type: 3}
+  m_PrefabInstance: {fileID: 1615646657023910221}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2509686229799077974 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3800998809411528987, guid: b001b661b94355848960f0a48c1e9f99,
     type: 3}
   m_PrefabInstance: {fileID: 1615646657023910221}
   m_PrefabAsset: {fileID: 0}
@@ -266,6 +290,11 @@ PrefabInstance:
       propertyPath: loadingObject
       value: 
       objectReference: {fileID: 4233497533914345048}
+    - target: {fileID: 6199029613605521239, guid: 4e42fca576775ff49ad02e90364a7a97,
+        type: 3}
+      propertyPath: inventoryScript
+      value: 
+      objectReference: {fileID: 8357084203189685349}
     - target: {fileID: 7697966159206917727, guid: 4e42fca576775ff49ad02e90364a7a97,
         type: 3}
       propertyPath: m_Name
@@ -473,9 +502,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &4233497533914345048 stripped
+--- !u!1 &6272595187577068664 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1735106072181319582, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
+  m_CorrespondingSourceObject: {fileID: 8491693514928838078, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
+    type: 3}
+  m_PrefabInstance: {fileID: 2509686229474822598}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8564700732531469878 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6057305921176578032, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
     type: 3}
   m_PrefabInstance: {fileID: 2509686229474822598}
   m_PrefabAsset: {fileID: 0}
@@ -491,15 +526,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d199490a83bb2b844b9695cbf13b01ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &8564700732531469878 stripped
+--- !u!1 &4233497533914345048 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 6057305921176578032, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
+  m_CorrespondingSourceObject: {fileID: 1735106072181319582, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
     type: 3}
   m_PrefabInstance: {fileID: 2509686229474822598}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6272595187577068664 stripped
+--- !u!1 &7934381081472446990 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 8491693514928838078, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
+  m_CorrespondingSourceObject: {fileID: 5532856697442794440, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
     type: 3}
   m_PrefabInstance: {fileID: 2509686229474822598}
   m_PrefabAsset: {fileID: 0}
@@ -747,6 +782,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2509686229061333337}
     - target: {fileID: 4154435909072965083, guid: 69c363dee9d54974e8d4cb2397a59ab7,
+        type: 3}
+      propertyPath: playerHead
+      value: 
+      objectReference: {fileID: 2509686229061333337}
+    - target: {fileID: 4474248321866697887, guid: 69c363dee9d54974e8d4cb2397a59ab7,
         type: 3}
       propertyPath: playerHead
       value: 
