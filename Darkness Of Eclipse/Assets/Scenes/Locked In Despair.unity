@@ -2364,7 +2364,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gateAnimator: {fileID: 101501047}
   gateOpenSound: {fileID: 419155386}
-  globalKeyScript: {fileID: 0}
 --- !u!1 &101729143
 GameObject:
   m_ObjectHideFlags: 0
@@ -5462,6 +5461,11 @@ PrefabInstance:
       propertyPath: scriptCaller
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 469822324008990185, guid: 1c359480c197af84aa9c53ea06f96c9a,
+        type: 3}
+      propertyPath: globalUnverKey
+      value: 
+      objectReference: {fileID: 769964041}
     - target: {fileID: 636696084723983610, guid: 1c359480c197af84aa9c53ea06f96c9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5973,6 +5977,11 @@ PrefabInstance:
       propertyPath: scriptCaller
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 469822324008990185, guid: 1c359480c197af84aa9c53ea06f96c9a,
+        type: 3}
+      propertyPath: globalUnverKey
+      value: 
+      objectReference: {fileID: 769964041}
     - target: {fileID: 3157754824957208441, guid: 1c359480c197af84aa9c53ea06f96c9a,
         type: 3}
       propertyPath: interactText
@@ -6033,7 +6042,7 @@ PrefabInstance:
     - target: {fileID: 7417681127546014326, guid: 1c359480c197af84aa9c53ea06f96c9a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7417681127546014326, guid: 1c359480c197af84aa9c53ea06f96c9a,
         type: 3}
@@ -7542,7 +7551,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 296316720}
   m_Material: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: 21be2fd531a680649b18a8d69367443f, type: 2}
   m_EnableTreeColliders: 0
 --- !u!218 &296316723
@@ -9404,6 +9413,12 @@ Transform:
   m_Father: {fileID: 1210844374}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &353738702 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 5676946142512043391, guid: ebf91c4bd94e5444e85e550605fb20b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1020368389}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &359850982
 GameObject:
   m_ObjectHideFlags: 0
@@ -9699,6 +9714,11 @@ PrefabInstance:
       propertyPath: scriptCaller
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 469822324008990185, guid: 1c359480c197af84aa9c53ea06f96c9a,
+        type: 3}
+      propertyPath: globalUnverKey
+      value: 
+      objectReference: {fileID: 769964041}
     - target: {fileID: 636696084723983610, guid: 1c359480c197af84aa9c53ea06f96c9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11472,7 +11492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &462084241
 Transform:
   m_ObjectHideFlags: 0
@@ -13485,7 +13505,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 490828849}
   m_Material: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: cdef8a3c79682fe45b57de5389c8d926, type: 2}
   m_EnableTreeColliders: 0
 --- !u!218 &490828852
@@ -18624,7 +18644,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &699432347
 Transform:
   m_ObjectHideFlags: 0
@@ -19970,7 +19990,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 752823014}
   m_Material: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: 06c0885f8b7131f4a8f536e6658eeb47, type: 2}
   m_EnableTreeColliders: 0
 --- !u!218 &752823017
@@ -20346,12 +20366,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b80f529483dcb5545a2b0499d97fdad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyCount: 0
   totalKeys: 7
   ghostStageScript: {fileID: 3957845643676398688}
   achievementScript: {fileID: 1020368393}
   achievementID: 2
-  keyCountForAchievement: 0
 --- !u!1001 &772512083
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24081,7 +24099,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940420362}
   m_Material: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: 570c45867074f1641ab566b23aa1d53c, type: 2}
   m_EnableTreeColliders: 0
 --- !u!218 &940420365
@@ -25772,7 +25790,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989985894}
   m_Material: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: b13b83a160d150c4b9baf05392214ccc, type: 2}
   m_EnableTreeColliders: 0
 --- !u!218 &989985897
@@ -26575,11 +26593,6 @@ PrefabInstance:
       propertyPath: checkpointObjectGroups.Array.data[1]
       value: 
       objectReference: {fileID: 1417303129}
-    - target: {fileID: 5705926637250311857, guid: ebf91c4bd94e5444e85e550605fb20b6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8357084203189685349, guid: ebf91c4bd94e5444e85e550605fb20b6,
         type: 3}
       propertyPath: inventoryItemState.Array.size
@@ -27746,6 +27759,11 @@ PrefabInstance:
       propertyPath: scriptCaller
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 469822324008990185, guid: 1c359480c197af84aa9c53ea06f96c9a,
+        type: 3}
+      propertyPath: globalUnverKey
+      value: 
+      objectReference: {fileID: 769964041}
     - target: {fileID: 636696084723983610, guid: 1c359480c197af84aa9c53ea06f96c9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -30653,7 +30671,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCollider: {fileID: 1355203903}
   enableOnTrigger: []
-  disableOnTrigger: []
+  disableOnTrigger:
+  - {fileID: 321104322}
+  - {fileID: 215347248}
   disableOnActivation: 1
   activated: 0
 --- !u!65 &1228278358
@@ -33148,7 +33168,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1290037064}
   m_Material: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: 7a5918ec0d35cba43832b23741e96b43, type: 2}
   m_EnableTreeColliders: 0
 --- !u!218 &1290037067
@@ -38380,7 +38400,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1449648434}
   m_Material: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: fb872bb05954911419316f52e9341574, type: 2}
   m_EnableTreeColliders: 0
 --- !u!218 &1449648437
@@ -39823,7 +39843,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1490251055
 Transform:
   m_ObjectHideFlags: 0
@@ -40270,7 +40290,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528718005}
   m_Material: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: 037eab8efe6cc6b45acf569a804167f1, type: 2}
   m_EnableTreeColliders: 0
 --- !u!218 &1528718008
@@ -41249,7 +41269,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558720695}
   m_Material: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: bd67a44cb68087e48b912776afee2618, type: 2}
   m_EnableTreeColliders: 0
 --- !u!218 &1558720698
@@ -41986,7 +42006,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576679203}
   m_Material: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: eaf1e65740bd8a046923834780fa8a6b, type: 2}
   m_EnableTreeColliders: 0
 --- !u!218 &1576679206
@@ -43697,6 +43717,11 @@ PrefabInstance:
       propertyPath: scriptCaller
       value: 
       objectReference: {fileID: 116481971}
+    - target: {fileID: 469822324008990185, guid: 1c359480c197af84aa9c53ea06f96c9a,
+        type: 3}
+      propertyPath: globalUnverKey
+      value: 
+      objectReference: {fileID: 769964041}
     - target: {fileID: 636696084723983610, guid: 1c359480c197af84aa9c53ea06f96c9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -43744,6 +43769,16 @@ PrefabInstance:
       propertyPath: publicVariablesUnityEngineObjects.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3944697921181396748, guid: 1c359480c197af84aa9c53ea06f96c9a,
+        type: 3}
+      propertyPath: itemID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3944697921181396748, guid: 1c359480c197af84aa9c53ea06f96c9a,
+        type: 3}
+      propertyPath: inventoryScript
+      value: 
+      objectReference: {fileID: 1020368391}
     - target: {fileID: 4401090986072232354, guid: 1c359480c197af84aa9c53ea06f96c9a,
         type: 3}
       propertyPath: prompt
@@ -43836,26 +43871,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c359480c197af84aa9c53ea06f96c9a, type: 3}
---- !u!1 &1658927121 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7417681127545525846, guid: 1c359480c197af84aa9c53ea06f96c9a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1658927120}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1658927122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1658927121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcbb2659b9cf25741b36fd8511d3fec4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemID: 2
-  inventoryScript: {fileID: 1020368391}
 --- !u!1001 &1662648691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47036,7 +47051,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1784263697}
   m_Material: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: ccfb6705385baef4ab53c11cdfcbc288, type: 2}
   m_EnableTreeColliders: 0
 --- !u!218 &1784263700
@@ -49295,6 +49310,10 @@ PrefabInstance:
     - target: {fileID: 100080, guid: 4793ddd2d0809bf4198eeffebfbe4049, type: 3}
       propertyPath: m_Name
       value: Tree Trigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 100080, guid: 4793ddd2d0809bf4198eeffebfbe4049, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: 4793ddd2d0809bf4198eeffebfbe4049, type: 3}
       propertyPath: m_RootOrder
@@ -55255,7 +55274,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2097499294}
   m_Material: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: 9c352b10d5602f14ca96943f809118ef, type: 2}
   m_EnableTreeColliders: 0
 --- !u!218 &2097499297
@@ -60594,6 +60613,11 @@ PrefabInstance:
       propertyPath: scriptCaller
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 469822324008990185, guid: 1c359480c197af84aa9c53ea06f96c9a,
+        type: 3}
+      propertyPath: globalUnverKey
+      value: 
+      objectReference: {fileID: 769964041}
     - target: {fileID: 636696084723983610, guid: 1c359480c197af84aa9c53ea06f96c9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -60641,6 +60665,16 @@ PrefabInstance:
       propertyPath: publicVariablesUnityEngineObjects.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3944697921181396748, guid: 1c359480c197af84aa9c53ea06f96c9a,
+        type: 3}
+      propertyPath: itemID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3944697921181396748, guid: 1c359480c197af84aa9c53ea06f96c9a,
+        type: 3}
+      propertyPath: inventoryScript
+      value: 
+      objectReference: {fileID: 1020368391}
     - target: {fileID: 4401090986072232354, guid: 1c359480c197af84aa9c53ea06f96c9a,
         type: 3}
       propertyPath: prompt
@@ -60669,7 +60703,7 @@ PrefabInstance:
     - target: {fileID: 7417681127546014326, guid: 1c359480c197af84aa9c53ea06f96c9a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 19.796
+      value: 20.063
       objectReference: {fileID: 0}
     - target: {fileID: 7417681127546014326, guid: 1c359480c197af84aa9c53ea06f96c9a,
         type: 3}
@@ -60714,26 +60748,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3157754824957208441, guid: 1c359480c197af84aa9c53ea06f96c9a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1c359480c197af84aa9c53ea06f96c9a, type: 3}
---- !u!1 &5159320478272830342 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7417681127545525846, guid: 1c359480c197af84aa9c53ea06f96c9a,
-    type: 3}
-  m_PrefabInstance: {fileID: 5159320478272830341}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5159320478272830343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5159320478272830342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcbb2659b9cf25741b36fd8511d3fec4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemID: 1
-  inventoryScript: {fileID: 1020368391}
 --- !u!1001 &5375379061991261010
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60741,6 +60755,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 769964039}
     m_Modifications:
+    - target: {fileID: 1114582929381746240, guid: d414e8583193811429b1b6d8f9402875,
+        type: 3}
+      propertyPath: hammerHead
+      value: 
+      objectReference: {fileID: 353738702}
     - target: {fileID: 3200312664312265253, guid: d414e8583193811429b1b6d8f9402875,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -61041,16 +61060,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5375379061640609826, guid: d414e8583193811429b1b6d8f9402875,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: fd61caa7ae16f2d468da84ea59b1a628, type: 3}
-    - target: {fileID: 5375379061793793009, guid: d414e8583193811429b1b6d8f9402875,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: add5dea910e89134f9e6a9103ca1b1c9, type: 3}
     - target: {fileID: 5375379062129255417, guid: d414e8583193811429b1b6d8f9402875,
         type: 3}
       propertyPath: m_Name
@@ -61213,6 +61222,11 @@ PrefabInstance:
       propertyPath: scriptCaller
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5484269633628358074, guid: d414e8583193811429b1b6d8f9402875,
+        type: 3}
+      propertyPath: globalUnverKey
+      value: 
+      objectReference: {fileID: 769964041}
     - target: {fileID: 7010899068593526570, guid: d414e8583193811429b1b6d8f9402875,
         type: 3}
       propertyPath: programSource
@@ -61245,6 +61259,11 @@ PrefabInstance:
       propertyPath: publicVariablesUnityEngineObjects.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7432951885943450620, guid: d414e8583193811429b1b6d8f9402875,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8613976692835852785, guid: d414e8583193811429b1b6d8f9402875,
         type: 3}
       propertyPath: prompt
@@ -61260,7 +61279,8 @@ PrefabInstance:
       propertyPath: inventoryScript
       value: 
       objectReference: {fileID: 1020368391}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5375379062129255421, guid: d414e8583193811429b1b6d8f9402875, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d414e8583193811429b1b6d8f9402875, type: 3}
 --- !u!198 &5375379061991261011 stripped
 ParticleSystem:

@@ -43,6 +43,10 @@ public class CurrentEquippable : MonoBehaviour
                 timer += Time.deltaTime;
             }
         }
+        else
+        {
+            equippable[0].GetComponent<FlashlightController>().isRight = true;
+        }
     }
 
     /*!
@@ -55,12 +59,22 @@ public class CurrentEquippable : MonoBehaviour
             currentEquippable = equippable.Length - 1;
         }
 
-        equippableUpdate = currentEquippable;
+        EquippableController newEquippable = equippable[currentEquippable].GetComponent<EquippableController>();
+        EquippableController oldEquippable = equippable[equippableUpdate].GetComponent<EquippableController>();
+
+        if (equippableUpdate > 0 && currentEquippable > 0)
+        newEquippable.isActive = oldEquippable.isActive;
 
         for (int i = 1; i < equippable.Length; i++)
         {
             if (i == currentEquippable) equippable[i].SetActive(true);
-            else equippable[i].SetActive(false);
+            else
+            {
+                equippable[i].GetComponent<EquippableController>().isActive = false;
+                equippable[i].SetActive(false);
+            }
         }
+
+        equippableUpdate = currentEquippable;
     }
 }

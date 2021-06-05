@@ -11,7 +11,6 @@ public class LIDGateOpenScript : MonoBehaviour
     [Header("Assets")]
     public Animator gateAnimator; //!< The gate animator.
     public AudioSource gateOpenSound; //!< The audio source for the gate opening audio.
-    public GlobalUnverKeyScript globalKeyScript; //!< The script that controls the key counts.
 
     private bool open = false; //!< A boolean that determines whether or not the gate is open.
     private bool noRepeat = true; //!< A boolean that determines whether or not the gate hasn't been open.
@@ -33,7 +32,7 @@ public class LIDGateOpenScript : MonoBehaviour
      */
     private void Interact()
     {
-        if ((globalKeyScript.keyCount >= 7) && (noRepeat))
+        if ((GlobalUnverKeyScript.keyCount >= 7) && (noRepeat))
         {
             open = true;
             gateOpenSound.Play();

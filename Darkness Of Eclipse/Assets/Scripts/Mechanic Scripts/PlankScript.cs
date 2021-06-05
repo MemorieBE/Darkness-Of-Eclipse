@@ -49,7 +49,6 @@ public class PlankScript : MonoBehaviour
             }
 
             for (int i = 0; i < doorScript.Length; i++) doorScript[i].locked = plankGroupActive;
-            Debug.Log(doorScript.Length);
 
             breakSound.Play();
 

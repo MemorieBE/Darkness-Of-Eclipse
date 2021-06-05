@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/*! \brief A script that controls axe equippable.
+/*! \brief A script that controls a swinging equippable.
  *
- *  [Mechanic Script]
+ *  [Reusable Script]
  */
-public class AxeScript : MonoBehaviour
+public class EquippableSwing : MonoBehaviour
 {
     [Header("Swing Animation")]
     public float swingTime; //!< The swing animation duration in seconds.
-    private bool isSwinging = false; //!< A boolean that determines whether or not the axe is swinging.
+    private bool isSwinging = false; //!< A boolean that determines whether or not the equippable is swinging.
     private float swingTimer = 0f; //!< The swing animation timer.
 
-    private Animator axeAnimator; //!< The axe animator.
+    private Animator animator; //!< The equippable animator.
     private EquippableController controller; //!< The equippable controller script.
 
     void Start()
     {
-        axeAnimator = gameObject.GetComponent<Animator>();
+        animator = gameObject.GetComponent<Animator>();
         controller = gameObject.GetComponent<EquippableController>();
     }
 
@@ -26,7 +26,7 @@ public class AxeScript : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && controller.isActive)
         {
-            axeAnimator.SetBool("AxeSwinging", true);
+            animator.SetBool("Swinging", true);
             isSwinging = true;
         }
 
@@ -35,7 +35,7 @@ public class AxeScript : MonoBehaviour
 
             if (swingTimer >= swingTime)
             {
-                axeAnimator.SetBool("AxeSwinging", false);
+                animator.SetBool("Swinging", false);
                 isSwinging = false;
                 swingTimer = 0f;
 

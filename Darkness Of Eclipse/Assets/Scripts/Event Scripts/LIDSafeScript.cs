@@ -10,7 +10,6 @@ public class LIDSafeScript : MonoBehaviour
 {
     [Header("Assets")]
     public Collider hammerHead; //!< The hammer head collider.
-    public GameObject safe; //!< The safe game object.
     public GameObject[] safeState; //!< The safe state game objects.
     public GameObject key; //!< The key inside the safe game object.
 
@@ -37,7 +36,7 @@ public class LIDSafeScript : MonoBehaviour
     void Update()
     {
         if (safeStateTimer < damageCooldown) safeStateTimer += Time.deltaTime;
-        else safe.GetComponent<Animator>().SetBool("Stumble", false);
+        else gameObject.GetComponent<Animator>().SetBool("Stumble", false);
     }
 
     void OnTriggerEnter(Collider collisionData)
@@ -46,10 +45,10 @@ public class LIDSafeScript : MonoBehaviour
         {
             safeCurrentState ++;
 
-            safe.GetComponent<Animator>().SetBool("Stumble", true);
+            gameObject.GetComponent<Animator>().SetBool("Stumble", true);
 
             particleParent.position = collisionData.ClosestPoint(gameObject.transform.position);
-            particleParent.rotation = Quaternion.LookRotation((collisionData.ClosestPoint(gameObject.transform.position) - safe.transform.position).normalized, Vector3.up);
+            particleParent.rotation = Quaternion.LookRotation((collisionData.ClosestPoint(gameObject.transform.position) - gameObject.transform.position).normalized, Vector3.up);
             sparkParticle.Play();
 
             for (int i = 0; i < safeState.Length; i++)
@@ -63,8 +62,8 @@ public class LIDSafeScript : MonoBehaviour
                 breakingSound.Play();
                 key.SetActive(true);
 
-                safe.GetComponent<Collider>().enabled = false;
-                safe.GetComponent<Animator>().SetBool("DoorOpen", true);
+                gameObject.GetComponent<Collider>().enabled = false;
+                gameObject.GetComponent<Animator>().SetBool("DoorOpen", true);
             }
             else damageSound.Play();
 

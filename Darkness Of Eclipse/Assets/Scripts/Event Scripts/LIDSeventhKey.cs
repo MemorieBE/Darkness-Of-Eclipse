@@ -19,18 +19,14 @@ public class LIDSeventhKey : MonoBehaviour
     [Header("Unver")]
     public Transform unverTransform; //!< The Unver transform.
 
-    private GlobalUnverKeyScript keyScript; //!< The script that controls the keys.
-
     void Start()
     {
-        keyScript = gameObject.GetComponent<GlobalUnverKeyScript>();
-
         seventhKey.SetActive(false);
     }
 
     void Update()
     {
-        if (keyScript.keyCount == 6)
+        if (GlobalUnverKeyScript.keyCount == 6)
         {
             seventhKey.SetActive(true);
 
@@ -39,7 +35,7 @@ public class LIDSeventhKey : MonoBehaviour
             seventhKey.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
         }
 
-        if ((keyScript.keyCount == 6) && (!lineSeventeenPlayed))
+        if ((GlobalUnverKeyScript.keyCount == 6) && (!lineSeventeenPlayed))
         {
             lineSeventeenAudio.Play();
             lineSeventeenPlayed = true;

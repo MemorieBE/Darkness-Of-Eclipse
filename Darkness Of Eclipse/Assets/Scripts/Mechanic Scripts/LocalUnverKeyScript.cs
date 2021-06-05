@@ -10,7 +10,6 @@ public class LocalUnverKeyScript : MonoBehaviour
 {
     public GameObject theUnver; //!< The Unver game object.
 
-    public GlobalUnverKeyScript globalUnverKey; //!< The script that controls all Unver keys.
     private GhostStage ghostStageScript; //!< The script that controls the Unver stages.
 
     public int keyID; //!< The ID for the key.
@@ -30,9 +29,9 @@ public class LocalUnverKeyScript : MonoBehaviour
      */
     void Interact()
     {
-        globalUnverKey.keyCount ++;
-        if (keyID == globalUnverKey.keyCount) globalUnverKey.keyCountForAchievement++;
-        else globalUnverKey.keyCountForAchievement = 0;
+        GlobalUnverKeyScript.keyCount ++;
+        if (keyID == GlobalUnverKeyScript.keyCount) GlobalUnverKeyScript.keyCountForAchievement++;
+        else GlobalUnverKeyScript.keyCountForAchievement = 0;
 
         ghostStageScript.ghostStagesActive = true;
         ghostStageScript.GhostSpawn();
