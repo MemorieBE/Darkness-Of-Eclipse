@@ -18,3 +18,4 @@ Alpha v0.2.4 (26/04/2021): Added slight lighting, optimized house models, optimi
 Alpha v0.3.0 (20/05/2021): Finished and built the prologue and implemented core mechanics such as the pause menu, the main menu, the sensitivity settings, and the cheat mechanic. Recorded new voice lines and implemented new events.
 Alpha v0.3.1 (25/05/2021): Added axe animations and equippable, implemented new equippable script and made a start on fixing the first level, "Locked In Despair".
 Alpha v0.3.2 (03/06/2021): Fixed cupboard door, added new inventory system, gave items the inventory item script, improved corpse flop animation and made a start on new saving systems.
+Alpha v0.3.3 (05/06/2021): Optimised tree layouts for Locked In Despair level, Added new tree LODs, fixed the LID Safe script, added new sledge hammer animation and made a start on fixing the keys of acceptance.
