@@ -71,6 +71,10 @@ public class InteractController : MonoBehaviour
 
                 if (inputToBool) interactableScript.interacted = true;
             }
+            else
+            {
+                interactUI.SetActive(false);
+            }
         }
         else
         {

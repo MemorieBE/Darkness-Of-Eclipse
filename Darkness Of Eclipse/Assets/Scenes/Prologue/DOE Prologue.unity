@@ -334,7 +334,8 @@ MonoBehaviour:
   playerCollider: {fileID: 109501675}
   enableOnTrigger: []
   disableOnTrigger: []
-  activated: 0
+  enter: 0
+  exit: 0
 --- !u!65 &32890818
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17794,7 +17795,8 @@ MonoBehaviour:
   disableOnTrigger:
   - {fileID: 265507695}
   - {fileID: 431442764}
-  activated: 0
+  enter: 0
+  exit: 0
 --- !u!65 &2061309469
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19352,6 +19354,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebf91c4bd94e5444e85e550605fb20b6, type: 3}
+--- !u!114 &2509686229891273917 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3084010839982716890, guid: ebf91c4bd94e5444e85e550605fb20b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2509686229891273916}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0c914b8761ee1943bcd08a7dd7e3ed9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3562445784912356882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19919,6 +19933,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 2438859648531511295, guid: a7fb19719b3a71d45a51fae2b217156e,
+        type: 3}
+      propertyPath: lightScript
+      value: 
+      objectReference: {fileID: 2509686229891273917}
     - target: {fileID: 2492663805178045826, guid: a7fb19719b3a71d45a51fae2b217156e,
         type: 3}
       propertyPath: m_RootOrder

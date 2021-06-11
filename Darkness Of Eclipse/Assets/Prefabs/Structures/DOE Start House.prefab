@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 3936669660419647591}
   - component: {fileID: 63296104543118002}
   - component: {fileID: 2006385281026756137}
+  - component: {fileID: 2438859648531511295}
   m_Layer: 18
   m_Name: HousePlayerDetector
   m_TagString: Untagged
@@ -317,7 +318,8 @@ MonoBehaviour:
   playerCollider: {fileID: 0}
   enableOnTrigger: []
   disableOnTrigger: []
-  activated: 0
+  enter: 0
+  exit: 0
 --- !u!114 &2006385281026756137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,6 +335,21 @@ MonoBehaviour:
   soundSource: {fileID: 0}
   setAudioNumberEnter: 1
   setAudioNumberExit: 0
+--- !u!114 &2438859648531511295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802363142240125825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffcd6d53e4e500548bd04156d501dc78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightScript: {fileID: 0}
+  setLightIntensityEnter: 10
+  setLightIntensityExit: 30
 --- !u!1 &2037590842515325316
 GameObject:
   m_ObjectHideFlags: 0

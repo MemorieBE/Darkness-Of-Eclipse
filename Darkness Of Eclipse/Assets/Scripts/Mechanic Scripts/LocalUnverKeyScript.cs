@@ -35,6 +35,5 @@ public class LocalUnverKeyScript : MonoBehaviour
 
         ghostStageScript.ghostStagesActive = true;
         ghostStageScript.GhostSpawn();
-        gameObject.SetActive(false);
     }
 }

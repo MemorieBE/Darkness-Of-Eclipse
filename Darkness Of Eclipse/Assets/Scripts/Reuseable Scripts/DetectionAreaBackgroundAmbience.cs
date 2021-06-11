@@ -24,7 +24,7 @@ public class DetectionAreaBackgroundAmbience : MonoBehaviour
 
     void Update()
     {
-        if (detectionScript.activated) soundSource.currentBackgroundAmbience = setAudioNumberEnter;
-        else soundSource.currentBackgroundAmbience = setAudioNumberExit;
+        if (detectionScript.enter) soundSource.currentBackgroundAmbience = setAudioNumberEnter;
+        if (detectionScript.exit) soundSource.currentBackgroundAmbience = setAudioNumberExit;
     }
 }

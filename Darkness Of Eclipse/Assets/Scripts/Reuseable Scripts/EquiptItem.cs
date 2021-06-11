@@ -8,15 +8,34 @@ using UnityEngine;
  */
 public class EquiptItem : MonoBehaviour
 {
+    public DropEquippable dropScript;
+
     public int equippableID; //!< The equippableID.
+
+    public float resetYPoint = 0f;
 
     void Update()
     {
         if (gameObject.GetComponent<Interactable>() != null && gameObject.GetComponent<Interactable>().interacted)
         {
+            if (CurrentEquippable.currentEquippable > 0) dropScript.EquippableDrop(CurrentEquippable.currentEquippable);
+
             CurrentEquippable.currentEquippable = equippableID;
 
-            gameObject.SetActive(false);
+            if (gameObject.GetComponent<Rigidbody>().isKinematic)
+            {
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        if (gameObject.transform.position.y <= resetYPoint)
+        {
+            dropScript.EquippableDrop(equippableID);
+            Destroy(gameObject);
         }
     }
 }
