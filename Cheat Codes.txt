@@ -1,11 +1,21 @@
 You can access the cheat code input field by pressing F1 in game.
 
+timescale x: Changes the timescale to x value.
+
 loadpoint 0 0: Loads the first checkpoint of the prologue.
 loadpoint 0 1: Loads the second checkpoint of the prologue.
 
-timescale x: Changes the timescale to x value.
+scenepoint save: Save the current scene data to your save point.
+scenepoint load: Loads the saved scene data from your save point.
+(Note: Loading data that was saved between events will likely cause a soft lock.)
+
+editorlight show: Shows the editor light.
+editorlight hide: Hides the editor light.
+editorlight toggle: Toggles the editor light.
 
 player movespeed x: Changes player move speed to x value.
 player sprintboost x: Changes player sprint boost to x value.
 player jumpforce x: Changes player jump force to x value.
 player gravity x: Changes player gravity to x value.
+
+equip x: Equips a specific equippable. [0 = No equippable]
