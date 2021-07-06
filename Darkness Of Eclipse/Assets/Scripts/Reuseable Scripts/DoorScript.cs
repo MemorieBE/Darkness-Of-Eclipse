@@ -75,12 +75,12 @@ public class DoorScript : MonoBehaviour
             ItemBasedInteractable itemBasedInteractable = gameObject.GetComponent<ItemBasedInteractable>();
 
             if (!itemBasedInteractable.convertableWithItem ||
-                !itemBasedInteractable.inventoryScript.inventoryItemState[itemBasedInteractable.itemNeeded])
+                !InventoryScript.inventoryItemState[itemBasedInteractable.itemNeeded])
             {
                 Interact();
             }
 
-            if (itemBasedInteractable.inventoryScript.inventoryItemState[itemBasedInteractable.itemNeeded])
+            if (InventoryScript.inventoryItemState[itemBasedInteractable.itemNeeded])
             {
                 locked = false;
             }

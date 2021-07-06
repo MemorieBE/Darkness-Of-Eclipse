@@ -56,6 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3455597420392951554}
   - component: {fileID: 6199029613605521239}
+  - component: {fileID: 6664200678639442765}
   - component: {fileID: 1735928342273916169}
   m_Layer: 0
   m_Name: SceneController
@@ -98,6 +99,20 @@ MonoBehaviour:
   checkpointSpawnPoints:
   - {fileID: 0}
   loadingObject: {fileID: 0}
+  inventoryScript: {fileID: 0}
+--- !u!114 &6664200678639442765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7697966159206917727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b4fa99d4f491144a99e0a496225fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
 --- !u!114 &1735928342273916169
 MonoBehaviour:
   m_ObjectHideFlags: 0

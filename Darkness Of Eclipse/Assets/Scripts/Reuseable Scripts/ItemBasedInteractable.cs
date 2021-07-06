@@ -21,20 +21,17 @@ public class ItemBasedInteractable : MonoBehaviour
     public bool convertableWithItem = false;
     public bool itemConsumable = true;
 
-    [Header("Inventory")]
-    public InventoryScript inventoryScript;
-
     [HideInInspector] public bool interacted = false; //!< A boolean that determines whether or not the player has interacted with the game object.
 
     void LateUpdate()
     {
-        if (interacted && inventoryScript.inventoryItemState[itemNeeded])
+        if (interacted && InventoryScript.inventoryItemState[itemNeeded])
         {
             interacted = false;
 
             if (itemConsumable)
             {
-                inventoryScript.InventoryUpdate(itemNeeded, false);
+                InventoryScript.InventoryUpdate(itemNeeded, false);
             }
 
             if (convertableWithItem)
@@ -53,6 +50,6 @@ public class ItemBasedInteractable : MonoBehaviour
             }
         }
 
-        if (interacted && !inventoryScript.inventoryItemState[itemNeeded]) interacted = false;
+        if (interacted && !InventoryScript.inventoryItemState[itemNeeded]) interacted = false;
     }
 }

@@ -15,6 +15,7 @@ public class PlayerControllerCC : MonoBehaviour
 
     public static bool sprintDisabled = false; //!< A boolean that controls whether or not sprinting is disabled.
     public static bool sneakDisabled = false; //!< A boolean that controls whether or not sprinting is disabled.
+    public static bool normalizedMovement = false; //!< A boolean that controls whether or not the player's movement direction is normalized.
 
     [Header("Inputs")]
     public float moveSpeed = 2f; //!< How fast the player can move.
@@ -26,7 +27,6 @@ public class PlayerControllerCC : MonoBehaviour
     public float gravity = 5f; //!< How strong the player's gravity is.
     public float maxDropVelocity = 10f; //!< The gravity terminal velocity.
     public float rigidbodyPushForce = 5f; //!< How hard the player will push away rigidbodies when colliding with them.
-    private bool normalizedMovement = false; //!< A boolean that controls whether or not the player's movement direction is normalized.
 
     public static string moveForwardKey = "w"; //!< The key bind used to move forward.
     public static string moveBackKey = "s"; //!< The key bind used to move backward.
@@ -53,6 +53,7 @@ public class PlayerControllerCC : MonoBehaviour
 
         sprintDisabled = false;
         sneakDisabled = false;
+        normalizedMovement = false;
     }
 
     void FixedUpdate()

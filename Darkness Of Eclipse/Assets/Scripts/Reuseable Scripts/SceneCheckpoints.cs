@@ -25,9 +25,6 @@ public class SceneCheckpoints : MonoBehaviour
     [Header("Loading Asset")]
     public GameObject loadingObject; //!< The loading sprite game object.
 
-    [Header("Inventory")]
-    public InventoryScript inventoryScript; //!< The inventory script.
-
     void Awake()
     {
         Time.timeScale = 1f;
@@ -42,7 +39,7 @@ public class SceneCheckpoints : MonoBehaviour
     }
 
     /*!
-     *  A method that creates PlayerPref variables if they are missing.
+     *  A method that creates PlayerPref variables if they are missing. [Delete]
      */
     private void CheckSavedData()
     {
@@ -58,7 +55,7 @@ public class SceneCheckpoints : MonoBehaviour
     }
 
     /*!
-     *  A method that resets PlayerPrefs variables.
+     *  A method that resets PlayerPrefs variables. [Delete]
      */
     public void ResetSavedCheckpoint()
     {
@@ -67,7 +64,7 @@ public class SceneCheckpoints : MonoBehaviour
     }
 
     /*!
-     *  A method that loads the saved scene and checkpoint from the PlayerPrefs.
+     *  A method that loads the saved scene and checkpoint from the PlayerPrefs. [Delete]
      */
     public void LoadSavedCheckpoint()
     {
@@ -85,8 +82,6 @@ public class SceneCheckpoints : MonoBehaviour
      */
     public void LoadCheckpoint(int scene, int checkpoint)
     {
-        inventoryScript.InventoryRemember();
-
         sceneCheckpoint = checkpoint;
 
         if (scene >= SceneManager.sceneCountInBuildSettings)
@@ -149,7 +144,7 @@ public class SceneCheckpoints : MonoBehaviour
     }
 
     /*!
-     *  A method that saves the checkpoint and scene to the PlayerPrefs.
+     *  A method that saves the checkpoint and scene to the PlayerPrefs. [Delete]
      */
     public void SaveCheckpoint()
     {

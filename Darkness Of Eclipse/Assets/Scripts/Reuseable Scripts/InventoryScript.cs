@@ -10,26 +10,29 @@ public class InventoryScript : MonoBehaviour
 {
     [Header("Inventory Items")]
     public string[] inventoryItemName; //!< The inventory item names.
-    public bool[] inventoryItemState; //!< The inventory item states.
-    public static bool[] inventoryItemStateRemember; //!< The inventory item states to remember.
+    public GameObject[] inventoryItemUI; //!< The inventory item UI images.
+    public static bool[] inventoryItemState; //!< The inventory item states.
 
     [Header("UI")]
     public GameObject inventoryUI; //!< The inventory UI  game object.
 
     void Start()
     {
-        if (inventoryItemStateRemember != null)
+        if (inventoryItemState == null)
         {
-            if (inventoryItemStateRemember.Length == inventoryItemState.Length)
-            {
-                inventoryItemState = inventoryItemStateRemember;
-            }
+            inventoryItemState = new bool[inventoryItemName.Length];
         }
     }
 
-    public void InventoryRemember()
+    void FixedUpdate()
     {
-        inventoryItemStateRemember = inventoryItemState;
+        for (int i = 0; i < inventoryItemUI.Length; i++)
+        {
+            if (inventoryItemUI[i] != null)
+            {
+                if (inventoryItemUI[i].activeSelf != inventoryItemState[i]) inventoryItemUI[i].SetActive(inventoryItemState[i]);
+            }
+        }
     }
 
     /*!
@@ -38,31 +41,8 @@ public class InventoryScript : MonoBehaviour
      *  \param itemID The item ID.
      *  \param itemState The item state.
      */
-    public void InventoryUpdate(int itemID, bool itemState)
+    public static void InventoryUpdate(int itemID, bool itemState)
     {
         inventoryItemState[itemID] = itemState;
-    }
-
-    /*!
-     *  A method that saves inventory data.
-     */
-    public void SaveInventory()
-    {
-        for (int i = 0; i < inventoryItemState.Length; i++)
-        {
-            PlayerPrefs.SetInt("Inventory: " + inventoryItemName[i], (inventoryItemStateRemember[i] ? 1 : 0));
-        }
-    }
-
-    /*!
-     *  A method that loads inventory saved data.
-     */
-    private void LoadInventory()
-    {
-        for (int i = 0; i < inventoryItemState.Length; i++)
-        {
-            if (!PlayerPrefs.HasKey("Inventory: " + inventoryItemName[i])) PlayerPrefs.SetInt("Inventory: " + inventoryItemName[i], 0);
-            else InventoryUpdate(i, PlayerPrefs.GetInt("Inventory: " + inventoryItemName[i]) != 0);
-        }
     }
 }

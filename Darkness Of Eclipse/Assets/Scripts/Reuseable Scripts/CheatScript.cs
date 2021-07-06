@@ -17,6 +17,7 @@ public class CheatScript : MonoBehaviour
 
     [Header("Scripts And References")]
     public SceneCheckpoints checkpointScript; //!< The checkpoint script.
+    public SceneSavePoint savePointScript; //!< The save point script.
     public GameObject playerObject; //!< The player game object.
     public GameObject editorLight; //!< The editor light game object.
 
@@ -86,6 +87,24 @@ public class CheatScript : MonoBehaviour
         {
             checkpointScript.LoadCheckpoint(loadScene, loadCheckpoint);
             if (loadScene == 0 || loadScene == SceneManager.GetActiveScene().buildIndex) checkpointScript.ReloadScene();
+        }
+
+        // Scene Point Command.
+        if (splitString.Length == 2 &&
+            splitString[0] == "scenepoint")
+        {
+            if (splitString[1] == "save")
+            {
+                savePointScript.ActivateSavePoint();
+
+                Debug.Log("Saved Scene Save Point");
+            }
+            else if (splitString[1] == "load")
+            {
+                savePointScript.LoadSavePoint();
+
+                Debug.Log("Loaded Scene Save Point");
+            }
         }
 
         // Editor Light Command.

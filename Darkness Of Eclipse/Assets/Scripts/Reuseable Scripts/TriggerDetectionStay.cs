@@ -17,13 +17,19 @@ public class TriggerDetectionStay : MonoBehaviour
     public GameObject[] disableOnTrigger; //!< The game objects to disable on trigger.
 
     [HideInInspector] public bool enter = false; //!< A boolean that determines whether or not the trigger has been entered.
-    [HideInInspector] public bool exit = false; //!< A boolean that determines whether or not the trigger has been exited.
+    [HideInInspector] public bool exit = true; //!< A boolean that determines whether or not the trigger has been exited.
+
+    void Start()
+    {
+        exit = true;
+    }
 
     void OnTriggerEnter(Collider collisionData)
     {
         if (collisionData == playerCollider)
         {
             enter = true;
+            exit = false;
 
             for (int i = 0; i < enableOnTrigger.Length; i++) { enableOnTrigger[i].SetActive(true); }
             for (int i = 0; i < disableOnTrigger.Length; i++) { disableOnTrigger[i].SetActive(false); }
@@ -34,6 +40,7 @@ public class TriggerDetectionStay : MonoBehaviour
     {
         if (collisionData == playerCollider)
         {
+            enter = false;
             exit = true;
 
             for (int i = 0; i < enableOnTrigger.Length; i++) { enableOnTrigger[i].SetActive(false); }

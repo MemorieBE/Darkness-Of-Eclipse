@@ -58,7 +58,7 @@ public class InteractController : MonoBehaviour
 
                 interactUI.SetActive(true);
 
-                if (interactableScript.inventoryScript.inventoryItemState[interactableScript.itemNeeded])
+                if (InventoryScript.inventoryItemState[interactableScript.itemNeeded])
                 {
                     interactText.text = interactableScript.promptWithItem;
                     interactImage.sprite = interactableScript.spriteWithItem;

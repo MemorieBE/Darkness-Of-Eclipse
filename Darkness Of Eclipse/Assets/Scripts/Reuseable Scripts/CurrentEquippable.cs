@@ -14,7 +14,6 @@ public class CurrentEquippable : MonoBehaviour
     public GameObject[] equippable; //!< The equippable game objects.
 
     private float timer; //!< The animation pause timer.
-    private bool animationPause; //!< A boolean that determines whether or not an animation is currently paused at the start.
 
     void Awake()
     {
