@@ -20,3 +20,4 @@ Alpha v0.3.1 (25/05/2021): Added axe animations and equippable, implemented new 
 Alpha v0.3.2 (03/06/2021): Fixed cupboard door, added new inventory system, gave items the inventory item script, improved corpse flop animation and made a start on new saving systems.
 Alpha v0.3.3 (05/06/2021): Optimised tree layouts for Locked In Despair level, Added new tree LODs, fixed the LID Safe script, added new sledge hammer animation and made a start on fixing the keys of acceptance.
 Alpha v0.3.4 (11/06/2021): Implemented the new equippable dropping mechanic (still very buggy), optimised terrain assets, and added new flashlight intensity smooth lerp mechanic to house triggers.
+Alpha v0.3.5 (06/07/2021): Fixed equippable animation glitch, implemented new quick-save/scenepoint method, added new inventory UI assets, and optimised prologue variables.
