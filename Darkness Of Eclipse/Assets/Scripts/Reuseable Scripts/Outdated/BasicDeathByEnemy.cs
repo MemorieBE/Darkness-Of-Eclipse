@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*! \brief A script that controls how the player dies from an enemy.
+ *  (Outdated)
  *
  *  [Reusable Script]
  */

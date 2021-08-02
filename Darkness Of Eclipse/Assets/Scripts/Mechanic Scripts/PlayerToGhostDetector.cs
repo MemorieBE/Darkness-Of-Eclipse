@@ -1,22 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 using UnityEngine;
 
-/*! \brief A script that converts the GhostColliderDetectorU# script into a single frame bool variable
+/*! \brief A script that gets data from enemy collider and coverts it into a bool variable for the Unver player detection script.
  *
  *  [Mechanic Script]
  */
 public class PlayerToGhostDetector : MonoBehaviour
 {
-    [Header("Assets")]
+    [Header("Player")]
     public Collider playerCollider; //!< The player collider.
+    public DeathByUnver ghostScript; //!< The script that controls the Unver player detection.
 
-    [Header("Detected")]
-    public bool playerDetected = false; //!< A boolean that determines whether or not the player has collided with the unver colliders.
+    [HideInInspector] public bool playerDetected = false; //!< A read only player detection variable.
 
     void FixedUpdate()
     {
-        if (playerDetected) playerDetected = false;
+        playerDetected = false;
+    }
+
+    void OnTriggerStay(Collider collisionData)
+    {
+        if (collisionData == playerCollider)
+        {
+            playerDetected = true;
+
+            Debug.Log("Unver Collision Is True");
+        }
     }
 }

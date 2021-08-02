@@ -138,6 +138,8 @@ public class SceneSavePoint : MonoBehaviour
      */
     public void LoadSavePoint()
     {
+        if (!hasSavePoint) { return; }
+
         for (int i = 0; i < equippableID.Length; i++)
         {
             Debug.Log("Instantiated");

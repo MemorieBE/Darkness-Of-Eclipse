@@ -12,7 +12,7 @@ public class GhostStage : MonoBehaviour
 {
     [Header("Unver Assets")]
     public FOVRaycast raycastScript; //!< The player Unver raycast script.
-    public GameObject[] ghostAssets; //!< The Unver assets to set active and inactive with Unver deactivation state.
+    public GameObject[] toggleAssets; //!< The Unver assets to set active and inactive with Unver deactivation state.
     public Light ghostLight; //!< The Unver light.
     private PlayerToGhostDetector detector; //!< The Unver player detection script.
     private Animator ghostAnimator; //!< The Unver animator.
@@ -365,9 +365,9 @@ public class GhostStage : MonoBehaviour
                 stalkingAudio.volume = 0f;
                 chasingAudio.volume = 0f;
 
-                for (int i = 0; i < ghostAssets.Length; i++)
+                for (int i = 0; i < toggleAssets.Length; i++)
                 {
-                    ghostAssets[i].SetActive(false);
+                    toggleAssets[i].SetActive(false);
                 }
 
                 if (deactivationTimer >= ((setDeactivationTime + (((ghostTier - 1) / (ghostMaxTier - 1)) * (ghostDeactivationTimeTopTier - setDeactivationTime)))) / modeMultiplier)
@@ -388,9 +388,9 @@ public class GhostStage : MonoBehaviour
             {
                 deactivationTimer = 0;
 
-                for (int i = 0; i < ghostAssets.Length; i++)
+                for (int i = 0; i < toggleAssets.Length; i++)
                 {
-                    ghostAssets[i].SetActive(true);
+                    toggleAssets[i].SetActive(true);
                 }
             }
 

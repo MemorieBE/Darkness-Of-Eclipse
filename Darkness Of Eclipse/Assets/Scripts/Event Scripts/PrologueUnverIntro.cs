@@ -25,7 +25,7 @@ public class PrologueUnverIntro : MonoBehaviour
     public AmbienceSoundLooper ghostAmbienceScript; //!< The script that controls the Unver ambience sound looper.
     public AmbienceSoundLooper worldAmbienceScript; //!< The script that controls the world ambience sound looper.
     public AudioSource distanceBasedAmbienceAudio; //!< The audio source that controls the audio by distance script.
-    private PlayerToGhostDetector unverDetection; //!< The script that controls the Unver player detection.
+    public PlayerToGhostDetector unverDetection; //!< The script that controls the Unver player detection.
     public OpenTransition transitionScript; //!< The script that controls the open transition of the next checkpoint.
 
     [Header("Teleport")]
@@ -51,11 +51,6 @@ public class PrologueUnverIntro : MonoBehaviour
     private bool stared = false; //!< A boolean that determines whether or not the player looked at the Unver.
     private bool audioStarted = false; //!< A boolean that determines whether or not the event audio has been player.
     private bool hasCut = false; //!< A boolean that determines whether or not the event has cut to black.
-
-    void Start()
-    {
-        unverDetection = ghostObject.GetComponent<PlayerToGhostDetector>();
-    }
 
     void Update()
     {

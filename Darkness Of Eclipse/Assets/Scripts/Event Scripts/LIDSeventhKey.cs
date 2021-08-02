@@ -15,9 +15,10 @@ public class LIDSeventhKey : MonoBehaviour
     public AudioSource lineSeventeenAudio; //!< The audio source of the line seventeen audio.
     private bool lineSeventeenPlayed = false; //!< A boolean that determines whether or not the line seventeen audio has been played.
     public Vector3 seventhKeyPositionOffset; //!< The offset position from the Unver position that the seventh key will spawn at.
+    private bool keySpawned = false; //!< A boolean that determines whether or not the key has spawned in this deactivation stage.
 
     [Header("Unver")]
-    public Transform unverTransform; //!< The Unver transform.
+    public GameObject unver; //!< The Unver game object.
 
     void Start()
     {
@@ -26,19 +27,26 @@ public class LIDSeventhKey : MonoBehaviour
 
     void Update()
     {
+        if (!unver.GetComponent<GhostStage>().ghostDeactivationStage) { keySpawned = false; }
+
         if (GlobalUnverKeyScript.keyCount == 6)
         {
-            seventhKey.SetActive(true);
+            if (!keySpawned)
+            {
+                keySpawned = true;
 
-            seventhKey.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            seventhKey.transform.position = unverTransform.position + seventhKeyPositionOffset;
-            seventhKey.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
-        }
+                seventhKey.SetActive(true);
 
-        if ((GlobalUnverKeyScript.keyCount == 6) && (!lineSeventeenPlayed))
-        {
-            lineSeventeenAudio.Play();
-            lineSeventeenPlayed = true;
+                seventhKey.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                seventhKey.transform.position = unver.transform.position + seventhKeyPositionOffset;
+                seventhKey.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
+            }
+
+            if (!lineSeventeenPlayed)
+            {
+                lineSeventeenAudio.Play();
+                lineSeventeenPlayed = true;
+            }
         }
 
         if (seventhKey.transform.position.y < 0f) seventhKey.SetActive(false); //< Disables the seventh key when it's position reaches under the map.

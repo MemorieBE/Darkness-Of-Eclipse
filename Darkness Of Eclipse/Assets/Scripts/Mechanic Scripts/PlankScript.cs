@@ -15,12 +15,13 @@ public class PlankScript : MonoBehaviour
 
     [Header("Inputs")]
     public bool isBroken; //!< A boolean that controls whether or not the plank is broken.
+    [HideInInspector] public bool skipBreak; //!< A boolean that determines whether or not the breaking segment will be skipped.
     public float popDistance = 100f; //!< The upwards force applied to the plank when broken.
 
     [Header("Optional")]
     public DoorScript[] doorScript; //!< The script that controls the door that the plank is blocking.
     public GameObject[] plankGroup; //!< The other planks that are blocking the same door.
-    private bool plankGroupActive; //!< A boolean that determines whether or the other planks withing the group are active.
+    private bool plankGroupActive; //!< A boolean that determines whether or the other planks within the group are active.
 
     void OnTriggerEnter(Collider collisionData)
     {
@@ -34,6 +35,13 @@ public class PlankScript : MonoBehaviour
     {
         if (isBroken)
         {
+            if (skipBreak)
+            {
+                gameObject.SetActive(false);
+
+                return;
+            }
+
             for (int i = 0; i < brokenPart.Length; i++)
             {
                 brokenPart[i].SetActive(true);

@@ -13,7 +13,7 @@ public class LIDCorpseAnimation : MonoBehaviour
     public AudioSource corpseFlopAudio; //!< The audio source for the corpse flopping sound.
     public DoorScript doorScript; //!< The script that controls the door.
 
-    private bool audioPlayed = false; //!< A boolean that determines whether or not the audio has been played.
+    [HideInInspector] public bool audioPlayed = false; //!< A boolean that determines whether or not the audio has been played.
 
     void Update()
     {

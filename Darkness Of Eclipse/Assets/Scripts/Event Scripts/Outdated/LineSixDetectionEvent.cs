@@ -15,7 +15,7 @@ public class LineSixDetectionEvent : MonoBehaviour
     [Header("Scripts And References")]
     public GameObject ghostObject; //!< The Unver game object to reference scripts.
     private GhostStage ghostStageScript; //!< The script that controls the stages of the Unver.
-    private PlayerToGhostDetector ghostDetectionScript; //!< The script that controls the Unver player detection.
+    public PlayerToGhostDetector ghostDetectionScript; //!< The script that controls the Unver player detection.
     public TriggerDetectionEnter detectorScript; //!< The script that controls the line detecting children.
     public FOVRaycast raycastScript; //!< The script that controls the player Unver raycast.
     public Jumpscare jumpscareScript; //!< The script that controls the canvas Unver jumpscare.
@@ -49,7 +49,6 @@ public class LineSixDetectionEvent : MonoBehaviour
     void Start()
     {
         ghostStageScript = ghostObject.GetComponent<GhostStage>();
-        ghostDetectionScript = ghostObject.GetComponent<PlayerToGhostDetector>();
     }
 
     void Update()
