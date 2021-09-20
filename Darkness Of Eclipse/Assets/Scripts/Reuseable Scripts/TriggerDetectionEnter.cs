@@ -10,19 +10,20 @@ using UnityEngine;
 public class TriggerDetectionEnter : MonoBehaviour
 {
     [Header("Player")]
-    public Collider playerCollider; //!< The player collider.
+    [SerializeField] private Collider playerCollider; //!< The player collider.
 
     [Header("Game Objects")]
-    public GameObject[] enableOnTrigger; //!< The game objects to enable on trigger.
-    public GameObject[] disableOnTrigger; //!< The game objects to disable on trigger.
+    [SerializeField] private GameObject[] enableOnTrigger; //!< The game objects to enable on trigger.
+    [SerializeField] private GameObject[] disableOnTrigger; //!< The game objects to disable on trigger.
 
     [Header("Inputs")]
-    public bool disableOnActivation = true; //!< A boolean that controls whether or not the detector will be disabled when it is activated.
+    [SerializeField] private bool disableOnActivation = true; //!< A boolean that controls whether or not the detector will be disabled when it is activated.
+    [SerializeField] private bool multipleUses = false; //!< A boolean that controls whether or not the detector can be used more than once.
     public bool activated = false; //!< A boolean that determines whether or not the trigger events have been activated.
 
     void OnTriggerEnter(Collider collisionData)
     {
-        if (collisionData == playerCollider)
+        if (collisionData == playerCollider && !activated)
         {
             activated = true;
 
@@ -35,7 +36,7 @@ public class TriggerDetectionEnter : MonoBehaviour
     {
         if (activated)
         {
-            activated = false;
+            if (multipleUses) activated = false;
             if (disableOnActivation) gameObject.SetActive(false);
         }
     }

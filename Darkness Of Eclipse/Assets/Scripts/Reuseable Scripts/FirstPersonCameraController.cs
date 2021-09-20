@@ -21,8 +21,8 @@ public class FirstPersonCameraController : MonoBehaviour
 
     void FixedUpdate()
     {
-        float mouseX = Input.GetAxis("Mouse X") * SensitivitySlider.mouseSensitivity * Time.fixedDeltaTime * 3f / StaticVars.timeScaleMultiplier;
-        float mouseY = Input.GetAxis("Mouse Y") * SensitivitySlider.mouseSensitivity * Time.fixedDeltaTime * 3f / StaticVars.timeScaleMultiplier;
+        float mouseX = Input.GetAxis("Mouse X") * SensitivitySlider.mouseSensitivity * Time.fixedDeltaTime * 3f / GameRules.timeScaleMultiplier;
+        float mouseY = Input.GetAxis("Mouse Y") * SensitivitySlider.mouseSensitivity * Time.fixedDeltaTime * 3f / GameRules.timeScaleMultiplier;
 
         if (!PlayerControllerCC.allowPlayerInputs)
         {

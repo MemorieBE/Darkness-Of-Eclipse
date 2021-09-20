@@ -449,6 +449,57 @@ MonoBehaviour:
   fadeTime: 5
   autoFader: 2
   fadeOffset: 10
+--- !u!1 &2753315374560293253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1189741250148629063}
+  - component: {fileID: 499739043306676930}
+  m_Layer: 12
+  m_Name: PlayerToUnverRaycast
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1189741250148629063
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2753315374560293253}
+  m_LocalRotation: {x: 0.02105163, y: -0.0015433512, z: -0.00003251742, w: 0.9997772}
+  m_LocalPosition: {x: 0, y: 0.002, z: 0.002}
+  m_LocalScale: {x: 0.019710183, y: 0.01971019, z: 0.019710187}
+  m_Children: []
+  m_Father: {fileID: 3645569840089596727}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &499739043306676930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2753315374560293253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892ef5fbbb78abe41bd1fda85c017c23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHead: {fileID: 0}
+  raycastIgnoreLayers: 090000000a0000000c000000
+  maxRaycastDistance: 1000
+  fOVOffset: 0
+  totalFieldOfView: 0
+  debugRaycast: 1
+  targetInSight: 0
+  fOVAngle: 0
 --- !u!1 &3414845131133114377
 GameObject:
   m_ObjectHideFlags: 0
@@ -1927,14 +1978,12 @@ MonoBehaviour:
   - 20
   - 10
   - 9
-  - 1
   stareDeathAudio:
   - {fileID: 154797022859238310}
   - {fileID: 6895600319345265439}
   - {fileID: 5666316771205360533}
   - {fileID: 4623431348862374514}
   - {fileID: 246500318223420763}
-  - {fileID: 1511543516437018391}
   blackScreen: {fileID: 0}
 --- !u!114 &3645569840089702172
 MonoBehaviour:
@@ -1948,13 +1997,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 669203e1c3d51eb499d89dc5da5ce878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastScript: {fileID: 0}
+  raycastScript: {fileID: 499739043306676930}
   toggleAssets:
   - {fileID: 3645569840089702207}
   - {fileID: 3414845131133114377}
   - {fileID: 3645569840280212364}
   - {fileID: 3645569839875988463}
   ghostLight: {fileID: 3645569840280212366}
+  detector: {fileID: 272939511693304591}
   playerHead: {fileID: 0}
   playerHeadOffset: {x: 0, y: -2.1, z: 0}
   stalkingAudio: {fileID: 3645569839008126879}
@@ -1971,11 +2021,11 @@ MonoBehaviour:
   ghostStageToAttemptHighest: 7
   attackAttemptProbability: 6
   ghostDistanceStageMin: 1
-  ghostDistanceStageMax: 80
+  ghostDistanceStageMax: 70
   ghostChaseDistanceToDirect: 8
   ghostFloorClingeIntensity: 3
   ghostChaseDistance: 100
-  ghostLightSetIntensity: 2
+  ghostLightSetIntensity: 1
   ghostStagesActive: 0
   ghostStalkingStage: 0
   ghostChasingStage: 0
@@ -3147,6 +3197,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3645569840089596725}
+  - {fileID: 1189741250148629063}
   m_Father: {fileID: 3645569840089596737}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

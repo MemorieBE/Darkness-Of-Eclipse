@@ -11,11 +11,11 @@ public class SceneSavePoint : MonoBehaviour
     public static bool hasSavePoint = false; //!< A boolean that controls whether or not the scene currently has a save point.
 
     [Header("References")]
-    public DropEquippable equippableScript; //!< The equippable script.
-    public GameObject player; //!< The player game object.
-    public GameObject[] fluidActiveStateObject; //!< The game objects that can be switch active and inactive throughout the scene.
+    [SerializeField] private DropEquippable equippableScript; //!< The equippable script.
+    [SerializeField] private GameObject player; //!< The player game object.
+    [SerializeField] private GameObject[] fluidActiveStateObject; //!< The game objects that can be switch active and inactive throughout the scene.
     [SerializeField] private bool organiseObjects = false; //!< A boolean that organised the fluid active state object array in alphabetical order on validate.
-    public DoorScript[] doorScript; //!< All the door scripts in the scene.
+    [SerializeField] private DoorScript[] doorScript; //!< All the door scripts in the scene.
 
     public static List<EquiptItem> equippables; //!< A list of all dropped equippables.
 

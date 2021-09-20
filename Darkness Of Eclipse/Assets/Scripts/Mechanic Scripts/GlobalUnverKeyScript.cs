@@ -11,9 +11,11 @@ public class GlobalUnverKeyScript : MonoBehaviour
     [Header("Keys")]
     public static int keyCount = 0; //!< The amount of keys that have been collected so far.
     public int totalKeys = 7; //!< The total amount of keys in the level.
+    [SerializeField] private int visualKeyCount; //!< The keycount visualised in the inspector.
+    [SerializeField] private bool addKey = false; //!< A boolean that adds a key to the total key count when true.
 
     [Header("Ghost Stage Script")]
-    public GhostStage ghostStageScript; //!< The script that controls the Unver stages.
+    [SerializeField] private GhostStage ghostStageScript; //!< The script that controls the Unver stages.
 
     [Header("Achiement")] // (The targeted achievement will be achieved when the player collects the keys in a specific order.)
     public Achievements achievementScript; //!< The script that controls the achievements. (Can be left null.)
@@ -30,5 +32,13 @@ public class GlobalUnverKeyScript : MonoBehaviour
             if (achievementScript == null) { return; }
             achievementScript.AchievementUnlocked(achievementID);
         }
+
+        if (addKey)
+        {
+            addKey = false;
+            if (keyCount < totalKeys) keyCount++;
+        }
+
+        visualKeyCount = keyCount;
     }
 }

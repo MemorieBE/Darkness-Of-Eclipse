@@ -11,10 +11,10 @@ using System.Linq;
 public class GhostStage : MonoBehaviour
 {
     [Header("Unver Assets")]
-    public FOVRaycast raycastScript; //!< The player Unver raycast script.
-    public GameObject[] toggleAssets; //!< The Unver assets to set active and inactive with Unver deactivation state.
-    public Light ghostLight; //!< The Unver light.
-    private PlayerToGhostDetector detector; //!< The Unver player detection script.
+    [SerializeField] private FOVRaycast raycastScript; //!< The player Unver raycast script.
+    [SerializeField] private GameObject[] toggleAssets; //!< The Unver assets to set active and inactive with Unver deactivation state.
+    [SerializeField] private Light ghostLight; //!< The Unver light.
+    [SerializeField] private PlayerToGhostDetector detector; //!< The Unver player detection script.
     private Animator ghostAnimator; //!< The Unver animator.
 
     [Header("Player Head")]
@@ -22,8 +22,8 @@ public class GhostStage : MonoBehaviour
     public Vector3 playerHeadOffset = new Vector3(0f, -2f, 0f); //!< The offset of the player's body from the player's head.
 
     [Header("Audio")]
-    public AudioSource stalkingAudio; //!< The stalking audio source.
-    public AudioSource chasingAudio; //!< The chasing audio source.
+    [SerializeField] private AudioSource stalkingAudio; //!< The stalking audio source.
+    [SerializeField] private AudioSource chasingAudio; //!< The chasing audio source.
 
     [Header("Layer")]
     public int[] playerRaycastIgnoreLayers; //!< The layers that the player field of view raycast will ignore.
@@ -100,23 +100,22 @@ public class GhostStage : MonoBehaviour
     private float modeMultiplier; //!< The number multiplied by the difficulty multiplier when in hard.
 
     [Header("Debugs")]
-    public bool ghostFloorRaycastDebug = false; //!< A boolean that visulizes the floor detecting raycast's maximum height for the ghost.
-    public bool playerFloorRaycastDebug = false; //!< A boolean that visulizes the floor detecting raycast's maximum height for the player.
-    public bool ghostSpawnDebug = false; //!< A boolean that activates the GhostSpawn() method.
+    [SerializeField] private bool ghostFloorRaycastDebug = false; //!< A boolean that visulizes the floor detecting raycast's maximum height for the ghost.
+    [SerializeField] private bool playerFloorRaycastDebug = false; //!< A boolean that visulizes the floor detecting raycast's maximum height for the player.
+    [SerializeField] private bool ghostSpawnDebug = false; //!< A boolean that activates the GhostSpawn() method.
 
     [Header("Console")]
-    public bool consoleGhostSpawn; //!< A boolean that shows the GhostSpawn() information.
-    public bool consoleStages; //!< A boolean that shows the current stage's information.
+    [SerializeField] private bool consoleGhostSpawn; //!< A boolean that shows the GhostSpawn() information.
+    [SerializeField] private bool consoleStages; //!< A boolean that shows the current stage's information.
 
     [Header("Timer")]
     public bool pauseTimer = false; //!< A boolean that controls whether or not the current time is paused.
     public bool resetTimer = false; //!< A boolean that resets the current timer.
-    public string currentTimerName = "Timer"; //!< The name of the current timer used in whatever stage the Unver is in.
-    public float currentTimerValue = 0f; //!< The value of the current timer used in whatever stage the Unver is in.
+    [SerializeField] private string currentTimerName = "Timer"; //!< The name of the current timer used in whatever stage the Unver is in.
+    [SerializeField] private float currentTimerValue = 0f; //!< The value of the current timer used in whatever stage the Unver is in.
 
     void Start()
     {
-        detector = gameObject.GetComponent<PlayerToGhostDetector>();
         ghostAnimator = gameObject.GetComponent<Animator>();
 
         stalkingAudio.volume = 0f;
@@ -475,9 +474,9 @@ public class GhostStage : MonoBehaviour
             spawnPosition = new Vector3(spawnPosition.x, spawnPosition.y + (raycastRange - floorSpawnHit.distance), spawnPosition.z);
         }
 
-        spawnAngle = Quaternion.Angle(Quaternion.LookRotation(spawnPosition + raycastScript.targetOffset - playerHead.position, Vector3.up), Quaternion.Euler(normalizedPlayerHead)); //< Gets the angle from the player's head position to the spawn position and to where the player's head is facing.
+        spawnAngle = Quaternion.Angle(Quaternion.LookRotation(spawnPosition - playerHead.position, Vector3.up), Quaternion.Euler(normalizedPlayerHead)); //< Gets the angle from the player's head position to the spawn position and to where the player's head is facing.
 
-        Ray borrowedRaycast = new Ray(playerHead.position, spawnPosition + raycastScript.targetOffset - playerHead.position);
+        Ray borrowedRaycast = new Ray(playerHead.position, spawnPosition - playerHead.position);
         RaycastHit borrowedHit;
 
         if (playerRaycastIgnoreLayers.Length == 0)
@@ -495,8 +494,8 @@ public class GhostStage : MonoBehaviour
         }
 
         if ((!Physics.Raycast(raycastDown, out floorSpawnHit, raycastRange * 2, (1 << floorLayer)) || //< Checks if there's a floor.
-            ((!Physics.Raycast(borrowedRaycast, out borrowedHit, Vector3.Distance(playerHead.position, spawnPosition + raycastScript.targetOffset), playerRaycastLayerMask)) && //< Checks if the player's line of sight is in the way. (Part 1: Raycast)
-            (Vector3.Distance(raycastScript.gameObject.transform.position, raycastScript.target.transform.position) <= raycastScript.maxRaycastDistance) && //< (Part 2: Distance)
+            ((!Physics.Raycast(borrowedRaycast, out borrowedHit, Vector3.Distance(playerHead.position, spawnPosition), playerRaycastLayerMask)) && //< Checks if the player's line of sight is in the way. (Part 1: Raycast)
+            (Vector3.Distance(raycastScript.gameObject.transform.position, playerHead.transform.position) <= raycastScript.maxRaycastDistance) && //< (Part 2: Distance)
             ((raycastScript.totalFieldOfView * 1.5) / 2 >= spawnAngle))) && //< (Part 3: Angle comparison)
             (ghostSpawnFailSafe < 10000f)) //< Cancels the spawn when it has relocated 10,000 times.
         {

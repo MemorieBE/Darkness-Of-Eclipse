@@ -11,14 +11,14 @@ using UnityEngine;
 public class LIDSeventhKey : MonoBehaviour
 {
     [Header("Seventh Key")]
-    public GameObject seventhKey; //!< The seventh key game object.
-    public AudioSource lineSeventeenAudio; //!< The audio source of the line seventeen audio.
+    [SerializeField] private GameObject seventhKey; //!< The seventh key game object.
+    [SerializeField] private AudioSource lineSeventeenAudio; //!< The audio source of the line seventeen audio.
     private bool lineSeventeenPlayed = false; //!< A boolean that determines whether or not the line seventeen audio has been played.
-    public Vector3 seventhKeyPositionOffset; //!< The offset position from the Unver position that the seventh key will spawn at.
+    [SerializeField] private Vector3 seventhKeyPositionOffset; //!< The offset position from the Unver position that the seventh key will spawn at.
     private bool keySpawned = false; //!< A boolean that determines whether or not the key has spawned in this deactivation stage.
 
     [Header("Unver")]
-    public GameObject unver; //!< The Unver game object.
+    [SerializeField] private GameObject unver; //!< The Unver game object.
 
     void Start()
     {
@@ -31,7 +31,7 @@ public class LIDSeventhKey : MonoBehaviour
 
         if (GlobalUnverKeyScript.keyCount == 6)
         {
-            if (!keySpawned)
+            if (unver.GetComponent<GhostStage>().ghostDeactivationStage && !keySpawned)
             {
                 keySpawned = true;
 

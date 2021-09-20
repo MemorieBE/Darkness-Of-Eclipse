@@ -42,9 +42,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.745283, g: 0.63630295, b: 0.74197936, a: 1}
-  m_Intensity: 0.5
-  m_Range: 3
+  m_Color: {r: 0.6320754, g: 0.5098344, b: 0.6277097, a: 1}
+  m_Intensity: 0.25
+  m_Range: 2
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -202,7 +202,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theUnver: {fileID: 0}
-  globalUnverKey: {fileID: 0}
   keyID: 0
 --- !u!114 &4401090986072232354
 MonoBehaviour:
@@ -232,4 +231,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemID: 0
-  inventoryScript: {fileID: 0}

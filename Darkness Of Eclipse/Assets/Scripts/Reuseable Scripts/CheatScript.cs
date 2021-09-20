@@ -11,21 +11,23 @@ using UnityEngine.UI;
 public class CheatScript : MonoBehaviour
 {
     public static bool cheatsEnabled = true; //!< A boolean that controls whether or not cheats are enabled.
+    public static bool cheatsInputDisabled = false; //!< A boolean that controls whether or not the cheats input is disabled.
 
     [Header("Input Field")]
     public InputField cheatInputField; //!< The cheat input field.
 
     [Header("Scripts And References")]
-    public SceneCheckpoints checkpointScript; //!< The checkpoint script.
-    public SavePointMaster savePointScript; //!< The save point game script.
-    public GameObject playerObject; //!< The player game object.
-    public GameObject editorLight; //!< The editor light game object.
+    [SerializeField] private SceneCheckpoints checkpointScript; //!< The checkpoint script.
+    [SerializeField] private SavePointMaster savePointScript; //!< The save point game script.
+    [SerializeField] private DropEquippable dropScript; //!< The drop script.
+    [SerializeField] private GameObject playerObject; //!< The player game object.
+    [SerializeField] private GameObject editorLight; //!< The editor light game object.
 
     private bool cheatPanelOpen = false; //!< A boolean that determines whether the cheat panel is open.
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F1))
+        if (Input.GetKeyDown(KeyCode.F1) && cheatsEnabled && !cheatsInputDisabled)
         {
             cheatPanelOpen = !cheatPanelOpen;
             cheatInputField.gameObject.SetActive(cheatPanelOpen);
@@ -40,8 +42,17 @@ public class CheatScript : MonoBehaviour
             {
                 cheatInputField.text = "";
 
-                PlayerControllerCC.allowPlayerInputs = !StaticVars.automaticEvent;
+                PlayerControllerCC.allowPlayerInputs = true;
             }
+        }
+        else if ((!cheatsEnabled || cheatsInputDisabled) && cheatPanelOpen)
+        {
+            cheatPanelOpen = false;
+            cheatInputField.gameObject.SetActive(false);
+
+            cheatInputField.text = "";
+
+            PlayerControllerCC.allowPlayerInputs = !GameRules.cancelAllInputs;
         }
 
         if (cheatPanelOpen && Input.GetKeyDown(KeyCode.Return))
@@ -74,7 +85,7 @@ public class CheatScript : MonoBehaviour
             Debug.Log("Timescale set to " + timescaleValue);
 
             if (!PauseScript.isPaused) Time.timeScale = timescaleValue;
-            StaticVars.timeScaleMultiplier = timescaleValue;
+            GameRules.timeScaleMultiplier = timescaleValue;
         }
 
         // Loadpoint Command.
@@ -183,6 +194,17 @@ public class CheatScript : MonoBehaviour
             Debug.Log("Equipt item " + equippableValue);
 
             CurrentEquippable.currentEquippable = equippableValue;
+        }
+
+        // Drop Command.
+        int dropValue;
+        if (splitString.Length == 2 &&
+            splitString[0] == "drop" &&
+            int.TryParse(splitString[1], out dropValue))
+        {
+            Debug.Log("Drop item " + dropValue);
+
+            dropScript.EquippableDrop(dropValue);
         }
     }
 }

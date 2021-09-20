@@ -11,16 +11,16 @@ using UnityEngine.UI;
 public class CloseTransition : MonoBehaviour
 {
     [Header("Assets")]
-    public AmbienceSoundLooper ambience; //!< The background ambience to activate.
-    public Image blackUI; //!< The black UI panel to fade out.
-    public SceneCheckpoints checkpointScripts; //!< The script that controls the current checkpoint and scene.
+    [SerializeField] private AmbienceSoundLooper ambience; //!< The background ambience to activate.
+    [SerializeField] private Image blackUI; //!< The black UI panel to fade out.
+    [SerializeField] private SceneCheckpoints checkpointScripts; //!< The script that controls the current checkpoint and scene.
 
     [Header("Inputs")]
-    public float fadeTime = 3f; //!< The amount of time in seconds it will take for the black UI panel to fade out.
+    [SerializeField] private float fadeTime = 3f; //!< The amount of time in seconds it will take for the black UI panel to fade out.
     private float timer = 0f; //!< The fade timer.
     private bool activeTimer = false; //!< A boolean that determines whether or not the timer is active.
-    public int checkpointTransition = 0; //!< The checkpoint to transition to.
-    public int sceneTransition = 0; //!< The scene to transition to.
+    [SerializeField] private int checkpointTransition = 0; //!< The checkpoint to transition to.
+    [SerializeField] private int sceneTransition = 0; //!< The scene to transition to.
     [SerializeField] private bool unfinishedNextScene = false; //!< A boolean that controls whether or not the transition will alternatively go to the main menu.
 
     /*!
@@ -45,6 +45,14 @@ public class CloseTransition : MonoBehaviour
                 Transition();
                 gameObject.GetComponent<Interactable>().interacted = false;
                 gameObject.GetComponent<Interactable>().enabled = false;
+            }
+        }
+
+        if (gameObject.GetComponent<TriggerDetectionEnter>() != null)
+        {
+            if (gameObject.GetComponent<TriggerDetectionEnter>().activated)
+            {
+                Transition();
             }
         }
 

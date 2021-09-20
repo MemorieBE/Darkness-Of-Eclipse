@@ -13,13 +13,13 @@ public class PauseScript : MonoBehaviour
     public static bool isPausable = true; //!< A boolean that controls whether or not the pause mechanic is active.
 
     [Header("UI")]
-    public GameObject pauseUI; //!< The pause UI game object.
-    public GameObject settingsUI; //!< The settings UI game object.
+    [SerializeField] private GameObject pauseUI; //!< The pause UI game object.
+    [SerializeField] private GameObject settingsUI; //!< The settings UI game object.
 
     [Header("Audio")]
-    public float audioFadeTime = 0.5f; //!< The amount of time in seconds the audio will fade out to.
+    [SerializeField] private float audioFadeTime = 0.5f; //!< The amount of time in seconds the audio will fade out to.
     private float fadeTimer = 0f; //!< The audio fade timer.
-    [Range(-3f, 3f)] public float targetPitch = 0f; //!< The target pitch the audio will fade to.
+    [Range(-3f, 3f)] [SerializeField] private float targetPitch = 0f; //!< The target pitch the audio will fade to.
     private bool audioFaded = false; //!< A boolean that determines whether or not the audio has faded.
     private AudioSource[] masterAudio; //!< All audio sources to pause.
     private float[] originalAudioVolume; //!< The original volume for the paused audio sources.
@@ -37,7 +37,7 @@ public class PauseScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && !settingsUI.activeSelf)
         {
             if (isPaused) UnPause();
-            else if (isPausable) Pause();
+            else if (isPausable && !GameMenuScript.isOpened) Pause();
         }
 
         if (isPaused && !audioFaded)
@@ -98,7 +98,7 @@ public class PauseScript : MonoBehaviour
     public void UnPause()
     {
         isPaused = false;
-        Time.timeScale = StaticVars.timeScaleMultiplier;
+        Time.timeScale = GameRules.timeScaleMultiplier;
 
         for (int i = 0; i < masterAudio.Length; i++)
         {

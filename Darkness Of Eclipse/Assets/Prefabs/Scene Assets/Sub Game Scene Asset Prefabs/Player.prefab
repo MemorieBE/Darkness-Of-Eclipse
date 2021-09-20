@@ -31,7 +31,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.69000053, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3800998809816677599}
   - {fileID: 3800998810161958016}
   m_Father: {fileID: 3800998809411528987}
   m_RootOrder: 0
@@ -270,59 +269,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHead: {fileID: 3800998808135323668}
---- !u!1 &3800998809816677596
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3800998809816677599}
-  - component: {fileID: 3800998809816677598}
-  m_Layer: 12
-  m_Name: PlayerToUnverRaycast
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3800998809816677599
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3800998809816677596}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3800998808135323668}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3800998809816677598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3800998809816677596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 892ef5fbbb78abe41bd1fda85c017c23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHead: {fileID: 3800998808135323669}
-  target: {fileID: 0}
-  raycastIgnoreLayers: 090000000a0000000c000000
-  targetOffset: {x: 0, y: 0, z: 0}
-  maxRaycastDistance: 1000
-  fOVOffset: 0
-  totalFieldOfView: 0
-  debugRaycast: 1
-  targetInSight: 0
-  fOVAngle: 0
 --- !u!1 &3800998810161958017
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,7 +299,7 @@ Transform:
   m_LocalScale: {x: 0.099999994, y: 0.1, z: 0.099999994}
   m_Children: []
   m_Father: {fileID: 3800998808135323668}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3800998810161958021
 MeshFilter:

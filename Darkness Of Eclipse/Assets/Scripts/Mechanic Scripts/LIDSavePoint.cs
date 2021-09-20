@@ -13,14 +13,19 @@ public class LIDSavePoint : MonoBehaviour
     public int scene; //!< The Locked In Despair scene index.
 
     [Header("References")]
-    public PlankScript[] plankScripts; //!< The plank scripts;
-    public LIDCorpseAnimation corpseScript; //!< The corpse script;
+    [SerializeField] private PlankScript[] plankScripts; //!< The plank scripts.
+    [SerializeField] private LIDCorpseAnimation corpseScript; //!< The corpse script.
+    [SerializeField] private GhostStage unverScript; //!< The Unvermeidlich script.
 
     public static bool hasSavePoint = false; //!< A boolean that controls whether or not the scene currently has a save point for Locked In Despair.
 
     public static bool[] savedPlankStates; //!< The plank states to save.
 
-    public static bool saveCorpseAudioState; //!< The corpse audio state to save.
+    public static bool savedCorpseAudioState; //!< The corpse audio state to save.
+
+    public static bool savedUnverActiveState; //!< The Unver active state to save.
+    public static bool savedUnverStagesState; //!< The Unver activation stage state to save.
+    public static int savedUnverTier; //!< The Unver tier to  save.
 
     public static int savedKeyCount; //!< The key count to save.
     public static int savedKeyCountForAchievement; //!< The achievement based key count to save.
@@ -46,7 +51,11 @@ public class LIDSavePoint : MonoBehaviour
             savedPlankStates[i] = plankScripts[i].isBroken;
         }
 
-        saveCorpseAudioState = corpseScript.audioPlayed;
+        savedCorpseAudioState = corpseScript.audioPlayed;
+
+        savedUnverActiveState = unverScript.gameObject.activeSelf;
+        savedUnverStagesState = unverScript.ghostStagesActive;
+        savedUnverTier = unverScript.ghostTier;
 
         savedKeyCount = GlobalUnverKeyScript.keyCount;
         savedKeyCountForAchievement = GlobalUnverKeyScript.keyCountForAchievement;
@@ -61,7 +70,11 @@ public class LIDSavePoint : MonoBehaviour
 
         savedPlankStates = new bool[0];
 
-        saveCorpseAudioState = false;
+        savedCorpseAudioState = false;
+
+        savedUnverActiveState = false;
+        savedUnverStagesState = false;
+        savedUnverTier = 0;
 
         savedKeyCount = 0;
         savedKeyCountForAchievement = 0;
@@ -83,7 +96,11 @@ public class LIDSavePoint : MonoBehaviour
             }
         }
 
-        corpseScript.audioPlayed = saveCorpseAudioState;
+        corpseScript.audioPlayed = savedCorpseAudioState;
+
+        unverScript.gameObject.SetActive(savedUnverActiveState);
+        unverScript.ghostStagesActive = savedUnverStagesState;
+        unverScript.ghostTier = savedUnverTier;
         
         GlobalUnverKeyScript.keyCount = savedKeyCount;
         GlobalUnverKeyScript.keyCountForAchievement = savedKeyCountForAchievement;
