@@ -10,15 +10,16 @@ using System.Linq;
 public class FOVRaycast : MonoBehaviour
 {
     [Header("Assets")]
-    public GameObject playerHead; //!< The player head game object.
-    public int[] raycastIgnoreLayers; //!< The layers that the raycast will ignore.
+    [SerializeField] private Transform target; //!< The target transform.
+    [SerializeField] private Transform subject; //!< The subject transform.
+    [SerializeField] private int[] raycastIgnoreLayers; //!< The layers that the raycast will ignore.
 
     [Header("Inputs")]
     public float maxRaycastDistance = 1000f; //!< The maximum distance of the raycast.
+    [SerializeField] private bool invert = false; //!< A boolen that controls whether or not the raycast is inverted.
 
     [Header("Angle")]
-    public float fOVOffset = 0f; //!< The number added to the camera field of view to calculate the raycast field of view.
-    [HideInInspector] public float totalFieldOfView; //!< The raycast total field of view.
+    public float fieldOfView = 60f; //!< The raycast total field of view.
 
     [Header("Debug")]
     [SerializeField] private bool debugRaycast = true; //!< A boolean that controls whether or not the raycast debug is visable in the editor at runtime.
@@ -27,24 +28,28 @@ public class FOVRaycast : MonoBehaviour
     public bool targetInSight; //!< A boolean that determines whether or not the target is in the player's line of sight.
     public float fOVAngle; //!< The current angle from the player head forward direction to the player head target direction.
 
-    private Camera playerHeadCamera; //!< The player head camera.
-
-    void Start()
-    {
-        playerHeadCamera = playerHead.GetComponent<Camera>();
-    }
-
     void Update()
     {
-        // Creates a Vector3 of the player's head rotations without the z axis.
-        Vector3 normalizedHead = playerHead.transform.rotation.eulerAngles;
-        normalizedHead.z = 0;
+        gameObject.transform.LookAt(target.position);
 
-        gameObject.transform.LookAt(playerHead.transform.position);
+        if (!invert)
+        {
+            Vector3 normalizedSubject = subject.rotation.eulerAngles;
+            normalizedSubject.z = 0;
 
-        fOVAngle = Quaternion.Angle(Quaternion.Euler(-gameObject.transform.rotation.eulerAngles), Quaternion.Euler(normalizedHead));
+            fOVAngle = Quaternion.Angle(gameObject.transform.rotation, Quaternion.Euler(normalizedSubject));
+        }
+        else
+        {
+            Vector3 normalizedTarget = target.rotation.eulerAngles;
+            normalizedTarget.z = 0;
 
-        Ray raycast = new Ray(gameObject.transform.position, playerHead.transform.position - gameObject.transform.position);
+            fOVAngle = Quaternion.Angle((gameObject.transform.rotation * Quaternion.AngleAxis(180f, Vector3.up)), Quaternion.Euler(normalizedTarget));
+        }
+
+        Ray raycast;
+        if (!invert) { raycast = new Ray(gameObject.transform.position, target.position - gameObject.transform.position); }
+        else { raycast = new Ray(target.position, gameObject.transform.position - target.position); }
         RaycastHit hit;
 
         int layerMask = 1 << raycastIgnoreLayers[0];
@@ -54,17 +59,15 @@ public class FOVRaycast : MonoBehaviour
         }
         layerMask = ~layerMask;
 
-        totalFieldOfView = playerHeadCamera.fieldOfView + fOVOffset;
-
-        if ((Physics.Raycast(raycast, out hit, Vector3.Distance(gameObject.transform.position, playerHead.transform.position), layerMask) || //< If the raycast hits a collider.
-            (Vector3.Distance(gameObject.transform.position, playerHead.transform.position) > maxRaycastDistance) || //< If the target is further than the maximum distance.
-            (totalFieldOfView / 2 < fOVAngle))) //< If field of view radius is smaller than the angle.
+        if ((Physics.Raycast(raycast, out hit, Vector3.Distance(gameObject.transform.position, target.position), layerMask) || //< If the raycast hits a collider.
+            (Vector3.Distance(gameObject.transform.position, target.position) > maxRaycastDistance) || //< If the target is further than the maximum distance.
+            (fieldOfView / 2 < fOVAngle))) //< If field of view radius is smaller than the angle.
         {
             // Raycast is not hitting target.
 
             targetInSight = false;
 
-            if (debugRaycast) Debug.DrawLine(gameObject.transform.position, playerHead.transform.position, Color.red);
+            if (debugRaycast) Debug.DrawLine(gameObject.transform.position, target.position, Color.red);
         }
         else
         {
@@ -72,7 +75,7 @@ public class FOVRaycast : MonoBehaviour
 
             targetInSight = true;
 
-            if (debugRaycast) Debug.DrawLine(gameObject.transform.position, playerHead.transform.position, Color.green);
+            if (debugRaycast) Debug.DrawLine(gameObject.transform.position, target.position, Color.green);
         }
     }
 }

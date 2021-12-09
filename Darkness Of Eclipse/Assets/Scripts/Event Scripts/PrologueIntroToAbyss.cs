@@ -9,48 +9,47 @@ using UnityEngine;
 public class PrologueIntroToAbyss : MonoBehaviour
 {
     [Header("Assets")]
-    public TriggerDetectionEnter triggerScript; //!< The script that controls the trigger.
-    public DoorScript doorScript1; //!< The script that controls the first door.
-    public DoorScript doorScript2; //!< The script that controls the second door.
-    public GameObject linesObject; //!< The lines game object.
-    public GameObject smallAbyss; //!< The small abyss game object.
+    [SerializeField] private DoorScript doorScript1; //!< The script that controls the first door.
+    [SerializeField] private DoorScript doorScript2; //!< The script that controls the second door.
+    [SerializeField] private SmartLineController lineController; //!< The smart line controller script.
+    [SerializeField] private GameObject smallAbyss; //!< The small abyss game object.
 
     [Header("Inputs")]
-    public float eventDuration = 10f; //!< The amount of time in seconds that the event will last for.
-    private float timer = 0f; //!< The event timer.
-    private bool eventStarted = false; //!< A boolean that determines whether or not the event has started.
+    [SerializeField] private float eventDuration = 10f; //!< The amount of time in seconds that the event will last for.
 
-    void Update()
+    /*!
+     *  A method that is triggered on activation.
+     */
+    public void Activated()
     {
-        if (triggerScript.activated)
-        {
-            eventStarted = true;
+        StartCoroutine(StartEvent());
 
-            doorScript1.open = false;
-            doorScript1.locked = true;
-            doorScript2.open = false;
-            doorScript2.locked = true;
+        doorScript1.open = false;
+        doorScript1.locked = true;
+        doorScript1.UpdateDoorAnimation();
 
-            linesObject.SetActive(true);
+        doorScript2.open = false;
+        doorScript2.locked = true;
+        doorScript2.UpdateDoorAnimation();
 
-            timer = 0f;
-        }
+        lineController.ActivateLine(0);
+        lineController.ActivateLine(1);
+        lineController.ActivateLine(2);
+        lineController.ActivateLine(3);
+    }
 
-        if (eventStarted)
-        {
-            if (timer >= eventDuration)
-            {
-                eventStarted = false;
+    IEnumerator StartEvent()
+    {
+        yield return new WaitForSeconds(eventDuration);
 
-                doorScript1.open = true;
-                doorScript1.locked = false;
-                doorScript2.open = true;
-                doorScript2.locked = false;
+        doorScript1.open = true;
+        doorScript1.locked = false;
+        doorScript1.UpdateDoorAnimation();
 
-                smallAbyss.SetActive(true);
-            }
+        doorScript2.open = true;
+        doorScript2.locked = false;
+        doorScript2.UpdateDoorAnimation();
 
-            timer += Time.deltaTime;
-        }
+        smallAbyss.SetActive(true);
     }
 }

@@ -12,7 +12,6 @@ public class LIDGateOpenScript : MonoBehaviour
     public Animator gateAnimator; //!< The gate animator.
     public AudioSource gateOpenSound; //!< The audio source for the gate opening audio.
 
-    private bool open = false; //!< A boolean that determines whether or not the gate is open.
     private bool noRepeat = true; //!< A boolean that determines whether or not the gate hasn't been open.
 
     void Start()
@@ -20,23 +19,17 @@ public class LIDGateOpenScript : MonoBehaviour
         noRepeat = true;
     }
 
-    void Update()
-    {
-        if (open) gateAnimator.SetBool("GateOpen", true);
-
-        if (gameObject.GetComponent<Interactable>().interacted) Interact();
-    }
-
     /*!
-     *  A method that is activated when the player interacts with the gate using the Interactable script.
+     *  A method that is triggered on activation.
      */
-    private void Interact()
+    public void Activated()
     {
         if ((GlobalUnverKeyScript.keyCount >= 7) && (noRepeat))
         {
-            open = true;
             gateOpenSound.Play();
             noRepeat = false;
+
+            gateAnimator.SetBool("GateOpen", true);
         }
     }
 }

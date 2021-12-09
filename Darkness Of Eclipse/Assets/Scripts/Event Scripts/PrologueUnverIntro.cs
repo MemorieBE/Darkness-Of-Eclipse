@@ -11,39 +11,36 @@ using UnityEngine.UI;
 public class PrologueUnverIntro : MonoBehaviour
 {
     [Header("Player")]
-    public GameObject player; //!< The player game object.
+    [SerializeField] private GameObject player; //!< The player game object.
 
     [Header("Assets")]
-    public GameObject ghostObject; //!< The Unver game object to reference scripts.
-    public Image blackCanvas; //!< The black canvas UI.
-    public AudioSource eventAudio; //!< The event audio source.
+    [SerializeField] private GameObject ghostObject; //!< The Unver game object to reference scripts.
+    [SerializeField] private Image blackCanvas; //!< The black canvas UI.
+    [SerializeField] private AudioSource eventAudio; //!< The event audio source.
 
     [Header("Scripts And References")]
-    public SceneCheckpoints checkpointScript; //!< The script that controls the checkpoints and scenes.
-    public TriggerDetectionEnter detectorScript; //!< The script that controls the line detecting children.
-    public FOVRaycast raycastScript; //!< The script that controls the player Unver raycast.
-    public AmbienceSoundLooper ghostAmbienceScript; //!< The script that controls the Unver ambience sound looper.
-    public AmbienceSoundLooper worldAmbienceScript; //!< The script that controls the world ambience sound looper.
-    public AudioSource distanceBasedAmbienceAudio; //!< The audio source that controls the audio by distance script.
-    public PlayerToGhostDetector unverDetection; //!< The script that controls the Unver player detection.
-    public OpenTransition transitionScript; //!< The script that controls the open transition of the next checkpoint.
-
-    [Header("Teleport")]
-    public Transform teleportExit; //!< The transform to teleport the player to.
+    [SerializeField] private SceneCheckpoints checkpointScript; //!< The script that controls the checkpoints and scenes.
+    [SerializeField] private FOVRaycast raycastScript; //!< The script that controls the player Unver raycast.
+    [SerializeField] private AmbienceSoundLooper ghostAmbienceScript; //!< The script that controls the Unver ambience sound looper.
+    [SerializeField] private AmbienceSoundLooper worldAmbienceScript; //!< The script that controls the world ambience sound looper.
+    [SerializeField] private AudioSource distanceBasedAmbienceAudio; //!< The audio source that controls the audio by distance script.
+    [SerializeField] private PlayerToGhostDetector unverDetection; //!< The script that controls the Unver player detection.
+    [SerializeField] private OpenTransition transitionScript; //!< The script that controls the open transition of the next checkpoint.
 
     [Header("Layers")]
-    public int floorLayer = 8; //!< The floor layer.
+    [SerializeField] private int floorLayer = 8; //!< The floor layer.
 
     [Header("Inputs")]
-    public float ghostDistance = 1f; //!< The distance away from the player the ghost should spawn.
-    public float raycastRange = 1000f; //!< The range of the floor raycast.
+    [SerializeField] private float ghostDistance = 1f; //!< The distance away from the player the ghost should spawn.
+    [SerializeField] private float raycastRange = 1000f; //!< The range of the floor raycast.
+
     private bool eventActive = false; //!< A boolean that determines whether or not the event is active.
 
     [Header("Times")]
-    public float starePauseTime = 0.5f; //!< The amount of time in seconds the event will cut to black if the player looks at the Unver early.
-    public float autoCutTime = 3.5f; //!< The amount of time in seconds the event will cut to black if the player doesn't look at the Unver early.
-    public float staredAudioDelay = 1f; //!< The amount of time in seconds the event audio will start if the player looks at the Unver early.
-    public float audioStartTime = 5f; //!< The amount of time in seconds the event audio will start if the player doesn't look at the Unver early.
+    [SerializeField] private float starePauseTime = 0.5f; //!< The amount of time in seconds the event will cut to black if the player looks at the Unver early.
+    [SerializeField] private float autoCutTime = 3.5f; //!< The amount of time in seconds the event will cut to black if the player doesn't look at the Unver early.
+    [SerializeField] private float staredAudioDelay = 1f; //!< The amount of time in seconds the event audio will start if the player looks at the Unver early.
+    [SerializeField] private float audioStartTime = 5f; //!< The amount of time in seconds the event audio will start if the player doesn't look at the Unver early.
 
     private float stareTimer = 0f; //!< A float timer that counts up only when the player has stared at the Unver.
     private float timer = 0f; //!< A float timer that counts up throughout the entire event.
@@ -52,18 +49,18 @@ public class PrologueUnverIntro : MonoBehaviour
     private bool audioStarted = false; //!< A boolean that determines whether or not the event audio has been player.
     private bool hasCut = false; //!< A boolean that determines whether or not the event has cut to black.
 
+    public void Activated()
+    {
+        ghostObject.SetActive(true);
+        ghostObject.GetComponent<Animator>().SetInteger("Stage", 1);
+        GhostSpawnBehindPlayer();
+        eventActive = true;
+        ghostAmbienceScript.activeSounds = true;
+        eventAudio.gameObject.transform.position = ghostObject.transform.position;
+    }
+
     void Update()
     {
-        if (detectorScript.activated)
-        {
-            ghostObject.SetActive(true);
-            ghostObject.GetComponent<Animator>().SetInteger("Stage", 1);
-            GhostSpawnBehindPlayer();
-            eventActive = true;
-            ghostAmbienceScript.activeSounds = true;
-            eventAudio.gameObject.transform.position = ghostObject.transform.position;
-        }
-
         if (eventActive && raycastScript.targetInSight && !stared)
         {
             stared = true;
@@ -148,10 +145,6 @@ public class PrologueUnverIntro : MonoBehaviour
      */
     private void EventOver()
     {
-        gameObject.GetComponent<TeleportBasicMethodCC>().Teleport();
-
-        transitionScript.Transition();
-
         checkpointScript.LoadCheckpoint(0, 1);
         checkpointScript.ReloadScene();
     }

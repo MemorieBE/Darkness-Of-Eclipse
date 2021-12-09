@@ -8,26 +8,14 @@ using UnityEngine;
  */
 public class LocalUnverKeyScript : MonoBehaviour
 {
-    public GameObject theUnver; //!< The Unver game object.
+    [SerializeField] private GhostStage ghostStageScript; //!< The script that controls the Unver stages.
 
-    private GhostStage ghostStageScript; //!< The script that controls the Unver stages.
-
-    public int keyID; //!< The ID for the key.
-
-    void Start()
-    {
-        ghostStageScript = theUnver.GetComponent<GhostStage>();
-    }
-
-    void Update()
-    {
-        if (gameObject.GetComponent<Interactable>().interacted) Interact();
-    }
+    [SerializeField] private int keyID; //!< The ID for the key.
 
     /*!
-     *  A method that is activated when the player interacts with the gate using the Interactable script.
+     *  A method that is triggered on activation.
      */
-    void Interact()
+    public void Activated()
     {
         GlobalUnverKeyScript.keyCount ++;
         if (keyID == GlobalUnverKeyScript.keyCount) GlobalUnverKeyScript.keyCountForAchievement++;

@@ -98,11 +98,6 @@ PrefabInstance:
       propertyPath: playerHead
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 3645569840089702172, guid: 0a3cc70c6ef694e43b1af9f50a40c47d,
-        type: 3}
-      propertyPath: raycastScript
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3645569840089702173, guid: 0a3cc70c6ef694e43b1af9f50a40c47d,
         type: 3}
       propertyPath: detectionScript

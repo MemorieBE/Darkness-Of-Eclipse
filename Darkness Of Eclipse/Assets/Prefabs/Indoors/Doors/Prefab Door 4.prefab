@@ -417,6 +417,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3432552380903667146}
   - component: {fileID: 1411741180922002964}
+  - component: {fileID: 4643001892484687633}
+  - component: {fileID: 5910118138032347827}
+  - component: {fileID: 1788474655738860365}
+  - component: {fileID: 2938877045981692600}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -463,6 +467,82 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &4643001892484687633
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3289115781071194276}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.006, y: 0.0325, z: 0.018}
+  m_Center: {x: 0.002, y: -0.001, z: 0}
+--- !u!114 &5910118138032347827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3289115781071194276}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ec9080d77fc1c844851482888afe76d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prompt: Interact
+  sprite: {fileID: 21300000, guid: b5ac47ee849459c49b129680a962629a, type: 3}
+  aDED: 0
+  scripts:
+  - {fileID: 2938877045981692600}
+  disableOnActivation: 0
+  resetsActivation: 1
+  activated: 0
+--- !u!114 &1788474655738860365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3289115781071194276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa58f70ea4d151498dbdfa1935b00bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptWithItem: Unlock
+  spriteWithItem: {fileID: 21300000, guid: b5ac47ee849459c49b129680a962629a, type: 3}
+  promptWithoutItem: Locked
+  spriteWithoutItem: {fileID: 21300000, guid: b5ac47ee849459c49b129680a962629a, type: 3}
+  itemNeeded: 0
+  itemConsumable: 1
+  aDED: 2
+  scripts:
+  - {fileID: 2938877045981692600}
+  disableOnActivation: 0
+  resetsActivation: 0
+  activated: 0
+--- !u!114 &2938877045981692600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3289115781071194276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35a81abfba69e3e4dbfcafc0ae04efbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 1411741180922002964}
+  hasUnlockedAnimations: 1
+  openAudio: {fileID: 8410557841331389074}
+  closeAudio: {fileID: 8443924656671179461}
+  lockedAudio: {fileID: 4151518692928523251}
+  locked: 1
+  open: 0
 --- !u!1 &4270789538619367619
 GameObject:
   m_ObjectHideFlags: 0

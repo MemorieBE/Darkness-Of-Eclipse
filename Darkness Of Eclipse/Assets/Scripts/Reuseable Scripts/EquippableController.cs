@@ -11,7 +11,6 @@ public class EquippableController : MonoBehaviour
     [Header("Inputs")]
     public bool isActive = false; //!< A boolean that determines whether or not the equippable is active.
     public float animationStartPause = 1f; //!< The ammount of time in seconds until the active animation will start.
-    private float timer; //!< The animation pause timer.
 
     private Animator equippableAnimator; //!< The equippable animator.
 
@@ -22,22 +21,20 @@ public class EquippableController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1) && gameObject.activeSelf && !PauseScript.isPaused && PlayerControllerCC.allowPlayerInputs)
+        if (Input.GetMouseButtonDown(1) && gameObject.activeSelf && PlayerControllerCC.allowPlayerInputs)
         {
-            isActive = !isActive;
-
-            if (isActive) timer = 0f;
+            StartCoroutine(SwingCooldown());
         }
+    }
 
-        if (isActive)
-        {
-            if (timer >= animationStartPause) equippableAnimator.SetBool("IsActive", true);
+    private IEnumerator SwingCooldown()
+    {
+        isActive = false;
+        equippableAnimator.SetBool("IsActive", true);
 
-            timer += Time.deltaTime;
-        }
-        else
-        {
-            equippableAnimator.SetBool("IsActive", false);
-        }
+        yield return new WaitForSeconds(animationStartPause);
+
+        isActive = true;
+        equippableAnimator.SetBool("IsActive", false);
     }
 }

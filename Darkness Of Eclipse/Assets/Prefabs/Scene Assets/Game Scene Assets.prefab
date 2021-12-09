@@ -148,11 +148,6 @@ PrefabInstance:
       propertyPath: playerHead
       value: 
       objectReference: {fileID: 2509686229061333337}
-    - target: {fileID: 7522461361393200892, guid: cf8b8b8c88682164a992554f3bcac69a,
-        type: 3}
-      propertyPath: raycastScript
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7522461361393200893, guid: cf8b8b8c88682164a992554f3bcac69a,
         type: 3}
       propertyPath: blackScreen
@@ -377,6 +372,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2509686229799077973}
+    - target: {fileID: 1735928342273916169, guid: 4e42fca576775ff49ad02e90364a7a97,
+        type: 3}
+      propertyPath: characterController
+      value: 
+      objectReference: {fileID: 2509686229799077975}
     - target: {fileID: 3455597420392951554, guid: 4e42fca576775ff49ad02e90364a7a97,
         type: 3}
       propertyPath: m_RootOrder

@@ -41,24 +41,13 @@ public class InteractController : MonoBehaviour
 
         if (Physics.Raycast(raycast, out hit, interactDistance, layerMask))
         {
-            if (hit.collider.gameObject.GetComponent<Interactable>() != null && hit.collider.gameObject.GetComponent<Interactable>().enabled)
+            if (hit.collider.gameObject.GetComponent<ADED_ItemBasedInteractable>() != null && !hit.collider.gameObject.GetComponent<ADED_ItemBasedInteractable>().activated)
             {
-                Interactable interactableScript = hit.collider.gameObject.GetComponent<Interactable>();
+                ADED_ItemBasedInteractable interactableScript = hit.collider.gameObject.GetComponent<ADED_ItemBasedInteractable>();
 
                 interactUI.SetActive(true);
 
-                interactText.text = interactableScript.prompt;
-                interactImage.sprite = interactableScript.sprite;
-
-                if (inputToBool) interactableScript.interacted = true;
-            }
-            else if (hit.collider.gameObject.GetComponent<ItemBasedInteractable>() != null && hit.collider.gameObject.GetComponent<ItemBasedInteractable>().enabled)
-            {
-                ItemBasedInteractable interactableScript = hit.collider.gameObject.GetComponent<ItemBasedInteractable>();
-
-                interactUI.SetActive(true);
-
-                if (InventoryScript.inventoryItemState[interactableScript.itemNeeded])
+                if (InventoryScript.inventoryItemStates[interactableScript.itemNeeded])
                 {
                     interactText.text = interactableScript.promptWithItem;
                     interactImage.sprite = interactableScript.spriteWithItem;
@@ -69,7 +58,23 @@ public class InteractController : MonoBehaviour
                     interactImage.sprite = interactableScript.spriteWithoutItem;
                 }
 
-                if (inputToBool) interactableScript.interacted = true;
+                if (inputToBool) 
+                { 
+                    if (InventoryScript.inventoryItemStates[interactableScript.itemNeeded]) { interactableScript.InteractedWithItem(); }
+
+                    if (hit.collider.gameObject.GetComponent<ADED_Interactable>() != null) { hit.collider.gameObject.GetComponent<ADED_Interactable>().Interacted(); }
+                }
+            }
+            else if (hit.collider.gameObject.GetComponent<ADED_Interactable>() != null)
+            {
+                ADED_Interactable interactableScript = hit.collider.gameObject.GetComponent<ADED_Interactable>();
+
+                interactUI.SetActive(true);
+
+                interactText.text = interactableScript.prompt;
+                interactImage.sprite = interactableScript.sprite;
+
+                if (inputToBool) { interactableScript.Interacted(); }
             }
             else
             {
@@ -81,6 +86,6 @@ public class InteractController : MonoBehaviour
             interactUI.SetActive(false);
         }
 
-        if (inputToBool) inputToBool = false;
+        if (inputToBool) { inputToBool = false; }
     }
 }

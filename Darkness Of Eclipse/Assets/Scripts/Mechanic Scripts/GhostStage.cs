@@ -496,7 +496,7 @@ public class GhostStage : MonoBehaviour
         if ((!Physics.Raycast(raycastDown, out floorSpawnHit, raycastRange * 2, (1 << floorLayer)) || //< Checks if there's a floor.
             ((!Physics.Raycast(borrowedRaycast, out borrowedHit, Vector3.Distance(playerHead.position, spawnPosition), playerRaycastLayerMask)) && //< Checks if the player's line of sight is in the way. (Part 1: Raycast)
             (Vector3.Distance(raycastScript.gameObject.transform.position, playerHead.transform.position) <= raycastScript.maxRaycastDistance) && //< (Part 2: Distance)
-            ((raycastScript.totalFieldOfView * 1.5) / 2 >= spawnAngle))) && //< (Part 3: Angle comparison)
+            ((raycastScript.fieldOfView * 1.5) / 2 >= spawnAngle))) && //< (Part 3: Angle comparison)
             (ghostSpawnFailSafe < 10000f)) //< Cancels the spawn when it has relocated 10,000 times.
         {
             if (consoleGhostSpawn) Debug.Log("Relocating");

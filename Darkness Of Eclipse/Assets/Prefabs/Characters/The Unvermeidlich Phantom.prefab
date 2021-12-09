@@ -492,11 +492,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892ef5fbbb78abe41bd1fda85c017c23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHead: {fileID: 0}
+  target: {fileID: 0}
+  subject: {fileID: 3645569840089596727}
   raycastIgnoreLayers: 090000000a0000000c000000
   maxRaycastDistance: 1000
-  fOVOffset: 0
-  totalFieldOfView: 0
+  invert: 1
+  fieldOfView: 60
   debugRaycast: 1
   targetInSight: 0
   fOVAngle: 0

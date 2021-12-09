@@ -8,21 +8,16 @@ using UnityEngine;
  */
 public class LIDIntroDeathAreaEvent : MonoBehaviour
 {
-    [Header("Player")]
-    public GameObject player; //!< The player game object.
-
     [Header("Assets")]
-    public GameObject unverAudio; //!< The Unver audio game object.
-    public GameObject unver1; //!< The first Unver game object.
-    public GameObject unver2; //!< The second Unver game object.
-    public SceneCheckpoints checkpointScript; //!< The checkpoint script.
+    [SerializeField] private GameObject unverAudio; //!< The Unver audio game object.
+    [SerializeField] private GameObject unver1; //!< The first Unver game object.
+    [SerializeField] private GameObject unver2; //!< The second Unver game object.
+    [SerializeField] private SceneCheckpoints checkpointScript; //!< The checkpoint script.
 
-    [Header("Scripts and References")]
-    public TriggerDetectionEnter detectorScript; //!< The script that controls the trigger detection.
     private PlayerToGhostDetector unverDetectionScript; //!< The script that controls the ghost player detection.
 
     [Header("Inputs")]
-    public float duration; //!< The duration of the evnt in seconds.
+    [SerializeField] private float duration; //!< The duration of the evnt in seconds.
 
     private float timer = 0f; //!< The event timer.
     private bool eventStarted = false; //!< A boolean that determines whether or not the event has started.
@@ -32,13 +27,16 @@ public class LIDIntroDeathAreaEvent : MonoBehaviour
         unverDetectionScript = unver2.GetComponent<PlayerToGhostDetector>();
     }
 
+    /*!
+     *  A method that is trigger on activation.
+     */
+    public void Activated()
+    {
+        eventStarted = true;
+    }
+
     void Update()
     {
-        if (detectorScript.activated)
-        {
-            eventStarted = true;
-        }
-
         if (eventStarted)
         {
             if (timer >= duration)
@@ -52,7 +50,6 @@ public class LIDIntroDeathAreaEvent : MonoBehaviour
                     eventStarted = false;
 
                     checkpointScript.LoadCheckpoint(0, 1);
-                    Debug.Log("Test");
                 }
             }
             else

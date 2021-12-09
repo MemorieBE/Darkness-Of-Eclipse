@@ -15,37 +15,54 @@ public class UIPrompt : MonoBehaviour
     public float fadeTime = 2f; //!< The amount of time in seconds that the UI will fade for.
     public float stayTime = 2f; //!< The amount of time in seconds that the UI will stay for.
 
-    private float timer = 0f; //!< The UI timer.
     private float newAlpha = 0f; //!< The updated alpha.
 
     void OnEnable()
     {
-        timer = 0f;
+        StartCoroutine(TimeBasedPrompt());
     }
 
-    void Update()
+    /*!
+     *  An IEnumerator that shows the UI prompt for a certain duration.
+     */
+    IEnumerator TimeBasedPrompt()
     {
-        if (timer <= startTime)
+        newAlpha = 0f;
+
+        UpdateAlpha();
+
+        yield return new WaitForSeconds(startTime);
+
+        while (newAlpha < maxAlpha)
         {
-            newAlpha = 0f;
-        }
-        else if (timer <= startTime + fadeTime)
-        {
-            newAlpha = ((timer - startTime) / fadeTime) * maxAlpha;
-        }
-        else if (timer <= startTime + fadeTime + stayTime)
-        {
-            newAlpha = maxAlpha;
-        }
-        else if (timer <= startTime + fadeTime * 2f + stayTime)
-        {
-            newAlpha = maxAlpha - ((timer - startTime - fadeTime - stayTime) / fadeTime) * maxAlpha;
-        }
-        else
-        {
-            gameObject.SetActive(false);
+            newAlpha += 1f / fadeTime * Time.deltaTime;
+            if (newAlpha > maxAlpha) { newAlpha = maxAlpha; }
+
+            UpdateAlpha();
+
+            yield return null;
         }
 
+        yield return new WaitForSeconds(stayTime);
+
+        while (newAlpha > 0f)
+        {
+            newAlpha -= 1f / fadeTime * Time.deltaTime;
+            if (newAlpha < 0f) { newAlpha = 0f; }
+
+            UpdateAlpha();
+
+            yield return null;
+        }
+
+        gameObject.SetActive(false);
+    }
+
+    /*!
+     *  A method that updates the UI's alpha/opacity.
+     */
+    private void UpdateAlpha()
+    {
         if (gameObject.GetComponent<Text>() != null)
         {
             Color newColor = gameObject.GetComponent<Text>().color;
@@ -59,7 +76,5 @@ public class UIPrompt : MonoBehaviour
             newColor.a = newAlpha;
             gameObject.GetComponent<Image>().color = newColor;
         }
-
-        timer += Time.deltaTime;
     }
 }

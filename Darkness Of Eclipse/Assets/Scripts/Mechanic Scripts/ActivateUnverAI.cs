@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(TriggerDetectionEnter))]
-
-/*! \brief A script that activates the Unver when triggered by the TriggerDetection script.
+/*! \brief A script that activates the Unver when triggered by activation.
  *
  *  [Mechanic Script]
  */
@@ -12,19 +10,13 @@ public class ActivateUnverAI : MonoBehaviour
 {
     [Header("Scripts and References")]
     public GhostStage ghostStageScript; //!< The script that controls the ghost stages.
-    private TriggerDetectionEnter detectionScript; //!< The script that controls the trigger detection.
 
-    void Start()
+    /*!
+     *  A method that is triggered on deactivation.
+     */
+    public void Activated()
     {
-        detectionScript = gameObject.GetComponent<TriggerDetectionEnter>();
-    }
-
-    void Update()
-    {
-        if (detectionScript.activated)
-        {
-            ghostStageScript.ghostStagesActive = true;
-            ghostStageScript.GhostSpawn();
-        }
+        ghostStageScript.ghostStagesActive = true;
+        ghostStageScript.GhostSpawn();
     }
 }

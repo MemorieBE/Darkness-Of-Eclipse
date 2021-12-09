@@ -219,9 +219,12 @@ GameObject:
   - component: {fileID: 7367182451978572894}
   - component: {fileID: 3497195665185284755}
   - component: {fileID: 3936669660419647591}
-  - component: {fileID: 63296104543118002}
+  - component: {fileID: 4167064532381783493}
   - component: {fileID: 2006385281026756137}
   - component: {fileID: 2438859648531511295}
+  - component: {fileID: 1476628026873558511}
+  - component: {fileID: 3536397928149591778}
+  - component: {fileID: 3210975426133527011}
   m_Layer: 18
   m_Name: HousePlayerDetector
   m_TagString: Untagged
@@ -303,7 +306,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &63296104543118002
+--- !u!114 &4167064532381783493
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -312,14 +315,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1802363142240125825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f12e1c6d84a259c48bbf6b61472199ba, type: 3}
+  m_Script: {fileID: 11500000, guid: f82eaa1ebef8ad34c809406cfbf65881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCollider: {fileID: 0}
-  enableOnTrigger: []
-  disableOnTrigger: []
-  enter: 0
-  exit: 0
+  targetCollider: {fileID: 0}
+  aDED: 0
+  scripts:
+  - {fileID: 2006385281026756137}
+  - {fileID: 2438859648531511295}
+  disableOnActivation: 0
+  resetsActivation: 1
+  activated: 0
 --- !u!114 &2006385281026756137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,9 +338,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2c169e9f06c624fb61af30ea579c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundSource: {fileID: 0}
-  setAudioNumberEnter: 1
-  setAudioNumberExit: 0
+  soundSource: {fileID: 7659817296762701158}
+  setAudioNumber: 1
 --- !u!114 &2438859648531511295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,8 +353,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightScript: {fileID: 0}
-  setLightIntensityEnter: 10
-  setLightIntensityExit: 30
+  setLightIntensity: 10
+--- !u!114 &1476628026873558511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802363142240125825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6815e91de6565e149a2ff6a5d50df0ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetCollider: {fileID: 0}
+  aDED: 1
+  scripts:
+  - {fileID: 3536397928149591778}
+  - {fileID: 3210975426133527011}
+  disableOnActivation: 0
+  resetsActivation: 1
+  activated: 0
+--- !u!114 &3536397928149591778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802363142240125825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83a2afad2a3656b48afea7da6714ad8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundSource: {fileID: 7659817296762701158}
+  setAudioNumber: 0
+--- !u!114 &3210975426133527011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802363142240125825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a181329077e248c45a312ba26bb8cf1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightScript: {fileID: 0}
+  setLightIntensity: 15
 --- !u!1 &2037590842515325316
 GameObject:
   m_ObjectHideFlags: 0

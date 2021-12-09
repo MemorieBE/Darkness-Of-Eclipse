@@ -10,7 +10,7 @@ public class PlankScript : MonoBehaviour
 {
     [Header("Assets")]
     public Collider axeCollider; //!< The axe head collider.
-    public GameObject[] brokenPart = new GameObject[2]; //!< The broken plank part game objects.
+    public GameObject[] brokenParts = new GameObject[2]; //!< The broken plank part game objects.
     public AudioSource breakSound; //!< The audio source of the plank breaking audio.
 
     [Header("Inputs")]
@@ -19,8 +19,8 @@ public class PlankScript : MonoBehaviour
     public float popDistance = 100f; //!< The upwards force applied to the plank when broken.
 
     [Header("Optional")]
-    public DoorScript[] doorScript; //!< The script that controls the door that the plank is blocking.
-    public GameObject[] plankGroup; //!< The other planks that are blocking the same door.
+    public DoorScript[] doorScripts; //!< The script that controls the door that the plank is blocking.
+    public GameObject[] plankGroups; //!< The other planks that are blocking the same door.
     private bool plankGroupActive; //!< A boolean that determines whether or the other planks within the group are active.
 
     void OnTriggerEnter(Collider collisionData)
@@ -42,21 +42,21 @@ public class PlankScript : MonoBehaviour
                 return;
             }
 
-            for (int i = 0; i < brokenPart.Length; i++)
+            for (int i = 0; i < brokenParts.Length; i++)
             {
-                brokenPart[i].SetActive(true);
-                brokenPart[i].GetComponent<Rigidbody>().isKinematic = false;
-                brokenPart[i].GetComponent<Rigidbody>().AddForce(Vector3.up * popDistance);
+                brokenParts[i].SetActive(true);
+                brokenParts[i].GetComponent<Rigidbody>().isKinematic = false;
+                brokenParts[i].GetComponent<Rigidbody>().AddForce(Vector3.up * popDistance);
             }
 
-            for (int i = 0; i < plankGroup.Length; i++)
+            for (int i = 0; i < plankGroups.Length; i++)
             {
-                plankGroupActive = plankGroup[i].activeInHierarchy;
+                plankGroupActive = plankGroups[i].activeInHierarchy;
 
-                if (plankGroup[i].activeInHierarchy) break;
+                if (plankGroups[i].activeInHierarchy) break;
             }
 
-            for (int i = 0; i < doorScript.Length; i++) doorScript[i].locked = plankGroupActive;
+            for (int i = 0; i < doorScripts.Length; i++) doorScripts[i].locked = plankGroupActive;
 
             breakSound.Play();
 

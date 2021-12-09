@@ -24,22 +24,22 @@ public class EquiptItem : MonoBehaviour
         }
     }
 
-    void Update()
+    /*!
+     *  A method that is triggered on activation.
+     */
+    public void Activated()
     {
-        if (gameObject.GetComponent<Interactable>() != null && gameObject.GetComponent<Interactable>().interacted)
+        if (CurrentEquippable.currentEquippable > 0) dropScript.EquippableDrop(CurrentEquippable.currentEquippable);
+
+        CurrentEquippable.currentEquippable = equippableID;
+
+        if (gameObject.GetComponent<Rigidbody>().isKinematic)
         {
-            if (CurrentEquippable.currentEquippable > 0) dropScript.EquippableDrop(CurrentEquippable.currentEquippable);
-
-            CurrentEquippable.currentEquippable = equippableID;
-
-            if (gameObject.GetComponent<Rigidbody>().isKinematic)
-            {
-                gameObject.SetActive(false);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 

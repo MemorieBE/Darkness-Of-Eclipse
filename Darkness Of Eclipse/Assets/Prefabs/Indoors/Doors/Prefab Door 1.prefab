@@ -808,7 +808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorAnimator: {fileID: 6298066938191312342}
-  hasLockedAnimations: 0
+  hasUnlockedAnimations: 0
   openAudio: {fileID: 848211602453350910}
   closeAudio: {fileID: 698511382390168281}
   lockedAudio: {fileID: 6733634553789398392}
@@ -828,7 +828,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prompt: Interact
   sprite: {fileID: 21300000, guid: b5ac47ee849459c49b129680a962629a, type: 3}
-  interacted: 0
+  aDED: 0
+  scripts:
+  - {fileID: 482462912710053950}
+  disableOnActivation: 0
+  resetsActivation: 1
+  activated: 0
 --- !u!1 &6298066938191312343
 GameObject:
   m_ObjectHideFlags: 0

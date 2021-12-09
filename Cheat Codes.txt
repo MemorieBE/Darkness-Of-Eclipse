@@ -1,4 +1,4 @@
-You can access the cheat code input field by pressing F1 in game.
+-You can access the cheat code input field by pressing F1 in game.-
 
 timescale x: Changes the timescale to x value.
 

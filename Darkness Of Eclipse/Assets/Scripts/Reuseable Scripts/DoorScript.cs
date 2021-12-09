@@ -10,7 +10,7 @@ public class DoorScript : MonoBehaviour
 {
     [Header("Animation")]
     public Animator doorAnimator; //!< The door animator.
-    public bool hasLockedAnimations = false; //!< A boolean that controls whether or not the door has a locked animation.
+    public bool hasUnlockedAnimations = false; //!< A boolean that controls whether or not the door has a locked animation.
 
     [Header("Audio")]
     public AudioSource openAudio; //!< The open audio source.
@@ -21,86 +21,84 @@ public class DoorScript : MonoBehaviour
     public bool locked = false; //!< A boolean that controls whether or not the is locked.
     public bool open = false; //!< A boolean that controls whether or not the is open.
 
-    private bool openUpdate = false; //!< A boolean used to play open and close audio.
-
     void Start()
     {
         if (open)
         {
             doorAnimator.Play("Door Idle Open");
+            doorAnimator.SetBool("DoorOpen", true);
         }
-        else if (hasLockedAnimations)
+        else if (!hasUnlockedAnimations || !locked)
+        {
+            doorAnimator.Play("Door Idle Close");
+            doorAnimator.SetBool("DoorOpen", false);
+        }
+        else
         {
             doorAnimator.Play("Door Idle Close (Locked)");
+            doorAnimator.SetBool("DoorOpen", false);
         }
 
-        openUpdate = open;
-    }
-
-    void Update()
-    {
         if (locked)
         {
-            if (hasLockedAnimations) doorAnimator.SetBool("DoorUnlocked", false);
+            doorAnimator.SetBool("DoorUnlocked", false);
         }
         else
         {
-            if (hasLockedAnimations) doorAnimator.SetBool("DoorUnlocked", true);
-        }
-
-        if (open)
-        {
-            doorAnimator.SetBool("DoorOpen", true);
-
-            if (openUpdate != open)
-            {
-                openAudio.Play();
-                openUpdate = open;
-            }
-        }
-        else
-        {
-            doorAnimator.SetBool("DoorOpen", false);
-
-            if (openUpdate != open)
-            {
-                closeAudio.Play();
-                openUpdate = open;
-            }
-        }
-
-        if (gameObject.GetComponent<Interactable>() != null && gameObject.GetComponent<Interactable>().interacted) Interact();
-        if (gameObject.GetComponent<ItemBasedInteractable>() != null && gameObject.GetComponent<ItemBasedInteractable>().interacted)
-        {
-            ItemBasedInteractable itemBasedInteractable = gameObject.GetComponent<ItemBasedInteractable>();
-
-            if (!itemBasedInteractable.convertableWithItem ||
-                !InventoryScript.inventoryItemState[itemBasedInteractable.itemNeeded])
-            {
-                Interact();
-            }
-
-            if (InventoryScript.inventoryItemState[itemBasedInteractable.itemNeeded])
-            {
-                locked = false;
-            }
+            doorAnimator.SetBool("DoorUnlocked", true);
         }
     }
 
     /*!
-     *  A method that is activated when the player interacts with the gate using the Interactable script.
+     *  A method that is triggered on elevation.
      */
-    private void Interact()
+    public void Elevation()
+    {
+        locked = !locked;
+
+        if (locked)
+        {
+            if (hasUnlockedAnimations) doorAnimator.SetBool("DoorUnlocked", false);
+        }
+        else
+        {
+            if (hasUnlockedAnimations) doorAnimator.SetBool("DoorUnlocked", true);
+        }
+    }
+
+    /*!
+     *  A method that is triggered on activation.
+     */
+    public void Activated()
     {
         if (!locked)
         {
-            if (open) open = false;
-            else open = true;
+            open = !open;
+
+            UpdateDoorAnimation();
         }
         else
         {
             if (lockedAudio == null) { return; }
             lockedAudio.Play();
+        }
+    }
+
+    public void UpdateDoorAnimation()
+    {
+        if (open == doorAnimator.GetBool("DoorOpen")) { return; }
+
+        if (open)
+        {
+            doorAnimator.SetBool("DoorOpen", true);
+
+            openAudio.Play();
+        }
+        else
+        {
+            doorAnimator.SetBool("DoorOpen", false);
+
+            closeAudio.Play();
         }
     }
 }

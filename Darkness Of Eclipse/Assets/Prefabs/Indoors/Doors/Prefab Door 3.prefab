@@ -793,7 +793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorAnimator: {fileID: 8093729260068338941}
-  hasLockedAnimations: 0
+  hasUnlockedAnimations: 0
   openAudio: {fileID: 3116724426946862072}
   closeAudio: {fileID: 7336720820605647727}
   lockedAudio: {fileID: 5826411947443142250}
@@ -813,7 +813,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prompt: Interact
   sprite: {fileID: 21300000, guid: b5ac47ee849459c49b129680a962629a, type: 3}
-  interacted: 0
+  aDED: 0
+  scripts:
+  - {fileID: 8490852254028040020}
+  disableOnActivation: 0
+  resetsActivation: 1
+  activated: 0
 --- !u!1 &3480657294381445453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1321,7 +1326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorAnimator: {fileID: 7199509484400731919}
-  hasLockedAnimations: 0
+  hasUnlockedAnimations: 0
   openAudio: {fileID: 3893211365871561559}
   closeAudio: {fileID: 2179553444096971560}
   lockedAudio: {fileID: 6422303110408117590}
@@ -1341,7 +1346,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prompt: Interact
   sprite: {fileID: 21300000, guid: b5ac47ee849459c49b129680a962629a, type: 3}
-  interacted: 0
+  aDED: 0
+  scripts:
+  - {fileID: 4272739575579625668}
+  disableOnActivation: 0
+  resetsActivation: 1
+  activated: 0
 --- !u!1 &6101965736856493020
 GameObject:
   m_ObjectHideFlags: 0
