@@ -14,7 +14,6 @@ public class GhostStage : MonoBehaviour
     [SerializeField] private FOVRaycast raycastScript; //!< The player Unver raycast script.
     [SerializeField] private GameObject[] toggleAssets; //!< The Unver assets to set active and inactive with Unver deactivation state.
     [SerializeField] private Light ghostLight; //!< The Unver light.
-    [SerializeField] private PlayerToGhostDetector detector; //!< The Unver player detection script.
     private Animator ghostAnimator; //!< The Unver animator.
 
     [Header("Player Head")]
@@ -212,18 +211,6 @@ public class GhostStage : MonoBehaviour
 
         if (ghostStagesActive)
         {
-            if (detector.playerDetected) //< If the player touches the Unver, go into the deactivation stage and deactivate the ghost prefab.
-            {
-                ghostStalkingStage = true;
-                ghostDeactivationStage = false;
-                ghostChasingStage = false;
-                playerPreStaring = false;
-                playerStaring = false;
-                ghostAttemptAttack = false;
-
-                ghostStage = 0;
-            }
-
             if (!playerStaring && !playerPreStaring && !ghostChasingStage && !ghostDeactivationStage) ghostStalkingStage = true;
 
             if ((raycastScript.targetInSight) && (!ghostChasingStage || ghostAttemptAttack) && !ghostDeactivationStage) //< If the player saw the Unver whilst in the stalking stage.

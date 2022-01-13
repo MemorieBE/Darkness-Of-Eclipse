@@ -745,6 +745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   animationStartPause: 0.5
+  flashlight: {fileID: 7456792561457849940}
 --- !u!114 &6458864535581878889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1093,6 +1094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   animationStartPause: 0.5
+  flashlight: {fileID: 7456792561457849940}
 --- !u!114 &7042524747911005056
 MonoBehaviour:
   m_ObjectHideFlags: 0

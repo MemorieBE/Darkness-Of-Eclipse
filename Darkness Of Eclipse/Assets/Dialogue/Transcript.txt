@@ -1,0 +1,29 @@
+>1.0
+[1.0.0] h/ </0|1/> n/Amelia?: Hello?
+
+[1.0.1] h/ </0|2/> n/Amelia?: I can here something, someone is here, who are you?
+
+[1.0.2] h/ </0|3/> n/Amelia?: You're not from here, aren't you? You're from somewhere else. Somewhere far, far away.
+
+[1.0.3] h/ </0|2/> n/Amelia?: Don't be afraid, I know what it's like, waking up in a darkness you've never seen before. It can be terrifying.
+
+[1.0.4] h/ </0|3/> n/Amelia?: You shouldn't be out here, it's not safe.
+
+[1.0.5] </0|5/> n/Anonymous: 3, 2, 1.
+
+>1.1
+[1.1.0] </0.4|3.6/> n/Amelia: Did you already forget what happened? </0.6|6.9/> I don't blame you, I mean it technically hasn't happened yet.
+
+[1.1.1] </0.5|2.5/> n/Amelia: Nothing's changed, you know. </0.8|3.6/> Whatever you saw out there hasn't departured </0|3/> and it won't for another few hours.
+
+[1.1.2] </0.3|2.2/> n/Amelia: You're not safe here neither, </0.4|2.9/> I can protect you for the time being, </0.5|2.5/> but it's only a matter of time. </0.8|2.9/> What awaits in the future is the darkness </0.8|4.7/> and what lurks in the darkness is the inevitable.
+
+[1.1.3] </0.4|4.3/> n/Amelia: Here, I've opened a doorway leading to the emptiness that lurks between dimensions </0|4.3/> so that I can easily distort space time and take you to the near future. </1.1|7.6/> Don't worry, I'll protect you from all the complications.
+
+[1.1.4] </1.4|1.9/> n/Amelia: Welcome back. </0.3|4.1/> Sorry I couldn't pinpoint the exact location we left off, </0.7|4.9/> but considering that the earth is moving hundrens of kilometers per second, </0.6|3.4/> I'd say that I did a pretty good job.
+
+[1.1.5] </0.7|4.5/> n/Amelia: Look, I know you're confused, but I can explain. </0|5.2/> That was the ghost of this world, she's been here a lot longer than even I have. </0.5|4.1/> She's nothing but an old stencil of anger and hate, </0.5|4.7/> made up of the memories from the distant past and the inevitable future. </0.4|5.5/> Whoever she once was or whatever form it once possessed </0.5|5.6/> had been disbanded for a very, very long time.
+
+[1.1.6] </0.8|8.2/> n/Amelia: I call her the Unvermeidlich, meaning the inevitable, or just the Unver. </0.4|5.8/> She's her own biggest threat, her own biggest regret. </0|6.4/> The dark to remember, the light to forget.
+
+[1.1.7] </0.6|4.9/> n/Amelia: Oh thank god, home sweet home am I right? </0.4|5.6/> *Sigh* You must be exausted, why don't you take a nap? </0.4|5.1/> Don't worry, I'll still be here for when you wake up, </0|6.5/> and who knows, maybe this is all just a bad dream.

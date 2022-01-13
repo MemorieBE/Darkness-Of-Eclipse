@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*! \brief A script that invokes an "Deactivated" function to certain scripts on trigger exit.
  *
- *  [Reusable Script]
+ *  Independent
  */
 public class ADED_OnTriggerExit : MonoBehaviour
 {

@@ -9,25 +9,20 @@ using UnityEngine;
 public class LIDGateOpenScript : MonoBehaviour
 {
     [Header("Assets")]
-    public Animator gateAnimator; //!< The gate animator.
-    public AudioSource gateOpenSound; //!< The audio source for the gate opening audio.
+    [SerializeField] private Animator gateAnimator; //!< The gate animator.
+    [SerializeField] private AudioSource gateOpenSound; //!< The audio source for the gate opening audio.
 
-    private bool noRepeat = true; //!< A boolean that determines whether or not the gate hasn't been open.
-
-    void Start()
-    {
-        noRepeat = true;
-    }
+    private bool open = false; //!< A boolean that determines whether or not the gate hasn't been open.
 
     /*!
      *  A method that is triggered on activation.
      */
     public void Activated()
     {
-        if ((GlobalUnverKeyScript.keyCount >= 7) && (noRepeat))
+        if ((GlobalUnverKeyScript.keyCount >= 7) && (!open))
         {
             gateOpenSound.Play();
-            noRepeat = false;
+            open = true;
 
             gateAnimator.SetBool("GateOpen", true);
         }

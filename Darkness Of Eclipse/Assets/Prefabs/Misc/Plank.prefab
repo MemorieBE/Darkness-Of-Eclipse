@@ -330,14 +330,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   axeCollider: {fileID: 0}
-  brokenPart:
+  brokenParts:
   - {fileID: 1205379060613764770}
   - {fileID: 1205379060613764768}
   breakSound: {fileID: 6338081689047283957}
   isBroken: 0
+  skipBreak: 0
   popDistance: 100
-  doorScript: []
-  plankGroup: []
+  doorScripts: []
+  plankGroups: []
 --- !u!1 &5446835703943825194
 GameObject:
   m_ObjectHideFlags: 0

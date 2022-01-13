@@ -33,11 +33,6 @@ public class SceneSavePoint : MonoBehaviour
         equippables = new List<EquiptItem>();
     }
 
-    void Start()
-    {
-        LoadSavePoint();
-    }
-
     /*!
      *  A method that saves the scene data into the save point static variables.
      */
@@ -83,14 +78,14 @@ public class SceneSavePoint : MonoBehaviour
     {
         hasSavePoint = false;
 
-        equippableID = new int[0];
-        equippablePosition = new Vector3[0];
-        equippableRotation = new Vector3[0];
+        equippableID = null;
+        equippablePosition = null;
+        equippableRotation = null;
 
-        objectActive = new bool[0];
+        objectActive = null;
 
-        doorLocked = new bool[0];
-        doorOpen = new bool[0];
+        doorLocked = null;
+        doorOpen = null;
 
         playerPosition = Vector3.zero;
         playerRotation = Vector3.zero;
@@ -121,6 +116,7 @@ public class SceneSavePoint : MonoBehaviour
         {
             doorScripts[i].locked = doorLocked[i];
             doorScripts[i].open = doorOpen[i];
+            //doorScripts[i].UpdateDoorAnimationDirect(); [Doesn't really need, but could be useful later.]
         }
 
         if (player.GetComponent<CharacterController>() != null)

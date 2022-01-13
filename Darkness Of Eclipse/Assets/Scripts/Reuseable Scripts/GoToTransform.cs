@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*! \brief A script that controls the game object moves towards a transform.
  *
- *  [Reusable Script]
+ *  Independent
  */
 public class GoToTransform : MonoBehaviour
 {

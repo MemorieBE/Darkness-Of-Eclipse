@@ -8,9 +8,12 @@ using UnityEngine;
  */
 public class LocalUnverKeyScript : MonoBehaviour
 {
-    [SerializeField] private GhostStage ghostStageScript; //!< The script that controls the Unver stages.
-
+    [Header("Key")]
     [SerializeField] private int keyID; //!< The ID for the key.
+
+    [Header("Assets")]
+    [SerializeField] private GhostStage ghostStageScript; //!< The script that controls the Unver stages.
+    [SerializeField] private DataSaveMaster saveScript; //!< The saving script.
 
     /*!
      *  A method that is triggered on activation.
@@ -23,5 +26,10 @@ public class LocalUnverKeyScript : MonoBehaviour
 
         ghostStageScript.ghostStagesActive = true;
         ghostStageScript.GhostSpawn();
+
+        if (saveScript != null)
+        {
+            saveScript.ActivateSavePoints();
+        }
     }
 }

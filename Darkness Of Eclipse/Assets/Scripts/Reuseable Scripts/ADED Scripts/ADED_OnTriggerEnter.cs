@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*! \brief A script that invokes an "Activated" function to certain scripts on trigger enter.
  *
- *  [Reusable Script]
+ *  Independent
  */
 public class ADED_OnTriggerEnter : MonoBehaviour
 {

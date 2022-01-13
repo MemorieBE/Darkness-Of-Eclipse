@@ -38,6 +38,9 @@ public class PrologueIntroToAbyss : MonoBehaviour
         lineController.ActivateLine(3);
     }
 
+    /*!
+     *  A coroutine that activates the event.
+     */
     IEnumerator StartEvent()
     {
         yield return new WaitForSeconds(eventDuration);

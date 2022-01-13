@@ -24,7 +24,6 @@ public class PrologueUnverIntro : MonoBehaviour
     [SerializeField] private AmbienceSoundLooper ghostAmbienceScript; //!< The script that controls the Unver ambience sound looper.
     [SerializeField] private AmbienceSoundLooper worldAmbienceScript; //!< The script that controls the world ambience sound looper.
     [SerializeField] private AudioSource distanceBasedAmbienceAudio; //!< The audio source that controls the audio by distance script.
-    [SerializeField] private PlayerToGhostDetector unverDetection; //!< The script that controls the Unver player detection.
     [SerializeField] private OpenTransition transitionScript; //!< The script that controls the open transition of the next checkpoint.
 
     [Header("Layers")]
@@ -68,6 +67,7 @@ public class PrologueUnverIntro : MonoBehaviour
             timer = starePauseTime * -1f;
 
             PauseScript.isPausable = false;
+            GameMenuScript.isOpenable = false;
         }
 
         if (!audioStarted && ((!hasCut && timer >= audioStartTime) || (hasCut && timer >= staredAudioDelay)))
@@ -77,7 +77,7 @@ public class PrologueUnverIntro : MonoBehaviour
             eventAudio.Play();
         }
 
-        if (!hasCut && (stareTimer > starePauseTime || unverDetection.playerDetected || (audioStarted && timer >= autoCutTime)))
+        if (!hasCut && (stareTimer > starePauseTime || (audioStarted && timer >= autoCutTime)))
         {
             CutOut();
             hasCut = true;
@@ -138,6 +138,7 @@ public class PrologueUnverIntro : MonoBehaviour
         distanceBasedAmbienceAudio.mute = true;
 
         PauseScript.isPausable = false;
+        GameMenuScript.isOpenable = false;
     }
 
     /*!
@@ -146,6 +147,5 @@ public class PrologueUnverIntro : MonoBehaviour
     private void EventOver()
     {
         checkpointScript.LoadCheckpoint(0, 1);
-        checkpointScript.ReloadScene();
     }
 }

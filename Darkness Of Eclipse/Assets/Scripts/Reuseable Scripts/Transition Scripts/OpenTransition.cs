@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 /*! \brief A script that controls the open transition at the start of a scene or checkpoint.
  *
- *  [Reusable Script]
+ *  Independent
  */
 public class OpenTransition : MonoBehaviour
 {
@@ -21,7 +21,7 @@ public class OpenTransition : MonoBehaviour
     }
 
     /*!
-     *  An IEnumerator that transitions out of a scene.
+     *  A coroutine that transitions out of a scene.
      */
 
     IEnumerator Transition()

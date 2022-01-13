@@ -5,7 +5,7 @@ using System.Linq;
 
 /*! \brief A script that controls how an equippable object sways.
  *
- *  [Reusable Script]
+ *  Independent
  */
 public class FOVRaycast : MonoBehaviour
 {

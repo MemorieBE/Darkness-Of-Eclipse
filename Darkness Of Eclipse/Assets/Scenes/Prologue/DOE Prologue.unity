@@ -205,8 +205,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 134ff9c09530bd84fb0521127b091b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smartLineController: {fileID: 2068203259}
+  smartLineScript: {fileID: 0}
   lineID: 4
+  subtitlesScript: {fileID: 0}
+  scene: 0
+  interaction: 0
 --- !u!65 &8978234
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -628,8 +631,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 134ff9c09530bd84fb0521127b091b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smartLineController: {fileID: 2068203259}
+  smartLineScript: {fileID: 0}
   lineID: 3
+  subtitlesScript: {fileID: 0}
+  scene: 0
+  interaction: 0
 --- !u!65 &171337651
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1426,8 +1432,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 134ff9c09530bd84fb0521127b091b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smartLineController: {fileID: 1870753200}
+  smartLineScript: {fileID: 0}
   lineID: 6
+  subtitlesScript: {fileID: 0}
+  scene: 0
+  interaction: 0
 --- !u!65 &285559004
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7514,8 +7523,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 134ff9c09530bd84fb0521127b091b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smartLineController: {fileID: 1870753200}
+  smartLineScript: {fileID: 0}
   lineID: 5
+  subtitlesScript: {fileID: 0}
+  scene: 0
+  interaction: 0
 --- !u!65 &704860871
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7686,7 +7698,6 @@ MonoBehaviour:
   ghostAmbienceScript: {fileID: 3645569839568883519}
   worldAmbienceScript: {fileID: 990543953}
   distanceBasedAmbienceAudio: {fileID: 1509696592}
-  unverDetection: {fileID: 3645569839568883518}
   transitionScript: {fileID: 1929786286}
   floorLayer: 8
   ghostDistance: 1
@@ -9814,8 +9825,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 134ff9c09530bd84fb0521127b091b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smartLineController: {fileID: 2068203259}
+  smartLineScript: {fileID: 0}
   lineID: 0
+  subtitlesScript: {fileID: 0}
+  scene: 0
+  interaction: 0
 --- !u!114 &1201424549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10318,8 +10332,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 134ff9c09530bd84fb0521127b091b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smartLineController: {fileID: 1870753200}
+  smartLineScript: {fileID: 0}
   lineID: 4
+  subtitlesScript: {fileID: 0}
+  scene: 0
+  interaction: 0
 --- !u!65 &1282249804
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11646,8 +11663,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 134ff9c09530bd84fb0521127b091b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smartLineController: {fileID: 1870753200}
+  smartLineScript: {fileID: 0}
   lineID: 7
+  subtitlesScript: {fileID: 0}
+  scene: 0
+  interaction: 0
 --- !u!65 &1559783673
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17511,11 +17531,9 @@ MonoBehaviour:
   - 0
   isSolo: 0000000001000000
   isStacking: 0000000000000000
-  playingLine: 0
-  activeLineTimer: 0
-  lineBeforeTimer: 0
-  lineTimer: 0
-  lineOrder: 
+  subtitles: {fileID: 2509686229891273918}
+  scene: 1
+  interaction: 1
 --- !u!1 &1897389335
 GameObject:
   m_ObjectHideFlags: 0
@@ -17857,8 +17875,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 134ff9c09530bd84fb0521127b091b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smartLineController: {fileID: 2068203259}
+  smartLineScript: {fileID: 0}
   lineID: 2
+  subtitlesScript: {fileID: 0}
+  scene: 0
+  interaction: 0
 --- !u!65 &1954339006
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18215,8 +18236,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 134ff9c09530bd84fb0521127b091b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smartLineController: {fileID: 2068203259}
+  smartLineScript: {fileID: 0}
   lineID: 1
+  subtitlesScript: {fileID: 0}
+  scene: 0
+  interaction: 0
 --- !u!65 &2062719376
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18577,11 +18601,9 @@ MonoBehaviour:
   - 0
   isSolo: 0000000000
   isStacking: 0101010101
-  playingLine: 0
-  activeLineTimer: 0
-  lineBeforeTimer: 0
-  lineTimer: 0
-  lineOrder: 
+  subtitles: {fileID: 2509686229891273918}
+  scene: 1
+  interaction: 0
 --- !u!1 &2074145720
 GameObject:
   m_ObjectHideFlags: 0
@@ -19377,7 +19399,7 @@ PrefabInstance:
     - target: {fileID: 1272779827545231959, guid: ebf91c4bd94e5444e85e550605fb20b6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1380630122200757073, guid: ebf91c4bd94e5444e85e550605fb20b6,
         type: 3}
@@ -19388,6 +19410,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700170034466789875, guid: ebf91c4bd94e5444e85e550605fb20b6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1752829116879261128, guid: ebf91c4bd94e5444e85e550605fb20b6,
         type: 3}
@@ -20173,6 +20200,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0c914b8761ee1943bcd08a7dd7e3ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2509686229891273918 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3587530314311399026, guid: ebf91c4bd94e5444e85e550605fb20b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2509686229891273916}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7203fd8b9be98674c831b40dd97278c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3645569839568883516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20416,18 +20455,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3645569839568883516}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3645569839568883518 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 272939511693304591, guid: 0a3cc70c6ef694e43b1af9f50a40c47d,
-    type: 3}
-  m_PrefabInstance: {fileID: 3645569839568883516}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4ed6179c128a664c91e9adb676b87a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3645569839568883519 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6042377087700631682, guid: 0a3cc70c6ef694e43b1af9f50a40c47d,

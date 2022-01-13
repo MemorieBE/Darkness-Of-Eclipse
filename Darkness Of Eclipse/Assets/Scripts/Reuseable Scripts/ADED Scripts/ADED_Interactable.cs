@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*! \brief A script that invokes an "Activated" function to certain scripts when the player has interacted with the game object.
  *
- *  [Reusable Script]
+ *  Independent
  */
 public class ADED_Interactable : MonoBehaviour
 {

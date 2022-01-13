@@ -104,8 +104,8 @@ GameObject:
   - component: {fileID: 7417681127542590038}
   - component: {fileID: 7417681127543589014}
   - component: {fileID: 7498077293173120547}
-  - component: {fileID: 469822324008990185}
   - component: {fileID: 4401090986072232354}
+  - component: {fileID: 469822324008990185}
   - component: {fileID: 3944697921181396748}
   m_Layer: 0
   m_Name: Key
@@ -189,20 +189,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.005853582, y: 0.017736616, z: 0.051469173}
   m_Center: {x: 0.00039524795, y: -0.0010241679, z: 0.0000047739554}
---- !u!114 &469822324008990185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7417681127545525846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d0bda685b9dd804ca376ab8196cf4c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ghostStageScript: {fileID: 0}
-  keyID: 0
 --- !u!114 &4401090986072232354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,7 +209,22 @@ MonoBehaviour:
   - {fileID: 3944697921181396748}
   disableOnActivation: 1
   resetsActivation: 0
+  delay: 0
   activated: 0
+--- !u!114 &469822324008990185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417681127545525846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0bda685b9dd804ca376ab8196cf4c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostStageScript: {fileID: 0}
+  keyID: 0
 --- !u!114 &3944697921181396748
 MonoBehaviour:
   m_ObjectHideFlags: 0

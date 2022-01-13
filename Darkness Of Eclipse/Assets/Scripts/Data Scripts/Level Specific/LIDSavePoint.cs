@@ -30,14 +30,6 @@ public class LIDSavePoint : MonoBehaviour
     public static int savedKeyCount; //!< The key count to save.
     public static int savedKeyCountForAchievement; //!< The achievement based key count to save.
 
-    void Awake()
-    {
-        if (hasSavePoint && SceneManager.GetActiveScene().buildIndex == scene && hasSavePoint)
-        {
-            LoadSavePoint();
-        }
-    }
-
     /*!
      *  A method that saves the scene data into the save point static variables.
      */
@@ -68,7 +60,7 @@ public class LIDSavePoint : MonoBehaviour
     {
         hasSavePoint = false;
 
-        savedPlankStates = new bool[0];
+        savedPlankStates = null;
 
         savedCorpseAudioState = false;
 

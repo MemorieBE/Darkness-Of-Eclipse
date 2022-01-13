@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*! \brief A script that controls whether or not the player has interacted with the game object with a specific item or not.
  *
- *  [Reusable Script]
+ *  References: InventoryScript.
  */
 public class ADED_ItemBasedInteractable : MonoBehaviour
 {

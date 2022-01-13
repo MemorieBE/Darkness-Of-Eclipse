@@ -6,7 +6,7 @@ using System.Linq;
 
 /*! \brief A script that controls how the player interacts with game objects.
  *
- *  [Reusable Script]
+ *  References: ADED_Interactable, ADED_ItemBasedInteractable, InventoryScript, PlayerControllerCC.
  */
 public class InteractController : MonoBehaviour
 {
@@ -20,14 +20,7 @@ public class InteractController : MonoBehaviour
     public Text interactText; //!< The interact UI text.
     public Image interactImage; //!< The interact UI image.
 
-    private bool inputToBool = false; //!< A boolean that determines whether or not the interact key has been pressed (To get input in Update()).
-
     void Update()
-    {
-        if (Input.GetKeyDown(interactKeyBind) && !PauseScript.isPaused && PlayerControllerCC.allowPlayerInputs) inputToBool = true;
-    }
-
-    void FixedUpdate()
     {
         Ray raycast = new Ray(gameObject.transform.position, gameObject.transform.forward);
         RaycastHit hit;
@@ -58,11 +51,10 @@ public class InteractController : MonoBehaviour
                     interactImage.sprite = interactableScript.spriteWithoutItem;
                 }
 
-                if (inputToBool) 
-                { 
+                if (Input.GetKeyDown(interactKeyBind) && PlayerControllerCC.allowPlayerInputs)
+                {
                     if (InventoryScript.inventoryItemStates[interactableScript.itemNeeded]) { interactableScript.InteractedWithItem(); }
-
-                    if (hit.collider.gameObject.GetComponent<ADED_Interactable>() != null) { hit.collider.gameObject.GetComponent<ADED_Interactable>().Interacted(); }
+                    else if (hit.collider.gameObject.GetComponent<ADED_Interactable>() != null) { hit.collider.gameObject.GetComponent<ADED_Interactable>().Interacted(); }
                 }
             }
             else if (hit.collider.gameObject.GetComponent<ADED_Interactable>() != null)
@@ -74,7 +66,7 @@ public class InteractController : MonoBehaviour
                 interactText.text = interactableScript.prompt;
                 interactImage.sprite = interactableScript.sprite;
 
-                if (inputToBool) { interactableScript.Interacted(); }
+                if (Input.GetKeyDown(interactKeyBind) && PlayerControllerCC.allowPlayerInputs) { interactableScript.Interacted(); }
             }
             else
             {
@@ -85,7 +77,5 @@ public class InteractController : MonoBehaviour
         {
             interactUI.SetActive(false);
         }
-
-        if (inputToBool) { inputToBool = false; }
     }
 }

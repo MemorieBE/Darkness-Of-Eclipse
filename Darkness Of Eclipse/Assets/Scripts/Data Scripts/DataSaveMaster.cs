@@ -13,15 +13,20 @@ using UnityEngine.SceneManagement;
  */
 public class DataSaveMaster : MonoBehaviour
 {
-    private ContinuousSavedData continuousSavedData; //!< The continuous saved data script.
     private SceneSavePoint sceneSavePoint; //!< The scene save point script.
     private LIDSavePoint lIDSavePoint; //!< The Locked In Despair save point script.
 
-    void Start()
+    void Awake()
     {
-        continuousSavedData = gameObject.GetComponent<ContinuousSavedData>();
         sceneSavePoint = gameObject.GetComponent<SceneSavePoint>();
         lIDSavePoint = gameObject.GetComponent<LIDSavePoint>();
+
+        LoadSavePoints();
+    }
+
+    void Start()
+    {
+        if (SettingsValues.autoSave) { SaveSystem.SaveGame(); }
     }
 
     /*!
@@ -29,14 +34,14 @@ public class DataSaveMaster : MonoBehaviour
      */
     public void ActivateSavePoints()
     {
-        continuousSavedData.ActivateContinuousData();
+        ContinuousSavedData.ActivateContinuousData();
 
         sceneSavePoint.ActivateSavePoint();
 
-        if (SceneManager.GetActiveScene().buildIndex == lIDSavePoint.scene)
-            lIDSavePoint.ActivateSavePoint();
-        else
-            LIDSavePoint.ResetSavePoint();
+        if (SceneManager.GetActiveScene().buildIndex == lIDSavePoint.scene) { lIDSavePoint.ActivateSavePoint(); }
+        else { LIDSavePoint.ResetSavePoint(); }
+
+        if (SettingsValues.autoSave) { SaveSystem.SaveGame(); }
     }
 
     /*!
@@ -68,9 +73,10 @@ public class DataSaveMaster : MonoBehaviour
      */
     public void LoadSavePoints()
     {
+        ContinuousSavedData.LoadContinuousData();
+
         sceneSavePoint.LoadSavePoint();
 
-        if (SceneManager.GetActiveScene().buildIndex == lIDSavePoint.scene)
-            lIDSavePoint.LoadSavePoint();
+        if (SceneManager.GetActiveScene().buildIndex == lIDSavePoint.scene) { lIDSavePoint.LoadSavePoint(); }
     }
 }

@@ -438,14 +438,14 @@ MonoBehaviour:
   - {fileID: 1001488810147031093}
   - {fileID: 7269837358418753459}
   - {fileID: 5656557006667209745}
-  isolatedVolume:
-  - 1
-  - 1
-  - 1
   currentBackgroundAmbience: 0
   activeSounds: 0
   directStart: 0
   masterVolume: 1
+  isolatedVolume:
+  - 1
+  - 1
+  - 1
   fadeTime: 5
   autoFader: 2
   fadeOffset: 10
@@ -1972,20 +1972,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975ff4dfc852fb34db3e2a5bf7f9e70e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionScript: {fileID: 272939511693304591}
-  stareDeathChance:
-  - 30
-  - 30
-  - 20
-  - 10
-  - 9
-  stareDeathAudio:
-  - {fileID: 154797022859238310}
-  - {fileID: 6895600319345265439}
-  - {fileID: 5666316771205360533}
-  - {fileID: 4623431348862374514}
-  - {fileID: 246500318223420763}
-  blackScreen: {fileID: 0}
+  animator: {fileID: 0}
+  sceneLoader: {fileID: 0}
+  deathChances: []
+  deathAnimations: []
 --- !u!114 &3645569840089702172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2005,7 +1995,6 @@ MonoBehaviour:
   - {fileID: 3645569840280212364}
   - {fileID: 3645569839875988463}
   ghostLight: {fileID: 3645569840280212366}
-  detector: {fileID: 272939511693304591}
   playerHead: {fileID: 0}
   playerHeadOffset: {x: 0, y: -2.1, z: 0}
   stalkingAudio: {fileID: 3645569839008126879}
@@ -4815,7 +4804,7 @@ GameObject:
   - component: {fileID: 1634399377789682306}
   - component: {fileID: 2042408975433206099}
   - component: {fileID: 7319171672518330509}
-  - component: {fileID: 272939511693304591}
+  - component: {fileID: 6751216328747848404}
   m_Layer: 9
   m_Name: PhantomHipsHitbox
   m_TagString: Untagged
@@ -4897,7 +4886,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &272939511693304591
+--- !u!114 &6751216328747848404
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4906,12 +4895,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7648241337765402463}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4ed6179c128a664c91e9adb676b87a5, type: 3}
+  m_Script: {fileID: 11500000, guid: f82eaa1ebef8ad34c809406cfbf65881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCollider: {fileID: 0}
-  ghostScript: {fileID: 3645569840089702173}
-  playerDetected: 0
+  targetCollider: {fileID: 0}
+  aDED: 0
+  scripts:
+  - {fileID: 3645569840089702173}
+  disableOnActivation: 0
+  resetsActivation: 1
+  delay: 0
+  activated: 0
 --- !u!1 &7866363787849283592
 GameObject:
   m_ObjectHideFlags: 0

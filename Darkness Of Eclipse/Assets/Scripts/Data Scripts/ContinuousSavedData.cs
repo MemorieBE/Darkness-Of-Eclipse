@@ -13,16 +13,13 @@ public class ContinuousSavedData : MonoBehaviour
     public static bool[] inventoryItemStates; //!< The inventory states to save.
     public static int currentEquippable; //!< The current equippable to save.
 
-    void Start()
-    {
-        LoadContinuousData();
-    }
-
     /*!
      *  A method that saves the continuous data into the continuous static variables.
      */
-    public void ActivateContinuousData()
+    public static void ActivateContinuousData()
     {
+        hasSavedData = true;
+
         inventoryItemStates = InventoryScript.inventoryItemStates;
 
         currentEquippable = CurrentEquippable.currentEquippable;
@@ -33,7 +30,9 @@ public class ContinuousSavedData : MonoBehaviour
      */
     public static void ResetContinuousData()
     {
-        inventoryItemStates = new bool[0];
+        hasSavedData = false;
+
+        inventoryItemStates = null;
 
         currentEquippable = 0;
     }
@@ -41,7 +40,7 @@ public class ContinuousSavedData : MonoBehaviour
     /*!
      *  A method that loads the continuous static variables into the continuous data.
      */
-    public void LoadContinuousData()
+    public static void LoadContinuousData()
     {
         if (!hasSavedData) { return; }
 

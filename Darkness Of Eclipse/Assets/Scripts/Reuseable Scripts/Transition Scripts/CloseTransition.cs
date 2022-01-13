@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 /*! \brief A script that controls the close transition at the end of a scene or checkpoint.
  *
- *  [Reusable Script]
+ *  References: AmbienceSoundLooper, SceneCheckpoints.
  */
 public class CloseTransition : MonoBehaviour
 {
@@ -30,13 +30,11 @@ public class CloseTransition : MonoBehaviour
     }
 
     /*!
-     *  An IEnumerator that transitions out of a scene.
+     *  A coroutine that transitions out of a scene.
      */
 
     IEnumerator Transition()
     {
-        PauseScript.isPausable = false;
-
         ambience.activeSounds = false;
 
         Color uIColour = blackUI.color;
@@ -55,8 +53,6 @@ public class CloseTransition : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-
-            DataSaveMaster.ResetAllKeptData();
 
             SceneManager.LoadScene(0);
         }

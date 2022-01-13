@@ -4,24 +4,94 @@ using UnityEngine;
 
 /*! \brief A script that controls a door.
  *
- *  [Reusable Script]
+ *  Independent
  */
 public class DoorScript : MonoBehaviour
 {
     [Header("Animation")]
-    public Animator doorAnimator; //!< The door animator.
-    public bool hasUnlockedAnimations = false; //!< A boolean that controls whether or not the door has a locked animation.
+    [SerializeField] private Animator doorAnimator; //!< The door animator.
+    [SerializeField] private bool hasUnlockedAnimations = false; //!< A boolean that controls whether or not the door has a locked animation.
 
     [Header("Audio")]
-    public AudioSource openAudio; //!< The open audio source.
-    public AudioSource closeAudio; //!< The close audio source.
-    public AudioSource lockedAudio; //!< The locked audio source.
+    [SerializeField] private AudioSource openAudio; //!< The open audio source.
+    [SerializeField] private AudioSource closeAudio; //!< The close audio source.
+    [SerializeField] private AudioSource lockedAudio; //!< The locked audio source.
 
     [Header("Inputs")]
     public bool locked = false; //!< A boolean that controls whether or not the is locked.
     public bool open = false; //!< A boolean that controls whether or not the is open.
 
     void Start()
+    {
+        UpdateDoorAnimationDirect();
+    }
+
+    /*!
+     *  A method that is triggered on elevation.
+     */
+    public void Elevated()
+    {
+        locked = !locked;
+
+        UpdateDoorAnimation();
+    }
+
+    /*!
+     *  A method that is triggered on activation.
+     */
+    public void Activated()
+    {
+        if (!locked)
+        {
+            open = !open;
+
+            UpdateDoorAnimation();
+        }
+        else
+        {
+            if (lockedAudio == null) { return; }
+            lockedAudio.Play();
+        }
+    }
+
+    /*!
+     *  A method that updates the door animation parameters.
+     */
+    public void UpdateDoorAnimation()
+    {
+        if (open != doorAnimator.GetBool("DoorOpen")) 
+        {
+            if (open)
+            {
+                doorAnimator.SetBool("DoorOpen", true);
+
+                openAudio.Play();
+            }
+            else
+            {
+                doorAnimator.SetBool("DoorOpen", false);
+
+                closeAudio.Play();
+            }
+        }
+
+        if (locked == doorAnimator.GetBool("DoorUnlocked"))
+        {
+            if (locked)
+            {
+                if (hasUnlockedAnimations) doorAnimator.SetBool("DoorUnlocked", false);
+            }
+            else
+            {
+                if (hasUnlockedAnimations) doorAnimator.SetBool("DoorUnlocked", true);
+            }
+        }
+    }
+
+    /*!
+     *  A method that directly updates the door animation state.
+     */
+    public void UpdateDoorAnimationDirect()
     {
         if (open)
         {
@@ -46,59 +116,6 @@ public class DoorScript : MonoBehaviour
         else
         {
             doorAnimator.SetBool("DoorUnlocked", true);
-        }
-    }
-
-    /*!
-     *  A method that is triggered on elevation.
-     */
-    public void Elevation()
-    {
-        locked = !locked;
-
-        if (locked)
-        {
-            if (hasUnlockedAnimations) doorAnimator.SetBool("DoorUnlocked", false);
-        }
-        else
-        {
-            if (hasUnlockedAnimations) doorAnimator.SetBool("DoorUnlocked", true);
-        }
-    }
-
-    /*!
-     *  A method that is triggered on activation.
-     */
-    public void Activated()
-    {
-        if (!locked)
-        {
-            open = !open;
-
-            UpdateDoorAnimation();
-        }
-        else
-        {
-            if (lockedAudio == null) { return; }
-            lockedAudio.Play();
-        }
-    }
-
-    public void UpdateDoorAnimation()
-    {
-        if (open == doorAnimator.GetBool("DoorOpen")) { return; }
-
-        if (open)
-        {
-            doorAnimator.SetBool("DoorOpen", true);
-
-            openAudio.Play();
-        }
-        else
-        {
-            doorAnimator.SetBool("DoorOpen", false);
-
-            closeAudio.Play();
         }
     }
 }

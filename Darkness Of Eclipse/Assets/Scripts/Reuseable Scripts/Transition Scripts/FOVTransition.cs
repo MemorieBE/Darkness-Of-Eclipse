@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*! \brief A script that changes a camera FOV to transition.
  *
- *  [Reusable Script]
+ *  Independent
  */
 public class FOVTransition : MonoBehaviour
 {

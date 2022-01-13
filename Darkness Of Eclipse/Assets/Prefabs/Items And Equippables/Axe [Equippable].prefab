@@ -79,6 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropScript: {fileID: 0}
   equippableID: 1
+  resetYPoint: 0
 --- !u!114 &8060230645140105263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,7 +94,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prompt: Pick Up
   sprite: {fileID: 21300000, guid: b5ac47ee849459c49b129680a962629a, type: 3}
-  interacted: 0
+  aDED: 0
+  scripts:
+  - {fileID: 6094515017713233580}
+  disableOnActivation: 0
+  resetsActivation: 1
+  delay: 0
+  activated: 0
 --- !u!1 &2909872026013269086
 GameObject:
   m_ObjectHideFlags: 0
