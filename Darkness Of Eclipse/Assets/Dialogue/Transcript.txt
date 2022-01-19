@@ -1,15 +1,15 @@
 >1.0
-[1.0.0] h/ </0|1/> n/Amelia?: Hello?
+[1.0.0] h/ </1.1|2/> n/Amelia?: Hello?
 
-[1.0.1] h/ </0|2/> n/Amelia?: I can here something, someone is here, who are you?
+[1.0.1] h/ </1.9|7/> n/Amelia?: I can here something, someone is here, who are you?
 
-[1.0.2] h/ </0|3/> n/Amelia?: You're not from here, aren't you? You're from somewhere else. Somewhere far, far away.
+[1.0.2] h/ </1.5|10/> n/Amelia?: You're not from here, aren't you? You're from somewhere else. Somewhere far, far away.
 
-[1.0.3] h/ </0|2/> n/Amelia?: Don't be afraid, I know what it's like, waking up in a darkness you've never seen before. It can be terrifying.
+[1.0.3] h/ </1|10/> n/Amelia?: Don't be afraid, I know what it's like, waking up in a darkness you've never seen before. It can be terrifying.
 
-[1.0.4] h/ </0|3/> n/Amelia?: You shouldn't be out here, it's not safe.
+[1.0.4] h/ </1.8|4/> n/Amelia?: You shouldn't be out here, it's not safe.
 
-[1.0.5] </0|5/> n/Anonymous: 3, 2, 1.
+[1.0.5] </0.6|6/> n/Anonymous: 3, 2, 1.
 
 >1.1
 [1.1.0] </0.4|3.6/> n/Amelia: Did you already forget what happened? </0.6|6.9/> I don't blame you, I mean it technically hasn't happened yet.

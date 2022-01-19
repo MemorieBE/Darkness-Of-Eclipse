@@ -246,12 +246,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2096866779937916175}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Blue Flowers Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2096866779937916175
 Transform:

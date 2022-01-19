@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 4048236978870758924}
   - component: {fileID: 5378877200921716532}
   - component: {fileID: 6289995322491012068}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Lamp Post Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

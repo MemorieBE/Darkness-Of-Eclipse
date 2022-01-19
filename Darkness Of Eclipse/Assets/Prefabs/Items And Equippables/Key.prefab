@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 4401090986072232354}
   - component: {fileID: 469822324008990185}
   - component: {fileID: 3944697921181396748}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,8 +223,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0bda685b9dd804ca376ab8196cf4c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghostStageScript: {fileID: 0}
   keyID: 0
+  ghostStageScript: {fileID: 0}
+  saveScript: {fileID: 0}
 --- !u!114 &3944697921181396748
 MonoBehaviour:
   m_ObjectHideFlags: 0

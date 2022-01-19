@@ -28,9 +28,71 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7522461361393562339}
+  - {fileID: 502717314968765213}
+  - {fileID: 4958160079858007698}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5151444938620155414
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7618829915059906826}
+    m_Modifications:
+    - target: {fileID: 266688411296155780, guid: 57d9045bd2ae7fb4c96d53fad71dafc3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 266688411296155780, guid: 57d9045bd2ae7fb4c96d53fad71dafc3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 266688411296155780, guid: 57d9045bd2ae7fb4c96d53fad71dafc3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 266688411296155780, guid: 57d9045bd2ae7fb4c96d53fad71dafc3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 266688411296155780, guid: 57d9045bd2ae7fb4c96d53fad71dafc3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 266688411296155780, guid: 57d9045bd2ae7fb4c96d53fad71dafc3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 266688411296155780, guid: 57d9045bd2ae7fb4c96d53fad71dafc3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 266688411296155780, guid: 57d9045bd2ae7fb4c96d53fad71dafc3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 266688411296155782, guid: 57d9045bd2ae7fb4c96d53fad71dafc3,
+        type: 3}
+      propertyPath: m_Name
+      value: Sinic Wisp Projectile
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 57d9045bd2ae7fb4c96d53fad71dafc3, type: 3}
+--- !u!4 &4958160079858007698 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 266688411296155780, guid: 57d9045bd2ae7fb4c96d53fad71dafc3,
+    type: 3}
+  m_PrefabInstance: {fileID: 5151444938620155414}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6553455116662206944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -102,7 +164,7 @@ PrefabInstance:
         type: 3}
       propertyPath: detectionScript
       value: 
-      objectReference: {fileID: 6429769996548182767}
+      objectReference: {fileID: 0}
     - target: {fileID: 3645569840089702174, guid: 0a3cc70c6ef694e43b1af9f50a40c47d,
         type: 3}
       propertyPath: target
@@ -116,7 +178,7 @@ PrefabInstance:
     - target: {fileID: 3645569840089702179, guid: 0a3cc70c6ef694e43b1af9f50a40c47d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a3cc70c6ef694e43b1af9f50a40c47d, type: 3}
@@ -126,15 +188,48 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6553455116662206944}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6429769996548182767 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 272939511693304591, guid: 0a3cc70c6ef694e43b1af9f50a40c47d,
+--- !u!1001 &7060417507526179201
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7618829915059906826}
+    m_Modifications:
+    - target: {fileID: 7422397196566084252, guid: 219d8fe39eef53a4880d9722db10ca8b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7422397196566084252, guid: 219d8fe39eef53a4880d9722db10ca8b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7422397196566084252, guid: 219d8fe39eef53a4880d9722db10ca8b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7422397196566084252, guid: 219d8fe39eef53a4880d9722db10ca8b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7422397196566084255, guid: 219d8fe39eef53a4880d9722db10ca8b,
+        type: 3}
+      propertyPath: m_Name
+      value: Sinic Wisp Collectable
+      objectReference: {fileID: 0}
+    - target: {fileID: 7422397196566084255, guid: 219d8fe39eef53a4880d9722db10ca8b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 219d8fe39eef53a4880d9722db10ca8b, type: 3}
+--- !u!4 &502717314968765213 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7422397196566084252, guid: 219d8fe39eef53a4880d9722db10ca8b,
     type: 3}
-  m_PrefabInstance: {fileID: 6553455116662206944}
+  m_PrefabInstance: {fileID: 7060417507526179201}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4ed6179c128a664c91e9adb676b87a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

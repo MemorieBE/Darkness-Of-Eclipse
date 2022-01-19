@@ -170,12 +170,12 @@ GameObject:
   - component: {fileID: 8087981983731911574}
   - component: {fileID: 6330582829005111132}
   - component: {fileID: 1137497253369672470}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Grandfather Clock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5157065047571596339
 Transform:

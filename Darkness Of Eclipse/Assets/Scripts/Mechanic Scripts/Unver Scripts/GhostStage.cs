@@ -29,22 +29,29 @@ public class GhostStage : MonoBehaviour
     public int floorLayer = 8; //!< The floor layer.
     private int playerRaycastLayerMask; //!< The player field of view raycast layer mask.
 
+    [Header("Sinic Wisp")]
+    [SerializeField] private GameObject sinicWispObject; //!< The sinic wisp object to sometimes instatiate.
+    [SerializeField] private float sinicWispProbabilityMax = 10; //!< The probablity a sinic wisp will spawn at the first stage.
+    [SerializeField] private float sinicWispProbabilityMin = 1; //!< The probablity a sinic wisp will spawn at the last stage.
+    [SerializeField] private Vector3 sinicWispOffset = Vector3.up; //!< The sinic wisp object offset.
+    private GameObject instantiatedSinicWisp; //!< The instantiated sinic wisp object.
+
     [Header("Unver Inputs")]
     [Range (1, 10)] public int ghostStage = 1; //!< The Unver current stage. (From 1 to 10)
     public int ghostTier = 1; //!< The current tier/difficulty of the Unver stages.
     public int ghostMaxTier = 7; //!< The maximum Unver tier/difficulty.
     public int ghostSecondTierAnimation = 3; //!< The tier that needs to be hit in order to move on to the second animation state.
     public int ghostThirdTierAnimation = 5; //!< The tier that needs to be hit in order to move on to the third animation state.
-    public int ghostStaredPushBack = 3; //!< The amount of stages the Unver would be pushed back when the player successfully stares at the Unver to deactivate it.
-    public int ghostStageToAttemptLowest = 3; //!< The minimum possible stage the Unver needs to be at in order to start attempting to attack.
-    public int ghostStageToAttemptHighest = 7; //!< The maximum possible stage the Unver needs to be at in order to start attempting to attack.
-    public int attackAttemptProbability = 6; //!< The probability (1 / int) that the Unver will attempt an attack.
-    public float ghostDistanceStageMin = 1f; //!< How close the Unver can be depending on the current stage.
-    public float ghostDistanceStageMax = 80f; //!< How far away the Unver can be depending on the current stage.
-    public float ghostChaseDistanceToDirect = 8f; //!< The flat distance the Unver needs to be from the player in order to fly directly towards the player in its chasing stage.
-    public float ghostFloorClingeIntensity = 3f; //!< The intensity of the Unver clinging to the floor.
-    public float ghostChaseDistance = 100f; //!< The distance away from the Unver will be from the player at the start of its chasing stage.
-    public float ghostLightSetIntensity = 2f; //!< The light intensity based on the light game object and the Unver player distance.
+    [SerializeField] private int ghostStaredPushBack = 3; //!< The amount of stages the Unver would be pushed back when the player successfully stares at the Unver to deactivate it.
+    [SerializeField] private int ghostStageToAttemptLowest = 3; //!< The minimum possible stage the Unver needs to be at in order to start attempting to attack.
+    [SerializeField] private int ghostStageToAttemptHighest = 7; //!< The maximum possible stage the Unver needs to be at in order to start attempting to attack.
+    [SerializeField] private int attackAttemptProbability = 6; //!< The probability (1 / int) that the Unver will attempt an attack.
+    [SerializeField] private float ghostDistanceStageMin = 1f; //!< How close the Unver can be depending on the current stage.
+    [SerializeField] private float ghostDistanceStageMax = 80f; //!< How far away the Unver can be depending on the current stage.
+    [SerializeField] private float ghostChaseDistanceToDirect = 8f; //!< The flat distance the Unver needs to be from the player in order to fly directly towards the player in its chasing stage.
+    [SerializeField] private float ghostFloorClingeIntensity = 3f; //!< The intensity of the Unver clinging to the floor.
+    [SerializeField] private float ghostChaseDistance = 100f; //!< The distance away from the Unver will be from the player at the start of its chasing stage.
+    [SerializeField] private float ghostLightSetIntensity = 2f; //!< The light intensity based on the light game object and the Unver player distance.
 
     private float ghostSpawnFailSafe = 0f; //!< Used to prevent crashing when the Unver can't find an appropriete spawn position;
 
@@ -59,18 +66,18 @@ public class GhostStage : MonoBehaviour
     public bool ghostStalkingStage = false; //!< A boolean that determines whether or not the Unver is stalking the player.
     public bool ghostChasingStage = false; //!< A boolean that determines whether or not the Unver is chasing the player.
     public bool ghostDeactivationStage = false; //!< A boolean that determines whether or not the Unver is temporarily deactivated.
-    public bool playerStaring = false; //!< A boolean that determines whether or not the player is staring at the Unver.
-    public bool playerPreStaring = false; //!< A boolean that determines whether or not the player is in the staring grace period.
-    public bool ghostAttemptAttack = false; //!< A boolean that determines whether or not the Unver is attempting an attack.
+    [SerializeField] private bool playerStaring = false; //!< A boolean that determines whether or not the player is staring at the Unver.
+    [SerializeField] private bool playerPreStaring = false; //!< A boolean that determines whether or not the player is in the staring grace period.
+    [SerializeField] private bool ghostAttemptAttack = false; //!< A boolean that determines whether or not the Unver is attempting an attack.
 
     [Header("Base Tier Inputs")]
-    public float ghostSpeed = 2f; //!< The speed of the Unver in its chasing stage.
-    public float setStalkTime = 10f; //!< The duration of each stalking stage in seconds.
-    public float setDeactivationTime = 15f; //!< The duration of the deactivation stage in seconds.
-    public float setStareTimeMin = 3f; //!< The minimum duration for how long the player needs to stare at the Unver to deactivate it in seconds.
-    public float setStareTimeMax = 8f; //!< The maximum duration for how long the player needs to stare at the Unver to deactivate it in seconds.
-    public float setPreStareTime = 0.5f; //!< The duration of the grace period before the stare timer in seconds.
-    public float setChaseTime = 40f; //!< The duration of the Unver chasing stage in seconds.
+    [SerializeField] private float ghostSpeed = 2f; //!< The speed of the Unver in its chasing stage.
+    [SerializeField] private float setStalkTime = 10f; //!< The duration of each stalking stage in seconds.
+    [SerializeField] private float setDeactivationTime = 15f; //!< The duration of the deactivation stage in seconds.
+    [SerializeField] private float setStareTimeMin = 3f; //!< The minimum duration for how long the player needs to stare at the Unver to deactivate it in seconds.
+    [SerializeField] private float setStareTimeMax = 8f; //!< The maximum duration for how long the player needs to stare at the Unver to deactivate it in seconds.
+    [SerializeField] private float setPreStareTime = 0.5f; //!< The duration of the grace period before the stare timer in seconds.
+    [SerializeField] private float setChaseTime = 40f; //!< The duration of the Unver chasing stage in seconds.
 
     private float stalkTimer = 0f; //!< A timer used for how long each stalking stage will last.
     private float stareTimer = 0f; //!< A timer used for how long the player needs to stare at the ghost before it deactivates.
@@ -82,12 +89,12 @@ public class GhostStage : MonoBehaviour
     private bool getStareRandomNumberOnce = true; //!< A boolean that determines whether or not the set stare duration has been assigned a random number in the current instance.
 
     [Header("Highest Tier Inputs")]
-    public float ghostSpeedTopTier = 6f; //!< The maximum amount for the Unver speed depending on the Unver tier.
-    public float ghostStalkTimeTopTier = 5f; //!< The minimum amount for the Unver stalk time depending on the Unver tier.
-    public float ghostDeactivationTimeTopTier = 5f; //!< The minimum amount for the Unver deactivation time depending on the Unver tier.
-    public float ghostStareTimeMinTopTier = 5f; //!< The maximum amount for the player's set minimum stare time depending on the Unver tier.
-    public float ghostStareTimeMaxTopTier = 15f; //Defines the max amount for the player's set maximum stare time depending on the ghost's tier.
-    public float ghostChaseTimeTopTier = 60f; //Defines the max amount for the ghost's chase time depending on the ghost's tier.
+    [SerializeField] private float ghostSpeedTopTier = 6f; //!< The maximum amount for the Unver speed depending on the Unver tier.
+    [SerializeField] private float ghostStalkTimeTopTier = 5f; //!< The minimum amount for the Unver stalk time depending on the Unver tier.
+    [SerializeField] private float ghostDeactivationTimeTopTier = 5f; //!< The minimum amount for the Unver deactivation time depending on the Unver tier.
+    [SerializeField] private float ghostStareTimeMinTopTier = 5f; //!< The maximum amount for the player's set minimum stare time depending on the Unver tier.
+    [SerializeField] private float ghostStareTimeMaxTopTier = 15f; //Defines the max amount for the player's set maximum stare time depending on the ghost's tier.
+    [SerializeField] private float ghostChaseTimeTopTier = 60f; //Defines the max amount for the ghost's chase time depending on the ghost's tier.
 
     [Header("Raycast")]
     public float raycastRange = 1000f; //!< The duration of the maximum raycast length.
@@ -108,8 +115,8 @@ public class GhostStage : MonoBehaviour
     [SerializeField] private bool consoleStages; //!< A boolean that shows the current stage's information.
 
     [Header("Timer")]
-    public bool pauseTimer = false; //!< A boolean that controls whether or not the current time is paused.
-    public bool resetTimer = false; //!< A boolean that resets the current timer.
+    [SerializeField] private bool pauseTimer = false; //!< A boolean that controls whether or not the current time is paused.
+    [SerializeField] private bool resetTimer = false; //!< A boolean that resets the current timer.
     [SerializeField] private string currentTimerName = "Timer"; //!< The name of the current timer used in whatever stage the Unver is in.
     [SerializeField] private float currentTimerValue = 0f; //!< The value of the current timer used in whatever stage the Unver is in.
 
@@ -259,6 +266,13 @@ public class GhostStage : MonoBehaviour
                         ghostDeactivationStage = true; //< Unver deactivated.
                         stareTimer = 0;
                         if (consoleStages) Debug.Log("Ghost deactivated for " + ((setDeactivationTime + (((ghostTier - 1) / (ghostMaxTier - 1)) * (ghostDeactivationTimeTopTier - setDeactivationTime)))) / modeMultiplier + " seconds.");
+
+                        if (Random.Range(0f, sinicWispProbabilityMax - ((sinicWispProbabilityMax - sinicWispProbabilityMin) / 9f * ghostStage - 1)) <= 1f)
+                        {
+                            if (instantiatedSinicWisp != null) { Destroy(instantiatedSinicWisp); }
+
+                            instantiatedSinicWisp = Instantiate(sinicWispObject, gameObject.transform.position + sinicWispOffset, Quaternion.Euler(new Vector3(0, gameObject.transform.rotation.y, 0)));
+                        }
 
                         if (ghostStage <= ghostStaredPushBack) ghostStage = 1;
                         else ghostStage -= ghostStaredPushBack;

@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4583064838466098713
 Transform:
@@ -325,6 +325,7 @@ MonoBehaviour:
   - {fileID: 2438859648531511295}
   disableOnActivation: 0
   resetsActivation: 1
+  delay: 0
   activated: 0
 --- !u!114 &2006385281026756137
 MonoBehaviour:
@@ -373,6 +374,7 @@ MonoBehaviour:
   - {fileID: 3210975426133527011}
   disableOnActivation: 0
   resetsActivation: 1
+  delay: 0
   activated: 0
 --- !u!114 &3536397928149591778
 MonoBehaviour:
@@ -594,7 +596,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &737199736394001642
 Transform:
@@ -688,7 +690,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &666398906037868472
 Transform:
@@ -783,7 +785,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6940727475966626905
 Transform:
@@ -1042,13 +1044,13 @@ MonoBehaviour:
   ambienceSoundSecond:
   - {fileID: 8653045577911503242}
   - {fileID: 5911830614813280780}
-  isolatedVolume:
-  - 1
-  - 1
   currentBackgroundAmbience: 1
   activeSounds: 1
   directStart: 0
   masterVolume: 1
+  isolatedVolume:
+  - 1
+  - 1
   fadeTime: 1.5
   autoFader: 2
   fadeOffset: 5
@@ -1295,7 +1297,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8562154155060026158
 Transform:
@@ -1392,7 +1394,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5619024639215981751
 Transform:
@@ -1486,7 +1488,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1159332338669447857
 Transform:
@@ -1566,7 +1568,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6192500373566777347
 Transform:
@@ -1663,7 +1665,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1003803888113137627
 Transform:
@@ -4430,6 +4432,14 @@ PrefabInstance:
     - target: {fileID: 100002, guid: c2e9e8d51a3ceee44934a1cf03823104, type: 3}
       propertyPath: m_Name
       value: Painting Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: c2e9e8d51a3ceee44934a1cf03823104, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: c2e9e8d51a3ceee44934a1cf03823104, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: c2e9e8d51a3ceee44934a1cf03823104, type: 3}
       propertyPath: m_RootOrder

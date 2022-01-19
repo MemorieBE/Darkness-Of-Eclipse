@@ -168,12 +168,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1014021056836738509}
   - component: {fileID: 4550935632402402511}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wooden Bench
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1014021056836738509
 Transform:

@@ -5,15 +5,10 @@ using UnityEngine.UI;
 
 /*! \brief A script that converts a text asset into working subtitles.
  *
- *  Independent
+ *  References: SettingsValues.
  */
 public class DialogueSubtitles : MonoBehaviour
 {
-    public static bool activeSubtitles = true; //!< A boolean that controls whether or not subtitles are active.
-
-    public static bool showHiddenSubtitles = false; //!< A boolean that controls whether or not hidden subtitles are shown.
-    public static bool showNames = false; //!< A boolean that controls whether or not subtitles names are shown.
-
     [Header("Assets")]
     [SerializeField] private TextAsset transcript; //!< The transcript text asset.
     [SerializeField] private Text subtitles; //!< The subtitles text UI element.
@@ -39,7 +34,7 @@ public class DialogueSubtitles : MonoBehaviour
      */
     public void ActivateSubtitle(int scene, int interaction, int line)
     {
-        if (!activeSubtitles) { return; }
+        if (!SettingsValues.subtitlesActive) { return; }
 
         bool correctInteraction = false;
 
@@ -164,9 +159,9 @@ public class DialogueSubtitles : MonoBehaviour
             {
                 yield return new WaitForSeconds(pauseTime);
 
-                if (!hidden || showHiddenSubtitles)
+                if (!hidden || SettingsValues.subtitlesShowHidden)
                 {
-                    if (showNames && hasName)
+                    if (SettingsValues.subtitlesShowNames && hasName)
                     {
                         subtitles.text = subtitlesName + ": " + subtitlesString;
                     }

@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 908158574814905895}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Dining Scene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &908158574814905895
 Transform:
@@ -154,12 +154,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 797370318710026353}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Chairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &797370318710026353
 Transform:
@@ -640,12 +640,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 797370319432562434}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Plates And Cutlery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &797370319432562434
 Transform:
@@ -1337,7 +1337,7 @@ GameObject:
   - component: {fileID: 8981137678578860387}
   - component: {fileID: 797370320435653408}
   - component: {fileID: 1279556294023128105}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: CandleStick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3348,12 +3348,12 @@ GameObject:
   - component: {fileID: 8686813054690769520}
   - component: {fileID: 3697775677094259332}
   - component: {fileID: 8364150325955558139}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8103429711747373954
 Transform:
