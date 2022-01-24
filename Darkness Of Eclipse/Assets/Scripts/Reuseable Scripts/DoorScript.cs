@@ -21,7 +21,7 @@ public class DoorScript : MonoBehaviour
     public bool locked = false; //!< A boolean that controls whether or not the is locked.
     public bool open = false; //!< A boolean that controls whether or not the is open.
 
-    void Start()
+    private void OnEnable()
     {
         UpdateDoorAnimationDirect();
     }
