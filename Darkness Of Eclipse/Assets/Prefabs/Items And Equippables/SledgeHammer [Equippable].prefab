@@ -56,6 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,6 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &8055880666222412317
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -150,6 +152,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -174,6 +177,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &5861024257880682346
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -201,7 +205,7 @@ GameObject:
   - component: {fileID: 4851490520333518451}
   - component: {fileID: 5625205452484095818}
   - component: {fileID: 3163578193521333512}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: SledgeHammer [Equippable]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropScript: {fileID: 0}
   equippableID: 2
+  resetYPoint: 0
 --- !u!114 &3163578193521333512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,4 +286,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prompt: Pick Up
   sprite: {fileID: 21300000, guid: b5ac47ee849459c49b129680a962629a, type: 3}
-  interacted: 0
+  aDED: 0
+  scripts:
+  - {fileID: 5625205452484095818}
+  disableOnActivation: 0
+  resetsActivation: 1
+  delay: 0
+  activated: 0

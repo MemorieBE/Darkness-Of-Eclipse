@@ -56,6 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,6 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &513988166283299031
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -170,7 +172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc83a98bf51bdcb4aaf48e4a62f65c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropScript: {fileID: 0}
   equippableID: 0
+  resetYPoint: 0
 --- !u!114 &2598339556503935379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,4 +189,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prompt: Pick Up
   sprite: {fileID: 21300000, guid: b5ac47ee849459c49b129680a962629a, type: 3}
-  interacted: 0
+  aDED: 0
+  scripts:
+  - {fileID: 5366626263291577208}
+  disableOnActivation: 0
+  resetsActivation: 1
+  delay: 0
+  activated: 0

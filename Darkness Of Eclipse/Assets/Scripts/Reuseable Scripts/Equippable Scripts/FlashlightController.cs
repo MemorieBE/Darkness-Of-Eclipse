@@ -25,9 +25,15 @@ public class FlashlightController : MonoBehaviour
         if (Input.GetKeyDown(keyBind) && gameObject.activeSelf && PlayerControllerCC.allowPlayerInputs)
         {
             isActive = !isActive;
-        }
 
-        flashlightAnimator.SetBool("IsOn", isActive);
+            flashlightAnimator.SetBool("IsOn", isActive);
+        }
+    }
+
+    public void UpdateFlashlightSide(bool right)
+    {
+        isRight = right;
+
         flashlightAnimator.SetBool("IsRight", isRight);
     }
 }

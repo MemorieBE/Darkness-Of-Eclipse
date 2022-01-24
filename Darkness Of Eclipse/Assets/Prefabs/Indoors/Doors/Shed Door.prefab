@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorAnimator: {fileID: 8600690589332521890}
-  hasLockedAnimations: 0
+  hasUnlockedAnimations: 0
   openAudio: {fileID: 1859139669240178152}
   closeAudio: {fileID: 3910307958897999416}
   lockedAudio: {fileID: 5245051944549940432}
@@ -81,11 +81,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prompt: Interact
   sprite: {fileID: 21300000, guid: b5ac47ee849459c49b129680a962629a, type: 3}
-  aDED: 1
+  aDED: 0
   scripts:
   - {fileID: 3132684881760807205}
   disableOnActivation: 0
   resetsActivation: 1
+  delay: 0
+  activated: 0
 --- !u!1 &1757585476966050963
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,6 +577,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -599,6 +602,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &2262862818993633449
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -668,6 +672,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -692,6 +697,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8724075087764620966
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,6 +757,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -775,6 +782,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &4605383328174056121
 BoxCollider:
   m_ObjectHideFlags: 0

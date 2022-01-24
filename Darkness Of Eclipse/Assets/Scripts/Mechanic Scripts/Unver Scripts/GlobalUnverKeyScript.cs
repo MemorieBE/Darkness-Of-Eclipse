@@ -24,6 +24,18 @@ public class GlobalUnverKeyScript : MonoBehaviour
 
     void Update()
     {
+        if (addKey)
+        {
+            addKey = false;
+            if (keyCount < totalKeys) keyCount++;
+        }
+    }
+
+    public void UpdateKeyCount()
+    {
+        ghostStageScript.ghostStagesActive = true;
+        ghostStageScript.GhostSpawn();
+
         if (keyCount == 0) ghostStageScript.ghostTier = 1;
         else ghostStageScript.ghostTier = keyCount;
 
@@ -31,12 +43,6 @@ public class GlobalUnverKeyScript : MonoBehaviour
         {
             if (achievementScript == null) { return; }
             achievementScript.AchievementUnlocked(achievementID);
-        }
-
-        if (addKey)
-        {
-            addKey = false;
-            if (keyCount < totalKeys) keyCount++;
         }
 
         visualKeyCount = keyCount;

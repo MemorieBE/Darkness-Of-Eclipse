@@ -46,9 +46,17 @@ public class EquippableController : MonoBehaviour
 
         isActive = true;
 
-        flashlight.isRight = false;
+        flashlight.UpdateFlashlightSide(false);
 
-        yield return new WaitForSeconds(animationStartPause);
+        for (float i = 0; i < animationStartPause; i += Time.deltaTime)
+        {
+            if (!isActive)
+            {
+                yield break;
+            }
+
+            yield return null;
+        }
 
         equippableAnimator.SetBool("IsActive", true);
     }
@@ -64,8 +72,16 @@ public class EquippableController : MonoBehaviour
 
         equippableAnimator.SetBool("IsActive", false);
 
-        yield return new WaitForSeconds(animationStartPause);
+        for (float i = 0; i < animationStartPause; i += Time.deltaTime)
+        {
+            if (isActive)
+            {
+                yield break;
+            }
 
-        flashlight.isRight = true;
+            yield return null;
+        }
+
+        flashlight.UpdateFlashlightSide(true);
     }
 }

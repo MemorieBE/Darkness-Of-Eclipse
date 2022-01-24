@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class SinicWispController : MonoBehaviour
 {
-    public static int wispCount = 0;
+    public static int wispCount = 10;
 
     [Header("Wisp")]
     public bool wispsActive = true;
     [SerializeField] private GameObject wispProjectile;
     [SerializeField] private Vector3 wispSpawnOffset;
+    [SerializeField] private Text wispCountText;
 
     [Header("Player")]
     [SerializeField] private Transform player;
@@ -19,6 +21,11 @@ public class SinicWispController : MonoBehaviour
     [SerializeField] private Transform[] possibleDestinations;
 
     public static string keyBind = "y";
+
+    void Start()
+    {
+        wispCountText.text = wispCount.ToString();
+    }
 
     void Update()
     {
@@ -31,6 +38,8 @@ public class SinicWispController : MonoBehaviour
     public void UpdateWispCount(int amount)
     {
         wispCount += amount;
+
+        wispCountText.text = wispCount.ToString();
     }
 
     private void UseWisp()
@@ -79,7 +88,9 @@ public class SinicWispController : MonoBehaviour
             destination = player.position + wispSpawnOffset;
         }
 
-        newWisp.GetComponent<NavMeshAgent>().Warp(player.position + wispSpawnOffset);
-        newWisp.GetComponent<NavMeshAgent>().SetDestination(destination);
+        NavMeshAgent nma = newWisp.GetComponentInChildren<NavMeshAgent>();
+
+        nma.Warp(player.position + wispSpawnOffset);
+        nma.SetDestination(destination);
     }
 }
