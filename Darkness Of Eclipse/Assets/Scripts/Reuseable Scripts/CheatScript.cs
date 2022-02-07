@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -24,39 +25,83 @@ public class CheatScript : MonoBehaviour
     [SerializeField] private GameObject playerObject; //!< The player game object.
     [SerializeField] private GameObject editorLight; //!< The editor light game object.
 
+    [Header("Actions")]
+    [SerializeField] private InputActionReference cheatAction; //!< The cheat input field action.
+    [SerializeField] private InputActionReference escapeAction; //!< The escape action.
+    [SerializeField] private InputActionReference confirmAction; //!< The confirm action.
+
     private bool cheatPanelOpen = false; //!< A boolean that determines whether the cheat panel is open.
 
-    void Update()
+    void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.F1) && cheatsEnabled && !cheatsInputDisabled)
-        {
-            cheatPanelOpen = !cheatPanelOpen;
-            cheatInputField.gameObject.SetActive(cheatPanelOpen);
+        cheatAction.action.performed += ctx => ToggleCheatInput();
+        escapeAction.action.performed += ctx => EscapeCheatInput();
+        confirmAction.action.performed += ctx => ConfirmCheatInput();
+    }
 
-            if (cheatPanelOpen)
+    void OnEnable()
+    {
+        cheatAction.action.Enable();
+        escapeAction.action.Enable();
+        confirmAction.action.Enable();
+    }
+
+    void OnDisable()
+    {
+        cheatAction.action.Disable();
+        escapeAction.action.Disable();
+        confirmAction.action.Disable();
+    }
+
+    /*!
+     *  A method that toggles the cheat input field.
+     */
+    private void ToggleCheatInput()
+    {
+        if (cheatsEnabled && !cheatsInputDisabled)
+        {
+            if (!cheatPanelOpen && GameRules.cancelInputOverride <= 0)
             {
+                cheatPanelOpen = true;
+                cheatInputField.gameObject.SetActive(true);
+
                 cheatInputField.ActivateInputField();
 
-                PlayerControllerCC.allowPlayerInputs = false;
+                GameRules.CancelAllInput();
             }
             else
             {
-                cheatInputField.text = "";
-
-                PlayerControllerCC.allowPlayerInputs = true;
+                EscapeCheatInput();
             }
         }
-        else if ((!cheatsEnabled || cheatsInputDisabled) && cheatPanelOpen)
+        else
+        {
+            EscapeCheatInput();
+        }
+    }
+
+    /*!
+     *  A method that escapes the cheat input field.
+     */
+    private void EscapeCheatInput()
+    {
+        if (cheatPanelOpen)
         {
             cheatPanelOpen = false;
             cheatInputField.gameObject.SetActive(false);
 
             cheatInputField.text = "";
 
-            PlayerControllerCC.allowPlayerInputs = !GameRules.cancelAllInputs;
+            GameRules.ResumeAllInput();
         }
+    }
 
-        if (cheatPanelOpen && Input.GetKeyDown(KeyCode.Return))
+    /*!
+     *  A method that confirms the cheat input field.
+     */
+    private void ConfirmCheatInput()
+    {
+        if (cheatPanelOpen && cheatsEnabled && !cheatsInputDisabled)
         {
             ExecuteCommand(cheatInputField.text);
             cheatInputField.text = "";
@@ -64,7 +109,7 @@ public class CheatScript : MonoBehaviour
             cheatPanelOpen = false;
             cheatInputField.gameObject.SetActive(false);
 
-            PlayerControllerCC.allowPlayerInputs = true;
+            GameRules.ResumeAllInput();
         }
     }
 

@@ -751,6 +751,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   animationStartPause: 0.5
+  toggleAction: {fileID: -5490335368146379028, guid: 1de2bb1a9b61ce64d9213db7c4803558,
+    type: 3}
   flashlight: {fileID: 7456792561457849940}
 --- !u!114 &6458864535581878889
 MonoBehaviour:
@@ -764,7 +766,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4bff66cb3d981846bc109c307c63ce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: {fileID: 7400000, guid: 1504b3fea01363f4092e0e4f437850f8, type: 2}
+  actionAnimation: {fileID: 7400000, guid: 1504b3fea01363f4092e0e4f437850f8, type: 2}
+  inputAction: {fileID: 2328278433679594284, guid: 1de2bb1a9b61ce64d9213db7c4803558,
+    type: 3}
 --- !u!1 &2571668016301777520
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,10 +908,7 @@ MonoBehaviour:
   - {fileID: 4509898951251854529}
   - {fileID: 4509898952786481468}
   mainColour: {r: 0.75686276, g: 0.6313726, b: 0.78431374, a: 1}
-  transformOfLocations: []
-  colourOfLocations: []
-  maxRadiusOfLocations: []
-  minRadiusOfLocations: []
+  colourChangers: []
 --- !u!1 &3756148455205260508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,6 +1105,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   animationStartPause: 0.5
+  toggleAction: {fileID: -5490335368146379028, guid: 1de2bb1a9b61ce64d9213db7c4803558,
+    type: 3}
   flashlight: {fileID: 7456792561457849940}
 --- !u!114 &7042524747911005056
 MonoBehaviour:
@@ -1117,7 +1120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4bff66cb3d981846bc109c307c63ce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: {fileID: 7400000, guid: b9654479acdf82e41bc792c27974dac4, type: 2}
+  actionAnimation: {fileID: 7400000, guid: b9654479acdf82e41bc792c27974dac4, type: 2}
+  inputAction: {fileID: 2328278433679594284, guid: 1de2bb1a9b61ce64d9213db7c4803558,
+    type: 3}
 --- !u!1 &4509898951251854531
 GameObject:
   m_ObjectHideFlags: 0
@@ -1830,9 +1835,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eea5092eece76e4393e06ef5f098ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyBind: f
   isActive: 0
   isRight: 1
+  flashlightAction: {fileID: -6742482480064921266, guid: 1de2bb1a9b61ce64d9213db7c4803558,
+    type: 3}
 --- !u!114 &4154435909072965083
 MonoBehaviour:
   m_ObjectHideFlags: 0

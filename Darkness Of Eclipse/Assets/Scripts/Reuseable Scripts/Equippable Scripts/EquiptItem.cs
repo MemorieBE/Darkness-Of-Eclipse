@@ -25,9 +25,9 @@ public class EquiptItem : MonoBehaviour
     }
 
     /*!
-     *  A method that is triggered on activation.
+     *  A method that equipts the item.
      */
-    public void Activated()
+    public void Equipt()
     {
         if (CurrentEquippable.currentEquippable > 0) dropScript.EquippableDrop(CurrentEquippable.currentEquippable);
 

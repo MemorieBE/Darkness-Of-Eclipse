@@ -22,9 +22,9 @@ public class CloseTransition : MonoBehaviour
     [SerializeField] private bool unfinishedNextScene = false; //!< A boolean that controls whether or not the transition will alternatively go to the main menu.
 
     /*!
-     *  A method that is triggered on activation.
+     *  A method that starts the close transition.
      */
-    public void Activated()
+    public void StartTransition()
     {
         StartCoroutine(Transition());
     }

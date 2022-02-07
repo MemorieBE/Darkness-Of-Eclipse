@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /*! \brief A script that controls a swinging equippable.
  *
@@ -8,21 +9,37 @@ using UnityEngine;
  */
 public class EquippableAction : MonoBehaviour
 {
-    [Header("Action Animation")]
-    [SerializeField] private AnimationClip action; //!< The action animation for reference.
+    [Header("Action")]
+    [SerializeField] private AnimationClip actionAnimation; //!< The action animation for reference.
+    [SerializeField] private InputActionReference inputAction; //!< The equippable action.
 
     private Animator animator; //!< The equippable animator.
     private EquippableController controller; //!< The equippable controller script.
 
-    void Start()
+    void Awake()
     {
+        inputAction.action.performed += ctx => TriggerEquippable();
+
         animator = gameObject.GetComponent<Animator>();
         controller = gameObject.GetComponent<EquippableController>();
     }
 
-    void Update()
+    void OnEnable()
     {
-        if (Input.GetMouseButtonDown(0) && controller.isActive && PlayerControllerCC.allowPlayerInputs && !animator.GetBool("Action"))
+        inputAction.action.Enable();
+    }
+
+    void OnDisable()
+    {
+        inputAction.action.Disable();
+    }
+
+    /*!
+     *  A method that triggers the equippable.
+     */
+    private void TriggerEquippable()
+    {
+        if (controller.isActive && PlayerControllerCC.allowPlayerInputs && !animator.GetBool("Action"))
         {
             StartCoroutine(Action());
         }
@@ -35,7 +52,7 @@ public class EquippableAction : MonoBehaviour
     {
         animator.SetBool("Action", true);
 
-        for (float i = 0; i < action.length; i += Time.deltaTime)
+        for (float i = 0; i < actionAnimation.length; i += Time.deltaTime)
         {
             if (!controller.isActive)
             {

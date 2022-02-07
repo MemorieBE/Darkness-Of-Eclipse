@@ -48,7 +48,7 @@ public class PrologueUnverIntro : MonoBehaviour
     private bool audioStarted = false; //!< A boolean that determines whether or not the event audio has been player.
     private bool hasCut = false; //!< A boolean that determines whether or not the event has cut to black.
 
-    public void Activated()
+    public void StartEvent()
     {
         ghostObject.SetActive(true);
         ghostObject.GetComponent<Animator>().SetInteger("Stage", 1);

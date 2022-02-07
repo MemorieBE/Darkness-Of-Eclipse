@@ -16,9 +16,9 @@ public class LocalUnverKeyScript : MonoBehaviour
     [SerializeField] private GlobalUnverKeyScript globalKeyScript; //!< The global key script.
 
     /*!
-     *  A method that is triggered on activation.
+     *  A method that collects the key.
      */
-    public void Activated()
+    public void CollectKey()
     {
         GlobalUnverKeyScript.keyCount ++;
         if (keyID == GlobalUnverKeyScript.keyCount) GlobalUnverKeyScript.keyCountForAchievement++;

@@ -252,6 +252,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2096866779937916175}
+  - component: {fileID: 1070969573272408993}
+  - component: {fileID: 3228844337473255669}
   m_Layer: 13
   m_Name: Blue Flowers Prefab
   m_TagString: Untagged
@@ -278,6 +280,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1070969573272408993
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096866779937888559}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 20
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3228844337473255669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096866779937888559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81170ce9c361cf04abe13ad3c09064e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCollider: {fileID: 0}
+  controller: {fileID: 0}
+  colour: {r: 0.16470589, g: 0.6666667, b: 0.77254903, a: 0.9019608}
+  minRadius: 1.5
+  maxRadius: 4
 --- !u!1 &6147165473501248789
 GameObject:
   m_ObjectHideFlags: 0

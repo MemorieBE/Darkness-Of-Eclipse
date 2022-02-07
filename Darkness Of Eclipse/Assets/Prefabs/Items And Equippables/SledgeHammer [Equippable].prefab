@@ -286,9 +286,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prompt: Pick Up
   sprite: {fileID: 21300000, guid: b5ac47ee849459c49b129680a962629a, type: 3}
-  aDED: 0
   scripts:
   - {fileID: 5625205452484095818}
+  invokes:
+  - Equipt
   disableOnActivation: 0
   resetsActivation: 1
   delay: 0

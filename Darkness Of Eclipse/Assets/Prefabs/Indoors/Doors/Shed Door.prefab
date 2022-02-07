@@ -81,9 +81,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prompt: Interact
   sprite: {fileID: 21300000, guid: b5ac47ee849459c49b129680a962629a, type: 3}
-  aDED: 0
   scripts:
   - {fileID: 3132684881760807205}
+  invokes:
+  - TriggerDoor
   disableOnActivation: 0
   resetsActivation: 1
   delay: 0

@@ -4913,9 +4913,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetCollider: {fileID: 0}
-  aDED: 0
   scripts:
   - {fileID: 3645569840089702173}
+  invokes:
+  - TriggerDeathScene
   disableOnActivation: 0
   resetsActivation: 1
   delay: 0

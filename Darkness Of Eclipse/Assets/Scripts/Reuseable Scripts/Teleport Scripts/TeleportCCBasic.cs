@@ -15,9 +15,9 @@ public class TeleportCCBasic : MonoBehaviour
     [SerializeField] private Transform teleportExit; //!< The teleport exit transform.
 
     /*!
-     *  A method that is triggered on activation.
+     *  A method that teleports the player.
      */
-    public void Activated()
+    public void Teleport()
     {
         characterController.enabled = false;
         characterController.gameObject.transform.position = teleportExit.transform.position;

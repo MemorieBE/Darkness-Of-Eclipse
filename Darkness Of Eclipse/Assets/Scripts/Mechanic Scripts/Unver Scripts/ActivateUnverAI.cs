@@ -12,9 +12,9 @@ public class ActivateUnverAI : MonoBehaviour
     public GhostStage ghostStageScript; //!< The script that controls the ghost stages.
 
     /*!
-     *  A method that is triggered on deactivation.
+     *  A method that is triggers the Unver AI.
      */
-    public void Activated()
+    public void ActivateAI()
     {
         ghostStageScript.ghostStagesActive = true;
         ghostStageScript.GhostSpawn();

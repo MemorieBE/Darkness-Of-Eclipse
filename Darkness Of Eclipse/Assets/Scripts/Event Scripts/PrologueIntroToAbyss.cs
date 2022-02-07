@@ -18,11 +18,11 @@ public class PrologueIntroToAbyss : MonoBehaviour
     [SerializeField] private float eventDuration = 10f; //!< The amount of time in seconds that the event will last for.
 
     /*!
-     *  A method that is triggered on activation.
+     *  A method that starts the event.
      */
-    public void Activated()
+    public void StartEvent()
     {
-        StartCoroutine(StartEvent());
+        StartCoroutine(AbyssEvent());
 
         doorScript1.open = false;
         doorScript1.locked = true;
@@ -41,7 +41,7 @@ public class PrologueIntroToAbyss : MonoBehaviour
     /*!
      *  A coroutine that activates the event.
      */
-    IEnumerator StartEvent()
+    private IEnumerator AbyssEvent()
     {
         yield return new WaitForSeconds(eventDuration);
 

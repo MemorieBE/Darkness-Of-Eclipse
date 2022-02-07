@@ -99,11 +99,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactDistance: 2
-  interactKeyBind: e
   raycastIgnoreLayers: 090000000a0000000c000000
   interactUI: {fileID: 0}
   interactText: {fileID: 0}
   interactImage: {fileID: 0}
+  interactAction: {fileID: 9204844948173613638, guid: 1de2bb1a9b61ce64d9213db7c4803558,
+    type: 3}
 --- !u!114 &5527989407017451978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,6 +261,14 @@ MonoBehaviour:
   gravity: 5
   maxDropVelocity: 10
   rigidbodyPushForce: 5
+  moveAction: {fileID: 7681179371298838879, guid: 1de2bb1a9b61ce64d9213db7c4803558,
+    type: 3}
+  sprintAction: {fileID: 1033632557191191399, guid: 1de2bb1a9b61ce64d9213db7c4803558,
+    type: 3}
+  sneakAction: {fileID: -8169568156398590796, guid: 1de2bb1a9b61ce64d9213db7c4803558,
+    type: 3}
+  jumpAction: {fileID: 170297145342964053, guid: 1de2bb1a9b61ce64d9213db7c4803558,
+    type: 3}
 --- !u!114 &2903752846192180769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHead: {fileID: 3800998808135323668}
+  lookAction: {fileID: 0}
 --- !u!1 &3800998810161958017
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /*! \brief A script that controls the player's current equippable.
  *
@@ -12,19 +13,37 @@ public class EquippableController : MonoBehaviour
     public bool isActive = false; //!< A boolean that determines whether or not the equippable is active.
     public float animationStartPause = 1f; //!< The ammount of time in seconds until the active animation will start.
 
+    [Header("Action")]
+    [SerializeField] private InputActionReference toggleAction; //!< The toggle action.
+
     [Header("Assets")]
     [SerializeField] private FlashlightController flashlight; //!< The flashlight script.
 
     private Animator equippableAnimator; //!< The equippable animator.
 
-    void Start()
+    void Awake()
     {
+        toggleAction.action.performed += ctx => ToggleEquippable();
+
         equippableAnimator = gameObject.GetComponent<Animator>();
     }
 
-    void Update()
+    private void OnEnable()
     {
-        if (Input.GetMouseButtonDown(1) && gameObject.activeSelf && PlayerControllerCC.allowPlayerInputs)
+        toggleAction.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        toggleAction.action.Disable();
+    }
+
+    /*!
+     *  A method that toggles the equippable.
+     */
+    private void ToggleEquippable()
+    {
+        if (gameObject.activeSelf && PlayerControllerCC.allowPlayerInputs)
         {
             if (isActive)
             {

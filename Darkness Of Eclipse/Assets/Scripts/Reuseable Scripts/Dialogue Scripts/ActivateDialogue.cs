@@ -13,9 +13,9 @@ public class ActivateDialogue : MonoBehaviour
     [SerializeField] private int lineID; //!< The line ID.
 
     /*!
-     *  A method that is triggered on activation.
+     *  A method that is triggers the line.
      */
-    public void Activated()
+    public void TriggerLine()
     {
         smartLineScript.ActivateLine(lineID);
     }

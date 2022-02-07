@@ -18,9 +18,9 @@ public class LIDIntroDeathAreaEvent : MonoBehaviour
     [SerializeField] private float duration; //!< The duration of the evnt in seconds.
 
     /*!
-     *  A method that is trigger on activation.
+     *  A method that starts the event.
      */
-    public void Activated()
+    public void StartEvent()
     {
         StartCoroutine(EventActive());
     }

@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(ADED_Interactable))]
+[RequireComponent(typeof(InvokeInteractable))]
 
+/*! \brief A script that collects a sinic wisp.
+ *
+ *  References: InvokeInteractable, SinicWispController.
+ */
 public class SinicWispCollect : MonoBehaviour
 {
-    [SerializeField] private SinicWispController controller;
+    [SerializeField] private SinicWispController controller; //!< The sinic wisp controller.
 
-    public void Activated()
+    /*!
+     *  A method that is triggered on interaction.
+     */
+    public void Interacted()
     {
         controller.UpdateWispCount(1);
 

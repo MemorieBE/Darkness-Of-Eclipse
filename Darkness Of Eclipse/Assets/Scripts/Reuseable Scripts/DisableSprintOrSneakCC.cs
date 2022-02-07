@@ -14,9 +14,9 @@ public class DisableSprintOrSneakCC : MonoBehaviour
     [SerializeField] private bool normalizePlayerMovement = false; //!< A boolean that controls whether or not the player's movement is normalized.
 
     /*!
-     *  A method that is triggered on activation.
+     *  A method updates the move states.
      */
-    public void Activated()
+    public void UpdateMoveStates()
     {
         PlayerControllerCC.sprintDisabled = disableSprint;
         PlayerControllerCC.sneakDisabled = disableSneak;

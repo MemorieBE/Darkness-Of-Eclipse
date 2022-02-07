@@ -22,17 +22,17 @@ public class DeathScene : MonoBehaviour
     public static bool alternateDeathScene = true; //!< A boolean that controls whether or the alternate death scene animation will be used instead.
 
     /*!
-     *  A method that is triggered on activation.
+     *  A method that is triggers a death scene.
      */
-    public void Activated()
+    public void TriggerDeathScene()
     {
         StartCoroutine(StartRandomDeathScene());
     }
 
     /*!
-     *  A coroutine that kills the player with a stare death scenario.
+     *  A coroutine that picks and play a random death scene.
      */
-    public IEnumerator StartRandomDeathScene()
+    private IEnumerator StartRandomDeathScene()
     {
         GameRules.CancelAllInput();
         Time.timeScale = 0f;

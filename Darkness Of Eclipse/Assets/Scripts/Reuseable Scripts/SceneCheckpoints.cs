@@ -100,7 +100,7 @@ public class SceneCheckpoints : MonoBehaviour
         spawnPoint.position = checkpointSpawnPoints[sceneCheckpoint].position;
         spawnPoint.rotation = checkpointSpawnPoints[sceneCheckpoint].rotation;
 
-        if (!SceneSavePoint.hasSavePoint) { teleporter.Activated(); }
+        if (!SceneSavePoint.hasSavePoint) { teleporter.Teleport(); }
     }
 
     /*!

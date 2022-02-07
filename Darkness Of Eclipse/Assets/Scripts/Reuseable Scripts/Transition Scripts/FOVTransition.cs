@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(InvokeFromFunction))]
+
 /*! \brief A script that changes a camera FOV to transition.
  *
- *  Independent
+ *  References: InvokeFromFunction.
  */
 public class FOVTransition : MonoBehaviour
 {
@@ -22,9 +24,9 @@ public class FOVTransition : MonoBehaviour
     private float originalFOV; //!< The original field of view.
 
     /*!
-     *  A method that is triggered on activation.
+     *  A method that starts the FOV transition.
      */
-    public void Activated()
+    public void StartTransition()
     {
         if (transitioning) { return; }
 
@@ -48,7 +50,7 @@ public class FOVTransition : MonoBehaviour
             yield return null;
         }
 
-        gameObject.SendMessage("Activated");
+        gameObject.GetComponent<InvokeFromFunction>().Invoke();
 
         for (float transOutTime = 0f; transOutTime < timeOut; transOutTime += Time.deltaTime)
         {

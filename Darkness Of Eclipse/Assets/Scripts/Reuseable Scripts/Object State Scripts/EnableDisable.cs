@@ -13,18 +13,18 @@ public class EnableDisable : MonoBehaviour
     [SerializeField] private GameObject[] disableOnActivation; //!< The game objects to disable on activation.
 
     /*!
-     *  A method that is triggered on activation.
+     *  A method that eneables the enable objects and disables the disable objects.
      */
-    public void Activated()
+    public void PositiveTrigger()
     {
         for (int i = 0; i < enableOnActivation.Length; i++) { enableOnActivation[i].SetActive(true); }
         for (int i = 0; i < disableOnActivation.Length; i++) { disableOnActivation[i].SetActive(false); }
     }
 
     /*!
-     *  A method that is triggered on deactivation.
+     *  A method that disables the enable objects and enables the disable objects.
      */
-    public void Deactivated()
+    public void NegativeTrigger()
     {
         for (int i = 0; i < enableOnActivation.Length; i++) { enableOnActivation[i].SetActive(false); }
         for (int i = 0; i < disableOnActivation.Length; i++) { disableOnActivation[i].SetActive(true); }

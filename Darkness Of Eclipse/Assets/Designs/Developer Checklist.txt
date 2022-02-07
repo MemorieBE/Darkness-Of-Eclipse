@@ -1,7 +1,0 @@
--Redo voice lines from the alpha.
--Create and import assets and decoration for the starter house.
--Create and import assets for the 'Locked In Despair' area's environment.
--Create alternate path in 'Locked In Despair' area for the good ending.
--Make notepad mechanic.
--Plan out the next level after 'Locked In Despair'.
--Create Amelia Brille character model.

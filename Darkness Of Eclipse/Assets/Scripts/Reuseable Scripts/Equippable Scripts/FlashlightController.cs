@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /*! \brief A script that controls the player's flashlight.
  *
@@ -9,20 +10,37 @@ using UnityEngine;
 public class FlashlightController : MonoBehaviour
 {
     [Header("Inputs")]
-    [SerializeField] private string keyBind = "f"; //!< The key bind used to activate flashlight.
     public bool isActive = false; //!< A boolean that determines whether or not the flashlight is active.
     public bool isRight = true; //!< A boolean that determines whether or not the flashlight is in the right hand.
 
+    [Header("Action")]
+    [SerializeField] private InputActionReference flashlightAction; //!< The flashlight action.
+
     private Animator flashlightAnimator; //!< The flashlight animator.
 
-    void Start()
+    void Awake()
     {
+        flashlightAction.action.performed += ctx => ToggleFlashlight();
+
         flashlightAnimator = gameObject.GetComponent<Animator>();
     }
 
-    void Update()
+    void OnEnable()
     {
-        if (Input.GetKeyDown(keyBind) && gameObject.activeSelf && PlayerControllerCC.allowPlayerInputs)
+        flashlightAction.action.Enable();
+    }
+
+    void OnDisable()
+    {
+        flashlightAction.action.Disable();
+    }
+
+    /*!
+     *  A method that toggles the flashlight.
+     */
+    private void ToggleFlashlight()
+    {
+        if (gameObject.activeSelf && PlayerControllerCC.allowPlayerInputs)
         {
             isActive = !isActive;
 
@@ -30,6 +48,9 @@ public class FlashlightController : MonoBehaviour
         }
     }
 
+    /*!
+     *  A method that updates the flashlight side.
+     */
     public void UpdateFlashlightSide(bool right)
     {
         isRight = right;

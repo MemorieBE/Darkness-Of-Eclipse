@@ -90,6 +90,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!1 &7417681127545525846
@@ -152,6 +153,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -176,6 +178,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &7498077293173120547
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -203,10 +206,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prompt: Interact
   sprite: {fileID: 21300000, guid: b5ac47ee849459c49b129680a962629a, type: 3}
-  aDED: 0
   scripts:
   - {fileID: 469822324008990185}
   - {fileID: 3944697921181396748}
+  invokes:
+  - CollectKey
+  - AddItem
   disableOnActivation: 1
   resetsActivation: 0
   delay: 0
@@ -224,8 +229,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyID: 0
-  ghostStageScript: {fileID: 0}
   saveScript: {fileID: 0}
+  globalKeyScript: {fileID: 0}
 --- !u!114 &3944697921181396748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,3 +244,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemID: 0
+  inventoryScript: {fileID: 0}

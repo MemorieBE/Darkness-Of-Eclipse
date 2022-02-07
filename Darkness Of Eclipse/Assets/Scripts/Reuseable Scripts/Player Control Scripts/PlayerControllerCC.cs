@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
 
@@ -28,13 +29,16 @@ public class PlayerControllerCC : MonoBehaviour
     public float maxDropVelocity = 10f; //!< The gravity terminal velocity.
     public float rigidbodyPushForce = 5f; //!< How hard the player will push away rigidbodies when colliding with them.
 
-    public static string moveForwardKey = "w"; //!< The key bind used to move forward.
-    public static string moveBackKey = "s"; //!< The key bind used to move backward.
-    public static string moveLeftKey = "a"; //!< The key bind used to move left.
-    public static string moveRightKey = "d"; //!< The key bind used to move right.
-    public static string sprintKey = "left shift"; //!< The key bind used to sprint.
-    public static string sneakKey = "left ctrl"; //!< The key bind used to sneak.
-    public static string jumpKey = "space"; //!< The key bind used to jump.
+    [Header("Actions")]
+    [SerializeField] private InputActionReference moveAction; //!< The move action.
+    [SerializeField] private InputActionReference sprintAction; //!< The sprint action.
+    [SerializeField] private InputActionReference sneakAction; //!< The sneak action.
+    [SerializeField] private InputActionReference jumpAction; //!< The jump action.
+
+    private Vector2 moveInput; //!< The move input.
+    private bool sprintInput; //!< The sprint input.
+    private bool sneakInput; //!< The sneak input.
+    private bool jumpInput; //!< The jump input.
 
     private CharacterController characterController; //!< The player character controller.
 
@@ -45,6 +49,22 @@ public class PlayerControllerCC : MonoBehaviour
     void Awake()
     {
         allowPlayerInputs = true;
+    }
+
+    void OnEnable()
+    {
+        moveAction.action.Enable();
+        sprintAction.action.Enable();
+        sneakAction.action.Enable();
+        jumpAction.action.Enable();
+    }
+
+    void OnDisable()
+    {
+        moveAction.action.Disable();
+        sprintAction.action.Disable();
+        sneakAction.action.Disable();
+        jumpAction.action.Disable();
     }
 
     void Start()
@@ -71,13 +91,18 @@ public class PlayerControllerCC : MonoBehaviour
 
     void Update()
     {
+        moveInput = moveAction.action.ReadValue<Vector2>();
+        sprintInput = sprintAction.action.ReadValue<float>() == 1f;
+        sneakInput = sneakAction.action.ReadValue<float>() == 1f;
+        jumpInput = jumpAction.action.ReadValue<float>() == 1f;
+
         // Gets local direction of movement input.
         {
             Vector3 localDirection = Vector3.zero;
-            if (Input.GetKey(moveForwardKey)) localDirection += Vector3.forward;
-            if (Input.GetKey(moveBackKey)) localDirection += Vector3.back;
-            if (Input.GetKey(moveLeftKey)) localDirection += Vector3.left * strafeMultiplier;
-            if (Input.GetKey(moveRightKey)) localDirection += Vector3.right * strafeMultiplier;
+            if (moveInput.y == 1f) localDirection += Vector3.forward;
+            if (moveInput.y == -1f) localDirection += Vector3.back;
+            if (moveInput.x == -1f) localDirection += Vector3.left * strafeMultiplier;
+            if (moveInput.x == 1f) localDirection += Vector3.right * strafeMultiplier;
 
             if (normalizedMovement) localDirection = localDirection.normalized;
             if (!allowPlayerInputs) localDirection = Vector3.zero;
@@ -88,13 +113,13 @@ public class PlayerControllerCC : MonoBehaviour
         // Gets player jump.
         if (characterController.isGrounded)
         {
-            if (Input.GetKey(jumpKey) && allowPlayerInputs) currentyDropVelocity = jumpForce * -1f;
+            if (jumpInput && allowPlayerInputs) currentyDropVelocity = jumpForce * -1f;
             else currentyDropVelocity = 0f;
         }
 
         // Calculates the current speed.
-        if (Input.GetKey(sprintKey) && !Input.GetKey(sneakKey) && !sprintDisabled) currentSpeed = moveSpeed * sprintMultiplier;
-        else if (Input.GetKey(sneakKey) && !sneakDisabled) currentSpeed = moveSpeed * sneakSpeedMultiplier;
+        if (sprintInput && !sneakInput && !sprintDisabled) currentSpeed = moveSpeed * sprintMultiplier;
+        else if (sneakInput && !sneakDisabled) currentSpeed = moveSpeed * sneakSpeedMultiplier;
         else currentSpeed = moveSpeed;
     }
 

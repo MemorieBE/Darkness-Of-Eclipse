@@ -2,23 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using System.Linq;
 
 /*! \brief A script that controls how the player interacts with game objects.
  *
- *  References: ADED_Interactable, ADED_ItemBasedInteractable, InventoryScript, PlayerControllerCC.
+ *  References: InvokeInteractable, InvokeItemBasedInteractable, InventoryScript, PlayerControllerCC.
  */
 public class InteractController : MonoBehaviour
 {
+    [Header("Inputs")]
     public float interactDistance = 2f; //!< The distance of the interact raycast.
-
-    public string interactKeyBind = "e"; //!< The interact key bind.
-
     public int[] raycastIgnoreLayers; //!< The layers that the raycast will ignore.
 
+    [Header("UI")]
     public GameObject interactUI; //!< The interact UI game object.
     public Text interactText; //!< The interact UI text.
     public Image interactImage; //!< The interact UI image.
+
+    [Header("Action")]
+    [SerializeField] private InputActionReference interactAction; //!< The interact action.
+
+    private bool interactInput; //!< The interactInput.
+
+    void Awake()
+    {
+        interactAction.action.performed += ctx => interactInput = true;
+    }
+
+    void OnEnable()
+    {
+        interactAction.action.Enable();
+    }
+
+    void OnDisable()
+    {
+        interactAction.action.Disable();
+    }
 
     void Update()
     {
@@ -34,9 +54,9 @@ public class InteractController : MonoBehaviour
 
         if (Physics.Raycast(raycast, out hit, interactDistance, layerMask))
         {
-            if (hit.collider.gameObject.GetComponent<ADED_ItemBasedInteractable>() != null && !hit.collider.gameObject.GetComponent<ADED_ItemBasedInteractable>().activated)
+            if (hit.collider.gameObject.GetComponent<InvokeItemBasedInteractable>() != null && !hit.collider.gameObject.GetComponent<InvokeItemBasedInteractable>().activated)
             {
-                ADED_ItemBasedInteractable interactableScript = hit.collider.gameObject.GetComponent<ADED_ItemBasedInteractable>();
+                InvokeItemBasedInteractable interactableScript = hit.collider.gameObject.GetComponent<InvokeItemBasedInteractable>();
 
                 interactUI.SetActive(true);
 
@@ -51,22 +71,22 @@ public class InteractController : MonoBehaviour
                     interactImage.sprite = interactableScript.spriteWithoutItem;
                 }
 
-                if (Input.GetKeyDown(interactKeyBind) && PlayerControllerCC.allowPlayerInputs)
+                if (interactInput && PlayerControllerCC.allowPlayerInputs)
                 {
                     if (InventoryScript.inventoryItemStates[interactableScript.itemNeeded]) { interactableScript.InteractedWithItem(); }
-                    else if (hit.collider.gameObject.GetComponent<ADED_Interactable>() != null) { hit.collider.gameObject.GetComponent<ADED_Interactable>().Interacted(); }
+                    else if (hit.collider.gameObject.GetComponent<InvokeInteractable>() != null) { hit.collider.gameObject.GetComponent<InvokeInteractable>().Interacted(); }
                 }
             }
-            else if (hit.collider.gameObject.GetComponent<ADED_Interactable>() != null)
+            else if (hit.collider.gameObject.GetComponent<InvokeInteractable>() != null)
             {
-                ADED_Interactable interactableScript = hit.collider.gameObject.GetComponent<ADED_Interactable>();
+                InvokeInteractable interactableScript = hit.collider.gameObject.GetComponent<InvokeInteractable>();
 
                 interactUI.SetActive(true);
 
                 interactText.text = interactableScript.prompt;
                 interactImage.sprite = interactableScript.sprite;
 
-                if (Input.GetKeyDown(interactKeyBind) && PlayerControllerCC.allowPlayerInputs) { interactableScript.Interacted(); }
+                if (interactInput && PlayerControllerCC.allowPlayerInputs) { interactableScript.Interacted(); }
             }
             else
             {
@@ -77,5 +97,7 @@ public class InteractController : MonoBehaviour
         {
             interactUI.SetActive(false);
         }
+
+        interactInput = false;
     }
 }

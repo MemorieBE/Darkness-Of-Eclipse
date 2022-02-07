@@ -27,19 +27,29 @@ public class DoorScript : MonoBehaviour
     }
 
     /*!
-     *  A method that is triggered on elevation.
+     *  A method that unlocks the door.
      */
-    public void Elevated()
+    public void Unlock()
     {
-        locked = !locked;
+        locked = false;
 
         UpdateDoorAnimation();
     }
 
     /*!
-     *  A method that is triggered on activation.
+     *  A method that locks the door.
      */
-    public void Activated()
+    public void Lock()
+    {
+        locked = true;
+
+        UpdateDoorAnimation();
+    }
+
+    /*!
+     *  A method that opens and closes the door.
+     */
+    public void TriggerDoor()
     {
         if (!locked)
         {

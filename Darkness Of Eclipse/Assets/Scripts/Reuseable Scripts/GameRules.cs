@@ -9,7 +9,7 @@ using UnityEngine;
 public class GameRules : MonoBehaviour
 {
     public static float timeScaleMultiplier = 1f; //!< The number multiplied by the time scale.
-    public static bool cancelAllInputs = false; //!< The boolean that determines whether or not all player inputs are disbaled.
+    public static int cancelInputOverride = 0; //!< The integer that determines whether or not all player inputs are disbaled.
     public static bool frozenTimeScale = false; //!< The boolean that determines whether or not the time scale is frozen/paused.
 
     void Awake()
@@ -21,7 +21,7 @@ public class GameRules : MonoBehaviour
 
     public static void CancelAllInput()
     {
-        cancelAllInputs = true;
+        cancelInputOverride++;
 
         PlayerControllerCC.allowPlayerInputs = false;
         PauseScript.isPausable = PauseScript.isPaused;
@@ -30,10 +30,14 @@ public class GameRules : MonoBehaviour
 
     public static void ResumeAllInput()
     {
-        cancelAllInputs = false;
+        if (cancelInputOverride > 0) { cancelInputOverride--; }
+        else { cancelInputOverride = 0; }
 
-        PlayerControllerCC.allowPlayerInputs = true;
-        PauseScript.isPausable = true;
-        GameMenuScript.isOpenable = true;
+        if (cancelInputOverride == 0)
+        {
+            PlayerControllerCC.allowPlayerInputs = true;
+            PauseScript.isPausable = true;
+            GameMenuScript.isOpenable = true;
+        }
     }
 }
