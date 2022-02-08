@@ -18,26 +18,26 @@ public class EquippableAction : MonoBehaviour
 
     void Awake()
     {
-        inputAction.action.performed += ctx => TriggerEquippable();
-
         animator = gameObject.GetComponent<Animator>();
         controller = gameObject.GetComponent<EquippableController>();
     }
 
     void OnEnable()
     {
+        inputAction.action.performed += TriggerEquippable;
         inputAction.action.Enable();
     }
 
     void OnDisable()
     {
+        inputAction.action.performed -= TriggerEquippable;
         inputAction.action.Disable();
     }
 
     /*!
      *  A method that triggers the equippable.
      */
-    private void TriggerEquippable()
+    private void TriggerEquippable(InputAction.CallbackContext ctx)
     {
         if (controller.isActive && PlayerControllerCC.allowPlayerInputs && !animator.GetBool("Action"))
         {

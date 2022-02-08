@@ -27,12 +27,16 @@ public class DataLoader : MonoBehaviour
                 ContinuousSavedData.inventoryItemStates = data.inventoryItemStates;
 
                 ContinuousSavedData.currentEquippable = data.currentEquippable;
+
+                ContinuousSavedData.wispCount = data.wispCount;
+
+                ContinuousSavedData.notepadChapterStates = data.notepadChapterStates;
+                ContinuousSavedData.notepadCurrentChapter = data.notepadCurrentChapter;
+                ContinuousSavedData.notepadCurrentPage = data.notepadCurrentPage;
             }
             else
             {
-                ContinuousSavedData.inventoryItemStates = null;
-
-                ContinuousSavedData.currentEquippable = 0;
+                ContinuousSavedData.ResetContinuousData();
             }
         }
 
@@ -68,16 +72,7 @@ public class DataLoader : MonoBehaviour
             }
             else
             {
-                SceneSavePoint.playerPosition = Vector3.zero;
-                SceneSavePoint.playerRotation = Vector3.zero;
-
-                SceneSavePoint.equippableID = null;
-                SceneSavePoint.equippablePosition = null;
-                SceneSavePoint.equippableRotation = null;
-
-                SceneSavePoint.objectActive = null;
-                SceneSavePoint.doorLocked = null;
-                SceneSavePoint.doorOpen = null;
+                SceneSavePoint.ResetSavePoint();
             }
         }
 
@@ -100,16 +95,7 @@ public class DataLoader : MonoBehaviour
             }
             else
             {
-                LIDSavePoint.savedPlankStates = null;
-
-                LIDSavePoint.savedCorpseAudioState = false;
-
-                LIDSavePoint.savedUnverActiveState = false;
-                LIDSavePoint.savedUnverStagesState = false;
-                LIDSavePoint.savedUnverTier = 0;
-
-                LIDSavePoint.savedKeyCount = 0;
-                LIDSavePoint.savedKeyCountForAchievement = 0;
+                LIDSavePoint.ResetSavePoint();
             }
         }
     }

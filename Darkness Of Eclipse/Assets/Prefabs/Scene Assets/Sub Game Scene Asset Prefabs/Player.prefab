@@ -282,7 +282,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHead: {fileID: 3800998808135323668}
-  lookAction: {fileID: 0}
+  lookAction: {fileID: 5204228690548658878, guid: 1de2bb1a9b61ce64d9213db7c4803558,
+    type: 3}
 --- !u!1 &3800998810161958017
 GameObject:
   m_ObjectHideFlags: 0

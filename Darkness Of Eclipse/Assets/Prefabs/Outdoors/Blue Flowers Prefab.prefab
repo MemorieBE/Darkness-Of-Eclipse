@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2096866779937916169}
   - component: {fileID: 2096866779940783403}
   - component: {fileID: 2096866779939817451}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Flower_LPoly.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 2096866779937916171}
   - component: {fileID: 2096866779940783405}
   - component: {fileID: 2096866779939817453}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Flower_LPoly.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 2096866779937916173}
   - component: {fileID: 2096866779940783407}
   - component: {fileID: 2096866779939817455}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Flower_LPoly.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 2096866779937916175}
   - component: {fileID: 1070969573272408993}
   - component: {fileID: 3228844337473255669}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Blue Flowers Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8861466212596241169}
   - component: {fileID: 6015972200801613688}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 2838502151979809025}
   - component: {fileID: 7327050101112849974}
   - component: {fileID: 2605061550969455641}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}

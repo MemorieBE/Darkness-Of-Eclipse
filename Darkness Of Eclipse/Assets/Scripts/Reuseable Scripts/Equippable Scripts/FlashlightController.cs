@@ -20,25 +20,25 @@ public class FlashlightController : MonoBehaviour
 
     void Awake()
     {
-        flashlightAction.action.performed += ctx => ToggleFlashlight();
-
         flashlightAnimator = gameObject.GetComponent<Animator>();
     }
 
     void OnEnable()
     {
+        flashlightAction.action.performed += ToggleFlashlight;
         flashlightAction.action.Enable();
     }
 
     void OnDisable()
     {
+        flashlightAction.action.performed -= ToggleFlashlight;
         flashlightAction.action.Disable();
     }
 
     /*!
      *  A method that toggles the flashlight.
      */
-    private void ToggleFlashlight()
+    private void ToggleFlashlight(InputAction.CallbackContext ctx)
     {
         if (gameObject.activeSelf && PlayerControllerCC.allowPlayerInputs)
         {

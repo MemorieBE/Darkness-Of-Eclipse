@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -23,6 +24,8 @@ public class GameMenuScript : MonoBehaviour
     [SerializeField] private InputActionReference[] subMenuActions; //!< The sub game menu actions.
     [SerializeField] private InputActionReference escapeAction; //!< The escape action.
 
+    private Action<InputAction.CallbackContext>[] subMenuHandler; //!< The sub menu handlers.
+
     private AudioSource[] masterAudio; //!< All audio sources to pause.
 
     private CursorLockMode mouseLock; //!< The cursor lock mode that the cursor will set itself to when unpaused.
@@ -32,15 +35,14 @@ public class GameMenuScript : MonoBehaviour
 
     void Awake()
     {
-        mainMenuAction.action.performed += ctx => ToggleMainMenu();
+        subMenuHandler = new Action<InputAction.CallbackContext>[subMenuActions.Length];
 
         for (int i = 0; i < subMenuActions.Length; i++)
         {
             int subMenu = i;
-            subMenuActions[i].action.performed += ctx => ToggleSubMenu(subMenu);
-        }
 
-        escapeAction.action.performed += ctx => EscapeGameMenu();
+            subMenuHandler[i] = ctx => ToggleSubMenu(subMenu);
+        }
 
         isOpened = false;
         isOpenable = true;
@@ -48,32 +50,38 @@ public class GameMenuScript : MonoBehaviour
 
     void OnEnable()
     {
+        mainMenuAction.action.performed += ToggleMainMenu;
         mainMenuAction.action.Enable();
 
         for (int i = 0; i < subMenuActions.Length; i++)
         {
+            subMenuActions[i].action.performed += subMenuHandler[i];
             subMenuActions[i].action.Enable();
         }
 
+        escapeAction.action.performed += EscapeGameMenu;
         escapeAction.action.Enable();
     }
 
     void OnDisable()
     {
+        mainMenuAction.action.performed -= ToggleMainMenu;
         mainMenuAction.action.Disable();
 
         for (int i = 0; i < subMenuActions.Length; i++)
         {
+            subMenuActions[i].action.performed -= subMenuHandler[i];
             subMenuActions[i].action.Disable();
         }
 
+        escapeAction.action.performed -= EscapeGameMenu;
         escapeAction.action.Disable();
     }
 
     /*!
      *  A method that toggles the main game menu.
      */
-    private void ToggleMainMenu()
+    private void ToggleMainMenu(InputAction.CallbackContext ctx)
     {
         if (isOpened)
         {
@@ -130,7 +138,7 @@ public class GameMenuScript : MonoBehaviour
     /*!
      *  A method that escapes the game menu.
      */
-    private void EscapeGameMenu()
+    private void EscapeGameMenu(InputAction.CallbackContext ctx)
     {
         if (isOpened)
         {

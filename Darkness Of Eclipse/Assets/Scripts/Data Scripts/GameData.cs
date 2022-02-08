@@ -20,6 +20,12 @@ public class GameData
 
     public int currentEquippable;
 
+    public int wispCount;
+
+    public bool[] notepadChapterStates;
+    public int notepadCurrentChapter;
+    public int notepadCurrentPage;
+
 
     public bool SceneHasSavedData;
 
@@ -62,16 +68,15 @@ public class GameData
         {
             continuousHasSavedData = true;
 
-            {
-                inventoryItemStates = new bool[ContinuousSavedData.inventoryItemStates.Length];
+            inventoryItemStates = ContinuousSavedData.inventoryItemStates;
 
-                for (int i = 0; i < inventoryItemStates.Length; i++)
-                {
-                    inventoryItemStates[i] = ContinuousSavedData.inventoryItemStates[i];
-                }
-            }
-            
             currentEquippable = ContinuousSavedData.currentEquippable;
+
+            wispCount = ContinuousSavedData.wispCount;
+
+            notepadChapterStates = ContinuousSavedData.notepadChapterStates;
+            notepadCurrentChapter = ContinuousSavedData.notepadCurrentChapter;
+            notepadCurrentPage = ContinuousSavedData.notepadCurrentPage;
         }
         else
         {
@@ -80,6 +85,12 @@ public class GameData
             inventoryItemStates = null;
 
             currentEquippable = 0;
+
+            wispCount = 0;
+
+            notepadChapterStates = null;
+            notepadCurrentChapter = 0;
+            notepadCurrentPage = 0;
         }
 
         if (SceneSavePoint.hasSavePoint) 
@@ -101,24 +112,22 @@ public class GameData
             }
 
             {
-                equippableID = new int[SceneSavePoint.equippableID.Length];
+                equippableID = SceneSavePoint.equippableID;
 
                 equippablePosition = new float[3][];
 
-                equippablePosition[0] = new float[SceneSavePoint.equippableID.Length];
-                equippablePosition[1] = new float[SceneSavePoint.equippableID.Length];
-                equippablePosition[2] = new float[SceneSavePoint.equippableID.Length];
+                equippablePosition[0] = new float[equippableID.Length];
+                equippablePosition[1] = new float[equippableID.Length];
+                equippablePosition[2] = new float[equippableID.Length];
 
                 equippableRotation = new float[3][];
 
-                equippableRotation[0] = new float[SceneSavePoint.equippableID.Length];
-                equippableRotation[1] = new float[SceneSavePoint.equippableID.Length];
-                equippableRotation[2] = new float[SceneSavePoint.equippableID.Length];
+                equippableRotation[0] = new float[equippableID.Length];
+                equippableRotation[1] = new float[equippableID.Length];
+                equippableRotation[2] = new float[equippableID.Length];
 
                 for (int i = 0; i < equippableID.Length; i++)
                 {
-                    equippableID = SceneSavePoint.equippableID;
-
                     equippablePosition[0][i] = SceneSavePoint.equippablePosition[i].x;
                     equippablePosition[1][i] = SceneSavePoint.equippablePosition[i].y;
                     equippablePosition[2][i] = SceneSavePoint.equippablePosition[i].z;
@@ -130,21 +139,10 @@ public class GameData
             }
 
             {
-                objectActive = new bool[SceneSavePoint.objectActive.Length];
+                objectActive = SceneSavePoint.objectActive;
 
-                doorLocked = new bool[SceneSavePoint.doorLocked.Length];
-                doorOpen = new bool[SceneSavePoint.doorOpen.Length];
-
-                for (int i = 0; i < objectActive.Length; i++)
-                {
-                    objectActive[i] = SceneSavePoint.objectActive[i];
-                }
-
-                for (int i = 0; i < doorOpen.Length; i++)
-                {
-                    doorLocked[i] = SceneSavePoint.doorLocked[i];
-                    doorOpen[i] = SceneSavePoint.doorOpen[i];
-                }
+                doorLocked = SceneSavePoint.doorLocked;
+                doorOpen = SceneSavePoint.doorOpen;
             }
         }
         else
@@ -167,15 +165,8 @@ public class GameData
         {
             LIDHasSavedData = true;
 
-            {
-                savedPlankStates = new bool[LIDSavePoint.savedPlankStates.Length];
+            savedPlankStates = LIDSavePoint.savedPlankStates;
 
-                for (int i = 0; i < savedPlankStates.Length; i++)
-                {
-                    savedPlankStates[i] = LIDSavePoint.savedPlankStates[i];
-                }
-            }
-            
             savedCorpseAudioState = LIDSavePoint.savedCorpseAudioState;
             
             savedUnverActiveState = LIDSavePoint.savedUnverActiveState;

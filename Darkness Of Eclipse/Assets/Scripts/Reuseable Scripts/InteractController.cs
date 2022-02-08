@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,20 +24,24 @@ public class InteractController : MonoBehaviour
     [Header("Action")]
     [SerializeField] private InputActionReference interactAction; //!< The interact action.
 
-    private bool interactInput; //!< The interactInput.
+    private Action<InputAction.CallbackContext> interactHandler; //!< The interact handler.
+
+    private bool interactInput; //!< A boolean that checks the interact input.
 
     void Awake()
     {
-        interactAction.action.performed += ctx => interactInput = true;
+        interactHandler = ctx => interactInput = true;
     }
 
     void OnEnable()
     {
+        interactAction.action.performed += interactHandler;
         interactAction.action.Enable();
     }
 
     void OnDisable()
     {
+        interactAction.action.performed -= interactHandler;
         interactAction.action.Disable();
     }
 

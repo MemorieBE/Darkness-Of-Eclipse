@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -27,6 +28,7 @@ public class ControlsTextPrompt : MonoBehaviour
 
     private bool inputCheck = false; //!< A boolean that determines whether the input has been performed this frame.
 
+    private Action<InputAction.CallbackContext> inputHandler; //!< The input handler.
 
     private float newAlpha = 0f; //!< The updated alpha.
 
@@ -40,14 +42,21 @@ public class ControlsTextPrompt : MonoBehaviour
 
     void Awake()
     {
-        input.action.performed += ctx => inputCheck = true;
+        inputHandler = ctx => inputCheck = true;
 
         textUI = gameObject.GetComponent<Text>();
     }
 
     void OnEnable()
     {
+        input.action.performed += inputHandler;
+
         StartCoroutine(TimeBasedPrompt());
+    }
+
+    void OnDisable()
+    {
+        input.action.performed -= inputHandler;
     }
 
     /*!

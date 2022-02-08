@@ -17,7 +17,7 @@ public class LIDGateOpenScript : MonoBehaviour
     /*!
      *  A method that is triggered on activation.
      */
-    public void Activated()
+    public void TriggerGate()
     {
         if ((GlobalUnverKeyScript.keyCount >= 7) && (!open))
         {

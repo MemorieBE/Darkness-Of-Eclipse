@@ -32,13 +32,36 @@ public class DocumentMenu : MonoBehaviour
     {
         pages = new GameObject[chapters.Length][];
 
-        if (chapter == null || chapter.Length <= documentID)
+        if (chapter == null || chapter.Length == 0)
         {
             chapter = new int[documentID + 1];
             page = new int[documentID + 1];
             chapterStates = new bool[documentID + 1][];
             previousButtonState = new bool[documentID + 1];
             nextButtonState = new bool[documentID + 1];
+        }
+        else if (chapter.Length <= documentID)
+        {
+            int[] chapterKeptData = chapter;
+            int[] pageKeptData = page;
+            bool[][] chapterStatesKeptData = chapterStates;
+            bool[] previousButtonStateKeptData = previousButtonState;
+            bool[] nextButtonStateKeptData = nextButtonState;
+
+            chapter = new int[documentID + 1];
+            page = new int[documentID + 1];
+            chapterStates = new bool[documentID + 1][];
+            previousButtonState = new bool[documentID + 1];
+            nextButtonState = new bool[documentID + 1];
+
+            for (int i = 0; i < chapterKeptData.Length; i++)
+            {
+                chapter[i] = chapterKeptData[i];
+                page[i] = pageKeptData[i];
+                chapterStates[i] = chapterStatesKeptData[i];
+                previousButtonState[i] = previousButtonStateKeptData[i];
+                nextButtonState[i] = nextButtonStateKeptData[i];
+            }
         }
 
         if (chapterStates[documentID] == null || chapterStates[documentID].Length != chapters.Length)
@@ -235,6 +258,38 @@ public class DocumentMenu : MonoBehaviour
 
     public void UpdateChapterStates()
     {
+        if (chapter == null || chapter.Length == 0)
+        {
+            chapter = new int[documentID + 1];
+            page = new int[documentID + 1];
+            chapterStates = new bool[documentID + 1][];
+            previousButtonState = new bool[documentID + 1];
+            nextButtonState = new bool[documentID + 1];
+        }
+        else if (chapter.Length <= documentID)
+        {
+            int[] chapterKeptData = chapter;
+            int[] pageKeptData = page;
+            bool[][] chapterStatesKeptData = chapterStates;
+            bool[] previousButtonStateKeptData = previousButtonState;
+            bool[] nextButtonStateKeptData = nextButtonState;
+
+            chapter = new int[documentID + 1];
+            page = new int[documentID + 1];
+            chapterStates = new bool[documentID + 1][];
+            previousButtonState = new bool[documentID + 1];
+            nextButtonState = new bool[documentID + 1];
+
+            for (int i = 0; i < chapterKeptData.Length; i++)
+            {
+                chapter[i] = chapterKeptData[i];
+                page[i] = pageKeptData[i];
+                chapterStates[i] = chapterStatesKeptData[i];
+                previousButtonState[i] = previousButtonStateKeptData[i];
+                nextButtonState[i] = nextButtonStateKeptData[i];
+            }
+        }
+
         for (int i = 0; i < chapters.Length; i++)
         {
             if (chapters[i].activeSelf) { chapterStates[documentID][i] = true; }

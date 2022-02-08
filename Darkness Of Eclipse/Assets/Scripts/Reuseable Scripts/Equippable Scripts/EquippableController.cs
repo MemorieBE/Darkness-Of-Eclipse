@@ -23,25 +23,25 @@ public class EquippableController : MonoBehaviour
 
     void Awake()
     {
-        toggleAction.action.performed += ctx => ToggleEquippable();
-
         equippableAnimator = gameObject.GetComponent<Animator>();
     }
 
     private void OnEnable()
     {
+        toggleAction.action.performed += ToggleEquippable;
         toggleAction.action.Enable();
     }
 
     private void OnDisable()
     {
+        toggleAction.action.performed -= ToggleEquippable;
         toggleAction.action.Disable();
     }
 
     /*!
      *  A method that toggles the equippable.
      */
-    private void ToggleEquippable()
+    private void ToggleEquippable(InputAction.CallbackContext ctx)
     {
         if (gameObject.activeSelf && PlayerControllerCC.allowPlayerInputs)
         {

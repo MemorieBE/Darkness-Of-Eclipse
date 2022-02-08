@@ -31,26 +31,26 @@ public class PauseScript : MonoBehaviour
 
     void Awake()
     {
-        pauseAction.action.performed += ctx => TogglePause();
-
         isPaused = false;
         isPausable = true;
     }
 
     void OnEnable()
     {
+        pauseAction.action.performed += TogglePause;
         pauseAction.action.Enable();
     }
 
     void OnDisable()
     {
+        pauseAction.action.performed -= TogglePause;
         pauseAction.action.Disable();
     }
 
     /*!
      *  A method that toggles the pause menu.
      */
-    private void TogglePause()
+    private void TogglePause(InputAction.CallbackContext ctx)
     {
         if (!settingsUI.activeSelf)
         {

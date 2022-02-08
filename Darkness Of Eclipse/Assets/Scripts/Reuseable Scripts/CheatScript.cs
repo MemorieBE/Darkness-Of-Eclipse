@@ -32,31 +32,34 @@ public class CheatScript : MonoBehaviour
 
     private bool cheatPanelOpen = false; //!< A boolean that determines whether the cheat panel is open.
 
-    void Awake()
-    {
-        cheatAction.action.performed += ctx => ToggleCheatInput();
-        escapeAction.action.performed += ctx => EscapeCheatInput();
-        confirmAction.action.performed += ctx => ConfirmCheatInput();
-    }
-
     void OnEnable()
     {
+        cheatAction.action.performed += ToggleCheatInput;
         cheatAction.action.Enable();
+
+        escapeAction.action.performed += EscapeCheatInput;
         escapeAction.action.Enable();
+
+        confirmAction.action.performed += ConfirmCheatInput;
         confirmAction.action.Enable();
     }
 
     void OnDisable()
     {
+        cheatAction.action.performed -= ToggleCheatInput;
         cheatAction.action.Disable();
+
+        escapeAction.action.performed -= EscapeCheatInput;
         escapeAction.action.Disable();
+
+        confirmAction.action.performed -= ConfirmCheatInput;
         confirmAction.action.Disable();
     }
 
     /*!
      *  A method that toggles the cheat input field.
      */
-    private void ToggleCheatInput()
+    private void ToggleCheatInput(InputAction.CallbackContext ctx)
     {
         if (cheatsEnabled && !cheatsInputDisabled)
         {
@@ -71,19 +74,35 @@ public class CheatScript : MonoBehaviour
             }
             else
             {
-                EscapeCheatInput();
+                if (cheatPanelOpen)
+                {
+                    cheatPanelOpen = false;
+                    cheatInputField.gameObject.SetActive(false);
+
+                    cheatInputField.text = "";
+
+                    GameRules.ResumeAllInput();
+                }
             }
         }
         else
         {
-            EscapeCheatInput();
+            if (cheatPanelOpen)
+            {
+                cheatPanelOpen = false;
+                cheatInputField.gameObject.SetActive(false);
+
+                cheatInputField.text = "";
+
+                GameRules.ResumeAllInput();
+            }
         }
     }
 
     /*!
      *  A method that escapes the cheat input field.
      */
-    private void EscapeCheatInput()
+    private void EscapeCheatInput(InputAction.CallbackContext ctx)
     {
         if (cheatPanelOpen)
         {
@@ -99,7 +118,7 @@ public class CheatScript : MonoBehaviour
     /*!
      *  A method that confirms the cheat input field.
      */
-    private void ConfirmCheatInput()
+    private void ConfirmCheatInput(InputAction.CallbackContext ctx)
     {
         if (cheatPanelOpen && cheatsEnabled && !cheatsInputDisabled)
         {
