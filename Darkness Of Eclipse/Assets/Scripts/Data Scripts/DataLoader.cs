@@ -55,6 +55,9 @@ public class DataLoader : MonoBehaviour
                 SceneSavePoint.playerRotation.z = data.playerRotation[2];
 
                 SceneSavePoint.equippableID = data.equippableID;
+                SceneSavePoint.equippablePosition = new Vector3[data.equippableID.Length];
+                SceneSavePoint.equippableRotation = new Vector3[data.equippableID.Length];
+
                 for (int i = 0; i < SceneSavePoint.equippableID.Length; i++)
                 {
                     SceneSavePoint.equippablePosition[i].x = data.equippablePosition[0][i];
@@ -84,7 +87,11 @@ public class DataLoader : MonoBehaviour
             {
                 LIDSavePoint.savedPlankStates = data.savedPlankStates;
 
-                LIDSavePoint.savedCorpseAudioState = data.savedCorpseAudioState;
+                LIDSavePoint.savedCorpseState = data.savedCorpseState;
+
+                LIDSavePoint.savedSafeState = data.savedSafeState;
+
+                LIDSavePoint.savedGateState = data.savedGateState;
 
                 LIDSavePoint.savedUnverActiveState = data.savedUnverActiveState;
                 LIDSavePoint.savedUnverStagesState = data.savedUnverStagesState;

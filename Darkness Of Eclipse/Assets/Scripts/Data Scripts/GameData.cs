@@ -45,7 +45,11 @@ public class GameData
 
     public bool[] savedPlankStates;
 
-    public bool savedCorpseAudioState;
+    public bool savedCorpseState;
+
+    public int savedSafeState;
+
+    public bool savedGateState;
 
     public bool savedUnverActiveState;
     public bool savedUnverStagesState;
@@ -167,7 +171,11 @@ public class GameData
 
             savedPlankStates = LIDSavePoint.savedPlankStates;
 
-            savedCorpseAudioState = LIDSavePoint.savedCorpseAudioState;
+            savedCorpseState = LIDSavePoint.savedCorpseState;
+
+            savedSafeState = LIDSavePoint.savedSafeState;
+
+            savedGateState = LIDSavePoint.savedGateState;
             
             savedUnverActiveState = LIDSavePoint.savedUnverActiveState;
             savedUnverStagesState = LIDSavePoint.savedUnverStagesState;
@@ -182,8 +190,12 @@ public class GameData
             
             savedPlankStates = null;
             
-            savedCorpseAudioState = false;
-            
+            savedCorpseState = false;
+
+            savedSafeState = 0;
+
+            savedGateState = false;
+
             savedUnverActiveState = false;
             savedUnverStagesState = false;
             savedUnverTier = 0;

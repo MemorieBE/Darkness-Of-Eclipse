@@ -100,8 +100,6 @@ public class SceneSavePoint : MonoBehaviour
 
         for (int i = 0; i < equippableID.Length; i++)
         {
-            Debug.Log("Instantiated");
-
             GameObject instantiatedEquippable = Instantiate(equippableScript.droppedEquippable[i]);
             instantiatedEquippable.transform.position = equippablePosition[i];
             instantiatedEquippable.transform.rotation = Quaternion.Euler(equippableRotation[i]);

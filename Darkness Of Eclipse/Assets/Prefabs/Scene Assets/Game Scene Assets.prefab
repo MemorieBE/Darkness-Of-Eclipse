@@ -158,6 +158,8 @@ MonoBehaviour:
   wispCountText: {fileID: 6778275430804690003}
   player: {fileID: 2509686229799077974}
   possibleDestinations: []
+  wispAction: {fileID: 5881972012723684368, guid: 1de2bb1a9b61ce64d9213db7c4803558,
+    type: 3}
 --- !u!1001 &1534741655275249713
 PrefabInstance:
   m_ObjectHideFlags: 0

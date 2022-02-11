@@ -12,7 +12,12 @@ public class LIDGateOpenScript : MonoBehaviour
     [SerializeField] private Animator gateAnimator; //!< The gate animator.
     [SerializeField] private AudioSource gateOpenSound; //!< The audio source for the gate opening audio.
 
-    private bool open = false; //!< A boolean that determines whether or not the gate hasn't been open.
+    [HideInInspector] public bool open = false; //!< A boolean that determines whether or not the gate hasn't been open.
+
+    void OnEnable()
+    {
+        if (open) { gateAnimator.Play("Gate Idle Open"); }
+    }
 
     /*!
      *  A method that is triggered on activation.

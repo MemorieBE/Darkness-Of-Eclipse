@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Animator))]
+
 /*! \brief A script that controls the player's current equippable.
  *
  *  References: FlashlightController, PlayerControllerCC.
@@ -57,12 +59,28 @@ public class EquippableController : MonoBehaviour
     }
 
     /*!
+     *  A method that readjusts the equippable animation.
+     */
+    public void ReadjustEquippableAnimation()
+    {
+        if (isActive) 
+        {
+            StartCoroutine(ActiveEquippable()); 
+        }
+        else 
+        {
+            flashlight.UpdateFlashlightSide(true);
+
+            if (equippableAnimator == null) { equippableAnimator = gameObject.GetComponent<Animator>(); }
+            equippableAnimator.SetBool("IsActive", false); 
+        }
+    }
+
+    /*!
      *  A coroutine that activates the equippable.
      */
     private IEnumerator ActiveEquippable()
     {
-        StopCoroutine(InactiveEquippable());
-
         isActive = true;
 
         flashlight.UpdateFlashlightSide(false);
@@ -85,8 +103,6 @@ public class EquippableController : MonoBehaviour
      */
     private IEnumerator InactiveEquippable()
     {
-        StopCoroutine(ActiveEquippable());
-
         isActive = false;
 
         equippableAnimator.SetBool("IsActive", false);

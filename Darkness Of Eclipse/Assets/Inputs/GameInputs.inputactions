@@ -192,6 +192,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Use Wisp",
+                    "type": "Button",
+                    "id": "8ee170fe-0643-4d81-babd-7f8828162ca9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -236,6 +245,17 @@
                     "processors": "",
                     "groups": "Keyboard and Mouse",
                     "action": "Trigger Equippable",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "18760f7f-7e52-4059-b501-5d2e71edb390",
+                    "path": "<Keyboard>/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Use Wisp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

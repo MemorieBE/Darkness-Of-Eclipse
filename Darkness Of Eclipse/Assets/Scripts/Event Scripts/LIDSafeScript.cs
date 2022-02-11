@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Collider))]
+
 /*! \brief A script that controls a plank breaking when colliding with an axe head.
  *
  *  [Event Script]
@@ -25,18 +28,32 @@ public class LIDSafeScript : MonoBehaviour
     public float damageCooldown = 1f; //!< The amount of time in seconds the damage cooldown for the safe is.
     private float safeStateTimer; //!< A timer used for the damage cooldown.
 
-    [HideInInspector] public int safeCurrentState; //!< The current state of the safe.
+    [HideInInspector] public int safeCurrentState = 0; //!< The current state of the safe.
 
-    void Start()
+    private Animator safeAnimator; //!< The safe animator.
+
+    void Awake()
     {
-        safeCurrentState = 0;
+        safeAnimator = gameObject.GetComponent<Animator>();
+
         safeStateTimer = damageCooldown;
+    }
+
+    void OnEnable()
+    {
+        for (int i = 0; i < safeState.Length; i++)
+        {
+            if (i == safeCurrentState) safeState[i].SetActive(true);
+            else safeState[i].SetActive(false);
+        }
+
+        if (safeCurrentState >= safeState.Length - 1) { safeAnimator.Play("Safe Door Idle Open"); }
     }
 
     void Update()
     {
         if (safeStateTimer < damageCooldown) safeStateTimer += Time.deltaTime;
-        else gameObject.GetComponent<Animator>().SetBool("Stumble", false);
+        else safeAnimator.SetBool("Stumble", false);
     }
 
     void OnTriggerEnter(Collider collisionData)
@@ -45,7 +62,7 @@ public class LIDSafeScript : MonoBehaviour
         {
             safeCurrentState ++;
 
-            gameObject.GetComponent<Animator>().SetBool("Stumble", true);
+            safeAnimator.SetBool("Stumble", true);
 
             particleParent.position = collisionData.ClosestPoint(gameObject.transform.position);
             particleParent.rotation = Quaternion.LookRotation((collisionData.ClosestPoint(gameObject.transform.position) - gameObject.transform.position).normalized, Vector3.up);
@@ -63,7 +80,7 @@ public class LIDSafeScript : MonoBehaviour
                 key.SetActive(true);
 
                 gameObject.GetComponent<Collider>().enabled = false;
-                gameObject.GetComponent<Animator>().SetBool("DoorOpen", true);
+                safeAnimator.SetBool("DoorOpen", true);
             }
             else damageSound.Play();
 

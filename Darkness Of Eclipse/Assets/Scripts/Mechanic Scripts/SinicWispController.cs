@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class SinicWispController : MonoBehaviour
 {
@@ -20,19 +21,24 @@ public class SinicWispController : MonoBehaviour
     [Header("NavMesh")]
     [SerializeField] private Transform[] possibleDestinations;
 
-    public static string keyBind = "y";
+
+    [SerializeField] private InputActionReference wispAction;
 
     void Start()
     {
         wispCountText.text = wispCount.ToString();
     }
 
-    void Update()
+    void OnEnable()
     {
-        if (Input.GetKeyDown(keyBind) && wispsActive && wispCount > 0)
-        {
-            UseWisp();
-        }
+        wispAction.action.performed += UseWisp;
+        wispAction.action.Enable();
+    }
+
+    void OnDisable()
+    {
+        wispAction.action.performed -= UseWisp;
+        wispAction.action.Disable();
     }
 
     public void UpdateWispCount(int amount)
@@ -42,8 +48,10 @@ public class SinicWispController : MonoBehaviour
         wispCountText.text = wispCount.ToString();
     }
 
-    private void UseWisp()
+    private void UseWisp(InputAction.CallbackContext ctx)
     {
+        if (!wispsActive || wispCount <= 0 || GameRules.cancelInputOverride > 0) { return; }
+        
         UpdateWispCount(-1);
 
         GameObject newWisp;

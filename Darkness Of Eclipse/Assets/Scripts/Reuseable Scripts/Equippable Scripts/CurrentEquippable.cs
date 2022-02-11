@@ -36,20 +36,24 @@ public class CurrentEquippable : MonoBehaviour
             currentEquippable = equippable.Length - 1;
         }
 
-        EquippableController newEquippable = equippable[currentEquippable].GetComponent<EquippableController>();
-        EquippableController oldEquippable = equippable[equippableUpdate].GetComponent<EquippableController>();
+        bool activeState = false;
 
-        if (equippableUpdate > 0 && currentEquippable > 0)
-        newEquippable.isActive = oldEquippable.isActive;
-
-        for (int i = 1; i < equippable.Length; i++)
+        if (equippableUpdate > 0)
         {
-            if (i == currentEquippable) equippable[i].SetActive(true);
-            else
-            {
-                equippable[i].GetComponent<EquippableController>().isActive = false;
-                equippable[i].SetActive(false);
-            }
+            activeState = equippable[equippableUpdate].GetComponent<EquippableController>().isActive;
+
+            equippable[equippableUpdate].GetComponent<EquippableController>().isActive = false;
+            equippable[equippableUpdate].GetComponent<EquippableController>().ReadjustEquippableAnimation();
+
+            equippable[equippableUpdate].SetActive(false);
+        }
+
+        if (currentEquippable > 0)
+        {
+            equippable[currentEquippable].SetActive(true);
+
+            if (equippableUpdate > 0 && activeState) { equippable[currentEquippable].GetComponent<EquippableController>().isActive = true; }
+            equippable[currentEquippable].GetComponent<EquippableController>().ReadjustEquippableAnimation();
         }
 
         equippableUpdate = currentEquippable;

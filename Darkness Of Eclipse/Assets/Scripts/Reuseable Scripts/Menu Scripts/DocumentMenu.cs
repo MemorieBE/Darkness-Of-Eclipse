@@ -28,76 +28,11 @@ public class DocumentMenu : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private bool updateChapters = false; //!< A boolean that triggers the update chapter states function.
 
+    private bool setup = false; //!< A boolean that determines whether or not the document has been set up this scene.
+
     void Start()
     {
-        pages = new GameObject[chapters.Length][];
-
-        if (chapter == null || chapter.Length == 0)
-        {
-            chapter = new int[documentID + 1];
-            page = new int[documentID + 1];
-            chapterStates = new bool[documentID + 1][];
-            previousButtonState = new bool[documentID + 1];
-            nextButtonState = new bool[documentID + 1];
-        }
-        else if (chapter.Length <= documentID)
-        {
-            int[] chapterKeptData = chapter;
-            int[] pageKeptData = page;
-            bool[][] chapterStatesKeptData = chapterStates;
-            bool[] previousButtonStateKeptData = previousButtonState;
-            bool[] nextButtonStateKeptData = nextButtonState;
-
-            chapter = new int[documentID + 1];
-            page = new int[documentID + 1];
-            chapterStates = new bool[documentID + 1][];
-            previousButtonState = new bool[documentID + 1];
-            nextButtonState = new bool[documentID + 1];
-
-            for (int i = 0; i < chapterKeptData.Length; i++)
-            {
-                chapter[i] = chapterKeptData[i];
-                page[i] = pageKeptData[i];
-                chapterStates[i] = chapterStatesKeptData[i];
-                previousButtonState[i] = previousButtonStateKeptData[i];
-                nextButtonState[i] = nextButtonStateKeptData[i];
-            }
-        }
-
-        if (chapterStates[documentID] == null || chapterStates[documentID].Length != chapters.Length)
-        {
-            chapterStates[documentID] = new bool[chapters.Length];
-        }
-
-        bool debugStart = false;
-
-        for (int i = 0; i < chapters.Length; i++)
-        {
-            pages[i] = new GameObject[chapters[i].transform.childCount];
-
-            for (int j = 0; j < pages[i].Length; j++)
-            {
-                pages[i][j] = chapters[i].transform.GetChild(j).gameObject;
-            }
-
-            if (chapters[i].activeSelf) 
-            { 
-                chapterStates[documentID][i] = true;
-
-                debugStart = true;
-            }
-            else if (chapterStates[documentID][i]) 
-            { 
-                chapters[i].SetActive(true);
-            }
-        }
-
-        pages[chapter[documentID]][page[documentID]].SetActive(true);
-
-        previousPageButton.SetActive(previousButtonState[documentID]);
-        nextPageButton.SetActive(nextButtonState[documentID]);
-
-        if (debugStart) { UpdateChapterStates(); }
+        DocumentSetUp(true);
     }
 
     /*!
@@ -256,39 +191,12 @@ public class DocumentMenu : MonoBehaviour
         previousButtonState[documentID] = true;
     }
 
+    /*!
+     *  A method that updates the chapter states.
+     */
     public void UpdateChapterStates()
     {
-        if (chapter == null || chapter.Length == 0)
-        {
-            chapter = new int[documentID + 1];
-            page = new int[documentID + 1];
-            chapterStates = new bool[documentID + 1][];
-            previousButtonState = new bool[documentID + 1];
-            nextButtonState = new bool[documentID + 1];
-        }
-        else if (chapter.Length <= documentID)
-        {
-            int[] chapterKeptData = chapter;
-            int[] pageKeptData = page;
-            bool[][] chapterStatesKeptData = chapterStates;
-            bool[] previousButtonStateKeptData = previousButtonState;
-            bool[] nextButtonStateKeptData = nextButtonState;
-
-            chapter = new int[documentID + 1];
-            page = new int[documentID + 1];
-            chapterStates = new bool[documentID + 1][];
-            previousButtonState = new bool[documentID + 1];
-            nextButtonState = new bool[documentID + 1];
-
-            for (int i = 0; i < chapterKeptData.Length; i++)
-            {
-                chapter[i] = chapterKeptData[i];
-                page[i] = pageKeptData[i];
-                chapterStates[i] = chapterStatesKeptData[i];
-                previousButtonState[i] = previousButtonStateKeptData[i];
-                nextButtonState[i] = nextButtonStateKeptData[i];
-            }
-        }
+        DocumentSetUp();
 
         for (int i = 0; i < chapters.Length; i++)
         {
@@ -355,6 +263,84 @@ public class DocumentMenu : MonoBehaviour
                 nextButtonState[documentID] = false;
             }
         }
+    }
+
+    /*!
+     *  A method that sets up the document.
+     */
+    private void DocumentSetUp(bool allowDebug = false)
+    {
+        if (setup) { return; }
+        else { setup = true; }
+
+        pages = new GameObject[chapters.Length][];
+
+        if (chapter == null || chapter.Length == 0)
+        {
+            chapter = new int[documentID + 1];
+            page = new int[documentID + 1];
+            chapterStates = new bool[documentID + 1][];
+            previousButtonState = new bool[documentID + 1];
+            nextButtonState = new bool[documentID + 1];
+        }
+        else if (chapter.Length <= documentID)
+        {
+            int[] chapterKeptData = chapter;
+            int[] pageKeptData = page;
+            bool[][] chapterStatesKeptData = chapterStates;
+            bool[] previousButtonStateKeptData = previousButtonState;
+            bool[] nextButtonStateKeptData = nextButtonState;
+
+            chapter = new int[documentID + 1];
+            page = new int[documentID + 1];
+            chapterStates = new bool[documentID + 1][];
+            previousButtonState = new bool[documentID + 1];
+            nextButtonState = new bool[documentID + 1];
+
+            for (int i = 0; i < chapterKeptData.Length; i++)
+            {
+                chapter[i] = chapterKeptData[i];
+                page[i] = pageKeptData[i];
+                chapterStates[i] = chapterStatesKeptData[i];
+                previousButtonState[i] = previousButtonStateKeptData[i];
+                nextButtonState[i] = nextButtonStateKeptData[i];
+            }
+        }
+
+        if (chapterStates[documentID] == null || chapterStates[documentID].Length != chapters.Length)
+        {
+            chapterStates[documentID] = new bool[chapters.Length];
+        }
+
+        bool debugStart = false;
+
+        for (int i = 0; i < chapters.Length; i++)
+        {
+            pages[i] = new GameObject[chapters[i].transform.childCount];
+
+            for (int j = 0; j < pages[i].Length; j++)
+            {
+                pages[i][j] = chapters[i].transform.GetChild(j).gameObject;
+            }
+
+            if (chapters[i].activeSelf)
+            {
+                chapterStates[documentID][i] = true;
+
+                if (allowDebug) { debugStart = true; }
+            }
+            else if (chapterStates[documentID][i])
+            {
+                chapters[i].SetActive(true);
+            }
+        }
+
+        pages[chapter[documentID]][page[documentID]].SetActive(true);
+
+        previousPageButton.SetActive(previousButtonState[documentID]);
+        nextPageButton.SetActive(nextButtonState[documentID]);
+
+        if (debugStart) { UpdateChapterStates(); }
     }
 
     void OnValidate()

@@ -15,19 +15,22 @@ public class LIDCorpseAnimation : MonoBehaviour
     public AudioSource corpseFlopAudio; //!< The audio source for the corpse flopping sound.
     public DoorScript doorScript; //!< The script that controls the door.
 
-    [HideInInspector] public bool audioPlayed = false; //!< A boolean that determines whether or not the audio has been played.
+    [HideInInspector] public bool animationPlayed = false; //!< A boolean that determines whether or not the audio has been played.
+
+    void OnEnable()
+    {
+        if (animationPlayed) { corpseAnimator.Play("Idle Fallen"); }
+    }
 
     void Update()
     {
-        if (doorScript.open)
+        if (doorScript.open && !animationPlayed)
         {
+            animationPlayed = true;
+
             doorScript.locked = true;
 
-            if (!audioPlayed)
-            {
-                corpseFlopAudio.Play();
-                audioPlayed = true;
-            }
+            corpseFlopAudio.Play();
 
             corpseAnimator.SetBool("Fallen", true);
 

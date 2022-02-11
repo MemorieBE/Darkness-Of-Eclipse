@@ -214,6 +214,15 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Use Wisp"",
+                    ""type"": ""Button"",
+                    ""id"": ""8ee170fe-0643-4d81-babd-7f8828162ca9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -258,6 +267,17 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
                     ""action"": ""Trigger Equippable"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""18760f7f-7e52-4059-b501-5d2e71edb390"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Use Wisp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -424,6 +444,7 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
         m_Mechanics_ToggleFlashlight = m_Mechanics.FindAction("Toggle Flashlight", throwIfNotFound: true);
         m_Mechanics_ToggleEquippable = m_Mechanics.FindAction("Toggle Equippable", throwIfNotFound: true);
         m_Mechanics_TriggerEquippable = m_Mechanics.FindAction("Trigger Equippable", throwIfNotFound: true);
+        m_Mechanics_UseWisp = m_Mechanics.FindAction("Use Wisp", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_EscapePause = m_Menu.FindAction("Escape/Pause", throwIfNotFound: true);
@@ -560,6 +581,7 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_Mechanics_ToggleFlashlight;
     private readonly InputAction m_Mechanics_ToggleEquippable;
     private readonly InputAction m_Mechanics_TriggerEquippable;
+    private readonly InputAction m_Mechanics_UseWisp;
     public struct MechanicsActions
     {
         private @GameInputs m_Wrapper;
@@ -568,6 +590,7 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
         public InputAction @ToggleFlashlight => m_Wrapper.m_Mechanics_ToggleFlashlight;
         public InputAction @ToggleEquippable => m_Wrapper.m_Mechanics_ToggleEquippable;
         public InputAction @TriggerEquippable => m_Wrapper.m_Mechanics_TriggerEquippable;
+        public InputAction @UseWisp => m_Wrapper.m_Mechanics_UseWisp;
         public InputActionMap Get() { return m_Wrapper.m_Mechanics; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -589,6 +612,9 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                 @TriggerEquippable.started -= m_Wrapper.m_MechanicsActionsCallbackInterface.OnTriggerEquippable;
                 @TriggerEquippable.performed -= m_Wrapper.m_MechanicsActionsCallbackInterface.OnTriggerEquippable;
                 @TriggerEquippable.canceled -= m_Wrapper.m_MechanicsActionsCallbackInterface.OnTriggerEquippable;
+                @UseWisp.started -= m_Wrapper.m_MechanicsActionsCallbackInterface.OnUseWisp;
+                @UseWisp.performed -= m_Wrapper.m_MechanicsActionsCallbackInterface.OnUseWisp;
+                @UseWisp.canceled -= m_Wrapper.m_MechanicsActionsCallbackInterface.OnUseWisp;
             }
             m_Wrapper.m_MechanicsActionsCallbackInterface = instance;
             if (instance != null)
@@ -605,6 +631,9 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                 @TriggerEquippable.started += instance.OnTriggerEquippable;
                 @TriggerEquippable.performed += instance.OnTriggerEquippable;
                 @TriggerEquippable.canceled += instance.OnTriggerEquippable;
+                @UseWisp.started += instance.OnUseWisp;
+                @UseWisp.performed += instance.OnUseWisp;
+                @UseWisp.canceled += instance.OnUseWisp;
             }
         }
     }
@@ -705,6 +734,7 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
         void OnToggleFlashlight(InputAction.CallbackContext context);
         void OnToggleEquippable(InputAction.CallbackContext context);
         void OnTriggerEquippable(InputAction.CallbackContext context);
+        void OnUseWisp(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
