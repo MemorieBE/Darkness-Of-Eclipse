@@ -19,7 +19,10 @@ public class DeathScene : MonoBehaviour
 
     [Header("Alternate Death Scene")]
     [SerializeField] private AnimationClip alternateAnimation; //!< The alternate death scene animation.
-    public static bool alternateDeathScene = true; //!< A boolean that controls whether or the alternate death scene animation will be used instead.
+    public static bool alternateDeathScene = false; //!< A boolean that controls whether or the alternate death scene animation will be used instead.
+
+    [Header("Debug")]
+    [SerializeField] private bool debugDeathScene = false; //!< A boolean that triggers the death scene for debugging.
 
     /*!
      *  A method that is triggers a death scene.
@@ -45,7 +48,7 @@ public class DeathScene : MonoBehaviour
 
         if (alternateDeathScene)
         {
-            animator.PlayInFixedTime(alternateAnimation.name);
+            animator.Play(alternateAnimation.name);
 
             yield return new WaitForSecondsRealtime(alternateAnimation.length);
         }
@@ -74,11 +77,21 @@ public class DeathScene : MonoBehaviour
                 }
             }
 
-            animator.PlayInFixedTime(deathAnimations[stareDeathOutcome].name);
+            animator.Play(deathAnimations[stareDeathOutcome].name);
 
             yield return new WaitForSecondsRealtime(deathAnimations[stareDeathOutcome].length);
         }
 
         sceneLoader.ReloadScene();
+    }
+
+    void OnValidate()
+    {
+        if (debugDeathScene)
+        {
+            debugDeathScene = false;
+
+            TriggerDeathScene();
+        }
     }
 }

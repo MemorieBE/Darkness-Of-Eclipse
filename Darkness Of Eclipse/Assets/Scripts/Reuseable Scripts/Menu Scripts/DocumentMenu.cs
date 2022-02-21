@@ -25,6 +25,11 @@ public class DocumentMenu : MonoBehaviour
     [SerializeField] private GameObject previousPageButton; //!< The previous page button game object.
     [SerializeField] private GameObject nextPageButton; //!< The next page button game object.
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource pageFlipAudio; //!< The page flip audio source.
+    [SerializeField] private AudioSource documentOpenAudio; //!< The document open audio source.
+    [SerializeField] private AudioSource documentCloseAudio; //!< The document close audio source.
+
     [Header("Debug")]
     [SerializeField] private bool updateChapters = false; //!< A boolean that triggers the update chapter states function.
 
@@ -33,6 +38,16 @@ public class DocumentMenu : MonoBehaviour
     void Start()
     {
         DocumentSetUp(true);
+    }
+
+    void OnEnable()
+    {
+        if (documentOpenAudio != null) { documentOpenAudio.Play(); }
+    }
+
+    void OnDisable()
+    {
+        if (documentCloseAudio != null) { documentCloseAudio.Play(); }
     }
 
     /*!
@@ -111,6 +126,8 @@ public class DocumentMenu : MonoBehaviour
 
         nextPageButton.SetActive(true);
         nextButtonState[documentID] = true;
+
+        if (pageFlipAudio != null) { pageFlipAudio.Play(); }
     }
 
     /*!
@@ -189,6 +206,8 @@ public class DocumentMenu : MonoBehaviour
 
         previousPageButton.SetActive(true);
         previousButtonState[documentID] = true;
+
+        if (pageFlipAudio != null) { pageFlipAudio.Play(); }
     }
 
     /*!

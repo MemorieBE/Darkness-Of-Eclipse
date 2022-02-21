@@ -1977,9 +1977,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   sceneLoader: {fileID: 0}
-  deathChances: []
-  deathAnimations: []
+  deathAnimationsLength: 6
+  deathChances:
+  - 2
+  - 19.6
+  - 19.6
+  - 19.6
+  - 19.6
+  - 19.6
+  deathAnimations:
+  - {fileID: 7400000, guid: ed147e642a7dee049a9469917d487ee5, type: 2}
+  - {fileID: 7400000, guid: 35d1bbf5d4c9a1541a9fc83910a6494f, type: 2}
+  - {fileID: 7400000, guid: 83ddab93fdfd6cc4cb1d95149e9db1fe, type: 2}
+  - {fileID: 7400000, guid: 9a63b96334f28924bbfd9c08923de9fe, type: 2}
+  - {fileID: 7400000, guid: 97ba685128d36194b915df029156456d, type: 2}
+  - {fileID: 7400000, guid: 5ce75212c847ba143a09c4c7ec09e203, type: 2}
   alternateAnimation: {fileID: 7400000, guid: aaea4b32b00cde3488ac0f1ab68d4b0b, type: 2}
+  debugDeathScene: 0
 --- !u!114 &3645569840089702172
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /*! \brief A script that controls the prompt UI state.
  *
@@ -8,34 +10,44 @@ using UnityEngine;
  */
 public class UIPopUp : MonoBehaviour
 {
-    public static bool isActive = false; //!< A boolean that determines whether or not the prompt is active.
+    [Header("Action")]
+    [SerializeField] private InputActionReference escapeAction; //!< The escape action.
 
-    [Header("UI")]
-    [SerializeField] private GameObject[] promptUI; //!< The prompt UI game objects.
-    
+    [Header("Inputs")]
+    [SerializeField] private bool pause = true; //!< A boolean that controls whether or not the pop up will pause the game.
+
+    private bool closeUILate = false; //!< A boolean that closes the UI in the late update.
+
     private AudioSource[] masterAudio; //!< All audio sources to pause.
 
     private CursorLockMode mouseLock; //!< The cursor lock mode that the cursor will set itself to when unpaused.
     private bool mouseVisable; //!< A boolean that determines whether or not the cursor is visable that the cursor will set itself to when unpaused.
 
-    void Awake()
+    private bool isActive = false; //!< A boolean that determines whether or not the prompt is active.
+
+    void OnEnable()
     {
-        isActive = false;
+        escapeAction.action.performed += EscapeUI;
+        escapeAction.action.Enable();
+
+        PromptActivate();
     }
 
-    void LateUpdate()
+    void OnDisable()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && isActive) { PromptDeactivate(); }
+        escapeAction.action.performed -= EscapeUI;
+        escapeAction.action.Disable();
     }
 
     /*!
      *  A method that activates a prompt.
      */
-    public void PromptActivate(int prompt, bool pause = true)
+    private void PromptActivate()
     {
         isActive = true;
 
-        GameRules.CancelAllInput();
+        if (GameRules.cancelInputOverride > 0) { GameRules.CancelAllInput(); }
+        GameRules.cancelInputOverride++;
 
         masterAudio = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
 
@@ -48,8 +60,6 @@ public class UIPopUp : MonoBehaviour
                 masterAudio[i].Pause();
             }
         }
-
-        promptUI[prompt].SetActive(true);
 
         if (Cursor.lockState == CursorLockMode.None) mouseLock = CursorLockMode.None;
         else if (Cursor.lockState == CursorLockMode.Locked) mouseLock = CursorLockMode.Locked;
@@ -69,19 +79,38 @@ public class UIPopUp : MonoBehaviour
 
         Time.timeScale = GameRules.timeScaleMultiplier;
 
-        GameRules.ResumeAllInput();
+        GameRules.cancelInputOverride--;
+        if (GameRules.cancelInputOverride <= 0) { GameRules.ResumeAllInput(); }
 
         for (int i = 0; i < masterAudio.Length; i++)
         {
             masterAudio[i].UnPause();
         }
 
-        for (int i = 0; i < promptUI.Length; i++)
-        {
-            promptUI[i].SetActive(false);
-        }
+        gameObject.SetActive(false);
 
         Cursor.lockState = mouseLock;
         Cursor.visible = mouseVisable;
+    }
+
+    /*!
+     *  A method that escapes the UI.
+     */
+    private void EscapeUI(InputAction.CallbackContext ctx)
+    {
+        if (isActive)
+        {
+            closeUILate = true;
+        }
+    }
+
+    void LateUpdate()
+    {
+        if (closeUILate) 
+        {
+            closeUILate = false;
+
+            PromptDeactivate(); 
+        }
     }
 }

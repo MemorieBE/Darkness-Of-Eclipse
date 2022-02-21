@@ -42,7 +42,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 1479372276
   m_Radius: 0.5
-  m_Speed: 1
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -10299,7 +10299,7 @@ GameObject:
   - component: {fileID: 9046806357695136927}
   - component: {fileID: 9046806357695136992}
   - component: {fileID: 9046806357695136993}
-  - component: {fileID: 9046806357695136925}
+  - component: {fileID: 6028159030866766617}
   m_Layer: 0
   m_Name: Sinic Wisp Effect
   m_TagString: Untagged
@@ -10376,7 +10376,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &9046806357695136925
+--- !u!114 &6028159030866766617
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10385,12 +10385,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 9046806357695136924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7197a09ddb754a84ea6b90e6f55fa15b, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ea42d261f637c34f9e9563dae5c5e68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1360056962319652889}
   targetOffset: {x: 0, y: 0, z: 0}
-  speed: 0.75
+  speed: 2.5
+  easeOutDistance: 2.5
 --- !u!1 &9046806357895507889
 GameObject:
   m_ObjectHideFlags: 0

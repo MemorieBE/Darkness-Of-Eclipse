@@ -150,9 +150,9 @@ public class GameMenuScript : MonoBehaviour
     {
         if (closeMenuLate) 
         {
-            GameMenuClose();
-
             closeMenuLate = false;
+
+            GameMenuClose();
         }
     }
 

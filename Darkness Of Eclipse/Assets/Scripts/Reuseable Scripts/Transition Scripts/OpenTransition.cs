@@ -28,14 +28,15 @@ public class OpenTransition : MonoBehaviour
     {
         Color uIColour = blackUI.color;
 
-        for (float alpha = 1f; alpha == 0f; alpha -= 1f / fadeTime * Time.deltaTime)
+        for (float alpha = 1f; alpha > 0f; alpha -= 1f / fadeTime * Time.deltaTime)
         {
-            if (alpha < 0f) { alpha = 0f; }
-
             uIColour.a = alpha;
             blackUI.color = uIColour;
 
             yield return null;
         }
+
+        uIColour.a = 0f;
+        blackUI.color = uIColour;
     }
 }
