@@ -18,9 +18,9 @@ public class LoadCheckpoint : MonoBehaviour
     [SerializeField] private bool reload = true; //!< A boolean that determines whether or not the scene will reload before loading a checkpoint.
 
     /*!
-     *  A method that is triggered on activation.
+     *  A method that loads the checkpoint.
      */
-    public void Activated()
+    public void Load()
     {
         bool sceneChange = (scene != SceneManager.GetActiveScene().buildIndex && scene > 0);
 

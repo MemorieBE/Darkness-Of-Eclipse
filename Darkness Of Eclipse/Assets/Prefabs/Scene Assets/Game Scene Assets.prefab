@@ -743,6 +743,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6007938256308805608, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007938256308805608, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007938256308805608, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 6007938256308805610, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
         type: 3}
       propertyPath: m_Pivot.x

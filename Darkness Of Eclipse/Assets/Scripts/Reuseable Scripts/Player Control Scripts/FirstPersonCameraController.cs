@@ -16,8 +16,7 @@ public class FirstPersonCameraController : MonoBehaviour
     [SerializeField] private InputActionReference lookAction; //!< The look action.
 
     private float xRotation; //!< A float used to clamp the player head x rotation.
-
-    private Vector2 look; //!< The look delta value.
+    private Quaternion lastRotation;
 
     void Awake()
     {
@@ -37,18 +36,25 @@ public class FirstPersonCameraController : MonoBehaviour
 
     void Update()
     {
-        look = lookAction.action.ReadValue<Vector2>();
+        Vector2 look = lookAction.action.ReadValue<Vector2>();
 
-        Vector2 mouse = look * SettingsValues.mouseSensitivity * Time.deltaTime * 0.1f / GameRules.timeScaleMultiplier;
+        Vector2 mouse = Vector2.zero;
 
-        look = Vector2.zero;
+        if (PlayerControllerCC.allowPlayerInputs) 
+        {
+            mouse = look * SettingsValues.mouseSensitivity * Time.deltaTime * 0.1f / GameRules.timeScaleMultiplier;
+        }
 
-        if (!PlayerControllerCC.allowPlayerInputs) { mouse = Vector2.zero; }
+        float angle = Vector3.SignedAngle(Quaternion.Euler(Vector3.right * lastRotation.eulerAngles.x) * Vector3.forward,
+            Quaternion.Euler(Vector3.right * playerHead.localRotation.eulerAngles.x) * Vector3.forward, 
+            Vector3.right);
 
-        xRotation -= mouse.y;
+        xRotation += angle - mouse.y;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         playerHead.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         gameObject.transform.Rotate(Vector3.up * mouse.x);
+
+        lastRotation = playerHead.localRotation;
     }
 }
