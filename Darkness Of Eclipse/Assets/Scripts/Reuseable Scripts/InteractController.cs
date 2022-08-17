@@ -31,18 +31,18 @@ public class InteractController : MonoBehaviour
     void Awake()
     {
         interactHandler = ctx => interactInput = true;
+
+        interactAction.action.Enable();
     }
 
     void OnEnable()
     {
         interactAction.action.performed += interactHandler;
-        interactAction.action.Enable();
     }
 
     void OnDisable()
     {
         interactAction.action.performed -= interactHandler;
-        interactAction.action.Disable();
     }
 
     void Update()

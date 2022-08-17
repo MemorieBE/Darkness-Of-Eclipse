@@ -20,18 +20,18 @@ public class EquippableAction : MonoBehaviour
     {
         animator = gameObject.GetComponent<Animator>();
         controller = gameObject.GetComponent<EquippableController>();
+
+        inputAction.action.Enable();
     }
 
     void OnEnable()
     {
         inputAction.action.performed += TriggerEquippable;
-        inputAction.action.Enable();
     }
 
     void OnDisable()
     {
         inputAction.action.performed -= TriggerEquippable;
-        inputAction.action.Disable();
     }
 
     /*!

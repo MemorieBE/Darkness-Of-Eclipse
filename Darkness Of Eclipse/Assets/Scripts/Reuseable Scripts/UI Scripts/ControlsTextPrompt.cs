@@ -45,6 +45,8 @@ public class ControlsTextPrompt : MonoBehaviour
         inputHandler = ctx => inputCheck = true;
 
         textUI = gameObject.GetComponent<Text>();
+
+        input.action.Enable();
     }
 
     void OnEnable()

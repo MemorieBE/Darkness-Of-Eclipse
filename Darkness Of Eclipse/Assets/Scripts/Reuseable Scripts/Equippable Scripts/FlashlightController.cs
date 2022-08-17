@@ -21,18 +21,18 @@ public class FlashlightController : MonoBehaviour
     void Awake()
     {
         flashlightAnimator = gameObject.GetComponent<Animator>();
+
+        flashlightAction.action.Enable();
     }
 
     void OnEnable()
     {
         flashlightAction.action.performed += ToggleFlashlight;
-        flashlightAction.action.Enable();
     }
 
     void OnDisable()
     {
         flashlightAction.action.performed -= ToggleFlashlight;
-        flashlightAction.action.Disable();
     }
 
     /*!

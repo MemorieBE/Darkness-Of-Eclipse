@@ -25,10 +25,14 @@ public class UIPopUp : MonoBehaviour
 
     private bool isActive = false; //!< A boolean that determines whether or not the prompt is active.
 
+    void Awake()
+    {
+        escapeAction.action.Enable();
+    }
+
     void OnEnable()
     {
         escapeAction.action.performed += EscapeUI;
-        escapeAction.action.Enable();
 
         PromptActivate();
     }
@@ -36,7 +40,6 @@ public class UIPopUp : MonoBehaviour
     void OnDisable()
     {
         escapeAction.action.performed -= EscapeUI;
-        escapeAction.action.Disable();
     }
 
     /*!
@@ -46,8 +49,7 @@ public class UIPopUp : MonoBehaviour
     {
         isActive = true;
 
-        if (GameRules.cancelInputOverride > 0) { GameRules.CancelAllInput(); }
-        GameRules.cancelInputOverride++;
+        GameRules.CancelAllInput();
 
         masterAudio = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
 
@@ -79,18 +81,17 @@ public class UIPopUp : MonoBehaviour
 
         Time.timeScale = GameRules.timeScaleMultiplier;
 
-        GameRules.cancelInputOverride--;
-        if (GameRules.cancelInputOverride <= 0) { GameRules.ResumeAllInput(); }
+        GameRules.ResumeAllInput();
 
         for (int i = 0; i < masterAudio.Length; i++)
         {
             masterAudio[i].UnPause();
         }
 
-        gameObject.SetActive(false);
-
         Cursor.lockState = mouseLock;
         Cursor.visible = mouseVisable;
+
+        gameObject.SetActive(false);
     }
 
     /*!

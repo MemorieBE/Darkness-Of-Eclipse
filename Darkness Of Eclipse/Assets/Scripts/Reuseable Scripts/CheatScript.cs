@@ -32,28 +32,31 @@ public class CheatScript : MonoBehaviour
 
     private bool cheatPanelOpen = false; //!< A boolean that determines whether the cheat panel is open.
 
+    void Awake()
+    {
+        cheatAction.action.Enable();
+
+        escapeAction.action.Enable();
+
+        confirmAction.action.Enable();
+    }
+
     void OnEnable()
     {
         cheatAction.action.performed += ToggleCheatInput;
-        cheatAction.action.Enable();
 
         escapeAction.action.performed += EscapeCheatInput;
-        escapeAction.action.Enable();
 
         confirmAction.action.performed += ConfirmCheatInput;
-        confirmAction.action.Enable();
     }
 
     void OnDisable()
     {
         cheatAction.action.performed -= ToggleCheatInput;
-        cheatAction.action.Disable();
 
         escapeAction.action.performed -= EscapeCheatInput;
-        escapeAction.action.Disable();
 
         confirmAction.action.performed -= ConfirmCheatInput;
-        confirmAction.action.Disable();
     }
 
     /*!

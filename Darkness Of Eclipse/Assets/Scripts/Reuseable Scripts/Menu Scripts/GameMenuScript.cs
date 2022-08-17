@@ -46,36 +46,39 @@ public class GameMenuScript : MonoBehaviour
 
         isOpened = false;
         isOpenable = true;
+
+        mainMenuAction.action.Enable();
+
+        for (int i = 0; i < subMenuActions.Length; i++)
+        {
+            subMenuActions[i].action.Enable();
+        }
+
+        escapeAction.action.Enable();
     }
 
     void OnEnable()
     {
         mainMenuAction.action.performed += ToggleMainMenu;
-        mainMenuAction.action.Enable();
 
         for (int i = 0; i < subMenuActions.Length; i++)
         {
             subMenuActions[i].action.performed += subMenuHandler[i];
-            subMenuActions[i].action.Enable();
         }
 
         escapeAction.action.performed += EscapeGameMenu;
-        escapeAction.action.Enable();
     }
 
     void OnDisable()
     {
         mainMenuAction.action.performed -= ToggleMainMenu;
-        mainMenuAction.action.Disable();
 
         for (int i = 0; i < subMenuActions.Length; i++)
         {
             subMenuActions[i].action.performed -= subMenuHandler[i];
-            subMenuActions[i].action.Disable();
         }
 
         escapeAction.action.performed -= EscapeGameMenu;
-        escapeAction.action.Disable();
     }
 
     /*!
