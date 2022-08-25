@@ -18,4 +18,10 @@ player sprintboost x: Changes player sprint boost to x value.
 player jumpforce x: Changes player jump force to x value.
 player gravity x: Changes player gravity to x value.
 
+collect x: Adds a specific item.
+
+dispose x: Removes a specific item.
+
 equip x: Equips a specific equippable. [0 = No equippable]
+
+drop x: Drops a specific equippable.
