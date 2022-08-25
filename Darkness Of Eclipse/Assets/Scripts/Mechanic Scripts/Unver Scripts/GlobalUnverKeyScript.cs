@@ -9,12 +9,12 @@ using UnityEngine;
 public class GlobalUnverKeyScript : MonoBehaviour
 {
     [Header("Keys")]
-    public static int keyCount = 0; //!< The amount of keys that have been collected so far.
-    public int totalKeys = 7; //!< The total amount of keys in the level.
-    [SerializeField] private int visualKeyCount; //!< The keycount visualised in the inspector.
-    [SerializeField] private bool addKey = false; //!< A boolean that adds a key to the total key count when true.
+    [SerializeField] private int[] serializedKeyItemIDs = new int[7] { 0, 1, 2, 3, 4, 5, 6 };
 
-    [Header("Ghost Stage Script")]
+    public static int keyCount = 0; //!< The amount of keys that have been collected so far.
+    public static int[] keyItemIDs; //!< The key item IDs.
+
+    [Header("References")]
     [SerializeField] private GhostStage ghostStageScript; //!< The script that controls the Unver stages.
 
     [Header("Achiement")] // (The targeted achievement will be achieved when the player collects the keys in a specific order.)
@@ -22,16 +22,26 @@ public class GlobalUnverKeyScript : MonoBehaviour
     public int achievementID; //!< The ID of the targeted achievement.
     public static int keyCountForAchievement = 0; //!< An integer that counts up when collected the correct next key.
 
-    void Update()
+    [Header("Debug")]
+    [SerializeField] private bool updateKeyCount; //!< A boolean that updates thev key count when true.
+    [SerializeField] private int visualKeyCount; //!< The keycount visualised in the inspector.
+
+    void Awake()
     {
-        if (addKey)
-        {
-            addKey = false;
-            if (keyCount < totalKeys) keyCount++;
-        }
+        keyItemIDs = serializedKeyItemIDs;
     }
 
-    public void UpdateKeyCount()
+    public static void UpdateKeyCountFromInventory()
+    {
+        int c = 0;
+        for (int i = 0; i < keyItemIDs.Length; i++)
+        {
+            if (InventoryScript.inventoryItemStates[keyItemIDs[i]]) { c++; }
+        }
+        keyCount = c;
+    }
+
+    public void ReactToKeyCount()
     {
         ghostStageScript.ghostStagesActive = true;
         ghostStageScript.GhostSpawn();
@@ -39,12 +49,23 @@ public class GlobalUnverKeyScript : MonoBehaviour
         if (keyCount == 0) ghostStageScript.ghostTier = 1;
         else ghostStageScript.ghostTier = keyCount;
 
-        if (keyCountForAchievement == totalKeys)
+        if (keyCountForAchievement == keyItemIDs.Length)
         {
             if (achievementScript == null) { return; }
             achievementScript.AchievementUnlocked(achievementID);
         }
 
         visualKeyCount = keyCount;
+    }
+
+    void OnValidate()
+    {
+        if (updateKeyCount)
+        {
+            updateKeyCount = false;
+
+            UpdateKeyCountFromInventory();
+            ReactToKeyCount();
+        }
     }
 }

@@ -20,11 +20,12 @@ public class LocalUnverKeyScript : MonoBehaviour
      */
     public void CollectKey()
     {
-        GlobalUnverKeyScript.keyCount ++;
-        if (keyID == GlobalUnverKeyScript.keyCount) GlobalUnverKeyScript.keyCountForAchievement++;
-        else GlobalUnverKeyScript.keyCountForAchievement = 0;
+        GlobalUnverKeyScript.UpdateKeyCountFromInventory();
 
-        globalKeyScript.UpdateKeyCount();
+        if (keyID + 1 == GlobalUnverKeyScript.keyCount) { GlobalUnverKeyScript.keyCountForAchievement++; }
+        else { GlobalUnverKeyScript.keyCountForAchievement = 0; }
+
+        globalKeyScript.ReactToKeyCount();
 
         if (saveScript != null)
         {

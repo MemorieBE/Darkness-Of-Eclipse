@@ -8,7 +8,7 @@ using UnityEngine;
  */
 public class LIDGateOpenScript : MonoBehaviour
 {
-    [Header("Assets")]
+    [Header("References")]
     [SerializeField] private Animator gateAnimator; //!< The gate animator.
     [SerializeField] private AudioSource gateOpenSound; //!< The audio source for the gate opening audio.
 
@@ -24,6 +24,8 @@ public class LIDGateOpenScript : MonoBehaviour
      */
     public void TriggerGate()
     {
+        GlobalUnverKeyScript.UpdateKeyCountFromInventory();
+
         if ((GlobalUnverKeyScript.keyCount >= 7) && (!open))
         {
             gateOpenSound.Play();

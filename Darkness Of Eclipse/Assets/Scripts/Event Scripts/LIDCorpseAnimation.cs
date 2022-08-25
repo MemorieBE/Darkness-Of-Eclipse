@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(EnableDisable))]
-
 /*! \brief A script that controls the corpse animation in the Locked In Despair scene.
  *
  *  [Event Script]
@@ -33,8 +31,6 @@ public class LIDCorpseAnimation : MonoBehaviour
             corpseFlopAudio.Play();
 
             corpseAnimator.SetBool("Fallen", true);
-
-            gameObject.GetComponent<EnableDisable>().PositiveTrigger();
         }
     }
 }

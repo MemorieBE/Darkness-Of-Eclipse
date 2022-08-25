@@ -24,13 +24,16 @@ public class CheatScript : MonoBehaviour
     [SerializeField] private DropEquippable dropScript; //!< The drop script.
     [SerializeField] private GameObject playerObject; //!< The player game object.
     [SerializeField] private GameObject editorLight; //!< The editor light game object.
+    [SerializeField] private InventoryScript inventoryScript; //!< The inventory script.
 
     [Header("Actions")]
     [SerializeField] private InputActionReference cheatAction; //!< The cheat input field action.
     [SerializeField] private InputActionReference escapeAction; //!< The escape action.
     [SerializeField] private InputActionReference confirmAction; //!< The confirm action.
+    [SerializeField] private InputActionReference lastCommandAction; //!< The last command action.
 
     private bool cheatPanelOpen = false; //!< A boolean that determines whether the cheat panel is open.
+    private static string lastCommand; //!< The last command the player input.
 
     void Awake()
     {
@@ -39,6 +42,8 @@ public class CheatScript : MonoBehaviour
         escapeAction.action.Enable();
 
         confirmAction.action.Enable();
+
+        lastCommandAction.action.Enable();
     }
 
     void OnEnable()
@@ -48,6 +53,8 @@ public class CheatScript : MonoBehaviour
         escapeAction.action.performed += EscapeCheatInput;
 
         confirmAction.action.performed += ConfirmCheatInput;
+
+        lastCommandAction.action.performed += LastCommandInput;
     }
 
     void OnDisable()
@@ -57,6 +64,8 @@ public class CheatScript : MonoBehaviour
         escapeAction.action.performed -= EscapeCheatInput;
 
         confirmAction.action.performed -= ConfirmCheatInput;
+
+        lastCommandAction.action.performed -= LastCommandInput;
     }
 
     /*!
@@ -136,159 +145,204 @@ public class CheatScript : MonoBehaviour
     }
 
     /*!
+     *  A method that restores the last command.
+     */
+    private void LastCommandInput(InputAction.CallbackContext ctx)
+    {
+        if (cheatPanelOpen && cheatsEnabled && !cheatsInputDisabled)
+        {
+            cheatInputField.text = lastCommand;
+        }
+    }
+
+    /*!
      *  A method that executes a command.
      *  
      *  \param The cheat command.
      */
     public void ExecuteCommand(string command)
     {
+        lastCommand = command;
+
         string[] splitString = command.Split(' ');
 
-        // Timescale Command.
-        float timescaleValue;
-        if (splitString.Length == 2 && 
-            splitString[0] == "timescale" && 
-            float.TryParse(splitString[1], out timescaleValue))
+        if (splitString.Length > 0)
         {
-            Debug.Log("Timescale set to " + timescaleValue);
-            
-            if (!GameRules.frozenTimeScale) Time.timeScale = timescaleValue;
-            GameRules.timeScaleMultiplier = timescaleValue;
-        }
-
-        // Loadpoint Command.
-        int loadCheckpoint;
-        int loadScene;
-        if ((splitString.Length == 3 || splitString.Length == 4) && 
-            splitString[0] == "loadpoint" && 
-            int.TryParse(splitString[1], out loadScene) && 
-            int.TryParse(splitString[2], out loadCheckpoint))
-        {
-            if (splitString.Length == 4)
+            switch (splitString[0])
             {
-                if (splitString[3] == "direct")
-                {
-                    checkpointScript.LoadCheckpoint(loadScene, loadCheckpoint, false);
-                }
+                // Timescale Command.
+                case "timescale":
+                    if (splitString.Length == 2 &&
+                        float.TryParse(splitString[1], out float timescaleValue))
+                    {
+                        Debug.Log("Timescale set to " + timescaleValue);
+
+                        if (!GameRules.frozenTimeScale) Time.timeScale = timescaleValue;
+                        GameRules.timeScaleMultiplier = timescaleValue;
+                    }
+                    break;
+
+                // Loadpoint Command.
+                case "loadpoint":
+                    if ((splitString.Length == 3 || splitString.Length == 4) &&
+                        int.TryParse(splitString[1], out int loadScene) &&
+                        int.TryParse(splitString[2], out int loadCheckpoint))
+                    {
+                        if (splitString.Length == 4)
+                        {
+                            if (splitString[3] == "direct")
+                            {
+                                checkpointScript.LoadCheckpoint(loadScene, loadCheckpoint, false);
+                            }
+                        }
+                        else
+                        {
+                            checkpointScript.LoadCheckpoint(loadScene, loadCheckpoint);
+                        }
+                    }
+                    break;
+
+                // Scene Point Command.
+                case "scenepoint":
+                    if (splitString.Length == 2)
+                    {
+                        switch (splitString[1])
+                        {
+                            case "save":
+                                savePointScript.ActivateSavePoints();
+
+                                Debug.Log("Saved Scene Save Point");
+                                break;
+
+                            case "load":
+                                savePointScript.LoadSavePoints();
+
+                                Debug.Log("Loaded Scene Save Point");
+                                break;
+                        }
+                    }
+                    break;
+
+                // Reload Scene Command.
+                case "reloadscene":
+                    if (splitString.Length == 1)
+                    {
+                        sceneloaderScript.ReloadScene();
+                    }
+                    break;
+
+                // Editor Light Command.
+                case "editorlight":
+                    if (splitString.Length == 2)
+                    {
+                        switch (splitString[1])
+                        {
+                            case "show":
+                                editorLight.SetActive(true);
+
+                                Debug.Log("Editor Light Shown");
+                                break;
+
+                            case "hide":
+                                editorLight.SetActive(false);
+
+                                Debug.Log("Editor Light Hidden");
+                                break;
+
+                            case "toggle":
+                                editorLight.SetActive(!editorLight.activeSelf);
+
+                                Debug.Log("Editor Light Toggled");
+                                break;
+                        }
+                    }
+                    break;
+
+                // Player Commands.
+                case "player":
+                    if (splitString.Length == 3)
+                    {
+                        if (playerObject.GetComponent<PlayerControllerCC>() != null)
+                        {
+                            float playerCommandValue;
+                            switch (splitString[1])
+                            {
+                                case "movespeed":
+                                    if (float.TryParse(splitString[2], out playerCommandValue))
+                                    {
+                                        playerObject.GetComponent<PlayerControllerCC>().moveSpeed = playerCommandValue;
+                                    }
+                                    break;
+
+                                case "sprintboost":
+                                    if (float.TryParse(splitString[2], out playerCommandValue))
+                                    {
+                                        playerObject.GetComponent<PlayerControllerCC>().sprintMultiplier = playerCommandValue;
+                                    }
+                                    break;
+
+                                case "jumpforce":
+                                    if (float.TryParse(splitString[2], out playerCommandValue))
+                                    {
+                                        playerObject.GetComponent<PlayerControllerCC>().jumpForce = playerCommandValue;
+                                    }
+                                    break;
+
+                                case "gravity":
+                                    if (float.TryParse(splitString[2], out playerCommandValue))
+                                    {
+                                        playerObject.GetComponent<PlayerControllerCC>().gravity = playerCommandValue;
+                                    }
+                                    break;
+                            }
+                        }
+                    }
+                    break;
+
+                // Collect Command.
+                case "collect":
+                    if (splitString.Length == 2 &&
+                        int.TryParse(splitString[1], out int collectValue))
+                    {
+                        Debug.Log("Added item " + collectValue);
+
+                        inventoryScript.InventoryUpdateItem(collectValue, true);
+                    }
+                    break;
+
+                // Dispose Command.
+                case "dispose":
+                    if (splitString.Length == 2 &&
+                        int.TryParse(splitString[1], out int disposeValue))
+                    {
+                        Debug.Log("Removed item " + disposeValue);
+
+                        inventoryScript.InventoryUpdateItem(disposeValue, false);
+                    }
+                    break;
+
+                // Equippable Command.
+                case "equip":
+                    if (splitString.Length == 2 &&
+                        int.TryParse(splitString[1], out int equippableValue))
+                    {
+                        Debug.Log("Equipt item " + equippableValue);
+
+                        CurrentEquippable.currentEquippable = equippableValue;
+                    }
+                    break;
+
+                // Drop Command.
+                case "drop":
+                    if (splitString.Length == 2 &&
+                        int.TryParse(splitString[1], out int dropValue))
+                    {
+                        Debug.Log("Drop item " + dropValue);
+
+                        dropScript.EquippableDrop(dropValue);
+                    }
+                    break;
             }
-            else
-            {
-                checkpointScript.LoadCheckpoint(loadScene, loadCheckpoint);
-            }
-        }
-
-        // Scene Point Command.
-        if (splitString.Length == 2 &&
-            splitString[0] == "scenepoint")
-        {
-            if (splitString[1] == "save")
-            {
-                savePointScript.ActivateSavePoints();
-
-                Debug.Log("Saved Scene Save Point");
-            }
-            else if (splitString[1] == "load")
-            {
-                savePointScript.LoadSavePoints();
-
-                Debug.Log("Loaded Scene Save Point");
-            }
-        }
-
-        // Reload Scene Command.
-        if (splitString.Length == 1 &&
-            splitString[0] == "reloadscene")
-        {
-            sceneloaderScript.ReloadScene();
-        }
-
-        // Editor Light Command.
-        if (splitString.Length == 2 &&
-            splitString[0] == "editorlight")
-        {
-            if (splitString[1] == "show")
-            {
-                editorLight.SetActive(true);
-
-                Debug.Log("Editor Light Shown");
-            }
-            else if (splitString[1] == "hide")
-            {
-                editorLight.SetActive(false);
-
-                Debug.Log("Editor Light Hidden");
-            }
-            else if (splitString[1] == "toggle")
-            {
-                editorLight.SetActive(!editorLight.activeSelf);
-
-                Debug.Log("Editor Light Toggled");
-            }
-        }
-
-        // Player Commands.
-        if (splitString.Length == 3 &&
-            splitString[0] == "player")
-        {
-            float playerCommandValue;
-
-            if (splitString[1] == "movespeed" &&
-                float.TryParse(splitString[2], out playerCommandValue))
-            {
-                if (playerObject.GetComponent<PlayerControllerCC>() != null)
-                {
-                    playerObject.GetComponent<PlayerControllerCC>().moveSpeed = playerCommandValue;
-                }
-            }
-
-            if (splitString[1] == "sprintboost" &&
-                float.TryParse(splitString[2], out playerCommandValue))
-            {
-                if (playerObject.GetComponent<PlayerControllerCC>() != null)
-                {
-                    playerObject.GetComponent<PlayerControllerCC>().sprintMultiplier = playerCommandValue;
-                }
-            }
-
-            if (splitString[1] == "jumpforce" &&
-                float.TryParse(splitString[2], out playerCommandValue))
-            {
-                if (playerObject.GetComponent<PlayerControllerCC>() != null)
-                {
-                    playerObject.GetComponent<PlayerControllerCC>().jumpForce = playerCommandValue;
-                }
-            }
-
-            if (splitString[1] == "gravity" &&
-                float.TryParse(splitString[2], out playerCommandValue))
-            {
-                if (playerObject.GetComponent<PlayerControllerCC>() != null)
-                {
-                    playerObject.GetComponent<PlayerControllerCC>().gravity = playerCommandValue;
-                }
-            }
-        }
-
-        // Equippable Command.
-        int equippableValue;
-        if (splitString.Length == 2 &&
-            splitString[0] == "equip" &&
-            int.TryParse(splitString[1], out equippableValue))
-        {
-            Debug.Log("Equipt item " + equippableValue);
-
-            CurrentEquippable.currentEquippable = equippableValue;
-        }
-
-        // Drop Command.
-        int dropValue;
-        if (splitString.Length == 2 &&
-            splitString[0] == "drop" &&
-            int.TryParse(splitString[1], out dropValue))
-        {
-            Debug.Log("Drop item " + dropValue);
-
-            dropScript.EquippableDrop(dropValue);
         }
     }
 }

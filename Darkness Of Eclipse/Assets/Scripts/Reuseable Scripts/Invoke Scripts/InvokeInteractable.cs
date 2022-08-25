@@ -22,6 +22,9 @@ public class InvokeInteractable : MonoBehaviour
     [SerializeField] private float delay = 0f; //!< The amount of time in seconds the trigger will be delayed.
     public bool activated = false; //!< A boolean that determines whether or not the trigger events have been activated.
 
+    [Header("Debug")]
+    [SerializeField] private bool debugInteraction = false; //!< A boolean that controls whether or not the interaction will be logged in the console.
+
     /*!
      *  A method that is triggered when interacted.
      */
@@ -37,6 +40,8 @@ public class InvokeInteractable : MonoBehaviour
      */
     private void InvokeFunction()
     {
+        if (debugInteraction) { Debug.Log("Interacted"); }
+
         activated = true;
 
         for (int i = 0; i < scripts.Length; i++)
