@@ -30,6 +30,9 @@ public class DocumentMenu : MonoBehaviour
     [SerializeField] private AudioSource documentOpenAudio; //!< The document open audio source.
     [SerializeField] private AudioSource documentCloseAudio; //!< The document close audio source.
 
+    [Header("Saving")]
+    public GameObject[] savableObjectStates; //!< The objects that have active states that should save.
+
     [Header("Debug")]
     [SerializeField] private bool updateChapters = false; //!< A boolean that triggers the update chapter states function.
 

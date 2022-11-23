@@ -11,8 +11,8 @@ public class SceneSavePoint : MonoBehaviour
     public static bool hasSavePoint = false; //!< A boolean that controls whether or not the scene currently has a save point.
 
     [Header("References")]
-    [SerializeField] private DropEquippable equippableScript; //!< The equippable script.
     [SerializeField] private GameObject player; //!< The player game object.
+    [SerializeField] private DropEquippable equippableScript; //!< The equippable script.
     [SerializeField] private GameObject[] fluidActiveStateObjects; //!< The game objects that can be switch active and inactive throughout the scene.
     [SerializeField] private bool organiseObjects = false; //!< A boolean that organised the fluid active state object array in alphabetical order on validate.
     [SerializeField] private DoorScript[] doorScripts; //!< All the door scripts in the scene.
@@ -24,6 +24,7 @@ public class SceneSavePoint : MonoBehaviour
     public static int[] equippableID; //!< The equippable IDs to save.
     public static Vector3[] equippablePosition; //!< The equippable positions to save.
     public static Vector3[] equippableRotation; //!< The equippable rotations to save.
+    public static bool[] notepadActive; //!< The notepad object active states to save.
     public static bool[] objectActive; //!< The game object active states to save.
     public static bool[] doorLocked; //!< The door locked states to save.
     public static bool[] doorOpen; //!< The door open states to save.
@@ -53,7 +54,7 @@ public class SceneSavePoint : MonoBehaviour
 
         objectActive = new bool[fluidActiveStateObjects.Length];
 
-        for (int i = 0; i < fluidActiveStateObjects.Length; i++)
+        for (int i = 0; i < objectActive.Length; i++)
         {
             objectActive[i] = fluidActiveStateObjects[i].activeSelf;
         }
@@ -82,6 +83,8 @@ public class SceneSavePoint : MonoBehaviour
         equippablePosition = null;
         equippableRotation = null;
 
+        notepadActive = null;
+
         objectActive = null;
 
         doorLocked = null;
@@ -105,7 +108,7 @@ public class SceneSavePoint : MonoBehaviour
             instantiatedEquippable.transform.rotation = Quaternion.Euler(equippableRotation[i]);
         }
 
-        for (int i = 0; i < fluidActiveStateObjects.Length; i++)
+        for (int i = 0; i < objectActive.Length; i++)
         {
             fluidActiveStateObjects[i].SetActive(objectActive[i]);
         }

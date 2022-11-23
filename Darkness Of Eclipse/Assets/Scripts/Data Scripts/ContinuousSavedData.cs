@@ -10,11 +10,16 @@ public class ContinuousSavedData : MonoBehaviour
 {
     public static bool hasSavedData = false; //!< A boolean that controls whether or not the game has continuous saved data.
 
+    [Header("References")]
+    [SerializeField] private DocumentMenu notepadScript; //!< The notepad script.
+
     public static bool[] inventoryItemStates; //!< The inventory states to save.
 
     public static int currentEquippable; //!< The current equippable to save.
 
     public static int wispCount; //!< The wisp count.
+
+    public static bool[] notepadActive; //!< The notepad object active states to save.
 
     public static bool[] notepadChapterStates; //!< The notepad chapter states.
     public static int notepadCurrentChapter; //!< The current notepad chapter.
@@ -24,7 +29,7 @@ public class ContinuousSavedData : MonoBehaviour
     /*!
      *  A method that saves the continuous data into the continuous static variables.
      */
-    public static void ActivateContinuousData()
+    public void ActivateContinuousData()
     {
         hasSavedData = true;
 
@@ -33,6 +38,13 @@ public class ContinuousSavedData : MonoBehaviour
         currentEquippable = CurrentEquippable.currentEquippable;
 
         wispCount = SinicWispController.wispCount;
+
+        notepadActive = new bool[notepadScript.savableObjectStates.Length];
+
+        for (int i = 0; i < notepadActive.Length; i++)
+        {
+            notepadActive[i] = notepadScript.savableObjectStates[i].activeSelf;
+        }
 
         if (DocumentMenu.chapterStates != null && DocumentMenu.chapterStates.Length > notepadID)
         {
@@ -55,6 +67,8 @@ public class ContinuousSavedData : MonoBehaviour
 
         wispCount = 0;
 
+        notepadActive = null;
+
         notepadChapterStates = null;
         notepadCurrentChapter = 0;
         notepadCurrentPage = 0;
@@ -63,7 +77,7 @@ public class ContinuousSavedData : MonoBehaviour
     /*!
      *  A method that loads the continuous static variables into the continuous data.
      */
-    public static void LoadContinuousData()
+    public void LoadContinuousData()
     {
         if (!hasSavedData) { return; }
 
@@ -72,6 +86,11 @@ public class ContinuousSavedData : MonoBehaviour
         CurrentEquippable.currentEquippable = currentEquippable;
 
         SinicWispController.wispCount = wispCount;
+
+        for (int i = 0; i < notepadActive.Length; i++)
+        {
+            notepadScript.savableObjectStates[i].SetActive(notepadActive[i]);
+        }
 
         if (DocumentMenu.chapterStates != null && DocumentMenu.chapterStates.Length > notepadID)
         {

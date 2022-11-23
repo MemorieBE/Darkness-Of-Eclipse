@@ -13,11 +13,13 @@ using UnityEngine.SceneManagement;
  */
 public class DataSaveMaster : MonoBehaviour
 {
+    private ContinuousSavedData continuousSavePoint; //!< The continuous save point script.
     private SceneSavePoint sceneSavePoint; //!< The scene save point script.
     private LIDSavePoint lIDSavePoint; //!< The Locked In Despair save point script.
 
     void Awake()
     {
+        continuousSavePoint = gameObject.GetComponent<ContinuousSavedData>();
         sceneSavePoint = gameObject.GetComponent<SceneSavePoint>();
         lIDSavePoint = gameObject.GetComponent<LIDSavePoint>();
 
@@ -34,7 +36,7 @@ public class DataSaveMaster : MonoBehaviour
      */
     public void ActivateSavePoints()
     {
-        ContinuousSavedData.ActivateContinuousData();
+        continuousSavePoint.ActivateContinuousData();
 
         sceneSavePoint.ActivateSavePoint();
 
@@ -73,7 +75,7 @@ public class DataSaveMaster : MonoBehaviour
      */
     public void LoadSavePoints()
     {
-        ContinuousSavedData.LoadContinuousData();
+        continuousSavePoint.LoadContinuousData();
 
         sceneSavePoint.LoadSavePoint();
 

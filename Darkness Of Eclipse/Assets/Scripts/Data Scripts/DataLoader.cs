@@ -30,6 +30,8 @@ public class DataLoader : MonoBehaviour
 
                 ContinuousSavedData.wispCount = data.wispCount;
 
+                ContinuousSavedData.notepadActive = data.notepadActive;
+
                 ContinuousSavedData.notepadChapterStates = data.notepadChapterStates;
                 ContinuousSavedData.notepadCurrentChapter = data.notepadCurrentChapter;
                 ContinuousSavedData.notepadCurrentPage = data.notepadCurrentPage;

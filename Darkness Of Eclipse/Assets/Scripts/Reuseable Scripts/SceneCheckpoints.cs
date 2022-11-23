@@ -24,6 +24,9 @@ public class SceneCheckpoints : MonoBehaviour
     [SerializeField] private GameObject[] checkpointObjectGroups; //!< The object group game objects for certain checkpoints.
     [SerializeField] private Transform[] checkpointSpawnPoints; //!< The spawn point transforms for certain checkpoints.
 
+    [Header("Loading")]
+    [SerializeField] private ContinuousSavedData continuousSavedDataScript; //!< The continuous saved data script.
+
     private SceneLoader sceneLoader; //!< The scene loader script.
     private TeleportCCBasic teleporter; //!< The teleporting script.
 
@@ -58,7 +61,7 @@ public class SceneCheckpoints : MonoBehaviour
         sceneCheckpoint = checkpoint;
 
         DataSaveMaster.ResetSceneBasedSavePoints();
-        ContinuousSavedData.ActivateContinuousData();
+        continuousSavedDataScript.ActivateContinuousData();
 
         Debug.Log("Load Point: Scene " + SceneManager.GetActiveScene().buildIndex + ", Checkpoint " + sceneCheckpoint);
 

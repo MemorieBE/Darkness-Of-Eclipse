@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -8.398, y: 24, z: 1.057}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3455597420392951554}
   m_RootOrder: 1
@@ -75,6 +76,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3455597420392951554}
   m_RootOrder: 0
@@ -103,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ebb2d6211ef15045a8c479a54978011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  notepadScript: {fileID: 0}
 --- !u!114 &449431654219171777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,8 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7b4fa99d4f491144a99e0a496225fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equippableScript: {fileID: 0}
   player: {fileID: 0}
+  equippableScript: {fileID: 0}
   fluidActiveStateObjects: []
   organiseObjects: 0
   doorScripts: []
@@ -135,6 +138,8 @@ MonoBehaviour:
   scene: 2
   plankScripts: []
   corpseScript: {fileID: 0}
+  safeScript: {fileID: 0}
+  gateScript: {fileID: 0}
   unverScript: {fileID: 0}
 --- !u!1 &7697966159206917727
 GameObject:
@@ -165,6 +170,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6333189581638033213}
   - {fileID: 3778760812084487804}
@@ -188,6 +194,7 @@ MonoBehaviour:
   - {fileID: 0}
   checkpointSpawnPoints:
   - {fileID: 0}
+  continuousSavedDataScript: {fileID: 2668337496321415666}
 --- !u!114 &5959648088477457813
 MonoBehaviour:
   m_ObjectHideFlags: 0

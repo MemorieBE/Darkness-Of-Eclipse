@@ -22,6 +22,8 @@ public class GameData
 
     public int wispCount;
 
+    public bool[] notepadActive;
+
     public bool[] notepadChapterStates;
     public int notepadCurrentChapter;
     public int notepadCurrentPage;
@@ -77,6 +79,8 @@ public class GameData
             currentEquippable = ContinuousSavedData.currentEquippable;
 
             wispCount = ContinuousSavedData.wispCount;
+
+            notepadActive = ContinuousSavedData.notepadActive;
 
             notepadChapterStates = ContinuousSavedData.notepadChapterStates;
             notepadCurrentChapter = ContinuousSavedData.notepadCurrentChapter;

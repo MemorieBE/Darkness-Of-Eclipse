@@ -446,6 +446,11 @@ PrefabInstance:
       propertyPath: characterController
       value: 
       objectReference: {fileID: 2509686229799077975}
+    - target: {fileID: 2668337496321415666, guid: 4e42fca576775ff49ad02e90364a7a97,
+        type: 3}
+      propertyPath: notepadScript
+      value: 
+      objectReference: {fileID: 7590834487366645221}
     - target: {fileID: 3455597420392951554, guid: 4e42fca576775ff49ad02e90364a7a97,
         type: 3}
       propertyPath: m_RootOrder
@@ -981,6 +986,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2509686229474822598}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7590834487366645221 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5443794132295007267, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
+    type: 3}
+  m_PrefabInstance: {fileID: 2509686229474822598}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3002161199289177499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4170007d545eb146aa23ee20458a65d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7778733445412077285 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5271373817086080803, guid: 8b4d5335f5b51b046bb1e5aeff7d2e64,
