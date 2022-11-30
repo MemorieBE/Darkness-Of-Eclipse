@@ -43,6 +43,7 @@ public class DialogueSubtitles : MonoBehaviour
         if (scene == lastScene && interaction == lastInteraction)
         {
             lineHeadstart = rememberedInteractionLine;
+            correctInteraction = true;
         }
         else if (scene == lastScene)
         {
@@ -53,35 +54,38 @@ public class DialogueSubtitles : MonoBehaviour
         {
             string trimmedLine = transcriptLines[i].Trim();
 
-            if (correctInteraction)
+            if (trimmedLine != "")
             {
-                if (trimmedLine.StartsWith("[" + scene + "." + interaction + "." + line + "] "))
+                if (correctInteraction)
                 {
-                    lastScene = scene;
-                    lastInteraction = interaction;
+                    if (trimmedLine.StartsWith("[" + scene + "." + interaction + "." + line + "] "))
+                    {
+                        lastScene = scene;
+                        lastInteraction = interaction;
 
-                    correctInteraction = true;
+                        correctInteraction = true;
 
-                    StopAllCoroutines();
+                        StopAllCoroutines();
 
-                    subtitles.text = "";
+                        subtitles.text = "";
 
-                    StartCoroutine(PlaySubtitle(i));
+                        StartCoroutine(PlaySubtitle(i));
 
-                    return;
+                        return;
+                    }
                 }
-            }
-            else
-            {
-                if (trimmedLine == ">" + scene + ".0")
+                else
                 {
-                    rememberedSceneLine = i;
-                }
+                    if (trimmedLine == ">" + scene + ".0")
+                    {
+                        rememberedSceneLine = i;
+                    }
 
-                if (trimmedLine == ">" + scene + "." + interaction)
-                {
-                    rememberedInteractionLine = i;
-                    correctInteraction = true;
+                    if (trimmedLine == ">" + scene + "." + interaction)
+                    {
+                        rememberedInteractionLine = i;
+                        correctInteraction = true;
+                    }
                 }
             }
         }

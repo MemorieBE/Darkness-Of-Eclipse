@@ -27,3 +27,9 @@
 [1.1.6] </0.8|8.2/> n/Amelia: I call her the Unvermeidlich, meaning the inevitable, or just the Unver. </0.4|5.8/> She's her own biggest threat, her own biggest regret. </0|6.4/> The dark to remember, the light to forget.
 
 [1.1.7] </0.6|4.9/> n/Amelia: Oh thank god, home sweet home am I right? </0.4|5.6/> *Sigh* You must be exausted, why don't you take a nap? </0.4|5.1/> Don't worry, I'll still be here for when you wake up, </0|6.5/> and who knows, maybe this is all just a bad dream.
+
+>2.0
+[2.0.0] </2|10/> n/Unvermeidlich: [Unintelligable]
+
+>2.1
+[2.1.0] </9.25|5.5/> n/Amelia: I wrote you that poem so that you could remember where you put those 8 keys I left for you. </0.75|7.5/> That way, if you ever do decide that you want to leave this place, just remember what I told you. </0.75|6.5/> You remember it, right? It went a little something like this: </0.75|8.5/> Remember the past, learn who you were, resist what you couldn't, fix where it hurts. </0.5|6.25/> Breathe in the air, break through the pain, reject the Unver...

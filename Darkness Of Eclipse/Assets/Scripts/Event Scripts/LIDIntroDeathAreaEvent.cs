@@ -13,9 +13,11 @@ public class LIDIntroDeathAreaEvent : MonoBehaviour
     [SerializeField] private GameObject unver1; //!< The first Unver game object.
     [SerializeField] private GameObject unver2; //!< The second Unver game object.
     [SerializeField] private SceneCheckpoints checkpointScript; //!< The checkpoint script.
+    [SerializeField] private DialogueSubtitles subtitlesScript;
 
     [Header("Inputs")]
     [SerializeField] private float duration; //!< The duration of the evnt in seconds.
+    [SerializeField] private Vector3Int subtitlesID;
 
     /*!
      *  A method that starts the event.
@@ -30,6 +32,8 @@ public class LIDIntroDeathAreaEvent : MonoBehaviour
      */
     private IEnumerator EventActive()
     {
+        subtitlesScript.ActivateSubtitle(subtitlesID.x, subtitlesID.y, subtitlesID.z);
+
         yield return new WaitForSeconds(duration);
 
         unverAudio.SetActive(true);
