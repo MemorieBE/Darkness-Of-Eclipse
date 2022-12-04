@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(EnableDisable))]
 /*! \brief A script that controls all the keys to collect in an Unver level.
  *
  *  [Mechanic Script]
  */
+
 public class GlobalUnverKeyScript : MonoBehaviour
 {
     [Header("Keys")]
@@ -25,6 +27,8 @@ public class GlobalUnverKeyScript : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private bool updateKeyCount; //!< A boolean that updates thev key count when true.
     [SerializeField] private int visualKeyCount; //!< The keycount visualised in the inspector.
+
+    private bool promptAvailable = true;
 
     void Awake()
     {
@@ -46,8 +50,14 @@ public class GlobalUnverKeyScript : MonoBehaviour
         ghostStageScript.ghostStagesActive = true;
         ghostStageScript.GhostSpawn();
 
-        if (keyCount == 0) ghostStageScript.ghostTier = 1;
-        else ghostStageScript.ghostTier = keyCount;
+        if (keyCount == 0) { ghostStageScript.ghostTier = 1; }
+        else { ghostStageScript.ghostTier = keyCount; }
+
+        if (promptAvailable)
+        {
+            gameObject.GetComponent<EnableDisable>().PositiveTrigger();
+            promptAvailable = false;
+        }
 
         if (keyCountForAchievement == keyItemIDs.Length)
         {
