@@ -14,13 +14,13 @@ TagManager:
   - 
   - 
   - Floor
-  - Player Detector
-  - Ignore Player Raycasts
+  - Invisible
+  - Enemy Filter
   - Ignore Unver
   - Player
   - Prop
   - Item
-  - 
+  - Door
   - 
   - 
   - 

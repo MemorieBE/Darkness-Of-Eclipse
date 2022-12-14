@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.009246862, y: 0.027597172, z: 0.038856454}
   m_LocalScale: {x: 0.3111111, y: 3.5436137, z: 2.229183}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 331117918721821714}
   m_RootOrder: 0
@@ -52,6 +53,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -108,7 +110,7 @@ GameObject:
   - component: {fileID: 7046363630324594077}
   - component: {fileID: 7397261749150161701}
   - component: {fileID: 6064611007573696868}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Prefab_DoorL4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,6 +127,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.0003620524, y: 0, z: 0}
   m_LocalScale: {x: 0.102199465, y: 3.2534256, z: 1.7661343}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6770385288848060391}
   m_RootOrder: 0
@@ -148,6 +151,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -201,7 +205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5224173809196875228}
   - component: {fileID: 8443924656671179461}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: CloseAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,6 +222,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.00000020861623}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3432552380903667146}
   m_RootOrder: 2
@@ -330,7 +335,7 @@ GameObject:
   - component: {fileID: 7537772422935192660}
   - component: {fileID: 3009306030625330673}
   - component: {fileID: 1712447420867021766}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Prefab_DoorR4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,6 +352,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.00000008940697, z: -0, w: 1}
   m_LocalPosition: {x: -0.00036693344, y: 0, z: -0.008867719}
   m_LocalScale: {x: 0.10219945, y: 3.2534254, z: 1.766134}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7800193382228894810}
   m_RootOrder: 0
@@ -370,6 +376,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -427,7 +434,7 @@ GameObject:
   - component: {fileID: 5910118138032347827}
   - component: {fileID: 1788474655738860365}
   - component: {fileID: 2938877045981692600}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,6 +451,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0.7071069, z: -0, w: 0.7071067}
   m_LocalPosition: {x: 0.009246874, y: 0.027597249, z: 0.038856607}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6598102863793152109}
   - {fileID: 3195161915086239881}
@@ -456,7 +464,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1411741180922002964
 Animator:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -469,6 +477,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -508,6 +517,7 @@ MonoBehaviour:
   resetsActivation: 1
   delay: 0
   activated: 0
+  debugInteraction: 0
 --- !u!114 &1788474655738860365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -564,7 +574,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3195161915086239881}
   - component: {fileID: 8410557841331389074}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: OpenAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -581,6 +591,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.00000020861623}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3432552380903667146}
   m_RootOrder: 1
@@ -690,7 +701,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 331117918721821714}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Prefab Door 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -707,11 +718,12 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -7.371338, y: -1.9565886, z: -5.0417194}
   m_LocalScale: {x: 75, y: 75, z: 75}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3782239760762966257}
   - {fileID: 3432552380903667146}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &6694053726894952781
 GameObject:
@@ -723,7 +735,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5570328759652156109}
   - component: {fileID: 4151518692928523251}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: LockedAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -740,6 +752,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.00000020861623}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3432552380903667146}
   m_RootOrder: 3
@@ -849,7 +862,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6770385288848060391}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: DoorL_Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -866,6 +879,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.00000008940697, z: -0, w: 1}
   m_LocalPosition: {x: 0.00076, y: -0.00094767474, z: -0.00905}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4084951593013879815}
   m_Father: {fileID: 3432552380903667146}
@@ -883,7 +897,7 @@ GameObject:
   - component: {fileID: 2435484299832251858}
   - component: {fileID: 6720744182644515521}
   - component: {fileID: 663392799179316024}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Key Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -900,6 +914,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.00000017881393, z: -0, w: 1}
   m_LocalPosition: {x: 0.00095, y: -0.00404, z: 0.00138}
   m_LocalScale: {x: 0.00131388, y: 0.004939008, z: 0.0045117238}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3432552380903667146}
   m_RootOrder: 0
@@ -923,6 +938,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -975,7 +991,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7800193382228894810}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: DoorR_Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -992,6 +1008,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.00076, y: -0.00094767474, z: 0.00892}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6554333071948996214}
   - {fileID: 4804635506980923448}
@@ -1003,11 +1020,16 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 7800193382228894810}
     m_Modifications:
     - target: {fileID: 100000, guid: 4a4e68757f3048440bb2a041883037f2, type: 3}
       propertyPath: m_Name
       value: Small Key
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4a4e68757f3048440bb2a041883037f2, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 4a4e68757f3048440bb2a041883037f2, type: 3}
       propertyPath: m_IsActive
@@ -1070,6 +1092,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a4e68757f3048440bb2a041883037f2, type: 3}
 --- !u!4 &4804635506980923448 stripped
 Transform:

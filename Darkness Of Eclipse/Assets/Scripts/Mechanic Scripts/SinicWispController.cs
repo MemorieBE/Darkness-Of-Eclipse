@@ -18,11 +18,24 @@ public class SinicWispController : MonoBehaviour
     [Header("Player")]
     [SerializeField] private Transform player;
 
-    [Header("NavMesh")]
-    [SerializeField] private Transform[] possibleDestinations;
+    [Header("Result")]
+    public ResultType result;
+    public Transform[] possibleDestinations;
+    public string promptString;
+    [SerializeField] private Text promptAsset;
 
-
+    [Header("Input")]
     [SerializeField] private InputActionReference wispAction;
+
+    [Header("Delay")]
+    [SerializeField] private float delayTime = 2.5f;
+    private bool delaying = false;
+
+    public enum ResultType
+    {
+        destination,
+        prompt
+    }
 
     void Start()
     {
@@ -50,10 +63,25 @@ public class SinicWispController : MonoBehaviour
 
     private void UseWisp(InputAction.CallbackContext ctx)
     {
-        if (!wispsActive || wispCount <= 0 || GameRules.cancelInputOverride > 0) { return; }
+        if (delaying || !wispsActive || wispCount <= 0 || GameRules.cancelInputOverride > 0) { return; }
+
+        Delay(delayTime);
         
         UpdateWispCount(-1);
 
+        switch (result)
+        {
+            case ResultType.destination:
+                DestinationResult();
+                break;
+            case ResultType.prompt:
+                PromptResult();
+                break;
+        }
+    }
+
+    private void DestinationResult()
+    {
         GameObject newWisp;
 
         newWisp = Instantiate(wispProjectile, player.position + wispSpawnOffset, Quaternion.Euler(Vector3.up * player.rotation.y));
@@ -100,5 +128,18 @@ public class SinicWispController : MonoBehaviour
 
         nma.Warp(player.position + wispSpawnOffset);
         nma.SetDestination(destination);
+    }
+
+    private void PromptResult()
+    {
+        promptAsset.text = promptString;
+        promptAsset.gameObject.SetActive(true);
+    }
+
+    private IEnumerator Delay(float time)
+    {
+        delaying = true;
+        yield return new WaitForSeconds(time);
+        delaying = false;
     }
 }

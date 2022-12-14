@@ -18,6 +18,9 @@ public class GlobalUnverKeyScript : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private GhostStage ghostStageScript; //!< The script that controls the Unver stages.
+    [SerializeField] private SinicWispController wispScript;
+    [SerializeField] private string wispPrompt;
+    [SerializeField] private Transform escapeDestination;
 
     [Header("Achiement")] // (The targeted achievement will be achieved when the player collects the keys in a specific order.)
     public Achievements achievementScript; //!< The script that controls the achievements. (Can be left null.)
@@ -50,8 +53,26 @@ public class GlobalUnverKeyScript : MonoBehaviour
         ghostStageScript.ghostStagesActive = true;
         ghostStageScript.GhostSpawn();
 
-        if (keyCount == 0) { ghostStageScript.ghostTier = 1; }
-        else { ghostStageScript.ghostTier = keyCount; }
+        if (keyCount == 0) 
+        { 
+            ghostStageScript.ghostTier = 1; 
+        }
+        else 
+        { 
+            ghostStageScript.ghostTier = keyCount;
+
+            switch (keyCount)
+            {
+                case 6:
+                    wispScript.promptString = wispPrompt;
+                    wispScript.result = SinicWispController.ResultType.prompt;
+                    break;
+                case 7:
+                    wispScript.possibleDestinations = new Transform[1] { escapeDestination };
+                    wispScript.result = SinicWispController.ResultType.destination;
+                    break;
+            }
+        }
 
         if (promptAvailable)
         {

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1205379060615694432}
   - component: {fileID: 7185394715749779255}
   - component: {fileID: 959680046176286555}
-  m_Layer: 17
+  m_Layer: 9
   m_Name: Plank (Broken 2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,6 +31,7 @@ Transform:
     w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1414857226768536828}
   m_RootOrder: 1
@@ -54,10 +55,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -82,6 +85,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!54 &7185394715749779255
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -124,7 +128,7 @@ GameObject:
   - component: {fileID: 1205379060615694434}
   - component: {fileID: 8929280983221197815}
   - component: {fileID: 6925867132514491534}
-  m_Layer: 17
+  m_Layer: 9
   m_Name: Plank (Broken 1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,6 +146,7 @@ Transform:
     w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1414857226768536828}
   m_RootOrder: 0
@@ -165,10 +170,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -193,6 +200,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!54 &8929280983221197815
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -235,7 +243,7 @@ GameObject:
   - component: {fileID: 4210956922891258014}
   - component: {fileID: 4210956922889000528}
   - component: {fileID: 1417134617428013396}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,6 +260,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -1.0658917e-11, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1414857226768536828}
   m_RootOrder: 2
@@ -275,10 +284,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -303,6 +314,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &4210956922889000528
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -349,7 +361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5635306422517752883}
   - component: {fileID: 6338081689047283957}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Break Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,6 +378,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1414857226768536828}
   m_RootOrder: 3
@@ -475,7 +488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1414857226768536828}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -492,11 +505,12 @@ Transform:
   m_LocalRotation: {x: 0.000011537224, y: 0.000000923872, z: 0.07568812, w: 0.9971316}
   m_LocalPosition: {x: 0.26501447, y: -0.7059937, z: -1.0520015}
   m_LocalScale: {x: 13.377996, y: 13.377996, z: 13.377997}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1205379060613794434}
   - {fileID: 1205379060613794432}
   - {fileID: 4210956922888833662}
   - {fileID: 5635306422517752883}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
