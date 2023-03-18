@@ -40,7 +40,7 @@ public class FlashlightController : MonoBehaviour
      */
     private void ToggleFlashlight(InputAction.CallbackContext ctx)
     {
-        if (gameObject.activeSelf && PlayerControllerCC.allowPlayerInputs)
+        if (gameObject.activeSelf && !GameRules.freezePlayer)
         {
             isActive = !isActive;
 

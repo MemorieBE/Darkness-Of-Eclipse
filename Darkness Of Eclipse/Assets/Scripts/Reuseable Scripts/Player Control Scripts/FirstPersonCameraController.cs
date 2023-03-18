@@ -32,7 +32,7 @@ public class FirstPersonCameraController : MonoBehaviour
 
         Vector2 mouse = Vector2.zero;
 
-        if (PlayerControllerCC.allowPlayerInputs) 
+        if (!GameRules.freezePlayer) 
         {
             mouse = look * SettingsValues.mouseSensitivity * Time.deltaTime * 0.1f / GameRules.timeScaleMultiplier;
         }

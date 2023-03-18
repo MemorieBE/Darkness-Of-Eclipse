@@ -45,7 +45,7 @@ public class EquippableController : MonoBehaviour
      */
     private void ToggleEquippable(InputAction.CallbackContext ctx)
     {
-        if (gameObject.activeSelf && PlayerControllerCC.allowPlayerInputs)
+        if (gameObject.activeSelf && !GameRules.freezePlayer)
         {
             if (isActive)
             {

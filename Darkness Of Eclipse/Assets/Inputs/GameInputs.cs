@@ -223,6 +223,15 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Exit Action"",
+                    ""type"": ""Button"",
+                    ""id"": ""501db987-1a35-4fd6-8f25-a48267785a79"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -278,6 +287,17 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
                     ""action"": ""Use Wisp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""621bd3be-2fa9-41e1-a5cb-dacb0c1cb5ac"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit Action"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -465,6 +485,7 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
         m_Mechanics_ToggleEquippable = m_Mechanics.FindAction("Toggle Equippable", throwIfNotFound: true);
         m_Mechanics_TriggerEquippable = m_Mechanics.FindAction("Trigger Equippable", throwIfNotFound: true);
         m_Mechanics_UseWisp = m_Mechanics.FindAction("Use Wisp", throwIfNotFound: true);
+        m_Mechanics_ExitAction = m_Mechanics.FindAction("Exit Action", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_EscapePause = m_Menu.FindAction("Escape/Pause", throwIfNotFound: true);
@@ -603,6 +624,7 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_Mechanics_ToggleEquippable;
     private readonly InputAction m_Mechanics_TriggerEquippable;
     private readonly InputAction m_Mechanics_UseWisp;
+    private readonly InputAction m_Mechanics_ExitAction;
     public struct MechanicsActions
     {
         private @GameInputs m_Wrapper;
@@ -612,6 +634,7 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
         public InputAction @ToggleEquippable => m_Wrapper.m_Mechanics_ToggleEquippable;
         public InputAction @TriggerEquippable => m_Wrapper.m_Mechanics_TriggerEquippable;
         public InputAction @UseWisp => m_Wrapper.m_Mechanics_UseWisp;
+        public InputAction @ExitAction => m_Wrapper.m_Mechanics_ExitAction;
         public InputActionMap Get() { return m_Wrapper.m_Mechanics; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -636,6 +659,9 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                 @UseWisp.started -= m_Wrapper.m_MechanicsActionsCallbackInterface.OnUseWisp;
                 @UseWisp.performed -= m_Wrapper.m_MechanicsActionsCallbackInterface.OnUseWisp;
                 @UseWisp.canceled -= m_Wrapper.m_MechanicsActionsCallbackInterface.OnUseWisp;
+                @ExitAction.started -= m_Wrapper.m_MechanicsActionsCallbackInterface.OnExitAction;
+                @ExitAction.performed -= m_Wrapper.m_MechanicsActionsCallbackInterface.OnExitAction;
+                @ExitAction.canceled -= m_Wrapper.m_MechanicsActionsCallbackInterface.OnExitAction;
             }
             m_Wrapper.m_MechanicsActionsCallbackInterface = instance;
             if (instance != null)
@@ -655,6 +681,9 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                 @UseWisp.started += instance.OnUseWisp;
                 @UseWisp.performed += instance.OnUseWisp;
                 @UseWisp.canceled += instance.OnUseWisp;
+                @ExitAction.started += instance.OnExitAction;
+                @ExitAction.performed += instance.OnExitAction;
+                @ExitAction.canceled += instance.OnExitAction;
             }
         }
     }
@@ -764,6 +793,7 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
         void OnToggleEquippable(InputAction.CallbackContext context);
         void OnTriggerEquippable(InputAction.CallbackContext context);
         void OnUseWisp(InputAction.CallbackContext context);
+        void OnExitAction(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

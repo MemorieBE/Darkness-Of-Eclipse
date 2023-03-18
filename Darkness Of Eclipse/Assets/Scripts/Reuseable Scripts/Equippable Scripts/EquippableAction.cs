@@ -39,7 +39,7 @@ public class EquippableAction : MonoBehaviour
      */
     private void TriggerEquippable(InputAction.CallbackContext ctx)
     {
-        if (controller.isActive && PlayerControllerCC.allowPlayerInputs && !animator.GetBool("Action"))
+        if (controller.isActive && !GameRules.freezePlayer && !animator.GetBool("Action"))
         {
             StartCoroutine(Action());
         }

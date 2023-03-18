@@ -12,11 +12,12 @@ using UnityEngine.InputSystem;
  */
 public class PlayerControllerCC : MonoBehaviour
 {
-    public static bool allowPlayerInputs = true; //!< A boolean that controls whether or not the player inputs are read.
-
     public static bool sprintDisabled = false; //!< A boolean that controls whether or not sprinting is disabled.
     public static bool sneakDisabled = false; //!< A boolean that controls whether or not sprinting is disabled.
     public static bool normalizedMovement = false; //!< A boolean that controls whether or not the player's movement direction is normalized.
+
+    [HideInInspector] public bool enableController = true; //!< A boolean that enables the controller.
+    [HideInInspector] public bool alwaysAllowGravity = true; //!< A boolean that allows gravity even when controller is disabled.
 
     [Header("Inputs")]
     public float moveSpeed = 2f; //!< How fast the player can move.
@@ -27,7 +28,6 @@ public class PlayerControllerCC : MonoBehaviour
     public float jumpForce = 3f; //!< How high/hard the player will jump.
     public float gravity = 5f; //!< How strong the player's gravity is.
     public float maxDropVelocity = 10f; //!< The gravity terminal velocity.
-    public float rigidbodyPushForce = 5f; //!< How hard the player will push away rigidbodies when colliding with them.
 
     [Header("Actions")]
     [SerializeField] private InputActionReference moveAction; //!< The move action.
@@ -45,11 +45,6 @@ public class PlayerControllerCC : MonoBehaviour
     private Vector3 direction = Vector3.zero; //!< The current flat direction that the character controller will move towards.
 
     private float currentyDropVelocity = 0f; //!< The current drop velocity.
-
-    void Awake()
-    {
-        allowPlayerInputs = true;
-    }
 
     void OnEnable()
     {
@@ -78,6 +73,8 @@ public class PlayerControllerCC : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (GameRules.freezePlayer || (!enableController && !alwaysAllowGravity)) { return; }
+
         // Gets gravity.
         if (!characterController.isGrounded)
         {
@@ -96,16 +93,22 @@ public class PlayerControllerCC : MonoBehaviour
         sneakInput = sneakAction.action.ReadValue<float>() == 1f;
         jumpInput = jumpAction.action.ReadValue<float>() == 1f;
 
+        if (GameRules.freezePlayer || !enableController) 
+        {
+            direction = Vector3.zero;
+            return; 
+        }
+
         // Gets local direction of movement input.
         {
             Vector3 localDirection = Vector3.zero;
+
             if (moveInput.y == 1f) localDirection += Vector3.forward;
             if (moveInput.y == -1f) localDirection += Vector3.back;
             if (moveInput.x == -1f) localDirection += Vector3.left * strafeMultiplier;
             if (moveInput.x == 1f) localDirection += Vector3.right * strafeMultiplier;
 
             if (normalizedMovement) localDirection = localDirection.normalized;
-            if (!allowPlayerInputs) localDirection = Vector3.zero;
 
             direction = gameObject.transform.TransformPoint(localDirection) - gameObject.transform.position;
         }
@@ -113,7 +116,7 @@ public class PlayerControllerCC : MonoBehaviour
         // Gets player jump.
         if (characterController.isGrounded)
         {
-            if (jumpInput && allowPlayerInputs) currentyDropVelocity = jumpForce * -1f;
+            if (jumpInput) currentyDropVelocity = jumpForce * -1f;
             else currentyDropVelocity = 0f;
         }
 
@@ -121,14 +124,5 @@ public class PlayerControllerCC : MonoBehaviour
         if (sprintInput && !sneakInput && !sprintDisabled) currentSpeed = moveSpeed * sprintMultiplier;
         else if (sneakInput && !sneakDisabled) currentSpeed = moveSpeed * sneakSpeedMultiplier;
         else currentSpeed = moveSpeed;
-    }
-
-    void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        // Pushes collided rigidbody away.
-
-        if (hit.rigidbody == null || hit.rigidbody.isKinematic) { return; }
-
-        hit.rigidbody.AddForceAtPosition((hit.collider.ClosestPoint(hit.point) - characterController.ClosestPoint(hit.point)).normalized * (characterController.velocity.magnitude + rigidbodyPushForce), hit.point);
     }
 }

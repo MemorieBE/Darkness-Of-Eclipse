@@ -11,6 +11,7 @@ public class GameRules : MonoBehaviour
     public static float timeScaleMultiplier = 1f; //!< The number multiplied by the time scale.
     public static int cancelInputOverride = 0; //!< The integer that determines whether or not all player inputs are disbaled.
     public static bool frozenTimeScale = false; //!< The boolean that determines whether or not the time scale is frozen/paused.
+    public static bool freezePlayer = false; //!< Freezes the player for cutscenes and menus.
 
     void Awake()
     {
@@ -23,7 +24,7 @@ public class GameRules : MonoBehaviour
     {
         cancelInputOverride++;
 
-        PlayerControllerCC.allowPlayerInputs = false;
+        freezePlayer = true;
         PauseScript.isPausable = PauseScript.isPaused;
         GameMenuScript.isOpenable = GameMenuScript.isOpened;
     }
@@ -35,7 +36,7 @@ public class GameRules : MonoBehaviour
 
         if (cancelInputOverride == 0)
         {
-            PlayerControllerCC.allowPlayerInputs = true;
+            freezePlayer = false;
             PauseScript.isPausable = true;
             GameMenuScript.isOpenable = true;
         }

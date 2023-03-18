@@ -201,6 +201,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Exit Action",
+                    "type": "Button",
+                    "id": "501db987-1a35-4fd6-8f25-a48267785a79",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -256,6 +265,17 @@
                     "processors": "",
                     "groups": "Keyboard and Mouse",
                     "action": "Use Wisp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "621bd3be-2fa9-41e1-a5cb-dacb0c1cb5ac",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Exit Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
