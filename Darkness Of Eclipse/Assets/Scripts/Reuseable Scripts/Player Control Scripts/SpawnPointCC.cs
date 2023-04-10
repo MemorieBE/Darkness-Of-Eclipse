@@ -16,10 +16,15 @@ public class SpawnPointCC : MonoBehaviour
     {
         if (player.transform.position.y <= playerYResetPoint)
         {
-            player.enabled = false;
-            player.transform.position = gameObject.transform.position;
-            player.transform.rotation = gameObject.transform.rotation;
-            player.enabled = true;
+            TeleportPlayer();
         }
+    }
+
+    private void TeleportPlayer()
+    {
+        player.enabled = false;
+        player.transform.position = gameObject.transform.position;
+        player.transform.rotation = gameObject.transform.rotation;
+        player.enabled = true;
     }
 }

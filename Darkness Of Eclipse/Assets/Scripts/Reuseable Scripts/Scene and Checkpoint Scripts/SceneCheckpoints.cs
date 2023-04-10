@@ -39,6 +39,10 @@ public class SceneCheckpoints : MonoBehaviour
     void Start()
     {
         if (sceneCheckpoint > 0 && savedScene > 0 && savedScene == SceneManager.GetActiveScene().buildIndex) { ActivateCheckpoint(); }
+        else
+        {
+            UpdateSpawnPointTransform(0);
+        }
     }
 
     /*!
@@ -100,10 +104,15 @@ public class SceneCheckpoints : MonoBehaviour
             else checkpointObjectGroups[i].SetActive(false);
         }
 
-        spawnPoint.position = checkpointSpawnPoints[sceneCheckpoint].position;
-        spawnPoint.rotation = checkpointSpawnPoints[sceneCheckpoint].rotation;
+        UpdateSpawnPointTransform(sceneCheckpoint);
 
         if (!SceneSavePoint.hasSavePoint) { teleporter.Teleport(); }
+    }
+
+    private void UpdateSpawnPointTransform(int checkpoint)
+    {
+        spawnPoint.position = checkpointSpawnPoints[checkpoint].position;
+        spawnPoint.rotation = checkpointSpawnPoints[checkpoint].rotation;
     }
 
     /*!
